@@ -21,8 +21,8 @@ preview:
 	@make clean && make html
 
 publish:
-	@rm -rf docs && mkdir docs
-	@make clean && make html
+	@rm -rf docs build && mkdir docs
+	@make html
 	@cp -r build/html/* docs
 
 # Catch-all target: route all unknown targets to Sphinx using the new
