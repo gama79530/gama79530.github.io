@@ -22,6 +22,7 @@ preview:
 
 publish:
 	@rm -rf docs build && mkdir docs
+	@touch docs/.nojekyll
 	@make html
 	@cp -r build/html/* docs
 
