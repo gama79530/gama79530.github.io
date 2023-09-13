@@ -120,7 +120,7 @@ nb_number_source_lines = True
 
 ## Publish
 ### configure the repository on github
-![Publish Homepage](../_static/publish_homepage.png)
+![Publish Homepage](../_static/publish_website.png)
 
 ### cleaning all derivative files
 you can clear all derivative files by the following command.

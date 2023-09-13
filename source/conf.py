@@ -54,7 +54,7 @@ myst_enable_extensions = [
     "html_image",
 ]
 myst_url_schemes = ("http", "https", "mailto")
-myst_number_code_blocks = ['c', 'c++', 'java', 'python', 'html', 'css', 'javascript', 'bash']
+myst_number_code_blocks = ['c', 'c++', 'java', 'python', 'html', 'css', 'javascript', 'bash', 'md']
 
 number_source_lines = True
 nb_number_source_lines = True

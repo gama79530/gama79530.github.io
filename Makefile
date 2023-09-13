@@ -18,7 +18,7 @@ clean:
 	@rm -rf docs build
 
 preview:
-	@make clean && make html
+	@rm -rf build && make html
 
 publish:
 	@rm -rf docs build && mkdir docs
