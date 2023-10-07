@@ -18,6 +18,7 @@ extensions = [
     "sphinx_copybutton",
     "sphinx_togglebutton",
     "myst_nb",
+    "sphinx.ext.graphviz", 
 ]
 
 templates_path = ['_templates']
@@ -59,3 +60,4 @@ myst_number_code_blocks = ['c', 'c++', 'java', 'python', 'html', 'css', 'javascr
 number_source_lines = True
 nb_number_source_lines = True
 
+graphviz_output_format = "svg"

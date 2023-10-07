@@ -27,6 +27,7 @@ executing==1.2.0
 fastjsonschema==2.18.0
 fonttools==4.42.1
 fqdn==1.5.1
+graphviz==0.20.1
 greenlet==2.0.2
 idna==3.4
 imagesize==1.4.1
