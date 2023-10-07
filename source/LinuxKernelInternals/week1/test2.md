@@ -1,4 +1,4 @@
-# 題目 2 + 參考題解1, 參考題解2
+# 題目2 / 參考題解1, 參考題解2
 
 ## Reference
 - [2020q1 第 1 週測驗題](https://hackmd.io/@sysprog/linux2020-quiz1)
@@ -110,7 +110,7 @@ LL6 = ?
 
 > `Ans` : (b)
 
-```
+```{seealso}
 延伸問題:
 1. 解釋上述程式運作原理;
 2. 指出程式改進空間，特別是考慮到 [Optimizing merge sort](https://en.wikipedia.org/wiki/Merge_sort#Optimizing_merge_sort);
