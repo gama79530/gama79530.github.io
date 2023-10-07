@@ -11,4 +11,13 @@
 homepage/index
 ```
 
+
 ## Study Note
+1. [Linux 核心設計/實作(Linux Kernel Internals)](./LinuxKernelInternals/index.md)
+```{toctree}
+:hidden:
+:caption: Study Note
+:maxdepth: 3
+
+LinuxKernelInternals/index
+```
