@@ -56,7 +56,8 @@ The other 4 options can be change by changing the setting option in the **conf.p
     extensions = [
         "sphinx_copybutton",
         "sphinx_togglebutton",
-        "myst_nb"
+        "myst_nb",
+        "sphinx.ext.graphviz", 
     ]
 ```
 
@@ -116,6 +117,14 @@ nb_number_source_lines = True
 ```
 ```{note}
 1. You can see the functions of these 2 settings from [Configuration](https://myst-nb.readthedocs.io/en/latest/configuration.html#rendering)
+```
+
+- configure graphviz options
+```python
+graphviz_output_format = "svg"
+```
+```{note}
+1. You can see the functions of graphviz_output_format from [sphinx.ext.graphviz](https://www.sphinx-doc.org/en/master/usage/extensions/graphviz.html#confval-graphviz_output_format)
 ```
 
 ## Publish

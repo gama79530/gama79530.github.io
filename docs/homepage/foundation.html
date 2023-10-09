@@ -34,6 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
@@ -140,6 +141,20 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Building Foundation of Homepage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="skeleton.html">Building Skeleton of Homepage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="note.html">Notes</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../LinuxKernelInternals/index.html">成大jserv Linux 核心設計/實作 (Linux Kernel Internals)</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../LinuxKernelInternals/week1/week1.html">Week 1</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../LinuxKernelInternals/week1/test1.html">題目 1 + 分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LinuxKernelInternals/week1/test2.html">題目2 / 參考題解1, 參考題解2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LinuxKernelInternals/week1/test3.html">題目3 / 參考題解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LinuxKernelInternals/week1/test4.html">題目4 / 參考題解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../LinuxKernelInternals/week1/test5.html">題目5 / 參考題解</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -464,8 +479,9 @@ The other 4 options can be change by changing the setting option in the <strong>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>    <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
 <span class="linenos">2</span>        <span class="s2">&quot;sphinx_copybutton&quot;</span><span class="p">,</span>
 <span class="linenos">3</span>        <span class="s2">&quot;sphinx_togglebutton&quot;</span><span class="p">,</span>
-<span class="linenos">4</span>        <span class="s2">&quot;myst_nb&quot;</span>
-<span class="linenos">5</span>    <span class="p">]</span>
+<span class="linenos">4</span>        <span class="s2">&quot;myst_nb&quot;</span><span class="p">,</span>
+<span class="linenos">5</span>        <span class="s2">&quot;sphinx.ext.graphviz&quot;</span><span class="p">,</span> 
+<span class="linenos">6</span>    <span class="p">]</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -538,6 +554,18 @@ The other 4 options can be change by changing the setting option in the <strong>
 <p class="admonition-title">Note</p>
 <ol class="arabic simple">
 <li><p>You can see the functions of these 2 settings from <a class="reference external" href="https://myst-nb.readthedocs.io/en/latest/configuration.html#rendering">Configuration</a></p></li>
+</ol>
+</div>
+<ul class="simple">
+<li><p>configure graphviz options</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">graphviz_output_format</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>You can see the functions of graphviz_output_format from <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/graphviz.html#confval-graphviz_output_format">sphinx.ext.graphviz</a></p></li>
 </ol>
 </div>
 </section>

@@ -1,0 +1,642 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>題目2 / 參考題解1, 參考題解2 &#8212; Rein&#39;s Homepage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'LinuxKernelInternals/week1/test2';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="題目3 / 參考題解" href="test3.html" />
+    <link rel="prev" title="題目 1 + 分析" href="test1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Rein's Homepage</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Project</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homepage/index.html">How To Build Personal Website with GitHub Pages</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../homepage/foundation.html">Building Foundation of Homepage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homepage/skeleton.html">Building Skeleton of Homepage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homepage/note.html">Notes</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">成大jserv Linux 核心設計/實作 (Linux Kernel Internals)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="week1.html">Week 1</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="test1.html">題目 1 + 分析</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">題目2 / 參考題解1, 參考題解2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test3.html">題目3 / 參考題解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test4.html">題目4 / 參考題解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test5.html">題目5 / 參考題解</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/LinuxKernelInternals/week1/test2.md?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/LinuxKernelInternals/week1/test2.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2FLinuxKernelInternals/week1/test2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/LinuxKernelInternals/week1/test2.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>題目2 / 參考題解1, 參考題解2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">測驗 <code class="docutils literal notranslate"><span class="pre">1</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>題目2 / 參考題解1, 參考題解2<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://hackmd.io/&#64;sysprog/linux2020-quiz1">2020q1 第 1 週測驗題</a></p></li>
+<li><p><a class="reference external" href="https://hackmd.io/&#64;Ryspon/HJVH8B0XU">2020q1 第 1 週隨堂測驗解題思路</a></p></li>
+<li><p><a class="reference external" href="https://hackmd.io/&#64;chses9440611/Sy5gwE37I">2020q1 第一週測驗題 解題思路</a></p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>測驗 <code class="docutils literal notranslate"><span class="pre">1</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>考慮一個單向 linked list:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__list</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">__list</span><span class="w"> </span><span class="o">*</span><span class="n">next</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">list</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>在不存在環狀結構的狀況下，以下函式能夠對 linked list 元素從小到大排序:</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="nf">sort</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">start</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">start</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">start</span><span class="p">;</span>
+<span class="w">    </span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">;</span>
+<span class="w">    </span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">left</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="w">    </span><span class="n">LL0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">left</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sort</span><span class="p">(</span><span class="n">left</span><span class="p">);</span>
+<span class="w">    </span><span class="n">right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sort</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">*</span><span class="n">merge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">right</span><span class="p">;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">right</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">left</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">left</span><span class="o">-&gt;</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">right</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">merge</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">LL1</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">LL2</span><span class="p">;</span>
+<span class="w">                </span><span class="n">merge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merge</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">LL3</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">merge</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">LL4</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">LL5</span><span class="p">;</span>
+<span class="w">                </span><span class="n">merge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">merge</span><span class="o">-&gt;</span><span class="n">next</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">LL6</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">start</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>請補完程式碼。</p>
+<p>==作答區==</p>
+<p>LL0 = ?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(a)</span></code> <code class="docutils literal notranslate"><span class="pre">left-&gt;next</span> <span class="pre">=</span> <span class="pre">NULL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(b)</span></code> <code class="docutils literal notranslate"><span class="pre">right-&gt;next</span> <span class="pre">=</span> <span class="pre">NULL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(c)</span></code> <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">=</span> <span class="pre">left-&gt;next</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(d)</span></code> <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">=</span> <span class="pre">right-&gt;next</span></code></p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Ans</span></code> : (a)</p>
+</div></blockquote>
+<p>LL1 = ?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(a)</span></code> <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">left</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(b)</span></code> <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">right</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(c)</span></code> <code class="docutils literal notranslate"><span class="pre">merge</span> <span class="pre">=</span> <span class="pre">left</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(d)</span></code> <code class="docutils literal notranslate"><span class="pre">merge</span> <span class="pre">=</span> <span class="pre">right</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(e)</span></code> <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">merge</span> <span class="pre">=</span> <span class="pre">left</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(f)</span></code> <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">merge</span> <span class="pre">=</span> <span class="pre">right</span></code></p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Ans</span></code> : (c)</p>
+</div></blockquote>
+<p>LL2 = ?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(a)</span></code> <code class="docutils literal notranslate"><span class="pre">merge-&gt;next</span> <span class="pre">=</span> <span class="pre">left</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(b)</span></code> <code class="docutils literal notranslate"><span class="pre">merge-&gt;next</span> <span class="pre">=</span> <span class="pre">right</span></code></p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Ans</span></code> : (a)</p>
+</div></blockquote>
+<p>LL3 = ?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(a)</span></code> <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">=</span> <span class="pre">left-&gt;next</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(b)</span></code> <code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">=</span> <span class="pre">right-&gt;next</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(c)</span></code> <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">=</span> <span class="pre">right-&gt;next</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(d)</span></code> <code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">=</span> <span class="pre">left-&gt;next</span></code></p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Ans</span></code> : (a)</p>
+</div></blockquote>
+<p>LL4 = ?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(a)</span></code> <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">left</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(b)</span></code> <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">right</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(c)</span></code> <code class="docutils literal notranslate"><span class="pre">merge</span> <span class="pre">=</span> <span class="pre">left</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(d)</span></code> <code class="docutils literal notranslate"><span class="pre">merge</span> <span class="pre">=</span> <span class="pre">right</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(e)</span></code> <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">merge</span> <span class="pre">=</span> <span class="pre">left</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(f)</span></code> <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">=</span> <span class="pre">merge</span> <span class="pre">=</span> <span class="pre">right</span></code></p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Ans</span></code> : (d)</p>
+</div></blockquote>
+<p>LL5 = ?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(a)</span></code> <code class="docutils literal notranslate"><span class="pre">merge-&gt;next</span> <span class="pre">=</span> <span class="pre">left</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(b)</span></code> <code class="docutils literal notranslate"><span class="pre">merge-&gt;next</span> <span class="pre">=</span> <span class="pre">right</span></code></p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Ans</span></code> : (b)</p>
+</div></blockquote>
+<p>LL6 = ?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(a)</span></code> <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">=</span> <span class="pre">left-&gt;next</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(b)</span></code> <code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">=</span> <span class="pre">right-&gt;next</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(c)</span></code> <code class="docutils literal notranslate"><span class="pre">left</span> <span class="pre">=</span> <span class="pre">right-&gt;next</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(d)</span></code> <code class="docutils literal notranslate"><span class="pre">right</span> <span class="pre">=</span> <span class="pre">left-&gt;next</span></code></p></li>
+</ul>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Ans</span></code> : (b)</p>
+</div></blockquote>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>延伸問題:</p>
+<ol class="arabic simple">
+<li><p>解釋上述程式運作原理;</p></li>
+<li><p>指出程式改進空間，特別是考慮到 <a class="reference external" href="https://en.wikipedia.org/wiki/Merge_sort#Optimizing_merge_sort">Optimizing merge sort</a>;</p></li>
+<li><p>將上述 singly-linked list 擴充為 circular doubly-linked list 並重新實作對應的 <code class="docutils literal notranslate"><span class="pre">sort</span></code>;</p></li>
+<li><p>依循 Linux 核心 <a class="reference external" href="https://github.com/torvalds/linux/blob/master/include/linux/list.h">include/linux/list.h</a> 程式碼的方式，改寫上述排序程式;</p></li>
+<li><p>嘗試將原本遞迴的程式改寫為 iterative 版本;</p></li>
+</ol>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="test1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">題目 1 + 分析</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="test3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">題目3 / 參考題解</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">測驗 <code class="docutils literal notranslate"><span class="pre">1</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rein Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Rein Wu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
