@@ -317,9 +317,9 @@ struct ListNode *deleteDuplicates(struct ListNode *head)
 * `COND1` 和 `COND2` 不包含 `;`, `:`, `?` 等符號
 * 儘量寫出最精簡的程式碼，而且答案也只接受符合上述程式碼排版風格的最精簡形式
 
-> `COND1`: `head->val == head->next->val`
+> `COND1`: `head->next && head->val == head->next->val`
 
-> `COND2`: `head->val == head->next->val`
+> `COND2`: `head->next && head->val == head->next->val`
 
 ```{seealso}
 延伸問題:
@@ -415,9 +415,9 @@ void lRUCachePut(LRUCache *obj, int key, int value)
 
 > `MMM1`: `list_for_each_entry_safe` or `list_for_each_entry_safe_reverse`
 
-> `MMM2`: `list_for_each_entry` or `list_for_each_entry_reverse`
+> `MMM2`: `list_for_each_entry` (because of the locality, forward search is better than backward search)
 
-> `MMM3`: `list_for_each_entry` or `list_for_each_entry_reverse`
+> `MMM3`: `list_for_each_entry` (because of the locality, forward search is better than backward search)
 
 > `MMM4`: `list_last_entry`
 
@@ -508,6 +508,8 @@ LLL = ?
 * `(d)` `left--`
 * `(e)` `--left`
 
+> `Ans`: (e)
+
 RRR = ?
 * `(a)` `right`
 * `(b)` `right++`
@@ -515,8 +517,10 @@ RRR = ?
 * `(d)` `right--`
 * `(e)` `--right`
 
-:::success
+> `Ans`: (c)
+
+```{seealso}
 延伸問題:
 1. 解釋上述程式碼的運作，撰寫完整的測試程式，指出其中可改進之處並實作
 2. 嘗試用 Linux 核心風格的 hash table 重新實作上述程式碼
-:::
+```
