@@ -58,7 +58,7 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize)
 2. `nums[1]`是 `11`， `HT[11]` 不存在，於是建立 `HT[9 - 11] = 1`
 3. `nums[2]` 是 `7`，`HT[7]` 存在 (設定於步驟 `1`)，於是回傳 `[2,  HT[7]] = [2, 0]`
 
-![](../../_static/2022q1pic1.png)
+![](../../../_static/2022q1pic1.png)
 
 `hlist` 用於 hash table 的實作，它的資料結構定義在 [include/linux/types.h](https://github.com/torvalds/linux/blob/master/include/linux/types.h) 中:
 ```cpp
@@ -72,7 +72,7 @@ struct hlist_node {
 ```
 
 示意如下:
-![](../../_static/2022q1pic2.png)
+![](../../../_static/2022q1pic2.png)
 
 `hlist` 的操作與 `list` 一樣定義於 [include/linux/list.h](https://github.com/torvalds/linux/blob/master/include/linux/list.h)，以 `hlist_` 開頭。`hlist_head` 和 `hlist_node` 用於 hash table 中 bucket 的實作，具有相同 hash value 的節點會放在同一條 `hlist` 中。 為了節省空間，`hlist_head` 只使用一個 `first` 指標指向 `hlist_node`，沒有指向串列尾節點的指標。
 
