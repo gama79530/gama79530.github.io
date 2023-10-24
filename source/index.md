@@ -17,8 +17,8 @@
 :caption: Study Note
 :maxdepth: 3
 
-2_StudyNote/LinkLoadDemo/index
 2_StudyNote/homepage/index
+2_StudyNote/LinkLoadDemo/index
 ```
 
 ## Course
