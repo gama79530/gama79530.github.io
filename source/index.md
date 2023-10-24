@@ -11,7 +11,7 @@
 
 ## Study Note
 1. [How To Build Personal Website with GitHub Pages](./2_StudyNote/homepage/index.md)
-2. [(C/C++) 如何編譯與使用 static /shared library](./2_StudyNote/LinkLoadDemo/index.md)
+2. [(C/C++) 如何在Linux上編譯與使用 static /shared library](./2_StudyNote/LinkLoadDemo/index.md)
 ```{toctree}
 :hidden:
 :caption: Study Note

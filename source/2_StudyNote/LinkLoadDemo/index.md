@@ -1,4 +1,4 @@
-# (C/C++) 如何編譯與使用 static /shared library
+# (C/C++) 如何在Linux上編譯與使用 static /shared library
 
 ## Demo project
 [LinkLoadDemo](https://github.com/gama79530/LinkLoadDemo)這個Project總共包含了6個projects以及一個資料夾
@@ -107,10 +107,23 @@
 ## Dynamic Loading
 ### 特點
 1. 編譯時並不將library的內容連結，而是使用程式控制library的載入與釋放，更具彈性。
-1. 通常以plug-in的方式使用
+1. 以plug-in的方式使用shared library
 1. 執行速度更慢
+
+### 重點
+1. 透過 libdl 達成，用法參考檔案 Project_LoadSharedLib/src/main.c
+1. 可以不需要library的header檔，但是需要從header檔或文件確定好要使用的function或變數的type
+1. dlopen的檔名如果以'/'開頭則會用絕對路徑去找，若不是以的話會依照下面的順序尋找
+   1. 環境變數 **LD_LIBRARY_PATH** 用 ':'隔開的那些路徑
+   1. /etc/ld.so.cache 中指定的 library列表 （從 /etc/ld.so.conf 產生）
+   1. /lib
+   1. /usr/lib
+1. 編譯指令有 -ldl 的原因是因為需要用到 libdl
 
 ## Reference
 1. [static link & Dynamic Link & Load](https://phchiu.pixnet.net/blog/post/39869035)
 1. [Compile gcc 編譯 static link, dynamic link, dynamic load](https://medium.com/chris-place/compile-gcc-%E7%B7%A8%E8%AD%AF-static-link-dynamic-link-dynamic-load-17dfb4ef3cf1)
 1. [How static linking works on Linux](https://opensource.com/article/22/6/static-linking-linux)
+1. [How dynamic linking for modular libraries works on Linux](https://opensource.com/article/22/5/dynamic-linking-modular-libraries-linux#:~:text=Dynamic%20libraries%20are%20linked%20during,placed%20in%20the%20main%20memory.)
+1. [4. Dynamically Loaded (DL) Libraries](https://tldp.org/HOWTO/Program-Library-HOWTO/dl-libraries.html)
+1. [Shared Libraries: Understanding Dynamic Loading](https://amir.rachum.com/shared-libraries/#elf---executable-and-linkable-format)
