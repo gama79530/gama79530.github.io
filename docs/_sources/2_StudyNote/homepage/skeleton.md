@@ -15,12 +15,12 @@ properties...
 children pages...  
 ```
 ````
-![page hierarchy](../_static/page_hierarchy.png)
+![page hierarchy](../../_static/page_hierarchy.png)
 
 This page is the homepage of the website. The corresponding file is "source/index.md". This homepage is also the root of all blocks. Each block is the root of a toctree. The section 4 describes that my website contains a block and the block contains a 2 levels toctree. The toctree consists of a caption (section 1), a level 1 page (section 2) and three level 2 pages (section 3). 
 
-![folder hierarchy](../_static/folder_hierarchy.png)
-![homepage](../_static/homepage_code.png)
+![folder hierarchy](../../_static/folder_hierarchy.png)
+![homepage](../../_static/homepage_code.png)
 
 To build the toctree structure, I add the following code into the "source/index.md".
 1. **":caption: Project"** make a block with caption **"Project"**
@@ -37,8 +37,8 @@ To build the toctree structure, I add the following code into the "source/index.
 If you don't want to show the toctree structure in main page (block 5), you can add a properity ":hidden:".
 ```
 
-![folder hierarchy](../_static/folder_hierarchy.png)
-![level 1 page](../_static/level1_page_code.png)
+![folder hierarchy](../../_static/folder_hierarchy.png)
+![level 1 page](../../_static/level1_page_code.png)
 
 According to the previous setting, we know the level 1 page is "source/homepage/index.md" The title "How To Build Personal Website with GitHub Pages" is the heading 1 of this file. To configure the other three level 2 pages, you have to add a toctree description in this file.  
 
