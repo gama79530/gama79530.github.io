@@ -25,7 +25,7 @@
 1. [Linux 核心設計/實作(Linux Kernel Internals)](./3_Course/LinuxKernelInternals/index.md)
 ```{toctree}
 :hidden:
-:caption: Study Note
+:caption: Course
 :maxdepth: 3
 
 3_Course/LinuxKernelInternals/index
