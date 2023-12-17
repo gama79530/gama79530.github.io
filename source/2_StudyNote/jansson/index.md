@@ -3,35 +3,23 @@
 ## Prerequisite
 1. 了解如何使用gcc將第3方的library檔案link到自己的project，可參考[連結](https://gama79530.github.io/2_StudyNote/LinkLoadDemo/index.html)
 2. 了解什麼是JSON，可參考[連結](https://www.json.org/json-en.html)
-
-## 安裝
-1. 從[v2.14](https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.bz2)下載source檔案
-2. 解壓縮 ＆ 安裝
-
-```bash
-# unzip
-bunzip2 -c jansson-2.14.tar.bz2 | tar xf -
-cd jansson-2.14
-
-# install
-mkdir build
-cd build
-cmake .. -DJANSSON_BUILD_DOCS=OFF # or ccmake .. for a GUI.
-
-# check
-make
-make check
-sudo make install
+3. 從[v2.14](https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.bz2)下載source檔案
+4. 參考官方的[安裝方式](https://jansson.readthedocs.io/en/latest/gettingstarted.html#compiling-and-installing-jansson)
+```{tip}
+:class: dropdown
+我是使用使用Ubuntu 22.04做為開發環境，依照我個人的使用經驗來說使用CMake安裝比較不會出問題,至於要要不要使用shared library可以按個人喜好決定。
 ```
-```{note}
-詳細請參考官方文件的[Compiling and Installing Jansson](https://jansson.readthedocs.io/en/latest/gettingstarted.html#compiling-and-installing-jansson)
-```
+5. 在source裡面只要include `<jansson.h>`即可使用
+6. 編譯時要記得加上`-ljansson`來link library
 
-## 使用方式
-source code只需要增加一行即可使用library所有功能
-```c
-#include <jansson.h>
-```
+## 使用教學
+接下來的內容都可以從官網的[API Reference](https://jansson.readthedocs.io/en/latest/apiref.html#api-reference)找到，主要是希望按照個人認為的重要順序去重新編排順序，並且將內容濃縮。
+
+### Value Representation
+### Error reporting
+### Object Parsing
+### Equality
+### Copying
 
 ### Type system
 1. 所有type都以 `json_t` 作為包裝
