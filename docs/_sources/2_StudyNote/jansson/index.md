@@ -44,12 +44,20 @@
    例如：使用 ``json_real(1.0)`` 產生一個內容值為1.0的 `real` 物件 
 5. 除了 `singleton` 的3種type之外的非 `container` type都可以使用 `json_XXX_set(ptr, value) / json_XXX_value(ptr)`分別去 `更改 / 取得` json object的值  
    例如：使用 `json_real_set(ptr, 3.0) / double d = json_real_value(ptr)`去 `更改 / 取得` ptr 的值
+```{note}
+:class: dropdown
+用 `json_string_value` 取出來的值是 `const char *` 且不能自己去執行 `free` ，必須交由library管理
+```
 6. 所有對 `array` 的操作都是 `json_array_XXX` 。XXX為常見的對array的動作，例如： `size` 、`set` 、`get` 、`insert` 、`append` 、`del` 、`clear` 等等。
 7. 所有對 `map` 的操作都是 `json_object_XXX`。XXX為常見的對map的動作，例如： `size` 、`set` 、`get` 、`update` 、`append` 、`del` 、`clear` 等等。
 8. 針對 `array` 與 `map`，library有提供 macro `json_XXX_foreach(ptr, ...)` 來執行loop
 
 #### Reference Count
 **jansson**會半自動管理**json object**的記憶體使用，其管理方式為對於**json object** 增加一個 `refcount` 來做管理。 `refcount` 在**json object**被配置記憶體時會被設定為 `1` 。一旦**json object**的 `refcount` 變成 `0` 的瞬間，該**json object**所佔用的記憶體空間會被釋放。Programmer必須自己管理 `refcount` 。
+```{note}
+:class: dropdown
+若 `container` 的 `refcount` **歸零**的時候，其所有 `content` 的 `refcount` 也會被減 `1` 。若 `content` 的 `refcount` 因此 **歸零**的話則該物件也會消失。這個過程可以連鎖反應。
+```
 
 `refcount` 只有2種狀況會受影響
 1. 使用非 `steal` 版本的function將 `json object` 裝入其它`array`或`map`時
