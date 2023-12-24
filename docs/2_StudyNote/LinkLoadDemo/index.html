@@ -422,13 +422,13 @@ document.write(`
 <h2>Demo project<a class="headerlink" href="#demo-project" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://github.com/gama79530/LinkLoadDemo">LinkLoadDemo</a>這個Project總共包含了6個projects以及一個資料夾</p>
 <ol class="arabic simple">
-<li><p>Project_StaticLib 模擬建立一個static library</p></li>
-<li><p>Project_LinkStaticLib 模擬使用static library</p></li>
-<li><p>Project_SharedLib 模擬建立一個shared library</p></li>
-<li><p>Project_LinkSharedLib 模擬使用shared library</p></li>
-<li><p>Project_SharedLibForDynamicLoad 模擬建立一個shared library</p></li>
-<li><p>Project_LoadSharedLib 模擬動態載入一個shared library</p></li>
-<li><p>SharedLib 為佈署shared library的路徑</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Project_StaticLib</span></code> 模擬建立一個 <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">library</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Project_LinkStaticLib</span></code> 模擬使用 <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">library</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Project_SharedLib</span></code> 模擬建立一個 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Project_LinkSharedLib</span></code> 模擬使用 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Project_SharedLibForDynamicLoad</span></code> 模擬建立一個 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Project_LoadSharedLib</span></code> 模擬動態載入一個 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SharedLib</span></code> 為佈署 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code> 的路徑</p></li>
 </ol>
 </section>
 <section id="static-linking">
@@ -436,18 +436,21 @@ document.write(`
 <section id="id1">
 <h3>特點<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>編譯時期將library的程式碼加入executable，因此執行檔的體積會變大</p></li>
-<li><p>程式執行速度較快</p></li>
+<li><p>通常是以 <code class="docutils literal notranslate"><span class="pre">.a</span> <span class="pre">(Unix-like)</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.lib</span> <span class="pre">(Windows)</span></code> 為 <code class="docutils literal notranslate"><span class="pre">副檔名</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">編譯期</span></code> 將 <code class="docutils literal notranslate"><span class="pre">library</span></code> 的 <code class="docutils literal notranslate"><span class="pre">程式碼</span></code> 加入 <code class="docutils literal notranslate"><span class="pre">執行檔</span></code> ，因此執行檔size會 <code class="docutils literal notranslate"><span class="pre">較大</span></code></p></li>
+<li><p>與 <code class="docutils literal notranslate"><span class="pre">library</span></code> 的 <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">file</span></code> 之間的 <code class="docutils literal notranslate"><span class="pre">dependency</span></code> 相對較 <code class="docutils literal notranslate"><span class="pre">高</span></code> ，引用的<strong>library</strong>有更新時需要重編譯才能得到更新過後的內容</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Deployment</span></code> 相對簡單</p></li>
+<li><p>程式在執行的時候不用另外去 <code class="docutils literal notranslate"><span class="pre">link</span></code> <strong>library</strong>的程式，因此會稍微 <code class="docutils literal notranslate"><span class="pre">快</span></code> 一點。</p></li>
 </ol>
 </section>
 <section id="static-library">
 <h3>建立static library<a class="headerlink" href="#static-library" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>寫一個header檔作為library的介面讓library使用者可以正確的呼叫屬於library的function</p></li>
-<li><p>將source檔案編譯成object files</p></li>
-<li><p>將object files打包成static library file</p>
+<li><p>寫一個 <code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">file</span> <span class="pre">(.h)</span></code> 作為 <code class="docutils literal notranslate"><span class="pre">library</span></code> 的 <code class="docutils literal notranslate"><span class="pre">介面</span></code> 讓<strong>library</strong>使用者可以正確的呼叫屬於<strong>library</strong>的<strong>function</strong></p></li>
+<li><p>將 <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">file</span></code> 編譯成 <code class="docutils literal notranslate"><span class="pre">object</span> <span class="pre">files</span></code></p></li>
+<li><p>將 <code class="docutils literal notranslate"><span class="pre">object</span> <span class="pre">files</span></code> 打包成 <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">library</span> <span class="pre">file</span></code></p>
 <ul class="simple">
-<li><p>static library檔名的固定格式為 lib{library name}.a</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">library</span></code> 檔名的固定格式為 <code class="docutils literal notranslate"><span class="pre">lib{library</span> <span class="pre">name}.a</span></code></p></li>
 </ul>
 </li>
 </ol>
@@ -464,13 +467,13 @@ document.write(`
 <section id="id2">
 <h3>使用static library<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>將library的header檔include後呼叫要使用的function (通常會放到 include 資料夾下)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include</span></code> <strong>library</strong>的 <code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">file</span></code> 後呼叫要使用的<strong>function</strong> (通常會將 <code class="docutils literal notranslate"><span class="pre">.h</span></code> 放到 <code class="docutils literal notranslate"><span class="pre">include</span></code> 資料夾下)</p></li>
 <li><p>編譯成執行檔</p>
 <ul class="simple">
-<li><p>-static 用來指示若有同名的static library與shared library的話會優先使用static library (預設為優先使用shared library)</p></li>
-<li><p>-I {path}用來指示header檔放置的路徑，-I與{path}中間可以不需要空格隔開</p></li>
-<li><p>-L {path}用來指示static library file放置的路徑 (通常會放到 lib 資料夾下)，-L與{path}中間可以不需要空格隔開</p></li>
-<li><p>-l {library name}用來指示library name (前綴的 lib 與附檔名 要去掉)，-l與{library name}中間可以不需要空格隔開</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-static</span></code> 用來指示若有同名的 <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">library</span></code> 與 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code> 的話會優先使用 <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">library</span></code> (預設為優先使用<strong>shared library</strong>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-I</span> <span class="pre">{path}</span></code> 用來指示 <code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">file</span></code> 放置的<strong>路徑</strong>，<code class="docutils literal notranslate"><span class="pre">-I</span></code> 與 <code class="docutils literal notranslate"><span class="pre">{path}</span></code> 中間可以不需要空格隔開</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-L</span> <span class="pre">{path}</span></code> 用來指示 <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">library</span> <span class="pre">file</span></code> 放置的<strong>路徑</strong> (通常會放到 <code class="docutils literal notranslate"><span class="pre">lib</span></code> 資料夾下)，<code class="docutils literal notranslate"><span class="pre">-L</span></code> 與 <code class="docutils literal notranslate"><span class="pre">{path}</span></code> 中間可以不需要空格隔開</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">{library</span> <span class="pre">name}</span></code> 用來指示 <code class="docutils literal notranslate"><span class="pre">library</span> <span class="pre">name</span></code> (前綴的 <code class="docutils literal notranslate"><span class="pre">lib</span></code> 與 <code class="docutils literal notranslate"><span class="pre">附檔名</span></code> 要去掉)，<code class="docutils literal notranslate"><span class="pre">-l</span></code> 與 <code class="docutils literal notranslate"><span class="pre">{library</span> <span class="pre">name}</span></code> 中間可以不需要空格隔開</p></li>
 </ul>
 </li>
 </ol>
@@ -489,32 +492,38 @@ document.write(`
 <section id="id3">
 <h3>特點<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>編譯時期並不將library的程式碼加入executable，因此執行檔會比較小</p></li>
-<li><p>程式啟動啟動時會再依照環境變數或預設路徑去把library的內容link到程式中，因此執行較慢</p></li>
-<li><p>因為是執行時才會去link，因此多個程式共用一個library時只需載入到memory一次</p></li>
+<li><p>通常是以 <code class="docutils literal notranslate"><span class="pre">.so</span> <span class="pre">(Unix-like)</span></code> 或 <code class="docutils literal notranslate"><span class="pre">.dll</span> <span class="pre">(Windows)</span></code> 為 <code class="docutils literal notranslate"><span class="pre">副檔名</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">編譯期</span></code> 並不將 <code class="docutils literal notranslate"><span class="pre">library</span></code> 的 <code class="docutils literal notranslate"><span class="pre">程式碼</span></code>加入 <code class="docutils literal notranslate"><span class="pre">執行檔</span></code> ，因此執行檔會比 <code class="docutils literal notranslate"><span class="pre">較小</span></code></p></li>
+<li><p>與 <code class="docutils literal notranslate"><span class="pre">library</span></code> 的 <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">file</span></code> 之間的 <code class="docutils literal notranslate"><span class="pre">dependency</span></code> 相對較 <code class="docutils literal notranslate"><span class="pre">低</span></code>，引用的<strong>library</strong>有更新時只需要<strong>更新library</strong>即可得到更新過後的內容</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Deployment</span></code> 相對簡單較難</p></li>
+<li><p>程式在執行的時候需要去 <code class="docutils literal notranslate"><span class="pre">link</span></code> <strong>library</strong> 的程式，因此會稍微 <code class="docutils literal notranslate"><span class="pre">慢</span></code> 一點。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">程式碼</span></code> 可以多個程式<strong>共用</strong>，可節省系統資源</p></li>
 </ol>
 </section>
 <section id="shared-library">
 <h3>建立shared library<a class="headerlink" href="#shared-library" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>寫一個header檔作為library的介面讓library使用者可以正確的呼叫屬於library的function</p></li>
-<li><p>將source檔案編譯成object files</p></li>
-<li><p>將object files打包成shared library file</p>
+<li><p>寫一個 <code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">file</span></code> 作為<strong>library</strong>的 <code class="docutils literal notranslate"><span class="pre">介面</span></code> 讓<strong>library</strong>使用者可以正確的呼叫屬於<strong>library</strong>的<strong>function</strong></p></li>
+<li><p>將 <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">file</span></code> 編譯成 <code class="docutils literal notranslate"><span class="pre">object</span> <span class="pre">files</span></code></p></li>
+<li><p>將 <code class="docutils literal notranslate"><span class="pre">object</span> <span class="pre">files</span></code> 打包成 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span> <span class="pre">file</span></code></p>
 <ul class="simple">
-<li><p>version code: 代表大版本更動，可能造成與前面的版本不相容</p></li>
-<li><p>minor code: 代表有新增功能，但library有向前相容</p></li>
-<li><p>release code: 代表功能有變更，通常是bug修正或者是針對程式重構</p></li>
-<li><p>real name: 實際的檔案名稱，慣用格式為 <strong>lib{library name}.so.{version code}.{minor code}.{release code}</strong></p></li>
-<li><p>linker name: 要編譯執行檔時linker尋找library的檔案名稱，慣用格式為 <strong>lib{library name}.so</strong></p></li>
-<li><p>so name: 執行檔要啟動時linker尋找library的檔案名稱，慣用格式為 <strong>lib{library name}.so.{version code}</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">version</span> <span class="pre">code</span></code> : 代表大版本更動，可能造成與前面的版本不相容</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">minor</span> <span class="pre">code</span></code> : 代表有新增功能，但library有向前相容</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">release</span> <span class="pre">code</span></code> : 代表功能有變更，通常是<strong>bug修正</strong>或者是針對<strong>程式重構</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real</span> <span class="pre">name</span></code> : 實際的檔案名稱，慣用格式為 <code class="docutils literal notranslate"><span class="pre">lib{library</span> <span class="pre">name}.so.{version</span> <span class="pre">code}.{minor</span> <span class="pre">code}.{release</span> <span class="pre">code}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">linker</span> <span class="pre">name</span></code> : 要編譯執行檔時 <code class="docutils literal notranslate"><span class="pre">linker</span></code> 尋找<strong>library</strong>的檔案名稱，慣用格式為 <code class="docutils literal notranslate"><span class="pre">lib{library</span> <span class="pre">name}.so</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">so</span> <span class="pre">name</span></code> : 執行檔要啟動時 <code class="docutils literal notranslate"><span class="pre">linker</span></code> 尋找<strong>library</strong>的檔案名稱，慣用格式為 <code class="docutils literal notranslate"><span class="pre">lib{library</span> <span class="pre">name}.so.{version</span> <span class="pre">code}</span></code></p></li>
 </ul>
 </li>
 <li><p>指令講解</p>
 <ul class="simple">
-<li><p>-fPIC 是用來提示compiler要將檔案編譯成 position-independent code</p></li>
-<li><p>-shared 是用來提示compiler要將檔案編譯成shared object</p></li>
-<li><p>-Wl,{option} 是用來將option傳給linker的指令，要傳給linker的指令用逗點隔開</p></li>
-<li><p>-soname 是linker的指令，用來提示當編譯好的執行檔啟動時，要用soname去找到shared library而不是使用real name去找，設定soname可以增加程式的彈性</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-fPIC</span></code> 是用來提示 <code class="docutils literal notranslate"><span class="pre">compiler</span></code> 要將檔案編譯成 <code class="docutils literal notranslate"><span class="pre">position-independent</span> <span class="pre">code</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-shared</span></code> 是用來提示 <code class="docutils literal notranslate"><span class="pre">compiler</span></code> 要將檔案編譯成 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">object</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-Wl,{option}</span></code> 是用來將<strong>option</strong>傳給 <code class="docutils literal notranslate"><span class="pre">linker</span></code> 的指令，要傳給<strong>linker</strong>的指令用逗點隔開</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">-soname</span></code> 是 <code class="docutils literal notranslate"><span class="pre">linker</span></code> 的指令，用來提示當編譯好的執行檔啟動時，要用 <code class="docutils literal notranslate"><span class="pre">soname</span></code> 去找到 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code> 而不是使用 <code class="docutils literal notranslate"><span class="pre">real</span> <span class="pre">name</span></code> 去找，設定 <code class="docutils literal notranslate"><span class="pre">soname</span></code> 可以增加程式的彈性</p></li>
+</ul>
+</li>
 </ul>
 </li>
 </ol>
@@ -531,16 +540,16 @@ document.write(`
 <section id="id4">
 <h3>使用shared library<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>將library的header檔include後呼叫要使用的function (通常會放到 include 資料夾下)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include</span></code> <strong>library</strong>的 <code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">file</span></code> 後呼叫要使用的<strong>function</strong> (通常會將 <code class="docutils literal notranslate"><span class="pre">.h</span></code> 放到 <code class="docutils literal notranslate"><span class="pre">include</span></code> 資料夾下)</p></li>
 <li><p>佈署share library</p>
 <ul class="simple">
-<li><p>將shared library檔案複製到部署路徑資料夾下</p></li>
-<li><p>建立linker name的soft link</p></li>
-<li><p>建立so name的soft link</p></li>
+<li><p>將 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code> 檔案複製到部署路徑資料夾下</p></li>
+<li><p>建立 <code class="docutils literal notranslate"><span class="pre">linker</span> <span class="pre">name</span></code> 的 <code class="docutils literal notranslate"><span class="pre">soft</span> <span class="pre">link</span></code></p></li>
+<li><p>建立 <code class="docutils literal notranslate"><span class="pre">so</span> <span class="pre">name</span></code> 的 <code class="docutils literal notranslate"><span class="pre">soft</span> <span class="pre">link</span></code></p></li>
 </ul>
 </li>
-<li><p>編譯成執行檔: 會依據linker name去找library</p></li>
-<li><p>設定環境變數: 需要把佈署路徑加到環境變數 <strong>LD_LIBRARY_PATH</strong>，執行時執行檔才找的到shared library</p></li>
+<li><p>編譯成執行檔: 會依據 <code class="docutils literal notranslate"><span class="pre">linker</span> <span class="pre">name</span></code> 去找<strong>library</strong></p></li>
+<li><p>設定環境變數: 需要把佈署路徑加到環境變數 <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code>，執行時執行檔才找的到<strong>shared library</strong></p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="w"> </span><span class="c1"># 佈署指令</span>
 <span class="linenos"> 2</span><span class="w"> </span>cp<span class="w"> </span>-r<span class="w"> </span>../Project_SharedLib/include<span class="w"> </span>.
@@ -563,25 +572,25 @@ document.write(`
 <section id="id5">
 <h3>特點<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>編譯時並不將library的內容連結，而是使用程式控制library的載入與釋放，更具彈性。</p></li>
-<li><p>以plug-in的方式使用shared library</p></li>
-<li><p>執行速度更慢</p></li>
+<li><p>編譯時並不將<strong>library</strong>的內容連結，在執行期動態將 <code class="docutils literal notranslate"><span class="pre">程式</span></code> 以 <code class="docutils literal notranslate"><span class="pre">plug-in</span></code> 的方式 <code class="docutils literal notranslate"><span class="pre">載入</span></code> 與 <code class="docutils literal notranslate"><span class="pre">釋放</span></code> ，更具彈性。</p></li>
+<li><p>因為系統需要處理的工作更多，因此執行速度 <code class="docutils literal notranslate"><span class="pre">更慢</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Dynamic</span> <span class="pre">Loading</span></code> 載入的程式可以是 <code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">library</span></code> 、 <code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code> 或 <code class="docutils literal notranslate"><span class="pre">執行檔</span></code>。</p></li>
 </ol>
 </section>
 <section id="id6">
 <h3>重點<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>透過 libdl 達成，用法參考檔案 Project_LoadSharedLib/src/main.c</p></li>
-<li><p>可以不需要library的header檔，但是需要從header檔或文件確定好要使用的function或變數的type</p></li>
-<li><p>dlopen的檔名如果以’/’開頭則會用絕對路徑去找，若不是以的話會依照下面的順序尋找</p>
+<li><p>透過 <code class="docutils literal notranslate"><span class="pre">libdl</span></code> 達成，用法參考檔案 <code class="docutils literal notranslate"><span class="pre">Project_LoadSharedLib/src/main.c</span></code></p></li>
+<li><p>可以不需要 <code class="docutils literal notranslate"><span class="pre">include</span></code><strong>library</strong>的 <code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">file</span></code> ，但是需要從 <code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">file</span></code> 或 <code class="docutils literal notranslate"><span class="pre">文件</span></code> 確定好要使用的<strong>function</strong>或<strong>變數</strong>的<strong>type</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dlopen</span></code>的檔名如果以 <code class="docutils literal notranslate"><span class="pre">'/'</span></code> 開頭則會用絕對路徑去找，若不是以的話會依照下面的順序尋找</p>
 <ol class="arabic simple">
-<li><p>環境變數 <strong>LD_LIBRARY_PATH</strong> 用 ‘:’隔開的那些路徑</p></li>
-<li><p>/etc/ld.so.cache 中指定的 library列表 （從 /etc/ld.so.conf 產生）</p></li>
-<li><p>/lib</p></li>
-<li><p>/usr/lib</p></li>
+<li><p>環境變數 <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> 用 <code class="docutils literal notranslate"><span class="pre">':'</span></code> 隔開的那些路徑</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/ld.so.cache</span></code> 中指定的 <code class="docutils literal notranslate"><span class="pre">library列表</span></code> （從 /etc/ld.so.conf 產生）</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/lib</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/usr/lib</span></code></p></li>
 </ol>
 </li>
-<li><p>編譯指令有 -ldl 的原因是因為需要用到 libdl</p></li>
+<li><p>編譯指令有 <code class="docutils literal notranslate"><span class="pre">-ldl</span></code> 的原因是因為需要用到 <code class="docutils literal notranslate"><span class="pre">libdl</span></code></p></li>
 </ol>
 </section>
 </section>
