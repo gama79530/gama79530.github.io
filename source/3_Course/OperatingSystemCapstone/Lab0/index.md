@@ -5,11 +5,16 @@
 1. [Specification](https://nycu-caslab.github.io/OSC2024/labs/lab0.html)
 2. [Code](https://github.com/gama79530/NYCU_2024_Operating_System_Capstone/tree/main/Lab0)
 
-## 設定好環境
+## Lab 內容
 
 ### Cross Compiler
 
-因為Rpi3的CPU是[ARM Cortex-A53](https://en.wikipedia.org/wiki/ARM_Cortex-A53)，該CPU使用的[ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture)是[Armv8-A](https://en.wikipedia.org/wiki/ARMv8-A)。而大部分的桌電不管使用AMD或是Intel都不是使用這個指令集，因此需要有一個cross compiler來把code編譯成可以在ARM Cortex-A53執行的程式。
+因為Rpi3的CPU是[ARM Cortex-A53](https://en.wikipedia.org/wiki/ARM_Cortex-A53)，該CPU使用的[ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture)是[Armv8-A](https://en.wikipedia.org/wiki/ARMv8-A)。而大部分的桌電不管使用AMD或是Intel都不是使用這個指令集，因此需要有一個cross compiler來把code編譯成可以在ARM Cortex-A53執行的程式。我使用的是 [GNU compiler](https://en.wikipedia.org/wiki/GNU_Compiler_Collection)
+
+```bash
+# install cross compiler on Ubuntu.
+sudo apt install gcc-aarch64-linux-gnu
+```
 
 ### Linker
 
@@ -19,13 +24,14 @@
 
 因為在跨平台的開發環境下，需要有一個模擬器來執行編譯過後的程式。因此需要安裝 [QEMU](https://en.wikipedia.org/wiki/QEMU)
 
-```=bash
-sudo apt install -y qemu-system-aarch64
+```bash
+# install QEMU
+sudo apt install qemu-system-aarch64
 ```
 
 ### From Source Code to Kernel Image
 
-把source code編譯成機器可執行的程式會經過下面階段
+把source code編譯成機器可執行的程式會經過下面階段，詳細的指令可以參考spec的 [From Source Code to Kernel Image](https://nycu-caslab.github.io/OSC2024/labs/lab0.html#from-source-code-to-kernel-image) 或者參考我在後續Lab的 `makefile`
 
 1. source code
 2. [object files](https://en.wikipedia.org/wiki/Object_file)
@@ -47,6 +53,11 @@ sudo apt install -y qemu-system-aarch64
 2. debugging 之前需要在編一時加入 `-g` flag，
 3. 操作時要同時開兩個terminal，一個是負責用QEMU開啟 `kernel image` ，另外一個使用 GDB 開啟 `ELF`
 4. 可以參考spec裡面的 [Debug on QEMU](https://nycu-caslab.github.io/OSC2024/labs/lab0.html#debug-on-qemu) ，或者是可以參考我在後續Lab的 `makefile` 裡面的 `debug-qemu` 與 `debug-gdb`
+
+```bash
+# install Cross Plateform GDB
+sudo apt install gdb-multiarch
+```
 
 ## 補充資料
 
