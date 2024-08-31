@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Lab 0: Environment Setup &#8212; Rein&#39;s Homepage</title>
+    <title>Lab 1: Hello World &#8212; Rein&#39;s Homepage</title>
   
   
   
@@ -54,11 +54,10 @@
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '3_Course/OperatingSystemCapstone/Lab0/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3_Course/OperatingSystemCapstone/Lab1/index';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Lab 1: Hello World" href="../Lab1/index.html" />
-    <link rel="prev" title="交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)" href="../index.html" />
+    <link rel="prev" title="Lab 0: Environment Setup" href="../Lab0/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,8 +159,8 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 0: Environment Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Lab1/index.html">Lab 1: Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Lab0/index.html">Lab 0: Environment Setup</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 1: Hello World</a></li>
 </ul>
 </li>
 </ul>
@@ -235,7 +234,7 @@
       
       
       
-      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/3_Course/OperatingSystemCapstone/Lab0/index.md?plain=1" target="_blank"
+      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/3_Course/OperatingSystemCapstone/Lab1/index.md?plain=1" target="_blank"
    class="btn btn-sm btn-source-file-button dropdown-item"
    title="Show source"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -252,7 +251,7 @@
       
       
       
-      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/3_Course/OperatingSystemCapstone/Lab0/index.md" target="_blank"
+      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/3_Course/OperatingSystemCapstone/Lab1/index.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -269,7 +268,7 @@
       
       
       
-      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2F3_Course/OperatingSystemCapstone/Lab0/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2F3_Course/OperatingSystemCapstone/Lab1/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,7 +298,7 @@
       
       
       
-      <li><a href="../../../_sources/3_Course/OperatingSystemCapstone/Lab0/index.md" target="_blank"
+      <li><a href="../../../_sources/3_Course/OperatingSystemCapstone/Lab1/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -381,7 +380,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 0: Environment Setup</h1>
+    <h1>Lab 1: Hello World</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,15 +392,18 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">搭配材料</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">Lab 內容</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-compiler">Cross Compiler</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linker">Linker</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qemu">QEMU</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-source-code-to-kernel-image">From Source Code to Kernel Image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-real-rpi3">Deploy to REAL Rpi3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">Debugging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-1-basic-initialization">Basic Exercise 1 - Basic Initialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-2-mini-uart">Basic Exercise 2 - Mini UART</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uart-init">uart_init</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uart-putc-uart-getc">uart_putc &amp; uart_getc</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">補充資料</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-3-simple-shell">Basic Exercise 3 - Simple Shell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-4-mailbox">Basic Exercise 4 - Mailbox</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-1-reboot">Advanced Exercise 1 - Reboot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">參考 &amp; 補充資料</a></li>
 </ul>
             </nav>
         </div>
@@ -413,77 +415,87 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-0-environment-setup">
-<h1>Lab 0: Environment Setup<a class="headerlink" href="#lab-0-environment-setup" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-1-hello-world">
+<h1>Lab 1: Hello World<a class="headerlink" href="#lab-1-hello-world" title="Permalink to this heading">#</a></h1>
 <section id="id1">
 <h2>搭配材料<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab0.html">Specification</a></p></li>
-<li><p><a class="reference external" href="https://github.com/gama79530/NYCU_2024_Operating_System_Capstone/tree/main/Lab0">Code</a></p></li>
+<li><p><a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab1.html">Specification</a></p></li>
+<li><p><a class="reference external" href="https://github.com/gama79530/NYCU_2024_Operating_System_Capstone/tree/main/Lab1">Code</a></p></li>
 </ol>
 </section>
 <section id="lab">
 <h2>Lab 內容<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
-<section id="cross-compiler">
-<h3>Cross Compiler<a class="headerlink" href="#cross-compiler" title="Permalink to this heading">#</a></h3>
-<p>因為Rpi3使用的<a class="reference external" href="https://en.wikipedia.org/wiki/System_on_a_chip">System on a chip (SoC)</a>，其中的CPU是<a class="reference external" href="https://en.wikipedia.org/wiki/ARM_Cortex-A53">ARM Cortex-A53</a>，該CPU使用的<a class="reference external" href="https://en.wikipedia.org/wiki/Instruction_set_architecture">ISA</a>是<a class="reference external" href="https://en.wikipedia.org/wiki/ARMv8-A">Armv8-A</a>。而大部分的桌電不管使用AMD或是Intel都不是使用這個指令集，因此需要有一個cross compiler來把code編譯成可以在ARM Cortex-A53執行的程式。我使用的是 <a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Compiler_Collection">GNU compiler</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># install cross compiler on Ubuntu.</span>
-<span class="linenos">2</span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gcc-aarch64-linux-gnu
+<p>這個lab的主要目的是要實做一個bare-metal programming版本的hello world程式。關於Assambly的語法指需要學習基礎的語法即可，可以看<a class="reference external" href="https://developer.arm.com/documentation/107829/0200/Assembly-language-basics">Assembly language basics</a>或者直接問chatGPT</p>
+<section id="basic-exercise-1-basic-initialization">
+<h3>Basic Exercise 1 - Basic Initialization<a class="headerlink" href="#basic-exercise-1-basic-initialization" title="Permalink to this heading">#</a></h3>
+<p>這個部份需要把<code class="docutils literal notranslate"><span class="pre">bootloader</span></code>給完成。因此需要把<code class="docutils literal notranslate"><span class="pre">linker.ld</span></code>與<code class="docutils literal notranslate"><span class="pre">boot.S</span></code>完成。</p>
+<p>linker.ld的用途是要用來分配 kernel 程式的各個區段要如何佈局。裡面主要的語法有</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># 指定當前的memory address為 0x80000</span>
+<span class="linenos"> 2</span>.<span class="w"> </span><span class="o">=</span><span class="w"> </span>0x80000
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c1"># 指定 &quot;.text.boot&quot; 這個區段的machine code要從assambly裡面定義的section &quot;.text.boot&quot; 取得</span>
+<span class="linenos"> 5</span>.text.boot<span class="w"> </span>:<span class="w"> </span><span class="o">{</span><span class="w"> </span>*<span class="o">(</span>.text.boot<span class="o">)</span><span class="w"> </span><span class="o">}</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1"># 指定當前的address必須以 0x8 為單位對齊， 這個對齊的動作主要與 str 指令會受到硬體限制有關。</span>
+<span class="linenos"> 8</span>.<span class="w"> </span><span class="o">=</span><span class="w"> </span>ALIGN<span class="o">(</span>0x8<span class="o">)</span><span class="p">;</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1"># 定義一個變數 bss_begin 並指定該變數的值為當前的address，定義這個變數是為了 &quot;bss區段初始化&quot; 時所需</span>
+<span class="linenos">11</span><span class="nv">bss_begin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>.<span class="p">;</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1"># 這個指令與上一個指令大部分狀況下是等價的，區別是這個變數在別的地方有定義過的話就不會覆蓋已經定義過的值</span>
+<span class="linenos">14</span>PROVIDE<span class="o">(</span><span class="nv">bss_begin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>.<span class="o">)</span><span class="p">;</span>
 </pre></div>
 </div>
-</section>
-<section id="linker">
-<h3>Linker<a class="headerlink" href="#linker" title="Permalink to this heading">#</a></h3>
-<p>在<a class="reference external" href="https://www.liquidweb.com/blog/what-is-bare-metal-programming/">bare-metal programming</a>的環境下，programmer需要主動管理memory layout。因此需要寫linker script去實現。</p>
-</section>
-<section id="qemu">
-<h3>QEMU<a class="headerlink" href="#qemu" title="Permalink to this heading">#</a></h3>
-<p>因為在跨平台的開發環境下，需要有一個模擬器來執行編譯過後的程式。因此需要安裝 <a class="reference external" href="https://en.wikipedia.org/wiki/QEMU">QEMU</a></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># install QEMU</span>
-<span class="linenos">2</span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>qemu-system-aarch64
-</pre></div>
-</div>
-</section>
-<section id="from-source-code-to-kernel-image">
-<h3>From Source Code to Kernel Image<a class="headerlink" href="#from-source-code-to-kernel-image" title="Permalink to this heading">#</a></h3>
-<p>把source code編譯成機器可執行的程式會經過下面階段，詳細的指令可以參考spec的 <a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab0.html#from-source-code-to-kernel-image">From Source Code to Kernel Image</a> 或者參考我在後續Lab的 <code class="docutils literal notranslate"><span class="pre">makefile</span></code></p>
+<p>boot.S主要的工作是在進入主要的<code class="docutils literal notranslate"><span class="pre">main</span></code>function之前先行把必要的初始化完成。內容包括</p>
 <ol class="arabic simple">
-<li><p>source code</p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Object_file">object files</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format">Executable and Linkable Format (ELF)</a></p></li>
-<li><p>kernel image</p></li>
+<li><p>讓多餘的core做<code class="docutils literal notranslate"><span class="pre">busy</span> <span class="pre">waiting</span></code><br />
+目前的Lab只需要使用到單核心，多餘的核心可能會造成錯誤</p></li>
+<li><p>將bss區段初始化成<code class="docutils literal notranslate"><span class="pre">'0'</span></code></p></li>
+<li><p>設定stack pointer<br />
+基本上可以設定在任何位置，但設定在<code class="docutils literal notranslate"><span class="pre">_start</span></code>之前比較容易避免<code class="docutils literal notranslate"><span class="pre">stack</span></code>增長時會去錯誤的修改到已經在別的程式區段使用到的區域。</p></li>
+<li><p>呼叫<code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
 </ol>
 </section>
-<section id="deploy-to-real-rpi3">
-<h3>Deploy to REAL Rpi3<a class="headerlink" href="#deploy-to-real-rpi3" title="Permalink to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>要先準備一張 <code class="docutils literal notranslate"><span class="pre">micro</span> <span class="pre">SD</span></code> 並使用 <code class="docutils literal notranslate"><span class="pre">FAT32</span></code> 格式化出一個 <code class="docutils literal notranslate"><span class="pre">boot</span></code> 磁碟區<br />
-(不確定有沒有大小限制。實際使用的大小大概不會超過10MB，但我自己是切出4G大小)</p></li>
-<li><p>參考spec裡面的 <a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab0.html#flash-bootable-image-to-sd-card">Flash Bootable Image to SD Card</a> 的第2點來準備 <code class="docutils literal notranslate"><span class="pre">firmware</span></code><br />
-(第1點的方法不能使用)</p></li>
-<li><p>使用 <a class="reference external" href="https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter">Universal asynchronous receiver-transmitter (UART)</a> 來連接板子與PC。</p></li>
-<li><p>參考spec的 <a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab0.html#interact-with-rpi3">Interact with Rpi3</a> 來設定UART。</p></li>
-</ol>
+<section id="basic-exercise-2-mini-uart">
+<h3>Basic Exercise 2 - Mini UART<a class="headerlink" href="#basic-exercise-2-mini-uart" title="Permalink to this heading">#</a></h3>
+<p>我們要使用的是<a class="reference external" href="https://cs140e.sergio.bz/docs/BCM2837-ARM-Peripherals.pdf">BCM2837 ARM Peripherals</a>提供的<code class="docutils literal notranslate"><span class="pre">mini</span> <span class="pre">UART</span></code>。這個部份需要將mini uart相關的<a class="reference external" href="https://en.wikipedia.org/wiki/General-purpose_input/output">General-purpose input/output (GPIO)</a>做好初始化以及提供對應的服務。可以參考<a class="reference external" href="https://github.com/s-matyukevich/raspberry-pi-os/blob/master/docs/lesson01/rpi-os.md#raspberry-pi-devices">Raspberry Pi devices</a>或<a class="reference external" href="https://github.com/bztsrc/raspi3-tutorial/tree/master/03_uart1">Tutorial 03 - UART1, Auxilary mini UART</a>這兩個教學文。我的程式是參考這兩個示範整理出來的，相關的程式在<code class="docutils literal notranslate"><span class="pre">mini_uart.h</span></code>與<code class="docutils literal notranslate"><span class="pre">mini_uart.c</span></code>裡面。</p>
+<section id="uart-init">
+<h4>uart_init<a class="headerlink" href="#uart-init" title="Permalink to this heading">#</a></h4>
+<p>mini UART與CPU溝通的方式是透過<a class="reference external" href="https://en.wikipedia.org/wiki/Memory-mapped_I/O_and_port-mapped_I/O">Memory-mapped I/O</a>的方式來進行，初始化的實做就是透過MMIO將設定傳入對應的設備。詳細的設定可以參考<a class="reference external" href="https://cs140e.sergio.bz/docs/BCM2837-ARM-Peripherals.pdf">BCM2837 ARM Peripherals</a>裡面的 <code class="docutils literal notranslate"><span class="pre">Chap</span> <span class="pre">2</span></code> 與 <code class="docutils literal notranslate"><span class="pre">Chap</span> <span class="pre">6</span></code>。</p>
+<p>根據<code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">Raspberry</span> <span class="pre">Pi</span> <span class="pre">GPIO</span> <span class="pre">pinout</span> <span class="pre">guide.</span></code>的資訊，mini UART使用的是<code class="docutils literal notranslate"><span class="pre">GPIO</span> <span class="pre">pin</span> <span class="pre">14</span></code>與<code class="docutils literal notranslate"><span class="pre">GPIO</span> <span class="pre">pin</span> <span class="pre">15</span></code>。從BCM2837 ARM Peripherals的<code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">6-3</span></code>又可以看到我們要設定的位置是<code class="docutils literal notranslate"><span class="pre">GPFSEL1</span></code>的<code class="docutils literal notranslate"><span class="pre">14-12</span></code>bits與<code class="docutils literal notranslate"><span class="pre">17-15</span></code>bits。另外<code class="docutils literal notranslate"><span class="pre">Sec</span> <span class="pre">2.2</span></code>以及<code class="docutils literal notranslate"><span class="pre">Sec</span> <span class="pre">6.2</span></code>可以看到我們需要設定成<code class="docutils literal notranslate"><span class="pre">ALT</span> <span class="pre">5</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">GPIO</span> <span class="pre">pull-up/down</span></code>是一種用來確保GPIO pin的電壓可以被正確解讀成’0’與’1’的機制。關於<code class="docutils literal notranslate"><span class="pre">GPPUD</span></code>的處理就是與這個機制相關。可以參考BCM2837 ARM Peripherals的p100。主要是要設定好mini UART使用到的pin 14與pin 15。</p>
+<p>最後關於mini uart的設定可以參考<a class="reference external" href="https://github.com/s-matyukevich/raspberry-pi-os/blob/master/docs/lesson01/rpi-os.md#initializing-the-mini-uart">Initializing the Mini UART</a>的教學。以及查詢BCM2837 ARM Peripherals的Chap 2</p>
 </section>
-<section id="debugging">
-<h3>Debugging<a class="headerlink" href="#debugging" title="Permalink to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>如果要直接在板子上debug的話需要在另外買一條線，所以這裡主要使用的方式是使用 <code class="docutils literal notranslate"><span class="pre">GDB</span></code> + <code class="docutils literal notranslate"><span class="pre">QEMU</span></code></p></li>
-<li><p>debugging 之前需要在編一時加入 <code class="docutils literal notranslate"><span class="pre">-g</span></code> flag，</p></li>
-<li><p>操作時要同時開兩個terminal，一個是負責用QEMU開啟 <code class="docutils literal notranslate"><span class="pre">kernel</span> <span class="pre">image</span></code> ，另外一個使用 GDB 開啟 <code class="docutils literal notranslate"><span class="pre">ELF</span></code></p></li>
-<li><p>可以參考spec裡面的 <a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab0.html#debug-on-qemu">Debug on QEMU</a> ，或者是可以參考我在後續Lab的 <code class="docutils literal notranslate"><span class="pre">makefile</span></code> 裡面的 <code class="docutils literal notranslate"><span class="pre">debug-qemu</span></code> 與 <code class="docutils literal notranslate"><span class="pre">debug-gdb</span></code></p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># install Cross Plateform GDB</span>
-<span class="linenos">2</span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>gdb-multiarch
-</pre></div>
-</div>
+<section id="uart-putc-uart-getc">
+<h4>uart_putc &amp; uart_getc<a class="headerlink" href="#uart-putc-uart-getc" title="Permalink to this heading">#</a></h4>
+<p>目前的作法是使用<code class="docutils literal notranslate"><span class="pre">polling</span></code>的方法。先從<code class="docutils literal notranslate"><span class="pre">AUX_MU_LSR_REG</span></code>來確認是否已有可以<code class="docutils literal notranslate"><span class="pre">讀/寫</span></code>在從對應的<code class="docutils literal notranslate"><span class="pre">AUX_MU_IO_REG</span></code>去<code class="docutils literal notranslate"><span class="pre">讀/寫</span></code>值。</p>
+</section>
+</section>
+<section id="basic-exercise-3-simple-shell">
+<h3>Basic Exercise 3 - Simple Shell<a class="headerlink" href="#basic-exercise-3-simple-shell" title="Permalink to this heading">#</a></h3>
+<p>這一段程式碼是要實做一個簡單的<code class="docutils literal notranslate"><span class="pre">shell</span></code>，相關的程式碼在<code class="docutils literal notranslate"><span class="pre">shell.h</span></code>與<code class="docutils literal notranslate"><span class="pre">shell.c</span></code>。</p>
+</section>
+<section id="basic-exercise-4-mailbox">
+<h3>Basic Exercise 4 - Mailbox<a class="headerlink" href="#basic-exercise-4-mailbox" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Mailbox</span></code>是一個ARM CPU與GPU之間的溝通機制，該機制也屬於MMIO的一種。可以參考<a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/hardware/mailbox.html#mailbox">Spec: Mailbox</a>、<a class="reference external" href="https://github.com/raspberrypi/firmware/wiki/Mailboxes">raspberrypi/firmware: Mailbox</a>與<a class="reference external" href="https://github.com/bztsrc/raspi3-tutorial/tree/master/04_mailboxes">Tutorial 04 - Mailboxes</a>，相關的程式碼在<code class="docutils literal notranslate"><span class="pre">mailbox.h</span></code>與<code class="docutils literal notranslate"><span class="pre">mailbox.c</span></code>。</p>
+<p>在這個Lab中提到的<code class="docutils literal notranslate"><span class="pre">tag</span></code>可以從<a class="reference external" href="https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface">Mailbox property interface</a>這裡查到。</p>
+</section>
+<section id="advanced-exercise-1-reboot">
+<h3>Advanced Exercise 1 - Reboot<a class="headerlink" href="#advanced-exercise-1-reboot" title="Permalink to this heading">#</a></h3>
+<p>這個部份主要參考<a class="reference external" href="https://github.com/bztsrc/raspi3-tutorial/tree/master/08_power">Tutorial 08 - Power management</a>，相關的程式碼在<code class="docutils literal notranslate"><span class="pre">power.h</span></code>與<code class="docutils literal notranslate"><span class="pre">power.c</span></code>。因為實在找不到文件有寫有紀錄相關的MMIO地址。所以基本上是照抄作法。</p>
 </section>
 </section>
 <section id="id2">
-<h2>補充資料<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>參考 &amp; 補充資料<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://evshary.com/2018/06/02/linker-script-%E7%B0%A1%E5%96%AE%E6%95%99%E5%AD%B8/">linker script 簡單教學</a></p></li>
-<li><p><a class="reference external" href="https://blog.louie.lu/2016/11/06/10%E5%88%86%E9%90%98%E8%AE%80%E6%87%82-linker-scripts/">10分鐘讀懂 linker scripts</a></p></li>
+<li><p><a class="reference external" href="https://github.com/s-matyukevich/raspberry-pi-os/blob/master/docs/lesson01/rpi-os.md">1.1: Introducing RPi OS, or bare-metal “Hello, World!”</a></p></li>
+<li><p><a class="reference external" href="https://azeria-labs.com/writing-arm-assembly-part-1/">Introduction to ARM Assembly Basics</a></p></li>
+<li><p><a class="reference external" href="https://developer.arm.com/documentation/107829/0200">Getting Started with Arm Assembly Language Version 2.0</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter">Universal asynchronous receiver-transmitter (UART)</a></p></li>
+<li><p><a class="reference external" href="https://pinout.xyz/">The Raspberry Pi GPIO pinout guide</a></p></li>
+<li><p><a class="reference external" href="https://grantwinney.com/raspberry-pi-using-pullup-and-pulldown-resistors/">Using PullUp and PullDown Resistors on the Raspberry Pi</a></p></li>
+<li><p><a class="reference external" href="https://github.com/raspberrypi/firmware/wiki/Mailboxes">Mailboxes</a></p></li>
 </ol>
 </section>
 </section>
@@ -501,22 +513,13 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="../Lab0/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)</p>
+        <p class="prev-next-title">Lab 0: Environment Setup</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../Lab1/index.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lab 1: Hello World</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
@@ -538,15 +541,18 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">搭配材料</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">Lab 內容</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-compiler">Cross Compiler</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linker">Linker</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qemu">QEMU</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-source-code-to-kernel-image">From Source Code to Kernel Image</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-real-rpi3">Deploy to REAL Rpi3</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">Debugging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-1-basic-initialization">Basic Exercise 1 - Basic Initialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-2-mini-uart">Basic Exercise 2 - Mini UART</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uart-init">uart_init</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uart-putc-uart-getc">uart_putc &amp; uart_getc</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">補充資料</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-3-simple-shell">Basic Exercise 3 - Simple Shell</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-4-mailbox">Basic Exercise 4 - Mailbox</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-1-reboot">Advanced Exercise 1 - Reboot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">參考 &amp; 補充資料</a></li>
 </ul>
   </nav></div>
 
