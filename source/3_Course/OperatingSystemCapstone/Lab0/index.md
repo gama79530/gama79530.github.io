@@ -1,4 +1,4 @@
-# Lab 0
+# Lab 0: Environment Setup
 
 ## 搭配材料
 
@@ -9,7 +9,7 @@
 
 ### Cross Compiler
 
-因為Rpi3的CPU是[ARM Cortex-A53](https://en.wikipedia.org/wiki/ARM_Cortex-A53)，該CPU使用的[ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture)是[Armv8-A](https://en.wikipedia.org/wiki/ARMv8-A)。而大部分的桌電不管使用AMD或是Intel都不是使用這個指令集，因此需要有一個cross compiler來把code編譯成可以在ARM Cortex-A53執行的程式。我使用的是 [GNU compiler](https://en.wikipedia.org/wiki/GNU_Compiler_Collection)
+因為Rpi3使用的[System on a chip (SoC)](https://en.wikipedia.org/wiki/System_on_a_chip)，其中的CPU是[ARM Cortex-A53](https://en.wikipedia.org/wiki/ARM_Cortex-A53)，該CPU使用的[ISA](https://en.wikipedia.org/wiki/Instruction_set_architecture)是[Armv8-A](https://en.wikipedia.org/wiki/ARMv8-A)。而大部分的桌電不管使用AMD或是Intel都不是使用這個指令集，因此需要有一個cross compiler來把code編譯成可以在ARM Cortex-A53執行的程式。我使用的是 [GNU compiler](https://en.wikipedia.org/wiki/GNU_Compiler_Collection)
 
 ```bash
 # install cross compiler on Ubuntu.
