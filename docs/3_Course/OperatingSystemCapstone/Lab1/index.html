@@ -57,6 +57,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '3_Course/OperatingSystemCapstone/Lab1/index';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Lab 2: Booting" href="../Lab2/index.html" />
     <link rel="prev" title="Lab 0: Environment Setup" href="../Lab0/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -161,6 +162,7 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Lab0/index.html">Lab 0: Environment Setup</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 1: Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Lab2/index.html">Lab 2: Booting</a></li>
 </ul>
 </li>
 </ul>
@@ -426,7 +428,7 @@ document.write(`
 </section>
 <section id="lab">
 <h2>Lab 內容<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
-<p>這個lab的主要目的是要實做一個bare-metal programming版本的hello world程式。關於Assambly的語法指需要學習基礎的語法即可，可以看<a class="reference external" href="https://developer.arm.com/documentation/107829/0200/Assembly-language-basics">Assembly language basics</a>或者直接問chatGPT</p>
+<p>這個lab的主要目的是要實做一個bare-metal programming版本的hello world程式。關於Assambly的語法只需要學習基礎的語法即可，可以看<a class="reference external" href="https://developer.arm.com/documentation/107829/0200/Assembly-language-basics">Assembly language basics</a>或者直接問chatGPT</p>
 <section id="basic-exercise-1-basic-initialization">
 <h3>Basic Exercise 1 - Basic Initialization<a class="headerlink" href="#basic-exercise-1-basic-initialization" title="Permalink to this heading">#</a></h3>
 <p>這個部份需要把<code class="docutils literal notranslate"><span class="pre">bootloader</span></code>給完成。因此需要把<code class="docutils literal notranslate"><span class="pre">linker.ld</span></code>與<code class="docutils literal notranslate"><span class="pre">boot.S</span></code>完成。</p>
@@ -483,7 +485,7 @@ document.write(`
 </section>
 <section id="advanced-exercise-1-reboot">
 <h3>Advanced Exercise 1 - Reboot<a class="headerlink" href="#advanced-exercise-1-reboot" title="Permalink to this heading">#</a></h3>
-<p>這個部份主要參考<a class="reference external" href="https://github.com/bztsrc/raspi3-tutorial/tree/master/08_power">Tutorial 08 - Power management</a>，相關的程式碼在<code class="docutils literal notranslate"><span class="pre">power.h</span></code>與<code class="docutils literal notranslate"><span class="pre">power.c</span></code>。因為實在找不到文件有寫有紀錄相關的MMIO地址。所以基本上是照抄作法。</p>
+<p>這個部份主要參考<a class="reference external" href="https://github.com/bztsrc/raspi3-tutorial/tree/master/08_power">Tutorial 08 - Power management</a>，相關的程式碼在<code class="docutils literal notranslate"><span class="pre">power.h</span></code>與<code class="docutils literal notranslate"><span class="pre">power.c</span></code>。有一個網站有紀錄相關的MMIO位址，但是來源不是很清楚。實在找不到很明確的官方文件有寫有紀錄，所以基本上是照抄作法。</p>
 </section>
 </section>
 <section id="id2">
@@ -496,6 +498,8 @@ document.write(`
 <li><p><a class="reference external" href="https://pinout.xyz/">The Raspberry Pi GPIO pinout guide</a></p></li>
 <li><p><a class="reference external" href="https://grantwinney.com/raspberry-pi-using-pullup-and-pulldown-resistors/">Using PullUp and PullDown Resistors on the Raspberry Pi</a></p></li>
 <li><p><a class="reference external" href="https://github.com/raspberrypi/firmware/wiki/Mailboxes">Mailboxes</a></p></li>
+<li><p><a class="reference external" href="https://ultibo.org/wiki/Unit_BCM2837">Unit BCM2837</a></p></li>
+<li><p><a class="reference external" href="https://leylfl.github.io/2018/05/15/%E6%B5%85%E8%B0%88ARM64%E6%B1%87%E7%BC%96/">浅谈ARM64汇编</a></p></li>
 </ol>
 </section>
 </section>
@@ -520,6 +524,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Lab 0: Environment Setup</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../Lab2/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 2: Booting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
