@@ -7,7 +7,7 @@
 
 ## Lab 內容
 
-這個lab的主要目的是要實做一個bare-metal programming版本的hello world程式。關於Assambly的語法指需要學習基礎的語法即可，可以看[Assembly language basics](https://developer.arm.com/documentation/107829/0200/Assembly-language-basics)或者直接問chatGPT
+這個lab的主要目的是要實做一個bare-metal programming版本的hello world程式。關於Assambly的語法只需要學習基礎的語法即可，可以看[Assembly language basics](https://developer.arm.com/documentation/107829/0200/Assembly-language-basics)或者直接問chatGPT
 
 ### Basic Exercise 1 - Basic Initialization
 
@@ -71,7 +71,7 @@ mini UART與CPU溝通的方式是透過[Memory-mapped I/O](https://en.wikipedia.
 
 ### Advanced Exercise 1 - Reboot
 
-這個部份主要參考[Tutorial 08 - Power management](https://github.com/bztsrc/raspi3-tutorial/tree/master/08_power)，相關的程式碼在`power.h`與`power.c`。因為實在找不到文件有寫有紀錄相關的MMIO地址。所以基本上是照抄作法。
+這個部份主要參考[Tutorial 08 - Power management](https://github.com/bztsrc/raspi3-tutorial/tree/master/08_power)，相關的程式碼在`power.h`與`power.c`。有一個網站有紀錄相關的MMIO位址，但是來源不是很清楚。實在找不到很明確的官方文件有寫有紀錄，所以基本上是照抄作法。
 
 ## 參考 & 補充資料
 
@@ -82,3 +82,5 @@ mini UART與CPU溝通的方式是透過[Memory-mapped I/O](https://en.wikipedia.
 5. [The Raspberry Pi GPIO pinout guide](https://pinout.xyz/)
 6. [Using PullUp and PullDown Resistors on the Raspberry Pi](https://grantwinney.com/raspberry-pi-using-pullup-and-pulldown-resistors/)
 7. [Mailboxes](https://github.com/raspberrypi/firmware/wiki/Mailboxes)
+8. [Unit BCM2837](https://ultibo.org/wiki/Unit_BCM2837)
+9. [浅谈ARM64汇编](https://leylfl.github.io/2018/05/15/%E6%B5%85%E8%B0%88ARM64%E6%B1%87%E7%BC%96/)
