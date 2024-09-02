@@ -24,6 +24,7 @@
 1. [Lab 0: Environment Setup](Lab0/index.md)
 2. [Lab 1: Hello World](Lab1/index.md)
 3. [Lab 2: Booting](Lab2/index.md)
+4. [Lab 3: Exception and Interrupt](Lab3/index.md)
 
 ```{toctree}
 :hidden:
@@ -32,4 +33,5 @@
 Lab0/index
 Lab1/index
 Lab2/index
+Lab3/index
 ```

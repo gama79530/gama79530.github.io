@@ -57,6 +57,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '3_Course/OperatingSystemCapstone/Lab2/index';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Lab 3: Exception and Interrupt" href="../Lab3/index.html" />
     <link rel="prev" title="Lab 1: Hello World" href="../Lab1/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -162,6 +163,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../Lab0/index.html">Lab 0: Environment Setup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Lab1/index.html">Lab 1: Hello World</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 2: Booting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Lab3/index.html">Lab 3: Exception and Interrupt</a></li>
 </ul>
 </li>
 </ul>
@@ -440,7 +442,7 @@ document.write(`
 <p>這個部份主要的工作是要將<code class="docutils literal notranslate"><span class="pre">bootloader</span></code>與<code class="docutils literal notranslate"><span class="pre">kernel</span></code>分離，這麼做的最大好處是以後要在板子上跑剛寫好的程式的時候只需要插著uart把新的image file傳入後再載入即可。要達到這個目的，需要3個程式如下:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">uploader</span></code>: 負責通過uart “與<code class="docutils literal notranslate"><span class="pre">bootloader</span></code>溝通” 以及 “將<code class="docutils literal notranslate"><span class="pre">kernel</span> <span class="pre">image</span></code>傳輸到Rpi3”。相關的程式都在<code class="docutils literal notranslate"><span class="pre">uploader</span></code>資料夾下。</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">bootloader</span></code> (之後都用<code class="docutils literal notranslate"><span class="pre">loader</span></code>簡稱): 負責作為最初開機後執行的程式，提供最基礎的利用uart “與<code class="docutils literal notranslate"><span class="pre">uploader</span></code>溝通” 以及 “將<code class="docutils literal notranslate"><span class="pre">uploader</span></code>上傳的 <code class="docutils literal notranslate"><span class="pre">kernel</span> <span class="pre">image</span></code> 載入記憶體並執行”。相關的程式都在<code class="docutils literal notranslate"><span class="pre">loader</span></code>資料夾下。因為我後續Lab主要會使用<span class="xref myst">Advanced Exercise 1</span>的方法，所以<code class="docutils literal notranslate"><span class="pre">basic</span></code>只點到為止。可以直接參考<code class="docutils literal notranslate"><span class="pre">Advanced</span></code>的作法。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bootloader</span></code> (之後都用<code class="docutils literal notranslate"><span class="pre">loader</span></code>簡稱): 負責作為最初開機後執行的程式，提供最基礎的利用uart “與<code class="docutils literal notranslate"><span class="pre">uploader</span></code>溝通” 以及 “將<code class="docutils literal notranslate"><span class="pre">uploader</span></code>上傳的 <code class="docutils literal notranslate"><span class="pre">kernel</span> <span class="pre">image</span></code> 載入記憶體並執行”。相關的程式都在<code class="docutils literal notranslate"><span class="pre">loader</span></code>資料夾下。因為我後續Lab主要會使用<a class="reference external" href="https://gama79530.github.io/3_Course/OperatingSystemCapstone/Lab2/index.html#advanced-exercise-1-bootloader-self-relocation">Advanced Exercise 1</a>的方法，所以<code class="docutils literal notranslate"><span class="pre">basic</span></code>只點到為止。可以直接參考<code class="docutils literal notranslate"><span class="pre">Advanced</span></code>的作法。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">kernel</span> <span class="pre">image</span></code>: 實際要執行的程式。相關的程式都在<code class="docutils literal notranslate"><span class="pre">kernel</span></code>資料夾下。</p></li>
 </ol>
 <section id="uploader">
@@ -517,6 +519,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Lab 1: Hello World</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../Lab3/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 3: Exception and Interrupt</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
