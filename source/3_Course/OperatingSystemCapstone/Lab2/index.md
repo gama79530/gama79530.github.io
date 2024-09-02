@@ -19,7 +19,7 @@
 這個部份主要的工作是要將`bootloader`與`kernel`分離，這麼做的最大好處是以後要在板子上跑剛寫好的程式的時候只需要插著uart把新的image file傳入後再載入即可。要達到這個目的，需要3個程式如下:
 
 1. `uploader`: 負責通過uart "與`bootloader`溝通" 以及 "將`kernel image`傳輸到Rpi3"。相關的程式都在`uploader`資料夾下。
-2. `bootloader` (之後都用`loader`簡稱): 負責作為最初開機後執行的程式，提供最基礎的利用uart "與`uploader`溝通" 以及 "將`uploader`上傳的 `kernel image` 載入記憶體並執行"。相關的程式都在`loader`資料夾下。因為我後續Lab主要會使用[Advanced Exercise 1](#advanced-exercise-1---bootloader-self-relocation)的方法，所以`basic`只點到為止。可以直接參考`Advanced`的作法。
+2. `bootloader` (之後都用`loader`簡稱): 負責作為最初開機後執行的程式，提供最基礎的利用uart "與`uploader`溝通" 以及 "將`uploader`上傳的 `kernel image` 載入記憶體並執行"。相關的程式都在`loader`資料夾下。因為我後續Lab主要會使用[Advanced Exercise 1](https://gama79530.github.io/3_Course/OperatingSystemCapstone/Lab2/index.html#advanced-exercise-1-bootloader-self-relocation)的方法，所以`basic`只點到為止。可以直接參考`Advanced`的作法。
 3. `kernel image`: 實際要執行的程式。相關的程式都在`kernel`資料夾下。
 
 #### uploader
