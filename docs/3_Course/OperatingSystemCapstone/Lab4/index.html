@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Lab 1: Hello World &#8212; Rein&#39;s Homepage</title>
+    <title>Lab 4: Allocator &#8212; Rein&#39;s Homepage</title>
   
   
   
@@ -54,11 +54,12 @@
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '3_Course/OperatingSystemCapstone/Lab1/index';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3_Course/OperatingSystemCapstone/Lab4/index';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Lab 2: Booting" href="../Lab2/index.html" />
-    <link rel="prev" title="Lab 0: Environment Setup" href="../Lab0/index.html" />
+    <link rel="prev" title="Lab 3: Exception and Interrupt" href="../Lab3/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,10 +162,10 @@
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Lab0/index.html">Lab 0: Environment Setup</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 1: Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Lab1/index.html">Lab 1: Hello World</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Lab2/index.html">Lab 2: Booting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Lab3/index.html">Lab 3: Exception and Interrupt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Lab4/index.html">Lab 4: Allocator</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 4: Allocator</a></li>
 </ul>
 </li>
 </ul>
@@ -238,7 +239,7 @@
       
       
       
-      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/3_Course/OperatingSystemCapstone/Lab1/index.md?plain=1" target="_blank"
+      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/3_Course/OperatingSystemCapstone/Lab4/index.md?plain=1" target="_blank"
    class="btn btn-sm btn-source-file-button dropdown-item"
    title="Show source"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -255,7 +256,7 @@
       
       
       
-      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/3_Course/OperatingSystemCapstone/Lab1/index.md" target="_blank"
+      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/3_Course/OperatingSystemCapstone/Lab4/index.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -272,7 +273,7 @@
       
       
       
-      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2F3_Course/OperatingSystemCapstone/Lab1/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2F3_Course/OperatingSystemCapstone/Lab4/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +303,7 @@
       
       
       
-      <li><a href="../../../_sources/3_Course/OperatingSystemCapstone/Lab1/index.md" target="_blank"
+      <li><a href="../../../_sources/3_Course/OperatingSystemCapstone/Lab4/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,7 +385,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Lab 1: Hello World</h1>
+    <h1>Lab 4: Allocator</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -396,18 +397,22 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">搭配材料</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">Lab 內容</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-1-basic-initialization">Basic Exercise 1 - Basic Initialization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-2-mini-uart">Basic Exercise 2 - Mini UART</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uart-init">uart_init</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uart-putc-uart-getc">uart_putc &amp; uart_getc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-1-buddy-system">Basic Exercise 1 - Buddy System</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#find-buddy-frame-index">Find buddy frame index</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#buddy-group">buddy group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array">array</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-3-simple-shell">Basic Exercise 3 - Simple Shell</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-4-mailbox">Basic Exercise 4 - Mailbox</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-1-reboot">Advanced Exercise 1 - Reboot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-2-dynamic-memory-allocator">Basic Exercise 2 - Dynamic Memory Allocator</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunk-size">chunk size</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunk-pools">chunk pools</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">參考 &amp; 補充資料</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-1-efficient-page-allocation">Advanced Exercise 1 - Efficient Page Allocation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-2-reserved-memory">Advanced Exercise 2 - Reserved Memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-3-startup-allocation">Advanced Exercise 3 - Startup Allocation</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -419,90 +424,67 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="lab-1-hello-world">
-<h1>Lab 1: Hello World<a class="headerlink" href="#lab-1-hello-world" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-4-allocator">
+<h1>Lab 4: Allocator<a class="headerlink" href="#lab-4-allocator" title="Permalink to this heading">#</a></h1>
 <section id="id1">
 <h2>搭配材料<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab1.html">Specification</a></p></li>
-<li><p><a class="reference external" href="https://github.com/gama79530/NYCU_2024_Operating_System_Capstone/tree/main/Lab1">Code</a></p></li>
+<li><p><a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab4.html">Specification</a></p></li>
+<li><p><a class="reference external" href="https://github.com/gama79530/NYCU_2024_Operating_System_Capstone/tree/main/Lab4">Code</a></p></li>
 </ol>
 </section>
 <section id="lab">
 <h2>Lab 內容<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
-<p>這個lab的主要目的是要實做一個bare-metal programming版本的hello world程式。關於Assambly的語法只需要學習基礎的語法即可，可以看<a class="reference external" href="https://developer.arm.com/documentation/107829/0200/Assembly-language-basics">Assembly language basics</a>或者直接問chatGPT</p>
-<section id="basic-exercise-1-basic-initialization">
-<h3>Basic Exercise 1 - Basic Initialization<a class="headerlink" href="#basic-exercise-1-basic-initialization" title="Permalink to this heading">#</a></h3>
-<p>這個部份需要把<code class="docutils literal notranslate"><span class="pre">bootloader</span></code>給完成。因此需要把<code class="docutils literal notranslate"><span class="pre">linker.ld</span></code>與<code class="docutils literal notranslate"><span class="pre">boot.S</span></code>完成。</p>
-<p>linker.ld的用途是要用來分配 kernel 程式的各個區段要如何佈局。裡面主要的語法有</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># 指定當前的memory address為 0x80000</span>
-<span class="linenos"> 2</span>.<span class="w"> </span><span class="o">=</span><span class="w"> </span>0x80000
-<span class="linenos"> 3</span>
-<span class="linenos"> 4</span><span class="c1"># 指定 &quot;.text.boot&quot; 這個區段的machine code要從assambly裡面定義的section &quot;.text.boot&quot; 取得</span>
-<span class="linenos"> 5</span>.text.boot<span class="w"> </span>:<span class="w"> </span><span class="o">{</span><span class="w"> </span>*<span class="o">(</span>.text.boot<span class="o">)</span><span class="w"> </span><span class="o">}</span>
-<span class="linenos"> 6</span>
-<span class="linenos"> 7</span><span class="c1"># 指定當前的address必須以 0x8 為單位對齊， 這個對齊的動作主要與 str 指令會受到硬體限制有關。</span>
-<span class="linenos"> 8</span>.<span class="w"> </span><span class="o">=</span><span class="w"> </span>ALIGN<span class="o">(</span>0x8<span class="o">)</span><span class="p">;</span>
-<span class="linenos"> 9</span>
-<span class="linenos">10</span><span class="c1"># 定義一個變數 bss_begin 並指定該變數的值為當前的address，定義這個變數是為了 &quot;bss區段初始化&quot; 時所需</span>
-<span class="linenos">11</span><span class="nv">bss_begin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>.<span class="p">;</span>
-<span class="linenos">12</span>
-<span class="linenos">13</span><span class="c1"># 這個指令與上一個指令大部分狀況下是等價的，區別是這個變數在別的地方有定義過的話就不會覆蓋已經定義過的值</span>
-<span class="linenos">14</span>PROVIDE<span class="o">(</span><span class="nv">bss_begin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>.<span class="o">)</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>boot.S主要的工作是在進入主要的<code class="docutils literal notranslate"><span class="pre">main</span></code>function之前先行把必要的初始化完成。內容包括</p>
+<p>這個Lab主要的工作是要建立一個記憶體空間的管理系統。在管理記憶體空間的時候，首先是先將整個空間依照一個比較大的大小去切割成很多的<code class="docutils literal notranslate"><span class="pre">frame</span></code>。但實際上的分配並不會只能以frame為單位去分配，所以還會有一個基於frame管理系統之上的memory管理系統。</p>
+<section id="basic-exercise-1-buddy-system">
+<h3>Basic Exercise 1 - Buddy System<a class="headerlink" href="#basic-exercise-1-buddy-system" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Buddy</span> <span class="pre">system</span></code>是個適合用來用來管理大容量記憶體的方法。演算法在<a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab4.html#basic-exercise-1-buddy-system-40">Spec</a>上面都有講解。這裡只挑幾個細協補充說明。詳細的程式碼可以參考<code class="docutils literal notranslate"><span class="pre">frame.h</span></code>以及<code class="docutils literal notranslate"><span class="pre">frame.c</span></code>。</p>
+<section id="find-buddy-frame-index">
+<h4>Find buddy frame index<a class="headerlink" href="#find-buddy-frame-index" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
-<li><p>讓多餘的core做<code class="docutils literal notranslate"><span class="pre">busy</span> <span class="pre">waiting</span></code><br />
-目前的Lab只需要使用到單核心，多餘的核心可能會造成錯誤</p></li>
-<li><p>將bss區段初始化成<code class="docutils literal notranslate"><span class="pre">'0'</span></code></p></li>
-<li><p>設定stack pointer<br />
-基本上可以設定在任何位置，但設定在<code class="docutils literal notranslate"><span class="pre">_start</span></code>之前比較容易避免<code class="docutils literal notranslate"><span class="pre">stack</span></code>增長時會去錯誤的修改到已經在別的程式區段使用到的區域。</p></li>
-<li><p>呼叫<code class="docutils literal notranslate"><span class="pre">main</span></code></p></li>
+<li><p>可以使用歸納法簡單的證明若<code class="docutils literal notranslate"><span class="pre">frame</span> <span class="pre">i</span></code>的<code class="docutils literal notranslate"><span class="pre">order=x</span></code>，則<code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">%</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">x)</span> <span class="pre">==</span> <span class="pre">0</span></code></p></li>
+<li><p>接著可以利用這個性質證明在這個情況下可以再組成下一個buddy group的index是 <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">^</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">x)</span></code></p></li>
 </ol>
 </section>
-<section id="basic-exercise-2-mini-uart">
-<h3>Basic Exercise 2 - Mini UART<a class="headerlink" href="#basic-exercise-2-mini-uart" title="Permalink to this heading">#</a></h3>
-<p>我們要使用的是<a class="reference external" href="https://cs140e.sergio.bz/docs/BCM2837-ARM-Peripherals.pdf">BCM2837 ARM Peripherals</a>提供的<code class="docutils literal notranslate"><span class="pre">mini</span> <span class="pre">UART</span></code>。這個部份需要將mini uart相關的<a class="reference external" href="https://en.wikipedia.org/wiki/General-purpose_input/output">General-purpose input/output (GPIO)</a>做好初始化以及提供對應的服務。可以參考<a class="reference external" href="https://github.com/s-matyukevich/raspberry-pi-os/blob/master/docs/lesson01/rpi-os.md#raspberry-pi-devices">Raspberry Pi devices</a>或<a class="reference external" href="https://github.com/bztsrc/raspi3-tutorial/tree/master/03_uart1">Tutorial 03 - UART1, Auxilary mini UART</a>這兩個教學文。我的程式是參考這兩個示範整理出來的，相關的程式在<code class="docutils literal notranslate"><span class="pre">mini_uart.h</span></code>與<code class="docutils literal notranslate"><span class="pre">mini_uart.c</span></code>裡面。</p>
-<section id="uart-init">
-<h4>uart_init<a class="headerlink" href="#uart-init" title="Permalink to this heading">#</a></h4>
-<p>mini UART與CPU溝通的方式是透過<a class="reference external" href="https://en.wikipedia.org/wiki/Memory-mapped_I/O_and_port-mapped_I/O">Memory-mapped I/O</a>的方式來進行，初始化的實做就是透過MMIO將設定傳入對應的設備。詳細的設定可以參考<a class="reference external" href="https://cs140e.sergio.bz/docs/BCM2837-ARM-Peripherals.pdf">BCM2837 ARM Peripherals</a>裡面的 <code class="docutils literal notranslate"><span class="pre">Chap</span> <span class="pre">2</span></code> 與 <code class="docutils literal notranslate"><span class="pre">Chap</span> <span class="pre">6</span></code>。</p>
-<p>根據<code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">Raspberry</span> <span class="pre">Pi</span> <span class="pre">GPIO</span> <span class="pre">pinout</span> <span class="pre">guide.</span></code>的資訊，mini UART使用的是<code class="docutils literal notranslate"><span class="pre">GPIO</span> <span class="pre">pin</span> <span class="pre">14</span></code>與<code class="docutils literal notranslate"><span class="pre">GPIO</span> <span class="pre">pin</span> <span class="pre">15</span></code>。從BCM2837 ARM Peripherals的<code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">6-3</span></code>又可以看到我們要設定的位置是<code class="docutils literal notranslate"><span class="pre">GPFSEL1</span></code>的<code class="docutils literal notranslate"><span class="pre">14-12</span></code>bits與<code class="docutils literal notranslate"><span class="pre">17-15</span></code>bits。另外<code class="docutils literal notranslate"><span class="pre">Sec</span> <span class="pre">2.2</span></code>以及<code class="docutils literal notranslate"><span class="pre">Sec</span> <span class="pre">6.2</span></code>可以看到我們需要設定成<code class="docutils literal notranslate"><span class="pre">ALT</span> <span class="pre">5</span></code>。</p>
-<p><code class="docutils literal notranslate"><span class="pre">GPIO</span> <span class="pre">pull-up/down</span></code>是一種用來確保GPIO pin的電壓可以被正確解讀成’0’與’1’的機制。關於<code class="docutils literal notranslate"><span class="pre">GPPUD</span></code>的處理就是與這個機制相關。可以參考BCM2837 ARM Peripherals的p100。主要是要設定好mini UART使用到的pin 14與pin 15。</p>
-<p>最後關於mini uart的設定可以參考<a class="reference external" href="https://github.com/s-matyukevich/raspberry-pi-os/blob/master/docs/lesson01/rpi-os.md#initializing-the-mini-uart">Initializing the Mini UART</a>的教學。以及查詢BCM2837 ARM Peripherals的Chap 2</p>
+<section id="buddy-group">
+<h4>buddy group<a class="headerlink" href="#buddy-group" title="Permalink to this heading">#</a></h4>
+<p>在這個部份的處理要注意的事情是有可能會觸發鏈鎖反應。因此我在實做的<code class="docutils literal notranslate"><span class="pre">buddy_group</span></code>這個function會回傳這個回合有沒有實際做group，如果有的話就需要再繼續往上檢查。</p>
 </section>
-<section id="uart-putc-uart-getc">
-<h4>uart_putc &amp; uart_getc<a class="headerlink" href="#uart-putc-uart-getc" title="Permalink to this heading">#</a></h4>
-<p>目前的作法是使用<code class="docutils literal notranslate"><span class="pre">polling</span></code>的方法。先從<code class="docutils literal notranslate"><span class="pre">AUX_MU_LSR_REG</span></code>來確認是否已有可以<code class="docutils literal notranslate"><span class="pre">讀/寫</span></code>在從對應的<code class="docutils literal notranslate"><span class="pre">AUX_MU_IO_REG</span></code>去<code class="docutils literal notranslate"><span class="pre">讀/寫</span></code>值。</p>
+<section id="array">
+<h4>array<a class="headerlink" href="#array" title="Permalink to this heading">#</a></h4>
+<p>在這部份只需要使用一個<code class="docutils literal notranslate"><span class="pre">array</span></code>紀錄每個<code class="docutils literal notranslate"><span class="pre">frame</span></code>的<code class="docutils literal notranslate"><span class="pre">order</span></code>或者<code class="docutils literal notranslate"><span class="pre">狀態</span></code>即可。但只使用這個資料結構的話當要找到一個<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">=</span> <span class="pre">t</span></code>的<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">group</span></code>可能會需要整個掃描一次。因此時間複雜度不會是<span class="math notranslate nohighlight">\(O(\log n)\)</span></p>
 </section>
 </section>
-<section id="basic-exercise-3-simple-shell">
-<h3>Basic Exercise 3 - Simple Shell<a class="headerlink" href="#basic-exercise-3-simple-shell" title="Permalink to this heading">#</a></h3>
-<p>這一段程式碼是要實做一個簡單的<code class="docutils literal notranslate"><span class="pre">shell</span></code>，相關的程式碼在<code class="docutils literal notranslate"><span class="pre">shell.h</span></code>與<code class="docutils literal notranslate"><span class="pre">shell.c</span></code>。</p>
+<section id="basic-exercise-2-dynamic-memory-allocator">
+<h3>Basic Exercise 2 - Dynamic Memory Allocator<a class="headerlink" href="#basic-exercise-2-dynamic-memory-allocator" title="Permalink to this heading">#</a></h3>
+<p>在這個部份我的作法建築在<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">system</span></code>之上引進<code class="docutils literal notranslate"><span class="pre">chunk</span> <span class="pre">pool</span></code>的概念。首先是將可被分配的大小用<code class="docutils literal notranslate"><span class="pre">chunk</span> <span class="pre">size</span></code>來分類，要求的大小要從這些大小裡面找足夠大且最小的。這些<code class="docutils literal notranslate"><span class="pre">chunks</span></code>則是使用<code class="docutils literal notranslate"><span class="pre">chunk</span> <span class="pre">pools</span></code>來管理。當夭某個特定大小時就去對應的pool找。相關的程式碼可以在<code class="docutils literal notranslate"><span class="pre">memory.h</span></code>與<code class="docutils literal notranslate"><span class="pre">memory.c</span></code>。</p>
+<section id="chunk-size">
+<h4>chunk size<a class="headerlink" href="#chunk-size" title="Permalink to this heading">#</a></h4>
+<p>我的作法是從<code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">bytes</span></code>開始一直往上增長兩倍，直到<code class="docutils literal notranslate"><span class="pre">1024</span> <span class="pre">bytes</span></code>。超過的都歸類到<code class="docutils literal notranslate"><span class="pre">large</span> <span class="pre">size</span></code>。之所以會使用<code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">bytes</span></code>作為最小單位是因為如果使用到的程式碼在底層會使用到<code class="docutils literal notranslate"><span class="pre">str</span></code>時必須要<code class="docutils literal notranslate"><span class="pre">align</span> <span class="pre">0x8</span></code>。所以直接使用這個size作為最小size。超過1024都歸類為<code class="docutils literal notranslate"><span class="pre">large</span> <span class="pre">size</span></code>與我管理<code class="docutils literal notranslate"><span class="pre">chunk</span> <span class="pre">pools</span></code>的方法有關。</p>
 </section>
-<section id="basic-exercise-4-mailbox">
-<h3>Basic Exercise 4 - Mailbox<a class="headerlink" href="#basic-exercise-4-mailbox" title="Permalink to this heading">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Mailbox</span></code>是一個ARM CPU與GPU之間的溝通機制，該機制也屬於MMIO的一種。可以參考<a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/hardware/mailbox.html#mailbox">Spec: Mailbox</a>、<a class="reference external" href="https://github.com/raspberrypi/firmware/wiki/Mailboxes">raspberrypi/firmware: Mailbox</a>與<a class="reference external" href="https://github.com/bztsrc/raspi3-tutorial/tree/master/04_mailboxes">Tutorial 04 - Mailboxes</a>，相關的程式碼在<code class="docutils literal notranslate"><span class="pre">mailbox.h</span></code>與<code class="docutils literal notranslate"><span class="pre">mailbox.c</span></code>。</p>
-<p>在這個Lab中提到的<code class="docutils literal notranslate"><span class="pre">tag</span></code>可以從<a class="reference external" href="https://github.com/raspberrypi/firmware/wiki/Mailbox-property-interface">Mailbox property interface</a>這裡查到。</p>
-</section>
-<section id="advanced-exercise-1-reboot">
-<h3>Advanced Exercise 1 - Reboot<a class="headerlink" href="#advanced-exercise-1-reboot" title="Permalink to this heading">#</a></h3>
-<p>這個部份主要參考<a class="reference external" href="https://github.com/bztsrc/raspi3-tutorial/tree/master/08_power">Tutorial 08 - Power management</a>，相關的程式碼在<code class="docutils literal notranslate"><span class="pre">power.h</span></code>與<code class="docutils literal notranslate"><span class="pre">power.c</span></code>。有一個網站有紀錄相關的MMIO位址，但是來源不是很清楚。實在找不到很明確的官方文件有寫有紀錄，所以基本上是照抄作法。</p>
-</section>
-</section>
-<section id="id2">
-<h2>參考 &amp; 補充資料<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="chunk-pools">
+<h4>chunk pools<a class="headerlink" href="#chunk-pools" title="Permalink to this heading">#</a></h4>
+<p>我管理pools的作法是維護多個<code class="docutils literal notranslate"><span class="pre">linked</span> <span class="pre">list</span></code>。每個linked list負責管理一種size。除了<code class="docutils literal notranslate"><span class="pre">head</span></code>之外的每個<code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">node</span></code>實際大小都是1個<code class="docutils literal notranslate"><span class="pre">frame</span></code>，並且會包含以下內容</p>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/s-matyukevich/raspberry-pi-os/blob/master/docs/lesson01/rpi-os.md">1.1: Introducing RPi OS, or bare-metal “Hello, World!”</a></p></li>
-<li><p><a class="reference external" href="https://azeria-labs.com/writing-arm-assembly-part-1/">Introduction to ARM Assembly Basics</a></p></li>
-<li><p><a class="reference external" href="https://developer.arm.com/documentation/107829/0200">Getting Started with Arm Assembly Language Version 2.0</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Universal_asynchronous_receiver-transmitter">Universal asynchronous receiver-transmitter (UART)</a></p></li>
-<li><p><a class="reference external" href="https://pinout.xyz/">The Raspberry Pi GPIO pinout guide</a></p></li>
-<li><p><a class="reference external" href="https://grantwinney.com/raspberry-pi-using-pullup-and-pulldown-resistors/">Using PullUp and PullDown Resistors on the Raspberry Pi</a></p></li>
-<li><p><a class="reference external" href="https://github.com/raspberrypi/firmware/wiki/Mailboxes">Mailboxes</a></p></li>
-<li><p><a class="reference external" href="https://ultibo.org/wiki/Unit_BCM2837">Unit BCM2837</a></p></li>
-<li><p><a class="reference external" href="https://leylfl.github.io/2018/05/15/%E6%B5%85%E8%B0%88ARM64%E6%B1%87%E7%BC%96/">浅谈ARM64汇编</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">header</span></code>: 用來紀錄管理<code class="docutils literal notranslate"><span class="pre">list_node</span></code>所需要的資料</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chunk</span> <span class="pre">states</span></code>: 用來紀錄<code class="docutils literal notranslate"><span class="pre">chunk</span></code>是否有沒有分配出去的狀態</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chunks</span></code>: 將空間切割成<code class="docutils literal notranslate"><span class="pre">chunks</span></code>以供分配</p></li>
 </ol>
+</section>
+</section>
+<section id="advanced-exercise-1-efficient-page-allocation">
+<h3>Advanced Exercise 1 - Efficient Page Allocation<a class="headerlink" href="#advanced-exercise-1-efficient-page-allocation" title="Permalink to this heading">#</a></h3>
+<p>為了加速，所以在<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">system</span></code>裡面多維護了多個<code class="docutils literal notranslate"><span class="pre">linked</span> <span class="pre">list</span></code>。每一個list都是紀錄了特定的<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">order</span></code>之下有哪些<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">group</span></code>。之後需要某個特定的<code class="docutils literal notranslate"><span class="pre">order</span></code>的group時只要去找對應的<code class="docutils literal notranslate"><span class="pre">linked</span> <span class="pre">list</span></code>就可以快速取得。</p>
+<p>關於這個<code class="docutils literal notranslate"><span class="pre">linked</span> <span class="pre">list</span></code>會有一個問題是儲存<code class="docutils literal notranslate"><span class="pre">node</span></code>的空間要如何取得。我的作法是利用了這個linked list只會紀錄free的frame的性質，直接把node的資料寫在對應的frame的開頭。</p>
+</section>
+<section id="advanced-exercise-2-reserved-memory">
+<h3>Advanced Exercise 2 - Reserved Memory<a class="headerlink" href="#advanced-exercise-2-reserved-memory" title="Permalink to this heading">#</a></h3>
+<p>在這一塊我的做法是提供一個<code class="docutils literal notranslate"><span class="pre">callback</span> <span class="pre">function</span></code>的方式讓別的程式可以去保留自己使用的記憶體。這個function會在建立<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">system</span></code>中間過程中被呼叫。這個callback function要負責統整所有需要保護的記憶體區段。出於簡單所以我是使用<code class="docutils literal notranslate"><span class="pre">hard</span> <span class="pre">coding</span></code>的方式處理。理想的方式可能是需要再另外設計一個註冊系統給其他程式片段使用。或者要把初始化拆開成<code class="docutils literal notranslate"><span class="pre">分配好metadata使用空間</span> <span class="pre">&amp;</span> <span class="pre">初步初始化</span></code>以及<code class="docutils literal notranslate"><span class="pre">建立buddy</span> <span class="pre">system的初始化</span></code>的步驟。</p>
+</section>
+<section id="advanced-exercise-3-startup-allocation">
+<h3>Advanced Exercise 3 - Startup Allocation<a class="headerlink" href="#advanced-exercise-3-startup-allocation" title="Permalink to this heading">#</a></h3>
+<p>在建立<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">system</span></code>與<code class="docutils literal notranslate"><span class="pre">memory</span> <span class="pre">system</span></code>的時候總會有一些用來管理所建立的<code class="docutils literal notranslate"><span class="pre">metadata</span></code>。要如何存放這些metadata本身也是個問題。所以需要一個把<code class="docutils literal notranslate"><span class="pre">Lab2</span></code>建立的<code class="docutils literal notranslate"><span class="pre">allocator</span></code>拿來使用。用來分配這些metadata放置的區域。</p>
+</section>
 </section>
 </section>
 
@@ -519,22 +501,13 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Lab0/index.html"
+       href="../Lab3/index.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lab 0: Environment Setup</p>
+        <p class="prev-next-title">Lab 3: Exception and Interrupt</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../Lab2/index.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lab 2: Booting</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
@@ -556,18 +529,22 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">搭配材料</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">Lab 內容</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-1-basic-initialization">Basic Exercise 1 - Basic Initialization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-2-mini-uart">Basic Exercise 2 - Mini UART</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uart-init">uart_init</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#uart-putc-uart-getc">uart_putc &amp; uart_getc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-1-buddy-system">Basic Exercise 1 - Buddy System</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#find-buddy-frame-index">Find buddy frame index</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#buddy-group">buddy group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array">array</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-3-simple-shell">Basic Exercise 3 - Simple Shell</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-4-mailbox">Basic Exercise 4 - Mailbox</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-1-reboot">Advanced Exercise 1 - Reboot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-2-dynamic-memory-allocator">Basic Exercise 2 - Dynamic Memory Allocator</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunk-size">chunk size</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunk-pools">chunk pools</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">參考 &amp; 補充資料</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-1-efficient-page-allocation">Advanced Exercise 1 - Efficient Page Allocation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-2-reserved-memory">Advanced Exercise 2 - Reserved Memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-3-startup-allocation">Advanced Exercise 3 - Startup Allocation</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
