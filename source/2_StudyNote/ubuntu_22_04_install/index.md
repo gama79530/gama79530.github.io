@@ -17,7 +17,7 @@ sudo apt install vim
 # git
 sudo apt install git
 # python3
-sudo apt-get install python3-pip
+sudo apt install python3-pip
 sudo apt install python3-venv
 # VLC
 sudo apt install vlc
