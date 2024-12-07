@@ -56,6 +56,7 @@ myst_enable_extensions = [
 ]
 myst_url_schemes = ("http", "https", "mailto")
 myst_number_code_blocks = ['c', 'c++', 'java', 'python', 'html', 'css', 'javascript', 'bash', 'md']
+myst_heading_anchors = 4
 
 number_source_lines = True
 nb_number_source_lines = True

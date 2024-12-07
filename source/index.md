@@ -13,6 +13,7 @@
 1. [How To Build Personal Website with GitHub Pages](./2_StudyNote/homepage/index.md)
 2. [(C/C++) 如何在Linux上編譯與使用 static /shared library](./2_StudyNote/LinkLoadDemo/index.md)
 3. [Jansson (a C library for JSON data) 使用教學](./2_StudyNote/jansson/index.md)
+4. [Ubuntu 22.04 工具安裝](./2_StudyNote/ubuntu_22_04_install/index.md)
 
 ```{toctree}
 :hidden:
@@ -22,6 +23,7 @@
 2_StudyNote/homepage/index
 2_StudyNote/LinkLoadDemo/index
 2_StudyNote/jansson/index
+2_StudyNote/ubuntu_22_04_install/index
 ```
 
 ## Course

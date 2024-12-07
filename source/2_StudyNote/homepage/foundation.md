@@ -104,6 +104,7 @@ myst_enable_extensions = [
 
 myst_url_schemes = ("http", "https", "mailto")
 myst_number_code_blocks = ['c', 'c++', 'java', 'python', 'html', 'css', 'javascript', 'bash']
+myst_heading_anchors = 4
 ```
 ```{note}
 1. You can see the function of myst_url_schemes from [Set URL scheme defaults ‼️](https://myst-parser.readthedocs.io/en/latest/develop/_changelog.html#set-url-scheme-defaults)
