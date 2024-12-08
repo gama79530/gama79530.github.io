@@ -1,14 +1,17 @@
 # Ubuntu 22.04 工具安裝
 
 ## 總整理
+
 1. [Softwares](#softwares)
 2. [google chrome](#google-chrome)
 3. [Visual Studio Code](#visual-studio-code)
 4. [Build Essential Package](#build-essential-package)
 5. [GNU GRUB](#gnu-grub)
 6. [Window 10 / ubuntu system time synchronization](#window-10--ubuntu-system-time-synchronization)
+7. [Indicator Sticky Notes](#indicator-sticky-notes)
 
 ## Softwares
+
 ```bash
 sudo apt update
 sudo apt upgrade
@@ -34,6 +37,7 @@ sudo apt install qemu-system-aarch64
 ```
 
 ## google chrome
+
 ```bash
 mkdir /etc/apt/keyrings
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo tee /etc/apt/keyrings/google.asc >/dev/null
@@ -41,11 +45,15 @@ sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google.asc] http:/
 sudo apt-get update 
 sudo apt install google-chrome-stable
 ```
-### Reference
+
+```{seealso}
+:class: dropdown
 1. [How to install Google Chrome](https://askubuntu.com/questions/510056/how-to-install-google-chrome)
 2. [3rd Party Repository: Google Chrome](https://www.ubuntuupdates.org/ppa/google_chrome?dist=stable)
+```
 
 ## Visual Studio Code
+
 ```bash
 sudo apt-get install wget gpg
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -57,34 +65,67 @@ sudo apt update
 sudo apt install code # or code-insiders
 ```
 
-### Reference
+```{seealso}
+:class: dropdown
 1. [Visual Studio Code on Linux](https://code.visualstudio.com/docs/setup/linux#_debian-and-ubuntu-based-distributions)
+```
 
 ## Build Essential Package
+
 ```bash
 sudo apt-get install build-essential
 ```
 
-### Reference
+```{seealso}
+:class: dropdown
 1. [What is Build Essential Package in Ubuntu? How to Install it?](https://itsfoss.com/build-essential-ubuntu/)
+```
 
 ## GNU GRUB
+
 ```bash
 sudo apt install grub-customizer
 ```
 
-### 當 GRUB 找不到 Windows 的解決辦法
-1. 將 `GRUB_DISABLE_OS_PROBER=false` 加入 `/etc/default/grub`
-2. 執行 
-```bash
+```{admonition} 當 GRUB 找不到 Windows 的解決辦法
+:class: dropdown
+1. 將`GRUB_DISABLE_OS_PROBER=false`加入`/etc/default/grub`
+2. 重新產生`config`
+    ```bash
     sudo grub-mkconfig
+    ```
+```
+
+### 當 GRUB 找不到 Windows 的解決辦法
+
+1. 將 `GRUB_DISABLE_OS_PROBER=false` 加入 `/etc/default/grub`
+2. 執行
+
+```bash
+sudo grub-mkconfig
 ```
 
 ## Window 10 / ubuntu system time synchronization
+
 ```bash
 sudo timedatectl set-local-rtc 1
 timedatectl | grep local
 ```
 
-### Reference
+```{seealso}
+:class: dropdown
 1. [Ubuntu 與 Windows 雙系統時間不同步修正](https://hackmd.io/@Z5feOdXLT-eld5sA3Shfbg/SJUFkZv22#Ubuntu-%E8%88%87-Windows-%E9%9B%99%E7%B3%BB%E7%B5%B1%E6%99%82%E9%96%93%E4%B8%8D%E5%90%8C%E6%AD%A5%E4%BF%AE%E6%AD%A3)
+```
+
+## Indicator Sticky Notes
+
+```bash
+sudo add-apt-repository ppa:umang/indicator-stickynotes
+sudo apt update
+sudo apt install indicator-stickynotes
+```
+
+```{seealso}
+:class: dropdown
+1. [Get Windows Style Sticky Notes for Ubuntu Linux With These Tools](https://itsfoss.com/sticky-notes-linux/)
+```
