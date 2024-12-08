@@ -397,33 +397,32 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-project">Demo project</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-linking">Static Linking</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">特點</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Static Linking 特點</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-library">建立 static library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-static-library">Example: 建立 static library</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">使用static library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">佈署 static library</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">使用 static library 編譯程式</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Example: 使用 static library</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-linking">Dynamic Linking</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">特點</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Dynamic Linking 特點</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-library">建立 shared library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">使用 shared library</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">佈署 shared library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-shared-library">Example: 建立 shared library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">使用 shared library</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">佈署 shared library</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-linking-library">啟動有使用 dynamic linking 的程式時尋找library路徑的順序</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">使用 shared library 編譯程式</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">使用 shared library 編譯程式</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Example: 使用 shared library</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-loading">Dynamic Loading</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">特點</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">重點</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Dynamic Loading 特點</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
@@ -456,7 +455,7 @@ document.write(`
 <section id="static-linking">
 <h2>Static Linking<a class="headerlink" href="#static-linking" title="Permalink to this heading">#</a></h2>
 <section id="id1">
-<h3>特點<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>Static Linking 特點<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>通常是以<code class="docutils literal notranslate"><span class="pre">.a</span></code> <strong>(Unix-like)</strong> 或<code class="docutils literal notranslate"><span class="pre">.lib</span></code> <strong>(Windows)</strong> 為<code class="docutils literal notranslate"><span class="pre">副檔名</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">編譯期</span></code> 將 <code class="docutils literal notranslate"><span class="pre">library</span></code> 的 <code class="docutils literal notranslate"><span class="pre">程式碼</span></code> 加入 <code class="docutils literal notranslate"><span class="pre">執行檔</span></code> ，因此執行檔size會 <code class="docutils literal notranslate"><span class="pre">較大</span></code></p></li>
@@ -478,8 +477,8 @@ document.write(`
 </li>
 </ol>
 </section>
-<section id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
+<section id="example-static-library">
+<h3>Example: 建立 static library<a class="headerlink" href="#example-static-library" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 編譯指令</span>
 <span class="linenos">2</span>gcc<span class="w"> </span>src/prog1.c<span class="w"> </span>-c<span class="w"> </span>-o<span class="w"> </span>src/prog1.o
 <span class="linenos">3</span>gcc<span class="w"> </span>src/prog2.c<span class="w"> </span>-c<span class="w"> </span>-o<span class="w"> </span>src/prog2.o
@@ -516,7 +515,7 @@ document.write(`
 </section>
 </section>
 <section id="id5">
-<h3>Example<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3>Example: 使用 static library<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 佈署指令</span>
 <span class="linenos">2</span>cp<span class="w"> </span>-r<span class="w"> </span>../Project_StaticLib/include<span class="w"> </span>.
 <span class="linenos">3</span>cp<span class="w"> </span>../Project_StaticLib/libstaticlink.a<span class="w"> </span>lib
@@ -529,7 +528,7 @@ document.write(`
 <section id="dynamic-linking">
 <h2>Dynamic Linking<a class="headerlink" href="#dynamic-linking" title="Permalink to this heading">#</a></h2>
 <section id="id6">
-<h3>特點<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>Dynamic Linking 特點<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>通常是以<code class="docutils literal notranslate"><span class="pre">.so</span></code> <strong>(Unix-like)</strong> 或<code class="docutils literal notranslate"><span class="pre">.dll</span></code> <strong>(Windows)</strong> 為<code class="docutils literal notranslate"><span class="pre">副檔名</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">編譯期</span></code>並不將<code class="docutils literal notranslate"><span class="pre">library</span></code>的<code class="docutils literal notranslate"><span class="pre">程式碼</span></code>加入<code class="docutils literal notranslate"><span class="pre">執行檔</span></code>而是只留下一個<code class="docutils literal notranslate"><span class="pre">stub</span></code>，因此執行檔會比<code class="docutils literal notranslate"><span class="pre">較小</span></code></p></li>
@@ -571,8 +570,8 @@ document.write(`
 </li>
 </ol>
 </section>
-<section id="id7">
-<h3>Example<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<section id="example-shared-library">
+<h3>Example: 建立 shared library<a class="headerlink" href="#example-shared-library" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="c1"># 編譯指令</span>
 <span class="linenos">2</span>gcc<span class="w"> </span>src/prog1.c<span class="w"> </span>-c<span class="w"> </span>-fPIC<span class="w"> </span>-o<span class="w"> </span>src/prog1.o
 <span class="linenos">3</span>gcc<span class="w"> </span>src/prog2.c<span class="w"> </span>-c<span class="w"> </span>-fPIC<span class="w"> </span>-o<span class="w"> </span>src/prog2.o
@@ -582,10 +581,10 @@ document.write(`
 </pre></div>
 </div>
 </section>
+<section id="id7">
+<h3>使用 shared library<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <section id="id8">
-<h3>使用 shared library<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
-<section id="id9">
-<h4>佈署 shared library<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<h4>佈署 shared library<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <ol class="arabic">
 <li><p>將<code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code>檔案複製到部署路徑資料夾下</p></li>
 <li><p>建立<code class="docutils literal notranslate"><span class="pre">linker</span> <span class="pre">name</span></code>的<code class="docutils literal notranslate"><span class="pre">soft</span> <span class="pre">link</span></code></p></li>
@@ -625,8 +624,8 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">/usr/local/lib</span></code></p></li>
 </ol>
 </section>
-<section id="id10">
-<h4>使用 shared library 編譯程式<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
+<section id="id9">
+<h4>使用 shared library 編譯程式<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
 <ol class="arabic">
 <li><p><strong>include</strong> library的<strong>header file</strong>後呼叫要使用的<strong>function</strong>(通常會將<code class="docutils literal notranslate"><span class="pre">.h</span></code>放到<code class="docutils literal notranslate"><span class="pre">include</span></code>資料夾下</p></li>
 <li><p>將程式編譯成執行檔時加上相關的參數</p>
@@ -643,8 +642,8 @@ document.write(`
 </ol>
 </section>
 </section>
-<section id="id11">
-<h3>Example<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<section id="id10">
+<h3>Example: 使用 shared library<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># 佈署指令, 將 dynamic library 佈署到 ../SharedLib 資料夾下並建立兩個對應的 soft link</span>
 <span class="linenos"> 2</span>cp<span class="w"> </span>-r<span class="w"> </span>../Project_SharedLib/include<span class="w"> </span>.
 <span class="linenos"> 3</span>mkdir<span class="w"> </span>-p<span class="w"> </span>../SharedLib
@@ -662,21 +661,16 @@ document.write(`
 </section>
 <section id="dynamic-loading">
 <h2>Dynamic Loading<a class="headerlink" href="#dynamic-loading" title="Permalink to this heading">#</a></h2>
-<section id="id12">
-<h3>特點<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<section id="id11">
+<h3>Dynamic Loading 特點<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>編譯時並不將<strong>library</strong>的內容連結，在執行期動態將<strong>library</strong>以<code class="docutils literal notranslate"><span class="pre">plug-in</span></code>的方式<code class="docutils literal notranslate"><span class="pre">載入</span></code>與<code class="docutils literal notranslate"><span class="pre">釋放</span></code>，更具彈性。</p></li>
 <li><p>因為系統需要處理的工作更多，因此執行速度<code class="docutils literal notranslate"><span class="pre">更慢</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Dynamic</span> <span class="pre">Loading</span></code>載入的程式可以是<code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">library</span></code>、<code class="docutils literal notranslate"><span class="pre">shared</span> <span class="pre">library</span></code>或<code class="docutils literal notranslate"><span class="pre">執行檔</span></code>。</p></li>
-</ol>
-</section>
-<section id="id13">
-<h3>重點<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
-<ol class="arabic simple">
 <li><p>透過<code class="docutils literal notranslate"><span class="pre">dl</span></code>這個library達成，用法參考檔案<code class="docutils literal notranslate"><span class="pre">Project_LoadSharedLib/src/main.c</span></code></p></li>
 <li><p>可以不需要<strong>include</strong>library的<code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">file</span></code>，但是需要從<code class="docutils literal notranslate"><span class="pre">header</span> <span class="pre">file</span></code>或<code class="docutils literal notranslate"><span class="pre">文件</span></code>確定好要使用的<strong>function</strong>或<strong>變數</strong>的<strong>type</strong></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dlopen</span></code>的檔名如果以<code class="docutils literal notranslate"><span class="pre">'/'</span></code>開頭則會用絕對路徑去找，若不是以的話會依照<a class="reference internal" href="#dynamic-linking-library"><span class="std std-doc">啟動有使用 dynamic linking 的程式時尋找library路徑的順序</span></a>的規則去尋找</p></li>
-<li><p>編譯指令有<code class="docutils literal notranslate"><span class="pre">-ldl</span></code>的原因是因為需要用到 <code class="docutils literal notranslate"><span class="pre">libdl</span></code></p></li>
+<li><p>編譯指令有<code class="docutils literal notranslate"><span class="pre">-ldl</span></code>的原因是因為需要用到<code class="docutils literal notranslate"><span class="pre">dl</span></code>這個library</p></li>
 </ol>
 </section>
 </section>
@@ -743,33 +737,32 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-project">Demo project</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-linking">Static Linking</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">特點</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Static Linking 特點</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-library">建立 static library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-static-library">Example: 建立 static library</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">使用static library</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">佈署 static library</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">使用 static library 編譯程式</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Example: 使用 static library</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-linking">Dynamic Linking</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">特點</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Dynamic Linking 特點</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shared-library">建立 shared library</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Example</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">使用 shared library</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">佈署 shared library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-shared-library">Example: 建立 shared library</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">使用 shared library</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">佈署 shared library</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-linking-library">啟動有使用 dynamic linking 的程式時尋找library路徑的順序</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">使用 shared library 編譯程式</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">使用 shared library 編譯程式</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Example: 使用 shared library</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-loading">Dynamic Loading</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">特點</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">重點</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Dynamic Loading 特點</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>

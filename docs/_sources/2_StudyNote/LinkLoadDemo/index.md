@@ -14,7 +14,7 @@
 
 ## Static Linking
 
-### 特點
+### Static Linking 特點
 
 1. 通常是以`.a` **(Unix-like)** 或`.lib` **(Windows)** 為`副檔名`
 2. `編譯期` 將 `library` 的 `程式碼` 加入 `執行檔` ，因此執行檔size會 `較大`
@@ -32,7 +32,7 @@
    `static library`檔名的固定格式為`lib{library name}.a`
    ```
 
-### Example
+### Example: 建立 static library
 
 ```bash
 # 編譯指令
@@ -61,7 +61,7 @@ ar rcs libstaticlink.a src/prog1.o src/prog2.o src/prog3.o
    - `-l {library name}`用來指示 `library name`，`-l`與`{library name}`中間可以不需要空格隔開
    ```
 
-### Example
+### Example: 使用 static library
 
 ```bash
 # 佈署指令
@@ -73,7 +73,7 @@ gcc src/main.c -static -I include -L lib -l staticlink -o main
 
 ## Dynamic Linking
 
-### 特點
+### Dynamic Linking 特點
 
 1. 通常是以`.so` **(Unix-like)** 或`.dll` **(Windows)** 為`副檔名`
 1. `編譯期`並不將`library`的`程式碼`加入`執行檔`而是只留下一個`stub`，因此執行檔會比`較小`
@@ -107,7 +107,7 @@ gcc src/main.c -static -I include -L lib -l staticlink -o main
    - `-soname`是`linker`的指令，用來提示當編譯好的執行檔啟動時，要用`soname`去找到`shared library`而不是使用`real name`去找，設定`so name`可以讓編譯與執行不使用**同一個library**進而增加程式的彈性
    ```
 
-### Example
+### Example: 建立 shared library
 
 ```bash
 # 編譯指令
@@ -162,7 +162,7 @@ gcc src/prog1.o src/prog2.o src/prog3.o -shared -Wl,-soname,libdynamiclink.so.1 
    - 會依據`linker name`去找**library**
    ```
 
-### Example
+### Example: 使用 shared library
 
 ```bash
 # 佈署指令, 將 dynamic library 佈署到 ../SharedLib 資料夾下並建立兩個對應的 soft link
@@ -180,18 +180,15 @@ LD_LIBRARY_PATH=$LD_LIBRARY_PATH:../SharedLib
 
 ## Dynamic Loading
 
-### 特點
+### Dynamic Loading 特點
 
 1. 編譯時並不將**library**的內容連結，在執行期動態將**library**以`plug-in`的方式`載入`與`釋放`，更具彈性。
 1. 因為系統需要處理的工作更多，因此執行速度`更慢`
 1. `Dynamic Loading`載入的程式可以是`static library`、`shared library`或`執行檔`。
-
-### 重點
-
 1. 透過`dl`這個library達成，用法參考檔案`Project_LoadSharedLib/src/main.c`
 1. 可以不需要**include**library的`header file`，但是需要從`header file`或`文件`確定好要使用的**function**或**變數**的**type**
 1. `dlopen`的檔名如果以`'/'`開頭則會用絕對路徑去找，若不是以的話會依照[啟動有使用 dynamic linking 的程式時尋找library路徑的順序](#啟動有使用-dynamic-linking-的程式時尋找library路徑的順序)的規則去尋找
-1. 編譯指令有`-ldl`的原因是因為需要用到 `libdl`
+1. 編譯指令有`-ldl`的原因是因為需要用到`dl`這個library
 
 ## Reference
 
