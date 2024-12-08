@@ -400,10 +400,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-chrome">google chrome</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-studio-code">Visual Studio Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-essential-package">Build Essential Package</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-grub">GNU GRUB</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grub-windows">當 GRUB 找不到 Windows 的解決辦法</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-grub">GNU GRUB</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#window-10-ubuntu-system-time-synchronization">Window 10 / ubuntu system time synchronization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-sticky-notes">Indicator Sticky Notes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-store">Snap Store</a><ul class="nav section-nav flex-column">
@@ -526,16 +523,6 @@ document.write(`
 </li>
 </ol>
 </div>
-<section id="grub-windows">
-<h3>當 GRUB 找不到 Windows 的解決辦法<a class="headerlink" href="#grub-windows" title="Permalink to this heading">#</a></h3>
-<ol class="arabic simple">
-<li><p>將 <code class="docutils literal notranslate"><span class="pre">GRUB_DISABLE_OS_PROBER=false</span></code> 加入 <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code></p></li>
-<li><p>執行</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo<span class="w"> </span>grub-mkconfig
-</pre></div>
-</div>
-</section>
 </section>
 <section id="window-10-ubuntu-system-time-synchronization">
 <h2>Window 10 / ubuntu system time synchronization<a class="headerlink" href="#window-10-ubuntu-system-time-synchronization" title="Permalink to this heading">#</a></h2>
@@ -568,16 +555,13 @@ document.write(`
 <h2>Snap Store<a class="headerlink" href="#snap-store" title="Permalink to this heading">#</a></h2>
 <section id="how-to-disable-snap-on-ubuntu-22-04">
 <h3>How to Disable Snap on Ubuntu 22.04<a class="headerlink" href="#how-to-disable-snap-on-ubuntu-22-04" title="Permalink to this heading">#</a></h3>
-<p>Steps:</p>
 <ol class="arabic">
 <li><p>Disable Snap</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
-sudo systemctl disable snapd.service
-sudo systemctl disable snapd.socket
-sudo systemctl disable snapd.seeded.service
-```
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>snapd.service
+<span class="linenos">2</span>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>snapd.socket
+<span class="linenos">3</span>sudo<span class="w"> </span>systemctl<span class="w"> </span>disable<span class="w"> </span>snapd.seeded.service
 </pre></div>
 </div>
 </div>
@@ -585,12 +569,10 @@ sudo systemctl disable snapd.seeded.service
 <li><p>Remove Snap packages</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
-sudo snap list
-sudo snap remove firefox
-sudo snap remove snap-store
-(Repeat this with all the snap packages in the snap list list ...)
-```
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo<span class="w"> </span>snap<span class="w"> </span>list
+<span class="linenos">2</span>sudo<span class="w"> </span>snap<span class="w"> </span>remove<span class="w"> </span>firefox
+<span class="linenos">3</span>sudo<span class="w"> </span>snap<span class="w"> </span>remove<span class="w"> </span>snap-store
+<span class="linenos">4</span><span class="c1"># (Repeat this with all the snap packages in the snap list list ...)</span>
 </pre></div>
 </div>
 </div>
@@ -598,11 +580,9 @@ sudo snap remove snap-store
 <li><p>Remove Snap</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
-sudo apt autoremove --purge snapd
-sudo rm -rf /var/cache/snapd/
-rm -rf ~/snap
-```
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo<span class="w"> </span>apt<span class="w"> </span>autoremove<span class="w"> </span>--purge<span class="w"> </span>snapd
+<span class="linenos">2</span>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/cache/snapd/
+<span class="linenos">3</span>rm<span class="w"> </span>-rf<span class="w"> </span>~/snap
 </pre></div>
 </div>
 </div>
@@ -671,10 +651,7 @@ rm -rf ~/snap
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#google-chrome">google chrome</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-studio-code">Visual Studio Code</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-essential-package">Build Essential Package</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-grub">GNU GRUB</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grub-windows">當 GRUB 找不到 Windows 的解決辦法</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-grub">GNU GRUB</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#window-10-ubuntu-system-time-synchronization">Window 10 / ubuntu system time synchronization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-sticky-notes">Indicator Sticky Notes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-store">Snap Store</a><ul class="nav section-nav flex-column">

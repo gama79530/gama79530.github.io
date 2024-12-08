@@ -97,15 +97,6 @@ sudo apt install grub-customizer
     ```
 ```
 
-### 當 GRUB 找不到 Windows 的解決辦法
-
-1. 將 `GRUB_DISABLE_OS_PROBER=false` 加入 `/etc/default/grub`
-2. 執行
-
-```bash
-sudo grub-mkconfig
-```
-
 ## Window 10 / ubuntu system time synchronization
 
 ```bash
@@ -135,40 +126,35 @@ sudo apt install indicator-stickynotes
 
 ### How to Disable Snap on Ubuntu 22.04
 
-Steps:
-
 1. Disable Snap
 
     ```{note}
     :class: dropdown
-        ```
-        sudo systemctl disable snapd.service
-        sudo systemctl disable snapd.socket
-        sudo systemctl disable snapd.seeded.service
-        ```
+    ```bash
+    sudo systemctl disable snapd.service
+    sudo systemctl disable snapd.socket
+    sudo systemctl disable snapd.seeded.service
     ```
 
 2. Remove Snap packages
 
     ```{note}
     :class: dropdown
-        ```
-        sudo snap list
-        sudo snap remove firefox
-        sudo snap remove snap-store
-        (Repeat this with all the snap packages in the snap list list ...)
-        ```
+    ```bash
+    sudo snap list
+    sudo snap remove firefox
+    sudo snap remove snap-store
+    # (Repeat this with all the snap packages in the snap list list ...)
     ```
 
 3. Remove Snap
 
     ```{note}
     :class: dropdown
-        ```
-        sudo apt autoremove --purge snapd
-        sudo rm -rf /var/cache/snapd/
-        rm -rf ~/snap
-        ```
+    ```bash
+    sudo apt autoremove --purge snapd
+    sudo rm -rf /var/cache/snapd/
+    rm -rf ~/snap
     ```
 
 ```{seealso}
