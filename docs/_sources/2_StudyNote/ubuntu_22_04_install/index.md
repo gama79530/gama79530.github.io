@@ -9,6 +9,7 @@
 5. [GNU GRUB](#gnu-grub)
 6. [Window 10 / ubuntu system time synchronization](#window-10--ubuntu-system-time-synchronization)
 7. [Indicator Sticky Notes](#indicator-sticky-notes)
+8. [Snap Store](#snap-store)
 
 ## Softwares
 
@@ -128,4 +129,49 @@ sudo apt install indicator-stickynotes
 ```{seealso}
 :class: dropdown
 1. [Get Windows Style Sticky Notes for Ubuntu Linux With These Tools](https://itsfoss.com/sticky-notes-linux/)
+```
+
+## Snap Store
+
+### How to Disable Snap on Ubuntu 22.04
+
+Steps:
+
+1. Disable Snap
+
+    ```{note}
+    :class: dropdown
+        ```
+        sudo systemctl disable snapd.service
+        sudo systemctl disable snapd.socket
+        sudo systemctl disable snapd.seeded.service
+        ```
+    ```
+
+2. Remove Snap packages
+
+    ```{note}
+    :class: dropdown
+        ```
+        sudo snap list
+        sudo snap remove firefox
+        sudo snap remove snap-store
+        (Repeat this with all the snap packages in the snap list list ...)
+        ```
+    ```
+
+3. Remove Snap
+
+    ```{note}
+    :class: dropdown
+        ```
+        sudo apt autoremove --purge snapd
+        sudo rm -rf /var/cache/snapd/
+        rm -rf ~/snap
+        ```
+    ```
+
+```{seealso}
+:class: dropdown
+1. [How to Disable Snap on Ubuntu 22.04](https://www.brsmedia.in/how-to-disable-snap-on-ubuntu-22-04/#Requirements)
 ```

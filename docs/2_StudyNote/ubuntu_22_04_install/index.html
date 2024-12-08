@@ -406,6 +406,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#window-10-ubuntu-system-time-synchronization">Window 10 / ubuntu system time synchronization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-sticky-notes">Indicator Sticky Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-store">Snap Store</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-disable-snap-on-ubuntu-22-04">How to Disable Snap on Ubuntu 22.04</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -429,6 +433,7 @@ document.write(`
 <li><p><a class="reference internal" href="#gnu-grub"><span class="std std-doc">GNU GRUB</span></a></p></li>
 <li><p><a class="reference internal" href="#window-10-ubuntu-system-time-synchronization"><span class="std std-doc">Window 10 / ubuntu system time synchronization</span></a></p></li>
 <li><p><a class="reference internal" href="#indicator-sticky-notes"><span class="std std-doc">Indicator Sticky Notes</span></a></p></li>
+<li><p><a class="reference internal" href="#snap-store"><span class="std std-doc">Snap Store</span></a></p></li>
 </ol>
 </section>
 <section id="softwares">
@@ -559,6 +564,58 @@ document.write(`
 </ol>
 </div>
 </section>
+<section id="snap-store">
+<h2>Snap Store<a class="headerlink" href="#snap-store" title="Permalink to this heading">#</a></h2>
+<section id="how-to-disable-snap-on-ubuntu-22-04">
+<h3>How to Disable Snap on Ubuntu 22.04<a class="headerlink" href="#how-to-disable-snap-on-ubuntu-22-04" title="Permalink to this heading">#</a></h3>
+<p>Steps:</p>
+<ol class="arabic">
+<li><p>Disable Snap</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
+sudo systemctl disable snapd.service
+sudo systemctl disable snapd.socket
+sudo systemctl disable snapd.seeded.service
+```
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>Remove Snap packages</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
+sudo snap list
+sudo snap remove firefox
+sudo snap remove snap-store
+(Repeat this with all the snap packages in the snap list list ...)
+```
+</pre></div>
+</div>
+</div>
+</li>
+<li><p>Remove Snap</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```
+sudo apt autoremove --purge snapd
+sudo rm -rf /var/cache/snapd/
+rm -rf ~/snap
+```
+</pre></div>
+</div>
+</div>
+</li>
+</ol>
+<div class="dropdown admonition seealso">
+<p class="admonition-title">See also</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.brsmedia.in/how-to-disable-snap-on-ubuntu-22-04/#Requirements">How to Disable Snap on Ubuntu 22.04</a></p></li>
+</ol>
+</div>
+</section>
+</section>
 </section>
 
 
@@ -620,6 +677,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#window-10-ubuntu-system-time-synchronization">Window 10 / ubuntu system time synchronization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-sticky-notes">Indicator Sticky Notes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-store">Snap Store</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-disable-snap-on-ubuntu-22-04">How to Disable Snap on Ubuntu 22.04</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
