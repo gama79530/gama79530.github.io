@@ -35,6 +35,8 @@ sudo apt install gdb-multiarch
 sudo apt install gcc-aarch64-linux-gnu
 # qemu
 sudo apt install qemu-system-aarch64
+# screen
+sudo apt install screen
 ```
 
 ## google chrome
