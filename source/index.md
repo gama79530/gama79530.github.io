@@ -10,32 +10,32 @@
 
 ## Study Note
 
-1. [How To Build Personal Website with GitHub Pages](./2_StudyNote/homepage/index.md)
-2. [(C/C++) 如何在Linux上編譯與使用 static /shared library](./2_StudyNote/LinkLoadDemo/index.md)
-3. [Jansson (a C library for JSON data) 使用教學](./2_StudyNote/jansson/index.md)
-4. [Ubuntu 22.04 工具安裝](./2_StudyNote/ubuntu_22_04_install/index.md)
+1. [How To Build Personal Website with GitHub Pages](./StudyNote/Homepage/index.md)
+2. [(C/C++) 如何在Linux上編譯與使用 static /shared library](./StudyNote/LinkLoadDemo/index.md)
+3. [Jansson (a C library for JSON data) 使用教學](./StudyNote/Jansson/index.md)
+4. [Ubuntu 22.04 工具安裝](./StudyNote/InstallUbuntu_22_04/index.md)
 
 ```{toctree}
 :hidden:
 :caption: Study Note
 :maxdepth: 3
 
-2_StudyNote/homepage/index
-2_StudyNote/LinkLoadDemo/index
-2_StudyNote/jansson/index
-2_StudyNote/ubuntu_22_04_install/index
+StudyNote/Homepage/index
+StudyNote/LinkLoadDemo/index
+StudyNote/Jansson/index
+StudyNote/InstallUbuntu_22_04/index
 ```
 
 ## Course
 
-1. [Linux 核心設計/實作(Linux Kernel Internals)](./3_Course/LinuxKernelInternals/index.md)
-2. [交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)](./3_Course/OperatingSystemCapstone/index.md)
+1. [Linux 核心設計/實作(Linux Kernel Internals)](./Course/LinuxKernelInternals/index.md)
+2. [交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)](./Course/OperatingSystemCapstone/index.md)
 
 ```{toctree}
 :hidden:
 :caption: Course
 :maxdepth: 3
 
-3_Course/LinuxKernelInternals/index
-3_Course/OperatingSystemCapstone/index
+Course/LinuxKernelInternals/index
+Course/OperatingSystemCapstone/index
 ```

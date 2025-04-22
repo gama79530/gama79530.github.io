@@ -45,15 +45,15 @@
 
 ### Basic Exercise 2 - Interrupt
 
-這個部份因為很難與後面的部份切割，所以集中到[Advanced Exercise 2](https://gama79530.github.io/3_Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling)解釋。
+這個部份因為很難與後面的部份切割，所以集中到[Advanced Exercise 2](https://gama79530.github.io/Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling)解釋。
 
 ### Basic Exercise 3 - Rpi3’s Peripheral Interrupt
 
-這個部份因為很難與後面的部份切割，所以集中到[Advanced Exercise 2](https://gama79530.github.io/3_Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling)解釋。
+這個部份因為很難與後面的部份切割，所以集中到[Advanced Exercise 2](https://gama79530.github.io/Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling)解釋。
 
 ### Advanced Exercise 1 - Timer Multiplexing
 
-這個部份因為很難與後面的部份切割，所以集中到[Advanced Exercise 2](https://gama79530.github.io/3_Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling)解釋。
+這個部份因為很難與後面的部份切割，所以集中到[Advanced Exercise 2](https://gama79530.github.io/Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling)解釋。
 
 ### Advanced Exercise 2 - Concurrent I/O Devices Handling
 

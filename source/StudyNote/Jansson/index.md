@@ -22,7 +22,7 @@
 
 ```{tip}
 :class: dropdown
-建議還是要理解編譯時如何link第3方的library，若不清楚的話可以參考[連結](https://gama79530.github.io/2_StudyNote/LinkLoadDemo/index.html#)
+建議還是要理解編譯時如何link第3方的library，若不清楚的話可以參考[連結](https://gama79530.github.io/StudyNote/LinkLoadDemo/index.html#)
 ```
 
 ## 使用教學
@@ -34,7 +34,7 @@
 #### Type system
 
 | Data type | json type | c type | description |
-|:--|:--:|:--:|:--| 
+|:--|:--:|:--:|:--|
 | `true` | `json_true` | X | singleton |
 | `false` | `json_false` | X | singleton |
 | `null` | `json_null` | X | singleton |
@@ -49,7 +49,7 @@
 3. 可以使用function `json_is_XXX(json_t*)` 來檢查 `json_t` 實際到底是不是某種type。  
    例如：檢查是否為integer可以使用function `json_is_integer(ptr)`
 4. 最簡單的產生物件方式之一是直接使用function `json_XXX(value)`去產生  
-   例如：使用 ``json_real(1.0)`` 產生一個內容值為1.0的 `real` 物件 
+   例如：使用 ``json_real(1.0)`` 產生一個內容值為1.0的 `real` 物件
 5. 除了 `singleton` 的3種type之外的非 `container` type都可以使用 `json_XXX_set(ptr, value) / json_XXX_value(ptr)`分別去 `更改 / 取得` json object的值  
    例如：使用 `json_real_set(ptr, 3.0) / double d = json_real_value(ptr)`去 `更改 / 取得` ptr 的值
 
