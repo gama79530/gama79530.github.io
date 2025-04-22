@@ -9,11 +9,13 @@
 
 這系列的筆記是閱讀 [ProGit](https://iissnan.com/progit/index.zh-tw.html) 之後紀錄下來的文章。
 
-1. [Git 指令自動補齊](auto_complete.md)
+1. [Git FAQ](git_faq.md)
+2. [Git 指令自動補齊](auto_complete.md)
 
 ```{toctree}
 :hidden:
 :maxdepth: 1
 
+git_faq
 auto_complete
 ```
