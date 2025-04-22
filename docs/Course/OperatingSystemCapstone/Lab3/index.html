@@ -1,0 +1,653 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Lab 3: Exception and Interrupt &#8212; Rein&#39;s Homepage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Course/OperatingSystemCapstone/Lab3/index';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Lab 4: Allocator" href="../Lab4/index.html" />
+    <link rel="prev" title="Lab 2: Booting" href="../Lab2/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Rein's Homepage</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/Homepage/index.html">How To Build Personal Website with GitHub Pages</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/foundation.html">Building Foundation of Homepage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/skeleton.html">Building Skeleton of Homepage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/note.html">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/Jansson/index.html">Jansson (a C library for JSON data) 使用教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/InstallUbuntu_22_04/index.html">Ubuntu 22.04 工具安裝</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/LearningGit/index.html">Git 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/git_faq.html">Git FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../LinuxKernelInternals/index.html">成大jserv Linux 核心設計/實作 (Linux Kernel Internals)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../LinuxKernelInternals/week1/week1.html">Week 1</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../LinuxKernelInternals/week1/test1.html">題目 1 + 分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../LinuxKernelInternals/week1/test2.html">題目2 / 參考題解1, 參考題解2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../LinuxKernelInternals/week1/test3.html">題目3 / 參考題解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../LinuxKernelInternals/week1/test4.html">題目4 / 參考題解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../LinuxKernelInternals/week1/test5.html">題目5 / 參考題解</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Lab0/index.html">Lab 0: Environment Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Lab1/index.html">Lab 1: Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Lab2/index.html">Lab 2: Booting</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 3: Exception and Interrupt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Lab4/index.html">Lab 4: Allocator</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/Course/OperatingSystemCapstone/Lab3/index.md?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/Course/OperatingSystemCapstone/Lab3/index.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2FCourse/OperatingSystemCapstone/Lab3/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/Course/OperatingSystemCapstone/Lab3/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 3: Exception and Interrupt</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">搭配材料</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">Lab 內容</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-1-exception">Basic Exercise 1 - Exception</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-level-el">如何切換 Exception Level (EL)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exception">如何處理 Exception</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-2-interrupt">Basic Exercise 2 - Interrupt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-3-rpi3s-peripheral-interrupt">Basic Exercise 3 - Rpi3’s Peripheral Interrupt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-1-timer-multiplexing">Advanced Exercise 1 - Timer Multiplexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-2-concurrent-i-o-devices-handling">Advanced Exercise 2 - Concurrent I/O Devices Handling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interrupt">Interrupt</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#timer">Timer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#async-io">Async IO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">參考 &amp; 補充資料</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-3-exception-and-interrupt">
+<h1>Lab 3: Exception and Interrupt<a class="headerlink" href="#lab-3-exception-and-interrupt" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>搭配材料<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab3.html">Specification</a></p></li>
+<li><p><a class="reference external" href="https://github.com/gama79530/NYCU_2024_Operating_System_Capstone/tree/main/Lab3">Code</a></p></li>
+</ol>
+</section>
+<section id="lab">
+<h2>Lab 內容<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
+<p>這個Lab主要的目的是要了解<code class="docutils literal notranslate"><span class="pre">ARM</span></code>的<code class="docutils literal notranslate"><span class="pre">Exception</span></code>的機制。首先需要了解什麼是<code class="docutils literal notranslate"><span class="pre">Exception</span> <span class="pre">Level</span></code>以及如何切換。接著是要利用Exception的機制來完成一些非同步的功能。</p>
+<section id="basic-exercise-1-exception">
+<h3>Basic Exercise 1 - Exception<a class="headerlink" href="#basic-exercise-1-exception" title="Permalink to this heading">#</a></h3>
+<p>在這個部份需要了解以下內容。</p>
+<ol class="arabic simple">
+<li><p>什麼是<code class="docutils literal notranslate"><span class="pre">Exception</span> <span class="pre">Level</span></code></p></li>
+<li><p>如何切換<code class="docutils literal notranslate"><span class="pre">Exception</span> <span class="pre">Level</span></code></p></li>
+<li><p>如何處理<code class="docutils literal notranslate"><span class="pre">Exception</span></code></p></li>
+</ol>
+<p>關於<code class="docutils literal notranslate"><span class="pre">exception</span> <span class="pre">level</span></code>的解釋可以看<a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab3.html#exception-levels">Spec: Exception Levels</a>或者是<a class="reference external" href="https://developer.arm.com/documentation/ddi0487/aa/?lang=en">ARM Architecture Reference Manual ARMv8, for ARMv8-A architecture profile</a>的Chap D1。程式碼相關的部份可以參考<code class="docutils literal notranslate"><span class="pre">boot.S</span></code>,<code class="docutils literal notranslate"><span class="pre">vtable_el1.S</span></code>,<code class="docutils literal notranslate"><span class="pre">exception.h</span></code>以及<code class="docutils literal notranslate"><span class="pre">exception.c</span></code>。</p>
+<section id="exception-level-el">
+<h4>如何切換 Exception Level (EL)<a class="headerlink" href="#exception-level-el" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">EL</span></code>的切換首先需要先看是由那一個指令觸發的。有些指令可能只能用在特定的EL之間的切換。而另外也有指令是需要接著再去看對應的register的狀態來決定。</p>
+<p>在這個部份我們使用到的其中一個指令是<code class="docutils literal notranslate"><span class="pre">eret</span></code>。這個指令與ret有點類似，但主要的區別如下</p>
+<ol class="arabic simple">
+<li><p>當呼叫eret之後會區看對應的<code class="docutils literal notranslate"><span class="pre">SPSR_ELx</span></code>的狀態決定之後會切換到那一個EL。</p></li>
+<li><p>是去看對應的<code class="docutils literal notranslate"><span class="pre">ELR_ELx</span></code>來處理return的位址而不是看<code class="docutils literal notranslate"><span class="pre">LR</span></code></p></li>
+</ol>
+<p>在關於<code class="docutils literal notranslate"><span class="pre">SPSR_ELx</span></code>的設定中的設定可以直接在<a class="reference external" href="https://developer.arm.com/documentation/ddi0487/aa/?lang=en">ARM Architecture Reference Manual ARMv8, for ARMv8-A architecture profile</a>裡面用關鍵字搜尋。</p>
+</section>
+<section id="exception">
+<h4>如何處理 Exception<a class="headerlink" href="#exception" title="Permalink to this heading">#</a></h4>
+<p>這個部份需要設定好對應的<code class="docutils literal notranslate"><span class="pre">vbar_el1</span></code>用來指定EL對應的<code class="docutils literal notranslate"><span class="pre">vector</span> <span class="pre">table</span></code>。這個table每一個<code class="docutils literal notranslate"><span class="pre">entry</span></code>會在對應的exception發生時自動被呼叫來處理exception。對於這個table的格式<code class="docutils literal notranslate"><span class="pre">ARM</span></code>是有一些規範在，可以參考<a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab3.html#vector-table">Vector Table</a>。此外在進入處理邏輯之前我們必須先做兩件事</p>
+<ol class="arabic simple">
+<li><p>將<code class="docutils literal notranslate"><span class="pre">DAIF</span></code>這4種<code class="docutils literal notranslate"><span class="pre">Interrupt</span></code>先<code class="docutils literal notranslate"><span class="pre">masked</span></code></p></li>
+<li><p>將<code class="docutils literal notranslate"><span class="pre">general-purpose</span> <span class="pre">registers</span></code>的值先儲存起來</p></li>
+</ol>
+<p>另外因為我的exception處理邏輯是使用C語言實做，所以在<code class="docutils literal notranslate"><span class="pre">vtable_el1.S</span></code>裡面才會使用一些技巧去包裝。</p>
+</section>
+<section id="demo">
+<h4>Demo<a class="headerlink" href="#demo" title="Permalink to this heading">#</a></h4>
+<p>在這個部份裡有一個<code class="docutils literal notranslate"><span class="pre">Demo</span></code>是要模擬執行另外一個程式。因此首先要利用前面Lab提供的<code class="docutils literal notranslate"><span class="pre">initramfs</span></code>來讓這個程式被載入記憶體。這個程式會使用到一個會切換<code class="docutils literal notranslate"><span class="pre">EL</span></code>的指令<a class="reference external" href="https://developer.arm.com/documentation/dui0473/m/arm-and-thumb-instructions/svc">SVC</a>。這個指令其中一個常見的作法是用來產生<code class="docutils literal notranslate"><span class="pre">system</span> <span class="pre">call</span></code>。該指令會主動產生<code class="docutils literal notranslate"><span class="pre">Exception</span></code>，並且將EL從<code class="docutils literal notranslate"><span class="pre">EL0</span></code>切換到<code class="docutils literal notranslate"><span class="pre">EL1</span></code>。因此在執行這個程式之前需要先將EL切換到<code class="docutils literal notranslate"><span class="pre">EL0</span></code>。相關的程式碼要參考<code class="docutils literal notranslate"><span class="pre">shell.c</span></code>裡面的<code class="docutils literal notranslate"><span class="pre">command_exec</span></code>以及<code class="docutils literal notranslate"><span class="pre">exception.c</span></code>的<code class="docutils literal notranslate"><span class="pre">handler_sync_lower_aarch64_el1</span></code>。</p>
+</section>
+</section>
+<section id="basic-exercise-2-interrupt">
+<h3>Basic Exercise 2 - Interrupt<a class="headerlink" href="#basic-exercise-2-interrupt" title="Permalink to this heading">#</a></h3>
+<p>這個部份因為很難與後面的部份切割，所以集中到<a class="reference external" href="https://gama79530.github.io/Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling">Advanced Exercise 2</a>解釋。</p>
+</section>
+<section id="basic-exercise-3-rpi3s-peripheral-interrupt">
+<h3>Basic Exercise 3 - Rpi3’s Peripheral Interrupt<a class="headerlink" href="#basic-exercise-3-rpi3s-peripheral-interrupt" title="Permalink to this heading">#</a></h3>
+<p>這個部份因為很難與後面的部份切割，所以集中到<a class="reference external" href="https://gama79530.github.io/Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling">Advanced Exercise 2</a>解釋。</p>
+</section>
+<section id="advanced-exercise-1-timer-multiplexing">
+<h3>Advanced Exercise 1 - Timer Multiplexing<a class="headerlink" href="#advanced-exercise-1-timer-multiplexing" title="Permalink to this heading">#</a></h3>
+<p>這個部份因為很難與後面的部份切割，所以集中到<a class="reference external" href="https://gama79530.github.io/Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling">Advanced Exercise 2</a>解釋。</p>
+</section>
+<section id="advanced-exercise-2-concurrent-i-o-devices-handling">
+<h3>Advanced Exercise 2 - Concurrent I/O Devices Handling<a class="headerlink" href="#advanced-exercise-2-concurrent-i-o-devices-handling" title="Permalink to this heading">#</a></h3>
+<section id="interrupt">
+<h4>Interrupt<a class="headerlink" href="#interrupt" title="Permalink to this heading">#</a></h4>
+<p>關於<code class="docutils literal notranslate"><span class="pre">interrupt</span></code>的處理首先需要知道的是<code class="docutils literal notranslate"><span class="pre">來源</span></code>。不同的<code class="docutils literal notranslate"><span class="pre">exception</span></code>種類會有不同的方式去辨別exception的來源。可以直接參考<code class="docutils literal notranslate"><span class="pre">exception.c</span></code>裡面的程式。</p>
+<p>對於<code class="docutils literal notranslate"><span class="pre">exception</span></code>的處理我採取的作法是建立一個<code class="docutils literal notranslate"><span class="pre">task</span> <span class="pre">queue</span></code>。當接受到一個exception時會依照下面的流程去處理</p>
+<ol class="arabic simple">
+<li><p>根據exception來源建立一個對應的<code class="docutils literal notranslate"><span class="pre">task</span></code></p></li>
+<li><p>試著執行這個<code class="docutils literal notranslate"><span class="pre">task</span></code></p></li>
+</ol>
+<p>之所以會拆開成這兩個步驟的原因是因為要實現<code class="docutils literal notranslate"><span class="pre">nested</span> <span class="pre">interrupt</span></code>。在建立<code class="docutils literal notranslate"><span class="pre">task</span></code>以及操作<code class="docutils literal notranslate"><span class="pre">task</span> <span class="pre">queue</span></code>的過程中會把<code class="docutils literal notranslate"><span class="pre">DAIF</span></code>給<code class="docutils literal notranslate"><span class="pre">masked</span></code>。而執行<code class="docutils literal notranslate"><span class="pre">task</span></code>的過程中必須把<code class="docutils literal notranslate"><span class="pre">DAIF</span></code>給<code class="docutils literal notranslate"><span class="pre">unmasked</span></code>。</p>
+</section>
+<section id="timer">
+<h4>Timer<a class="headerlink" href="#timer" title="Permalink to this heading">#</a></h4>
+<p>Rpi3提供的<code class="docutils literal notranslate"><span class="pre">timer</span></code>實際上就是個<code class="docutils literal notranslate"><span class="pre">倒數計時器</span></code>。這個部份的設計要分成兩部份</p>
+<ol class="arabic simple">
+<li><p>如何操作定時器</p></li>
+<li><p>如何處理同時有多個定時器</p></li>
+</ol>
+<p>關於第1個部份的程式碼可以參考<code class="docutils literal notranslate"><span class="pre">timer.c</span></code>裡面的<code class="docutils literal notranslate"><span class="pre">core_timer_enable</span></code>以及<code class="docutils literal notranslate"><span class="pre">set_period</span></code>。而第二個部份則是設計了一個<code class="docutils literal notranslate"><span class="pre">event</span> <span class="pre">queue</span></code>，這個queue的排序是依照event的<code class="docutils literal notranslate"><span class="pre">expired</span> <span class="pre">time</span></code>來排序。當要建立一個timer的時候實際上是在event queue裡面新增一個event。而當timer的<code class="docutils literal notranslate"><span class="pre">interrupt</span></code>發生時會先依照前面講的建立一個對應的<code class="docutils literal notranslate"><span class="pre">task</span></code>。這個task會再接著去處理event queue。把expired time最早的event處理掉。相關的程式碼主要是在<code class="docutils literal notranslate"><span class="pre">timer.h</span></code>與<code class="docutils literal notranslate"><span class="pre">timer.c</span></code>。</p>
+</section>
+<section id="async-io">
+<h4>Async IO<a class="headerlink" href="#async-io" title="Permalink to this heading">#</a></h4>
+<p>要實現<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">io</span></code>的方式是使用<code class="docutils literal notranslate"><span class="pre">read</span> <span class="pre">buffer</span></code>與<code class="docutils literal notranslate"><span class="pre">write</span> <span class="pre">buffer</span></code>。主要的程式碼在<code class="docutils literal notranslate"><span class="pre">mini_uart.h</span></code>, <code class="docutils literal notranslate"><span class="pre">mini_uart.c</span></code>以及<code class="docutils literal notranslate"><span class="pre">exception.c</span></code>。</p>
+<p>對於<code class="docutils literal notranslate"><span class="pre">write</span></code>的時候就先將要寫入的字元寫入write buffer。接著在觸發一個interrupt，而對這個interrupt的處理則是主動去把write buffer裡面的字元撈出來並用mini uart寫出去。</p>
+<p>對於<code class="docutils literal notranslate"><span class="pre">read</span></code>的話則是要反過來看。當interrupt發生的時候就先將字元寫入read buffer。而當我們需要read的時候就去buffer裡面把沒被讀出的字元讀出來。如果沒有字元就是一直等到有interrupt發生把字元寫到buffer後再把它讀出來。</p>
+</section>
+</section>
+</section>
+<section id="id2">
+<h2>參考 &amp; 補充資料<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://developer.arm.com/documentation/ddi0487/aa/?lang=en">ARM Architecture Reference Manual ARMv8, for ARMv8-A architecture profile</a></p></li>
+<li><p><a class="reference external" href="https://developer.arm.com/documentation/ddi0595/2021-06/AArch64-Registers/DAIF--Interrupt-Mask-Bits">DAIF, Interrupt Mask Bits</a></p></li>
+<li><p><a class="reference external" href="http://www.wowotech.net/armv8a_arch/238.html">ARM64的启动过程之（六）：异常向量表的设定</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/heshuangzong/article/details/127695422">基础篇(二).ARMv8寄存器（2）</a></p></li>
+<li><p><a class="reference external" href="https://wzhchen.github.io/uboot/uboot%E4%B8%8B%E5%BC%80%E5%90%AFARMv8%E7%9A%84%E5%AE%9A%E6%97%B6%E5%99%A8%E4%B8%AD%E6%96%AD/">uboot下开启ARMv8的定时器中断</a></p></li>
+</ol>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Lab2/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 2: Booting</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Lab4/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 4: Allocator</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">搭配材料</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">Lab 內容</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-1-exception">Basic Exercise 1 - Exception</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-level-el">如何切換 Exception Level (EL)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exception">如何處理 Exception</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-2-interrupt">Basic Exercise 2 - Interrupt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-3-rpi3s-peripheral-interrupt">Basic Exercise 3 - Rpi3’s Peripheral Interrupt</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-1-timer-multiplexing">Advanced Exercise 1 - Timer Multiplexing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-2-concurrent-i-o-devices-handling">Advanced Exercise 2 - Concurrent I/O Devices Handling</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#interrupt">Interrupt</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#timer">Timer</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#async-io">Async IO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">參考 &amp; 補充資料</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rein Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Rein Wu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

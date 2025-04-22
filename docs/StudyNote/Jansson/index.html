@@ -1,0 +1,786 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Jansson (a C library for JSON data) 使用教學 &#8212; Rein&#39;s Homepage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'StudyNote/Jansson/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Ubuntu 22.04 工具安裝" href="../InstallUbuntu_22_04/index.html" />
+    <link rel="prev" title="(C/C++) 如何在Linux上編譯與使用 static /shared library" href="../LinkLoadDemo/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Rein's Homepage</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Homepage/index.html">How To Build Personal Website with GitHub Pages</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Homepage/foundation.html">Building Foundation of Homepage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homepage/skeleton.html">Building Skeleton of Homepage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homepage/note.html">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Jansson (a C library for JSON data) 使用教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../InstallUbuntu_22_04/index.html">Ubuntu 22.04 工具安裝</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../LearningGit/index.html">Git 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LearningGit/git_faq.html">Git FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Course/LinuxKernelInternals/index.html">成大jserv Linux 核心設計/實作 (Linux Kernel Internals)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../Course/LinuxKernelInternals/week1/week1.html">Week 1</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Course/LinuxKernelInternals/week1/test1.html">題目 1 + 分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Course/LinuxKernelInternals/week1/test2.html">題目2 / 參考題解1, 參考題解2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Course/LinuxKernelInternals/week1/test3.html">題目3 / 參考題解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Course/LinuxKernelInternals/week1/test4.html">題目4 / 參考題解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../Course/LinuxKernelInternals/week1/test5.html">題目5 / 參考題解</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Course/OperatingSystemCapstone/index.html">交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Course/OperatingSystemCapstone/Lab0/index.html">Lab 0: Environment Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course/OperatingSystemCapstone/Lab1/index.html">Lab 1: Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course/OperatingSystemCapstone/Lab2/index.html">Lab 2: Booting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course/OperatingSystemCapstone/Lab3/index.html">Lab 3: Exception and Interrupt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Course/OperatingSystemCapstone/Lab4/index.html">Lab 4: Allocator</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/StudyNote/Jansson/index.md?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/StudyNote/Jansson/index.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2FStudyNote/Jansson/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/StudyNote/Jansson/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Jansson (a C library for JSON data) 使用教學</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">使用教學</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">基本觀念 &amp; 操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#type-system">Type system</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-count">Reference Count</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#thread-safty">Thread-safty</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#steal-function">Steal function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-parsing">Object Parsing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flag">Flag</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding">Encoding</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding">Decoding</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#error-reporting">Error reporting</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding-function">Decoding function</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding-by-format-string">Decoding by format string</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equality">Equality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copying">Copying</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="jansson-a-c-library-for-json-data">
+<h1>Jansson (a C library for JSON data) 使用教學<a class="headerlink" href="#jansson-a-c-library-for-json-data" title="Permalink to this heading">#</a></h1>
+<section id="prerequisite">
+<h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>了解什麼是JSON，可參考<a class="reference external" href="https://www.json.org/json-en.html">連結</a></p></li>
+<li><p>從官方的<a class="reference external" href="https://github.com/akheron/jansson/releases">github repository</a>下載原始檔案。</p></li>
+</ol>
+<div class="dropdown admonition tip">
+<p class="admonition-title">Tip</p>
+<p>我個人是使用<a class="reference external" href="https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.bz2">v2.14</a></p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>參考官方的<a class="reference external" href="https://jansson.readthedocs.io/en/latest/gettingstarted.html#compiling-and-installing-jansson">安裝方式</a></p></li>
+</ol>
+<div class="dropdown admonition tip">
+<p class="admonition-title">Tip</p>
+<p>我個人是使用Ubuntu 22.04做為開發環境，依照我的使用經驗來說使用CMake安裝比較不會出問題,至於要要不要使用shared library可以按個人喜好決定。</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">file</span></code> 裡面include <code class="docutils literal notranslate"><span class="pre">&lt;jansson.h&gt;</span></code> 即可使用</p></li>
+<li><p>編譯時要記得加上 <code class="docutils literal notranslate"><span class="pre">-ljansson</span></code> 來link library</p></li>
+</ol>
+<div class="dropdown admonition tip">
+<p class="admonition-title">Tip</p>
+<p>建議還是要理解編譯時如何link第3方的library，若不清楚的話可以參考<a class="reference external" href="https://gama79530.github.io/StudyNote/LinkLoadDemo/index.html#">連結</a></p>
+</div>
+</section>
+<section id="id1">
+<h2>使用教學<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>接下來的內容都可以從官網的<a class="reference external" href="https://jansson.readthedocs.io/en/latest/apiref.html#api-reference">API Reference</a>找到，主要是希望按照個人認為的重要順序去重新編排順序，並且將內容濃縮。</p>
+<section id="id2">
+<h3>基本觀念 &amp; 操作<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="type-system">
+<h4>Type system<a class="headerlink" href="#type-system" title="Permalink to this heading">#</a></h4>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Data type</p></th>
+<th class="head text-center"><p>json type</p></th>
+<th class="head text-center"><p>c type</p></th>
+<th class="head text-left"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">json_true</span></code></p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-left"><p>singleton</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">json_false</span></code></p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-left"><p>singleton</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">null</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">json_null</span></code></p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-left"><p>singleton</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">json_string</span></code></p></td>
+<td class="text-center"><p>char*</p></td>
+<td class="text-left"><p>JSON strings are mapped to C-style null-terminated character arrays, and UTF-8 encoding is used internally.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">integer</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">json_integer</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">json_int_t</span></code></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">json_int_t</span></code> represents the widest integer type available on your system.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">real</span> <span class="pre">number</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">json_real</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">double</span></code></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">json_array</span></code></p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">map</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">json_object</span></code></p></td>
+<td class="text-center"><p>X</p></td>
+<td class="text-left"><p>The key is a Unicode string and the value is any JSON value.</p></td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>所有種類的json object都使用 <code class="docutils literal notranslate"><span class="pre">json_t</span></code> 作為在c語言程式裡的type</p></li>
+<li><p>所有關於json object的操作都必須透過 <code class="docutils literal notranslate"><span class="pre">pointer</span></code> 來間接操作。</p></li>
+<li><p>可以使用function <code class="docutils literal notranslate"><span class="pre">json_is_XXX(json_t*)</span></code> 來檢查 <code class="docutils literal notranslate"><span class="pre">json_t</span></code> 實際到底是不是某種type。<br />
+例如：檢查是否為integer可以使用function <code class="docutils literal notranslate"><span class="pre">json_is_integer(ptr)</span></code></p></li>
+<li><p>最簡單的產生物件方式之一是直接使用function <code class="docutils literal notranslate"><span class="pre">json_XXX(value)</span></code>去產生<br />
+例如：使用 <code class="docutils literal notranslate"><span class="pre">json_real(1.0)</span></code> 產生一個內容值為1.0的 <code class="docutils literal notranslate"><span class="pre">real</span></code> 物件</p></li>
+<li><p>除了 <code class="docutils literal notranslate"><span class="pre">singleton</span></code> 的3種type之外的非 <code class="docutils literal notranslate"><span class="pre">container</span></code> type都可以使用 <code class="docutils literal notranslate"><span class="pre">json_XXX_set(ptr,</span> <span class="pre">value)</span> <span class="pre">/</span> <span class="pre">json_XXX_value(ptr)</span></code>分別去 <code class="docutils literal notranslate"><span class="pre">更改</span> <span class="pre">/</span> <span class="pre">取得</span></code> json object的值<br />
+例如：使用 <code class="docutils literal notranslate"><span class="pre">json_real_set(ptr,</span> <span class="pre">3.0)</span> <span class="pre">/</span> <span class="pre">double</span> <span class="pre">d</span> <span class="pre">=</span> <span class="pre">json_real_value(ptr)</span></code>去 <code class="docutils literal notranslate"><span class="pre">更改</span> <span class="pre">/</span> <span class="pre">取得</span></code> ptr 的值</p></li>
+</ol>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>用 <code class="docutils literal notranslate"><span class="pre">json_string_value</span></code> 取出來的值是 <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char</span> <span class="pre">*</span></code> 且不能自己去執行 <code class="docutils literal notranslate"><span class="pre">free</span></code> ，必須交由library管理</p>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>所有對 <code class="docutils literal notranslate"><span class="pre">array</span></code> 的操作都是 <code class="docutils literal notranslate"><span class="pre">json_array_XXX</span></code> 。XXX為常見的對array的動作，例如： <code class="docutils literal notranslate"><span class="pre">size</span></code> 、<code class="docutils literal notranslate"><span class="pre">set</span></code> 、<code class="docutils literal notranslate"><span class="pre">get</span></code> 、<code class="docutils literal notranslate"><span class="pre">insert</span></code> 、<code class="docutils literal notranslate"><span class="pre">append</span></code> 、<code class="docutils literal notranslate"><span class="pre">del</span></code> 、<code class="docutils literal notranslate"><span class="pre">clear</span></code> 等等。</p></li>
+<li><p>所有對 <code class="docutils literal notranslate"><span class="pre">map</span></code> 的操作都是 <code class="docutils literal notranslate"><span class="pre">json_object_XXX</span></code>。XXX為常見的對map的動作，例如： <code class="docutils literal notranslate"><span class="pre">size</span></code> 、<code class="docutils literal notranslate"><span class="pre">set</span></code> 、<code class="docutils literal notranslate"><span class="pre">get</span></code> 、<code class="docutils literal notranslate"><span class="pre">update</span></code> 、<code class="docutils literal notranslate"><span class="pre">append</span></code> 、<code class="docutils literal notranslate"><span class="pre">del</span></code> 、<code class="docutils literal notranslate"><span class="pre">clear</span></code> 等等。</p></li>
+<li><p>針對 <code class="docutils literal notranslate"><span class="pre">array</span></code> 與 <code class="docutils literal notranslate"><span class="pre">map</span></code>，library有提供 macro <code class="docutils literal notranslate"><span class="pre">json_XXX_foreach(ptr,</span> <span class="pre">...)</span></code> 來執行loop</p></li>
+</ol>
+</section>
+<section id="reference-count">
+<h4>Reference Count<a class="headerlink" href="#reference-count" title="Permalink to this heading">#</a></h4>
+<p><strong>jansson</strong>會半自動管理<strong>json object</strong>的記憶體使用，其管理方式為對於<strong>json object</strong> 增加一個 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> 來做管理。 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> 在<strong>json object</strong>被配置記憶體時會被設定為 <code class="docutils literal notranslate"><span class="pre">1</span></code> 。一旦<strong>json object</strong>的 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> 變成 <code class="docutils literal notranslate"><span class="pre">0</span></code> 的瞬間，該<strong>json object</strong>所佔用的記憶體空間會被釋放。Programmer必須自己管理 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> 。</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>若 <code class="docutils literal notranslate"><span class="pre">container</span></code> 的 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> <strong>歸零</strong>的時候，其所有 <code class="docutils literal notranslate"><span class="pre">content</span></code> 的 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> 也會被減 <code class="docutils literal notranslate"><span class="pre">1</span></code> 。若 <code class="docutils literal notranslate"><span class="pre">content</span></code> 的 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> 因此 <strong>歸零</strong>的話則該物件也會消失。這個過程可以連鎖反應。</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">refcount</span></code> 只有2種狀況會受影響</p>
+<ol class="arabic simple">
+<li><p>使用非 <code class="docutils literal notranslate"><span class="pre">steal</span></code> 版本的function將 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> 裝入其它<code class="docutils literal notranslate"><span class="pre">array</span></code>或<code class="docutils literal notranslate"><span class="pre">map</span></code>時</p></li>
+<li><p>使用<code class="docutils literal notranslate"><span class="pre">json_t</span> <span class="pre">*json_incref(json_t</span> <span class="pre">*json)</span></code>或者<code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">json_decref(json_t</span> <span class="pre">*json)</span></code>直接操作。</p></li>
+</ol>
+<section id="thread-safty">
+<h5>Thread-safty<a class="headerlink" href="#thread-safty" title="Permalink to this heading">#</a></h5>
+<p><strong>jansson library</strong>不保證 <code class="docutils literal notranslate"><span class="pre">object</span> <span class="pre">content</span></code> 是thread-safe。但只要compiler支援便會保證 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> 是thread-safe的。可以通過<strong>preprocessor constant</strong> <code class="docutils literal notranslate"><span class="pre">JANSSON_THREAD_SAFE_REFCOUNT</span></code> 是否有定義去檢查。</p>
+</section>
+<section id="steal-function">
+<h5>Steal function<a class="headerlink" href="#steal-function" title="Permalink to this heading">#</a></h5>
+<p>用來增加 <code class="docutils literal notranslate"><span class="pre">container</span></code> 內容的function多數都有對應的 <code class="docutils literal notranslate"><span class="pre">steal</span> <span class="pre">function</span></code> ，其名稱為 <code class="docutils literal notranslate"><span class="pre">json_XXX_XXX_new()</span></code>。<code class="docutils literal notranslate"><span class="pre">Steal</span> <span class="pre">function</span></code> 的作用與其對應的普通function一樣，唯一的差別是不會去增加 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> 。</p>
+<p><strong>jansson</strong>會提供<strong>steal function</strong>是因為下面這個關於 <code class="docutils literal notranslate"><span class="pre">container</span></code> 的使用場景非常常見</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="p">...</span>
+<span class="linenos"> 3</span><span class="w">   </span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="n">json_t</span><span class="w"> </span><span class="o">*</span><span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json_array</span><span class="p">();</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="n">json_t</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json_integer</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="n">json_array_append</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">   </span><span class="n">json_decref</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+<span class="linenos"> 8</span><span class="w">   </span>
+<span class="linenos"> 9</span><span class="w">   </span><span class="p">...</span>
+<span class="linenos">10</span><span class="w">   </span>
+<span class="linenos">11</span><span class="w">   </span><span class="k">return</span><span class="p">;</span>
+<span class="linenos">12</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>在這個使用場景之下， <code class="docutils literal notranslate"><span class="pre">i</span></code> 這個pointer只是單純用來新增一個物件，之後要將這個物件統一由 <code class="docutils literal notranslate"><span class="pre">conainer</span></code> 管理，但因為 <code class="docutils literal notranslate"><span class="pre">json_array_append</span></code> 會增加 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> 所以在這個使用場景之下必須使用 <code class="docutils literal notranslate"><span class="pre">json_decref</span></code> 去主動管理 <code class="docutils literal notranslate"><span class="pre">refcount</span></code> 。通過steal function的提供，上面的範例可以更改成</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="p">{</span>
+<span class="linenos"> 2</span><span class="w">   </span><span class="p">...</span>
+<span class="linenos"> 3</span><span class="w">   </span>
+<span class="linenos"> 4</span><span class="w">   </span><span class="n">json_t</span><span class="w"> </span><span class="o">*</span><span class="n">arr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json_array</span><span class="p">();</span>
+<span class="linenos"> 5</span><span class="w">   </span><span class="n">json_t</span><span class="w"> </span><span class="o">*</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">json_integer</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="linenos"> 6</span><span class="w">   </span><span class="n">json_array_append_new</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="w">   </span>
+<span class="linenos"> 8</span><span class="w">   </span><span class="p">...</span>
+<span class="linenos"> 9</span><span class="w">   </span>
+<span class="linenos">10</span><span class="w">   </span><span class="k">return</span><span class="p">;</span>
+<span class="linenos">11</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="object-parsing">
+<h3>Object Parsing<a class="headerlink" href="#object-parsing" title="Permalink to this heading">#</a></h3>
+<p><strong>json</strong>的本質就是一個 <code class="docutils literal notranslate"><span class="pre">notation</span></code>，因此 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> 可以與 <code class="docutils literal notranslate"><span class="pre">string</span></code> 之間天生就可以互相轉換。 將 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> 轉換成 <code class="docutils literal notranslate"><span class="pre">string</span></code> 的過程稱之為 <code class="docutils literal notranslate"><span class="pre">Encoding</span></code> ，而反過來將 <code class="docutils literal notranslate"><span class="pre">string</span></code> 轉換成 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> 的過程稱之為 <code class="docutils literal notranslate"><span class="pre">Decoding</span></code> 。</p>
+<section id="flag">
+<h4>Flag<a class="headerlink" href="#flag" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Encoding</span></code> 與 <code class="docutils literal notranslate"><span class="pre">Decoding</span></code> 都有一些關於 <code class="docutils literal notranslate"><span class="pre">string</span> <span class="pre">format</span></code>的 <code class="docutils literal notranslate"><span class="pre">flag</span></code> 可以去控制 <code class="docutils literal notranslate"><span class="pre">Encoding</span></code> 與 <code class="docutils literal notranslate"><span class="pre">Decoding</span></code> 之間的轉換。 <code class="docutils literal notranslate"><span class="pre">flag</span></code> 的預設值為 <code class="docutils literal notranslate"><span class="pre">0</span></code> 。 比較常用的 <code class="docutils literal notranslate"><span class="pre">flag</span></code> 為 <code class="docutils literal notranslate"><span class="pre">Encoding</span></code> 的 <code class="docutils literal notranslate"><span class="pre">JSON_INDENT(n)</span></code>。 其他的 <code class="docutils literal notranslate"><span class="pre">flag</span></code> 可以參考官方<a class="reference external" href="https://jansson.readthedocs.io/en/latest/apiref.html#encoding">Encoding</a>以及<a class="reference external" href="https://jansson.readthedocs.io/en/latest/apiref.html#decoding">Decoding</a>的API文件。</p>
+</section>
+<section id="encoding">
+<h4>Encoding<a class="headerlink" href="#encoding" title="Permalink to this heading">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Encoding</span></code> 提供的function主要的差異是輸出的載體做區分。</p>
+<ol class="arabic simple">
+<li><p>輸出 <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*</span> <span class="pre">字串</span></code> 的 <code class="docutils literal notranslate"><span class="pre">json_dumps</span></code> (字串要自行 <code class="docutils literal notranslate"><span class="pre">free</span></code> )</p></li>
+<li><p>輸出到 <code class="docutils literal notranslate"><span class="pre">buffer</span></code> 的 <code class="docutils literal notranslate"><span class="pre">json_dumpb</span></code></p></li>
+<li><p>輸出到 <code class="docutils literal notranslate"><span class="pre">file</span></code> 的 <code class="docutils literal notranslate"><span class="pre">json_dumpf</span></code></p></li>
+<li><p>輸出到 <code class="docutils literal notranslate"><span class="pre">stream</span> <span class="pre">output</span></code> 的 <code class="docutils literal notranslate"><span class="pre">json_dumpfd</span></code></p></li>
+<li><p>輸出到 <code class="docutils literal notranslate"><span class="pre">指定路徑</span></code> 的 <code class="docutils literal notranslate"><span class="pre">json_dump_file</span></code></p></li>
+</ol>
+</section>
+<section id="decoding">
+<h4>Decoding<a class="headerlink" href="#decoding" title="Permalink to this heading">#</a></h4>
+<section id="error-reporting">
+<h5>Error reporting<a class="headerlink" href="#error-reporting" title="Permalink to this heading">#</a></h5>
+<p>有很多原因可能會造成<strong>jansson</strong>發生錯誤，但最常見的原因是 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">string</span></code> 的格式不正確。<strong>jansson</strong> 處理 <code class="docutils literal notranslate"><span class="pre">error</span></code> 的方式是將所有與 <code class="docutils literal notranslate"><span class="pre">error</span></code> 相關的資訊都封裝在一個 <code class="docutils literal notranslate"><span class="pre">json_error_t</span></code> 變數裡。 若在 <code class="docutils literal notranslate"><span class="pre">Decoding</span></code> 時有把 <code class="docutils literal notranslate"><span class="pre">json_error_t</span></code> 的 <code class="docutils literal notranslate"><span class="pre">address</span></code> 作為參數傳入，則當發生錯誤時對應的錯誤資訊都會被自動紀錄到該變數。接著再針對錯誤做後續處理即可。若不想處理錯誤訊息的話提供 <code class="docutils literal notranslate"><span class="pre">NULL</span></code> 即可。 <code class="docutils literal notranslate"><span class="pre">json_error_t</span></code> 的詳細內容可以參考官網的<a class="reference external" href="https://jansson.readthedocs.io/en/latest/apiref.html#error-reporting">API 文件</a>。</p>
+</section>
+<section id="decoding-function">
+<h5>Decoding function<a class="headerlink" href="#decoding-function" title="Permalink to this heading">#</a></h5>
+<p><code class="docutils literal notranslate"><span class="pre">Decoding</span></code> 提供的function與 <code class="docutils literal notranslate"><span class="pre">Encoding</span></code> 有對應關係。</p>
+<ol class="arabic simple">
+<li><p>輸入 <code class="docutils literal notranslate"><span class="pre">char</span> <span class="pre">*</span> <span class="pre">字串</span></code> 的 <code class="docutils literal notranslate"><span class="pre">json_loads</span></code></p></li>
+<li><p>從 <code class="docutils literal notranslate"><span class="pre">buffer</span></code> 輸入的 <code class="docutils literal notranslate"><span class="pre">json_loadb</span></code></p></li>
+<li><p>從 <code class="docutils literal notranslate"><span class="pre">file</span></code> 輸入的 <code class="docutils literal notranslate"><span class="pre">json_loadf</span></code></p></li>
+<li><p>從 <code class="docutils literal notranslate"><span class="pre">stream</span> <span class="pre">input</span></code> 輸入的 <code class="docutils literal notranslate"><span class="pre">json_loadfd</span></code></p></li>
+<li><p>從 <code class="docutils literal notranslate"><span class="pre">指定路徑</span></code> 的檔案輸入的 <code class="docutils literal notranslate"><span class="pre">json_load_file</span></code></p></li>
+</ol>
+</section>
+<section id="decoding-by-format-string">
+<h5>Decoding by format string<a class="headerlink" href="#decoding-by-format-string" title="Permalink to this heading">#</a></h5>
+<p><strong>jansson</strong>提供了3個通過 <code class="docutils literal notranslate"><span class="pre">formatted</span> <span class="pre">string</span></code> 來做 <code class="docutils literal notranslate"><span class="pre">Decoding</span></code> 的function。 分別是 <code class="docutils literal notranslate"><span class="pre">json_pack</span></code> 、 <code class="docutils literal notranslate"><span class="pre">json_pack_ex</span></code> 、 <code class="docutils literal notranslate"><span class="pre">json_vpack_ex</span></code> 。這3個function的主要功能有點類似 <code class="docutils literal notranslate"><span class="pre">printf</span></code> 的使用方式。提供含有 <code class="docutils literal notranslate"><span class="pre">format</span> <span class="pre">specifier</span></code> 的<strong>string</strong>以及對應的值作為參數即可得到完整的 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> (若<code class="docutils literal notranslate"><span class="pre">formatted</span> <span class="pre">string</span></code>代表的是有內容的 <code class="docutils literal notranslate"><span class="pre">container</span></code> 的話會連內容都一併配置好)。 而他們之間的差異主要是在於 <code class="docutils literal notranslate"><span class="pre">Decoding</span> <span class="pre">細節控制</span></code> 、 <code class="docutils literal notranslate"><span class="pre">error</span> <span class="pre">處理</span></code> 、 <code class="docutils literal notranslate"><span class="pre">呼叫方式</span></code> 等方面。 關於<strong>細節</strong>以及 <code class="docutils literal notranslate"><span class="pre">format</span> <span class="pre">specifier</span></code> 可以參考官網<a class="reference external" href="https://jansson.readthedocs.io/en/latest/apiref.html#building-values">API 文件</a>。</p>
+</section>
+</section>
+</section>
+<section id="equality">
+<h3>Equality<a class="headerlink" href="#equality" title="Permalink to this heading">#</a></h3>
+<p>要比較兩個 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> 要使用 <code class="docutils literal notranslate"><span class="pre">json_equal</span></code> 這個function。 若是 <code class="docutils literal notranslate"><span class="pre">container</span></code> 類型的 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> ，則要所有內容都相等才會得到 <code class="docutils literal notranslate"><span class="pre">true</span></code> 。其他類型的 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> 則是很單純的先比對 <code class="docutils literal notranslate"><span class="pre">type</span></code> 後比對 <code class="docutils literal notranslate"><span class="pre">value</span></code> 。</p>
+</section>
+<section id="copying">
+<h3>Copying<a class="headerlink" href="#copying" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">copy</span> <span class="pre">function</span></code> 主要的功能是複製一個擁有相同的 <code class="docutils literal notranslate"><span class="pre">value</span></code> 的 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> 。但複製出來的 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> 會有自己全新的 <code class="docutils literal notranslate"><span class="pre">refCount</span></code> 。</p>
+<p><strong>jansson</strong>提供了兩個 <code class="docutils literal notranslate"><span class="pre">copy</span> <span class="pre">function</span></code> : <code class="docutils literal notranslate"><span class="pre">json_copy</span></code> 與 <code class="docutils literal notranslate"><span class="pre">json_deep_copy</span></code> 。 這兩個function的差別在於若複製的 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> 是 <code class="docutils literal notranslate"><span class="pre">container</span></code> 的話內容物是否要另外複製。若是使用在普通的 <code class="docutils literal notranslate"><span class="pre">json</span> <span class="pre">object</span></code> 上其作用沒有差異。</p>
+</section>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.json.org/json-en.html">Introducing JSON</a></p></li>
+<li><p><a class="reference external" href="https://jansson.readthedocs.io/en/latest/index.html">Jansson Documentation</a></p></li>
+</ol>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../LinkLoadDemo/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">(C/C++) 如何在Linux上編譯與使用 static /shared library</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../InstallUbuntu_22_04/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ubuntu 22.04 工具安裝</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">使用教學</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">基本觀念 &amp; 操作</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#type-system">Type system</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-count">Reference Count</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#thread-safty">Thread-safty</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#steal-function">Steal function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#object-parsing">Object Parsing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#flag">Flag</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding">Encoding</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding">Decoding</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#error-reporting">Error reporting</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding-function">Decoding function</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#decoding-by-format-string">Decoding by format string</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equality">Equality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copying">Copying</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rein Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Rein Wu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

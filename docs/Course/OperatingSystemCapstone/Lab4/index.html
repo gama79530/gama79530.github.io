@@ -1,0 +1,607 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Lab 4: Allocator &#8212; Rein&#39;s Homepage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Course/OperatingSystemCapstone/Lab4/index';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="Lab 3: Exception and Interrupt" href="../Lab3/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Rein's Homepage</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/Homepage/index.html">How To Build Personal Website with GitHub Pages</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/foundation.html">Building Foundation of Homepage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/skeleton.html">Building Skeleton of Homepage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/note.html">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/Jansson/index.html">Jansson (a C library for JSON data) 使用教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/InstallUbuntu_22_04/index.html">Ubuntu 22.04 工具安裝</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/LearningGit/index.html">Git 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/git_faq.html">Git FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../LinuxKernelInternals/index.html">成大jserv Linux 核心設計/實作 (Linux Kernel Internals)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../LinuxKernelInternals/week1/week1.html">Week 1</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../LinuxKernelInternals/week1/test1.html">題目 1 + 分析</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../LinuxKernelInternals/week1/test2.html">題目2 / 參考題解1, 參考題解2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../LinuxKernelInternals/week1/test3.html">題目3 / 參考題解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../LinuxKernelInternals/week1/test4.html">題目4 / 參考題解</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../LinuxKernelInternals/week1/test5.html">題目5 / 參考題解</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Lab0/index.html">Lab 0: Environment Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Lab1/index.html">Lab 1: Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Lab2/index.html">Lab 2: Booting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Lab3/index.html">Lab 3: Exception and Interrupt</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lab 4: Allocator</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/Course/OperatingSystemCapstone/Lab4/index.md?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/Course/OperatingSystemCapstone/Lab4/index.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2FCourse/OperatingSystemCapstone/Lab4/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/Course/OperatingSystemCapstone/Lab4/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 4: Allocator</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">搭配材料</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">Lab 內容</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-1-buddy-system">Basic Exercise 1 - Buddy System</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#find-buddy-frame-index">Find buddy frame index</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#buddy-group">buddy group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array">array</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-2-dynamic-memory-allocator">Basic Exercise 2 - Dynamic Memory Allocator</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunk-size">chunk size</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunk-pools">chunk pools</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-1-efficient-page-allocation">Advanced Exercise 1 - Efficient Page Allocation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-2-reserved-memory">Advanced Exercise 2 - Reserved Memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-3-startup-allocation">Advanced Exercise 3 - Startup Allocation</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-4-allocator">
+<h1>Lab 4: Allocator<a class="headerlink" href="#lab-4-allocator" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>搭配材料<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab4.html">Specification</a></p></li>
+<li><p><a class="reference external" href="https://github.com/gama79530/NYCU_2024_Operating_System_Capstone/tree/main/Lab4">Code</a></p></li>
+</ol>
+</section>
+<section id="lab">
+<h2>Lab 內容<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
+<p>這個Lab主要的工作是要建立一個記憶體空間的管理系統。在管理記憶體空間的時候，首先是先將整個空間依照一個比較大的大小去切割成很多的<code class="docutils literal notranslate"><span class="pre">frame</span></code>。但實際上的分配並不會只能以frame為單位去分配，所以還會有一個基於frame管理系統之上的memory管理系統。</p>
+<section id="basic-exercise-1-buddy-system">
+<h3>Basic Exercise 1 - Buddy System<a class="headerlink" href="#basic-exercise-1-buddy-system" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Buddy</span> <span class="pre">system</span></code>是個適合用來用來管理大容量記憶體的方法。演算法在<a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab4.html#basic-exercise-1-buddy-system-40">Spec</a>上面都有講解。這裡只挑幾個細協補充說明。詳細的程式碼可以參考<code class="docutils literal notranslate"><span class="pre">frame.h</span></code>以及<code class="docutils literal notranslate"><span class="pre">frame.c</span></code>。</p>
+<section id="find-buddy-frame-index">
+<h4>Find buddy frame index<a class="headerlink" href="#find-buddy-frame-index" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>可以使用歸納法簡單的證明若<code class="docutils literal notranslate"><span class="pre">frame</span> <span class="pre">i</span></code>的<code class="docutils literal notranslate"><span class="pre">order=x</span></code>，則<code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">%</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">x)</span> <span class="pre">==</span> <span class="pre">0</span></code></p></li>
+<li><p>接著可以利用這個性質證明在這個情況下可以再組成下一個buddy group的index是 <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">^</span> <span class="pre">(1</span> <span class="pre">&lt;&lt;</span> <span class="pre">x)</span></code></p></li>
+</ol>
+</section>
+<section id="buddy-group">
+<h4>buddy group<a class="headerlink" href="#buddy-group" title="Permalink to this heading">#</a></h4>
+<p>在這個部份的處理要注意的事情是有可能會觸發鏈鎖反應。因此我在實做的<code class="docutils literal notranslate"><span class="pre">buddy_group</span></code>這個function會回傳這個回合有沒有實際做group，如果有的話就需要再繼續往上檢查。</p>
+</section>
+<section id="array">
+<h4>array<a class="headerlink" href="#array" title="Permalink to this heading">#</a></h4>
+<p>在這部份只需要使用一個<code class="docutils literal notranslate"><span class="pre">array</span></code>紀錄每個<code class="docutils literal notranslate"><span class="pre">frame</span></code>的<code class="docutils literal notranslate"><span class="pre">order</span></code>或者<code class="docutils literal notranslate"><span class="pre">狀態</span></code>即可。但只使用這個資料結構的話當要找到一個<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">=</span> <span class="pre">t</span></code>的<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">group</span></code>可能會需要整個掃描一次。因此時間複雜度不會是<span class="math notranslate nohighlight">\(O(\log n)\)</span></p>
+</section>
+</section>
+<section id="basic-exercise-2-dynamic-memory-allocator">
+<h3>Basic Exercise 2 - Dynamic Memory Allocator<a class="headerlink" href="#basic-exercise-2-dynamic-memory-allocator" title="Permalink to this heading">#</a></h3>
+<p>在這個部份我的作法建築在<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">system</span></code>之上引進<code class="docutils literal notranslate"><span class="pre">chunk</span> <span class="pre">pool</span></code>的概念。首先是將可被分配的大小用<code class="docutils literal notranslate"><span class="pre">chunk</span> <span class="pre">size</span></code>來分類，要求的大小要從這些大小裡面找足夠大且最小的。這些<code class="docutils literal notranslate"><span class="pre">chunks</span></code>則是使用<code class="docutils literal notranslate"><span class="pre">chunk</span> <span class="pre">pools</span></code>來管理。當夭某個特定大小時就去對應的pool找。相關的程式碼可以在<code class="docutils literal notranslate"><span class="pre">memory.h</span></code>與<code class="docutils literal notranslate"><span class="pre">memory.c</span></code>。</p>
+<section id="chunk-size">
+<h4>chunk size<a class="headerlink" href="#chunk-size" title="Permalink to this heading">#</a></h4>
+<p>我的作法是從<code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">bytes</span></code>開始一直往上增長兩倍，直到<code class="docutils literal notranslate"><span class="pre">1024</span> <span class="pre">bytes</span></code>。超過的都歸類到<code class="docutils literal notranslate"><span class="pre">large</span> <span class="pre">size</span></code>。之所以會使用<code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">bytes</span></code>作為最小單位是因為如果使用到的程式碼在底層會使用到<code class="docutils literal notranslate"><span class="pre">str</span></code>時必須要<code class="docutils literal notranslate"><span class="pre">align</span> <span class="pre">0x8</span></code>。所以直接使用這個size作為最小size。超過1024都歸類為<code class="docutils literal notranslate"><span class="pre">large</span> <span class="pre">size</span></code>與我管理<code class="docutils literal notranslate"><span class="pre">chunk</span> <span class="pre">pools</span></code>的方法有關。</p>
+</section>
+<section id="chunk-pools">
+<h4>chunk pools<a class="headerlink" href="#chunk-pools" title="Permalink to this heading">#</a></h4>
+<p>我管理pools的作法是維護多個<code class="docutils literal notranslate"><span class="pre">linked</span> <span class="pre">list</span></code>。每個linked list負責管理一種size。除了<code class="docutils literal notranslate"><span class="pre">head</span></code>之外的每個<code class="docutils literal notranslate"><span class="pre">list</span> <span class="pre">node</span></code>實際大小都是1個<code class="docutils literal notranslate"><span class="pre">frame</span></code>，並且會包含以下內容</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">header</span></code>: 用來紀錄管理<code class="docutils literal notranslate"><span class="pre">list_node</span></code>所需要的資料</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chunk</span> <span class="pre">states</span></code>: 用來紀錄<code class="docutils literal notranslate"><span class="pre">chunk</span></code>是否有沒有分配出去的狀態</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">chunks</span></code>: 將空間切割成<code class="docutils literal notranslate"><span class="pre">chunks</span></code>以供分配</p></li>
+</ol>
+</section>
+</section>
+<section id="advanced-exercise-1-efficient-page-allocation">
+<h3>Advanced Exercise 1 - Efficient Page Allocation<a class="headerlink" href="#advanced-exercise-1-efficient-page-allocation" title="Permalink to this heading">#</a></h3>
+<p>為了加速，所以在<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">system</span></code>裡面多維護了多個<code class="docutils literal notranslate"><span class="pre">linked</span> <span class="pre">list</span></code>。每一個list都是紀錄了特定的<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">order</span></code>之下有哪些<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">group</span></code>。之後需要某個特定的<code class="docutils literal notranslate"><span class="pre">order</span></code>的group時只要去找對應的<code class="docutils literal notranslate"><span class="pre">linked</span> <span class="pre">list</span></code>就可以快速取得。</p>
+<p>關於這個<code class="docutils literal notranslate"><span class="pre">linked</span> <span class="pre">list</span></code>會有一個問題是儲存<code class="docutils literal notranslate"><span class="pre">node</span></code>的空間要如何取得。我的作法是利用了這個linked list只會紀錄free的frame的性質，直接把node的資料寫在對應的frame的開頭。</p>
+</section>
+<section id="advanced-exercise-2-reserved-memory">
+<h3>Advanced Exercise 2 - Reserved Memory<a class="headerlink" href="#advanced-exercise-2-reserved-memory" title="Permalink to this heading">#</a></h3>
+<p>在這一塊我的做法是提供一個<code class="docutils literal notranslate"><span class="pre">callback</span> <span class="pre">function</span></code>的方式讓別的程式可以去保留自己使用的記憶體。這個function會在建立<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">system</span></code>中間過程中被呼叫。這個callback function要負責統整所有需要保護的記憶體區段。出於簡單所以我是使用<code class="docutils literal notranslate"><span class="pre">hard</span> <span class="pre">coding</span></code>的方式處理。理想的方式可能是需要再另外設計一個註冊系統給其他程式片段使用。或者要把初始化拆開成<code class="docutils literal notranslate"><span class="pre">分配好metadata使用空間</span> <span class="pre">&amp;</span> <span class="pre">初步初始化</span></code>以及<code class="docutils literal notranslate"><span class="pre">建立buddy</span> <span class="pre">system的初始化</span></code>的步驟。</p>
+</section>
+<section id="advanced-exercise-3-startup-allocation">
+<h3>Advanced Exercise 3 - Startup Allocation<a class="headerlink" href="#advanced-exercise-3-startup-allocation" title="Permalink to this heading">#</a></h3>
+<p>在建立<code class="docutils literal notranslate"><span class="pre">buddy</span> <span class="pre">system</span></code>與<code class="docutils literal notranslate"><span class="pre">memory</span> <span class="pre">system</span></code>的時候總會有一些用來管理所建立的<code class="docutils literal notranslate"><span class="pre">metadata</span></code>。要如何存放這些metadata本身也是個問題。所以需要一個把<code class="docutils literal notranslate"><span class="pre">Lab2</span></code>建立的<code class="docutils literal notranslate"><span class="pre">allocator</span></code>拿來使用。用來分配這些metadata放置的區域。</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Lab3/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 3: Exception and Interrupt</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">搭配材料</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lab">Lab 內容</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-1-buddy-system">Basic Exercise 1 - Buddy System</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#find-buddy-frame-index">Find buddy frame index</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#buddy-group">buddy group</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#array">array</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-exercise-2-dynamic-memory-allocator">Basic Exercise 2 - Dynamic Memory Allocator</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunk-size">chunk size</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#chunk-pools">chunk pools</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-1-efficient-page-allocation">Advanced Exercise 1 - Efficient Page Allocation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-2-reserved-memory">Advanced Exercise 2 - Reserved Memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-exercise-3-startup-allocation">Advanced Exercise 3 - Startup Allocation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rein Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Rein Wu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
