@@ -11,6 +11,8 @@
 
 1. [Git FAQ](git_faq.md)
 2. [Git 指令自動補齊](auto_complete.md)
+3. [大型專案管理](large_project_management.md)
+4. [實用設定](useful_setup.md)
 
 ```{toctree}
 :hidden:
@@ -18,4 +20,6 @@
 
 git_faq
 auto_complete
+large_project_management
+useful_setup
 ```

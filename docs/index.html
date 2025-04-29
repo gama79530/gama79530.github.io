@@ -148,28 +148,8 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="StudyNote/LearningGit/index.html">Git 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="StudyNote/LearningGit/git_faq.html">Git FAQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="StudyNote/LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
-</ul>
-</li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Course</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="Course/LinuxKernelInternals/index.html">成大jserv Linux 核心設計/實作 (Linux Kernel Internals)</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="Course/LinuxKernelInternals/week1/week1.html">Week 1</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="Course/LinuxKernelInternals/week1/test1.html">題目 1 + 分析</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Course/LinuxKernelInternals/week1/test2.html">題目2 / 參考題解1, 參考題解2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Course/LinuxKernelInternals/week1/test3.html">題目3 / 參考題解</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Course/LinuxKernelInternals/week1/test4.html">題目4 / 參考題解</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Course/LinuxKernelInternals/week1/test5.html">題目5 / 參考題解</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="Course/OperatingSystemCapstone/index.html">交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="Course/OperatingSystemCapstone/Lab0/index.html">Lab 0: Environment Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Course/OperatingSystemCapstone/Lab1/index.html">Lab 1: Hello World</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Course/OperatingSystemCapstone/Lab2/index.html">Lab 2: Booting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Course/OperatingSystemCapstone/Lab3/index.html">Lab 3: Exception and Interrupt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Course/OperatingSystemCapstone/Lab4/index.html">Lab 4: Allocator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="StudyNote/LearningGit/large_project_management.html">大型專案管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="StudyNote/LearningGit/useful_setup.html">實用設定</a></li>
 </ul>
 </li>
 </ul>
@@ -435,12 +415,17 @@ document.write(`
 </section>
 <section id="course">
 <h2>Course<a class="headerlink" href="#course" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><a class="reference internal" href="Course/LinuxKernelInternals/index.html"><span class="doc std std-doc">Linux 核心設計/實作(Linux Kernel Internals)</span></a></p></li>
-<li><p><a class="reference internal" href="Course/OperatingSystemCapstone/index.html"><span class="doc std std-doc">交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)</span></a></p></li>
-</ol>
-<div class="toctree-wrapper compound">
-</div>
+<!-- 1. [Linux 核心設計/實作(Linux Kernel Internals)](./Course/LinuxKernelInternals/index.md)
+2. [交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)](./Course/OperatingSystemCapstone/index.md)
+
+```{toctree}
+:hidden:
+:caption: Course
+:maxdepth: 3
+
+Course/LinuxKernelInternals/index
+Course/OperatingSystemCapstone/index
+``` -->
 </section>
 </section>
 
