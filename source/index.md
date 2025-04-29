@@ -30,7 +30,7 @@ StudyNote/LearningGit/index
 
 ## Course
 
-1. [Linux 核心設計/實作(Linux Kernel Internals)](./Course/LinuxKernelInternals/index.md)
+<!-- 1. [Linux 核心設計/實作(Linux Kernel Internals)](./Course/LinuxKernelInternals/index.md)
 2. [交通大學2024春季作業系統統整與實作 (Operating System Capstone, Spring 2024)](./Course/OperatingSystemCapstone/index.md)
 
 ```{toctree}
@@ -40,4 +40,4 @@ StudyNote/LearningGit/index
 
 Course/LinuxKernelInternals/index
 Course/OperatingSystemCapstone/index
-```
+``` -->
