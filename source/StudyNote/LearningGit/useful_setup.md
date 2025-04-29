@@ -42,3 +42,14 @@ Git Attributes 的設定檔有三個層級，依照優先級由高至低排序�
 ``` bash
 git config merge.ours.driver true
 ```
+
+## Hook
+
+Hook 的功能是在重要事件發生時觸發自訂腳本。下面列出常用的 `hook`
+
+| Hook 名稱     | 執行時機               | 常見用途                                             |
+|---------------|------------------------|------------------------------------------------------|
+| pre-commit    | `git commit` 前        | 格式化程式碼、Lint 檢查、單元測試、阻止錯誤提交     |
+| commit-msg    | commit 訊息輸入後      | 驗證訊息格式（如 Conventional Commits）             |
+| pre-push      | `git push` 前          | 確認測試通過、限制推送、檢查 branch 名稱等         |
+| post-checkout | 切換分支後             | 自動切換 .env、設定環境、執行初始化腳本等           |
