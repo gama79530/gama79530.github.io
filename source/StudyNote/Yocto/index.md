@@ -17,3 +17,16 @@ yocto_introduction
 
 1. [Yocto 基本介紹](./yocto_introduction.md)
 2. [FAQ](./yocto_faq.md)
+
+## 資料來源 & 其它資源
+
+### 文章
+
+1. [The Yocto Project 官方網站](https://www.yoctoproject.org/)
+2. [Yocto Project Quick Build](https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html)
+
+### Source
+
+1. [Yocto Project - source repositories](https://git.yoctoproject.org/)
+2. [GitHub - poky](https://github.com/yoctoproject/poky)
+3. [Yocto - Releases](https://www.yoctoproject.org/development/releases/)
