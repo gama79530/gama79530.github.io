@@ -31,4 +31,5 @@ yocto_faq
 1. [Yocto Project - source repositories](https://git.yoctoproject.org/)
 2. [GitHub - poky](https://github.com/yoctoproject/poky)
 3. [Yocto - Releases](https://www.yoctoproject.org/development/releases/)
-4. [OpenEmbedded layer index](https://layers.openembedded.org/layerindex/branch/master/layers/)
+4. [Yocto Project Compatible Layers](https://www.yoctoproject.org/development/yocto-project-compatible-layers/)
+5. [OpenEmbedded layer index](https://layers.openembedded.org/layerindex/branch/master/layers/)
