@@ -55,3 +55,44 @@
     - Learn About Toaster
     - Discover the VSCode extension
     - Have Available the Yocto Project Reference Manual
+
+## Transitioning to a custom environment for systems development
+
+[reference](https://docs.yoctoproject.org/transitioning-to-a-custom-environment.html)
+
+1. Make a list of the processor, target board, technologies, and capabilities that will be part of your project.
+2. Set up your board support.
+3. Find and acquire the best BSP for your target.
+4. Based on the layers you’ve chosen, make needed changes in your configuration.
+5. Add a new layer for any custom recipes and metadata you create.
+6. Create your own layer for the BSP you’re going to use.
+7. Write your own recipe to build additional software support that isn’t already available in the form of a recipe.
+8. Now you’re ready to create an image recipe.
+9. Build your image and refine it.
+10. Consider creating your own distribution.
+
+## What is the Yocto Project
+
+### Features
+
+- Widely Adopted Across the Industry
+- Architecture Agnostic
+- Images and Code Transfer Easily
+- Flexibility
+- Ideal for Constrained Embedded and IoT devices
+- Comprehensive Toolchain Capabilities
+- Mechanism Rules Over Policy
+- Uses a Layer Model
+- Supports Partial Builds
+- Releases According to a Strict Schedule
+- Rich Ecosystem of Individuals and Organizations
+- Binary Reproducibility
+- License Manifest
+
+### Challenges
+
+- Steep Learning Curve
+- Understanding What Changes You Need to Make For Your Design Requires Some Research
+- Project Workflow Could Be Confusing
+- Working in a Cross-Build Environment Can Feel Unfamiliar
+- Initial Build Times Can be Significant
