@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 3: Exception and Interrupt &#8212; Rein&#39;s Homepage</title>
   
@@ -15,44 +14,42 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/documentation_options.js?v=e645c8fa"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Course/OperatingSystemCapstone/Lab3/index';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -66,19 +63,23 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -100,12 +101,20 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -120,6 +129,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../../index.html">
@@ -128,29 +140,48 @@
   
   
   
+  
     <p class="title logo__title">Rein's Homepage</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/Homepage/index.html">How To Build Personal Website with GitHub Pages</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/Homepage/index.html">How To Build Personal Website with GitHub Pages</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/foundation.html">Building Foundation of Homepage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/skeleton.html">Building Skeleton of Homepage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/note.html">Notes</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/Jansson/index.html">Jansson (a C library for JSON data) 使用教學</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/InstallUbuntu_22_04/index.html">Ubuntu 22.04 工具安裝</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/LearningGit/index.html">Git 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/LearningGit/index.html">Git 學習筆記</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/git_faq.html">Git FAQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/large_project_management.html">大型專案管理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/useful_setup.html">實用設定</a></li>
 </ul>
-</li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/Yocto/index.html">Yocto 學習筆記</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Yocto/yocto_introduction.html">Yocto 基本介紹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Yocto/yocto_start.html">如何開始一個 Yocto 專案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Yocto/yocto_faq.html">Yocto FAQ</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/Docker/index.html">Docker Tutorial</a></li>
 </ul>
 
     </div>
@@ -166,7 +197,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -175,14 +206,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -338,26 +369,28 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -407,22 +440,22 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-3-exception-and-interrupt">
-<h1>Lab 3: Exception and Interrupt<a class="headerlink" href="#lab-3-exception-and-interrupt" title="Permalink to this heading">#</a></h1>
+<h1>Lab 3: Exception and Interrupt<a class="headerlink" href="#lab-3-exception-and-interrupt" title="Link to this heading">#</a></h1>
 <section id="id1">
-<h2>搭配材料<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>搭配材料<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab3.html">Specification</a></p></li>
 <li><p><a class="reference external" href="https://github.com/gama79530/NYCU_2024_Operating_System_Capstone/tree/main/Lab3">Code</a></p></li>
 </ol>
 </section>
 <section id="lab">
-<h2>Lab 內容<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
+<h2>Lab 內容<a class="headerlink" href="#lab" title="Link to this heading">#</a></h2>
 <p>這個Lab主要的目的是要了解<code class="docutils literal notranslate"><span class="pre">ARM</span></code>的<code class="docutils literal notranslate"><span class="pre">Exception</span></code>的機制。首先需要了解什麼是<code class="docutils literal notranslate"><span class="pre">Exception</span> <span class="pre">Level</span></code>以及如何切換。接著是要利用Exception的機制來完成一些非同步的功能。</p>
 <section id="basic-exercise-1-exception">
-<h3>Basic Exercise 1 - Exception<a class="headerlink" href="#basic-exercise-1-exception" title="Permalink to this heading">#</a></h3>
+<h3>Basic Exercise 1 - Exception<a class="headerlink" href="#basic-exercise-1-exception" title="Link to this heading">#</a></h3>
 <p>在這個部份需要了解以下內容。</p>
 <ol class="arabic simple">
 <li><p>什麼是<code class="docutils literal notranslate"><span class="pre">Exception</span> <span class="pre">Level</span></code></p></li>
@@ -431,7 +464,7 @@ document.write(`
 </ol>
 <p>關於<code class="docutils literal notranslate"><span class="pre">exception</span> <span class="pre">level</span></code>的解釋可以看<a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab3.html#exception-levels">Spec: Exception Levels</a>或者是<a class="reference external" href="https://developer.arm.com/documentation/ddi0487/aa/?lang=en">ARM Architecture Reference Manual ARMv8, for ARMv8-A architecture profile</a>的Chap D1。程式碼相關的部份可以參考<code class="docutils literal notranslate"><span class="pre">boot.S</span></code>,<code class="docutils literal notranslate"><span class="pre">vtable_el1.S</span></code>,<code class="docutils literal notranslate"><span class="pre">exception.h</span></code>以及<code class="docutils literal notranslate"><span class="pre">exception.c</span></code>。</p>
 <section id="exception-level-el">
-<h4>如何切換 Exception Level (EL)<a class="headerlink" href="#exception-level-el" title="Permalink to this heading">#</a></h4>
+<h4>如何切換 Exception Level (EL)<a class="headerlink" href="#exception-level-el" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">EL</span></code>的切換首先需要先看是由那一個指令觸發的。有些指令可能只能用在特定的EL之間的切換。而另外也有指令是需要接著再去看對應的register的狀態來決定。</p>
 <p>在這個部份我們使用到的其中一個指令是<code class="docutils literal notranslate"><span class="pre">eret</span></code>。這個指令與ret有點類似，但主要的區別如下</p>
 <ol class="arabic simple">
@@ -441,7 +474,7 @@ document.write(`
 <p>在關於<code class="docutils literal notranslate"><span class="pre">SPSR_ELx</span></code>的設定中的設定可以直接在<a class="reference external" href="https://developer.arm.com/documentation/ddi0487/aa/?lang=en">ARM Architecture Reference Manual ARMv8, for ARMv8-A architecture profile</a>裡面用關鍵字搜尋。</p>
 </section>
 <section id="exception">
-<h4>如何處理 Exception<a class="headerlink" href="#exception" title="Permalink to this heading">#</a></h4>
+<h4>如何處理 Exception<a class="headerlink" href="#exception" title="Link to this heading">#</a></h4>
 <p>這個部份需要設定好對應的<code class="docutils literal notranslate"><span class="pre">vbar_el1</span></code>用來指定EL對應的<code class="docutils literal notranslate"><span class="pre">vector</span> <span class="pre">table</span></code>。這個table每一個<code class="docutils literal notranslate"><span class="pre">entry</span></code>會在對應的exception發生時自動被呼叫來處理exception。對於這個table的格式<code class="docutils literal notranslate"><span class="pre">ARM</span></code>是有一些規範在，可以參考<a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab3.html#vector-table">Vector Table</a>。此外在進入處理邏輯之前我們必須先做兩件事</p>
 <ol class="arabic simple">
 <li><p>將<code class="docutils literal notranslate"><span class="pre">DAIF</span></code>這4種<code class="docutils literal notranslate"><span class="pre">Interrupt</span></code>先<code class="docutils literal notranslate"><span class="pre">masked</span></code></p></li>
@@ -450,26 +483,26 @@ document.write(`
 <p>另外因為我的exception處理邏輯是使用C語言實做，所以在<code class="docutils literal notranslate"><span class="pre">vtable_el1.S</span></code>裡面才會使用一些技巧去包裝。</p>
 </section>
 <section id="demo">
-<h4>Demo<a class="headerlink" href="#demo" title="Permalink to this heading">#</a></h4>
+<h4>Demo<a class="headerlink" href="#demo" title="Link to this heading">#</a></h4>
 <p>在這個部份裡有一個<code class="docutils literal notranslate"><span class="pre">Demo</span></code>是要模擬執行另外一個程式。因此首先要利用前面Lab提供的<code class="docutils literal notranslate"><span class="pre">initramfs</span></code>來讓這個程式被載入記憶體。這個程式會使用到一個會切換<code class="docutils literal notranslate"><span class="pre">EL</span></code>的指令<a class="reference external" href="https://developer.arm.com/documentation/dui0473/m/arm-and-thumb-instructions/svc">SVC</a>。這個指令其中一個常見的作法是用來產生<code class="docutils literal notranslate"><span class="pre">system</span> <span class="pre">call</span></code>。該指令會主動產生<code class="docutils literal notranslate"><span class="pre">Exception</span></code>，並且將EL從<code class="docutils literal notranslate"><span class="pre">EL0</span></code>切換到<code class="docutils literal notranslate"><span class="pre">EL1</span></code>。因此在執行這個程式之前需要先將EL切換到<code class="docutils literal notranslate"><span class="pre">EL0</span></code>。相關的程式碼要參考<code class="docutils literal notranslate"><span class="pre">shell.c</span></code>裡面的<code class="docutils literal notranslate"><span class="pre">command_exec</span></code>以及<code class="docutils literal notranslate"><span class="pre">exception.c</span></code>的<code class="docutils literal notranslate"><span class="pre">handler_sync_lower_aarch64_el1</span></code>。</p>
 </section>
 </section>
 <section id="basic-exercise-2-interrupt">
-<h3>Basic Exercise 2 - Interrupt<a class="headerlink" href="#basic-exercise-2-interrupt" title="Permalink to this heading">#</a></h3>
+<h3>Basic Exercise 2 - Interrupt<a class="headerlink" href="#basic-exercise-2-interrupt" title="Link to this heading">#</a></h3>
 <p>這個部份因為很難與後面的部份切割，所以集中到<a class="reference external" href="https://gama79530.github.io/Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling">Advanced Exercise 2</a>解釋。</p>
 </section>
 <section id="basic-exercise-3-rpi3s-peripheral-interrupt">
-<h3>Basic Exercise 3 - Rpi3’s Peripheral Interrupt<a class="headerlink" href="#basic-exercise-3-rpi3s-peripheral-interrupt" title="Permalink to this heading">#</a></h3>
+<h3>Basic Exercise 3 - Rpi3’s Peripheral Interrupt<a class="headerlink" href="#basic-exercise-3-rpi3s-peripheral-interrupt" title="Link to this heading">#</a></h3>
 <p>這個部份因為很難與後面的部份切割，所以集中到<a class="reference external" href="https://gama79530.github.io/Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling">Advanced Exercise 2</a>解釋。</p>
 </section>
 <section id="advanced-exercise-1-timer-multiplexing">
-<h3>Advanced Exercise 1 - Timer Multiplexing<a class="headerlink" href="#advanced-exercise-1-timer-multiplexing" title="Permalink to this heading">#</a></h3>
+<h3>Advanced Exercise 1 - Timer Multiplexing<a class="headerlink" href="#advanced-exercise-1-timer-multiplexing" title="Link to this heading">#</a></h3>
 <p>這個部份因為很難與後面的部份切割，所以集中到<a class="reference external" href="https://gama79530.github.io/Course/OperatingSystemCapstone/Lab3/index.html#advanced-exercise-2-concurrent-i-o-devices-handling">Advanced Exercise 2</a>解釋。</p>
 </section>
 <section id="advanced-exercise-2-concurrent-i-o-devices-handling">
-<h3>Advanced Exercise 2 - Concurrent I/O Devices Handling<a class="headerlink" href="#advanced-exercise-2-concurrent-i-o-devices-handling" title="Permalink to this heading">#</a></h3>
+<h3>Advanced Exercise 2 - Concurrent I/O Devices Handling<a class="headerlink" href="#advanced-exercise-2-concurrent-i-o-devices-handling" title="Link to this heading">#</a></h3>
 <section id="interrupt">
-<h4>Interrupt<a class="headerlink" href="#interrupt" title="Permalink to this heading">#</a></h4>
+<h4>Interrupt<a class="headerlink" href="#interrupt" title="Link to this heading">#</a></h4>
 <p>關於<code class="docutils literal notranslate"><span class="pre">interrupt</span></code>的處理首先需要知道的是<code class="docutils literal notranslate"><span class="pre">來源</span></code>。不同的<code class="docutils literal notranslate"><span class="pre">exception</span></code>種類會有不同的方式去辨別exception的來源。可以直接參考<code class="docutils literal notranslate"><span class="pre">exception.c</span></code>裡面的程式。</p>
 <p>對於<code class="docutils literal notranslate"><span class="pre">exception</span></code>的處理我採取的作法是建立一個<code class="docutils literal notranslate"><span class="pre">task</span> <span class="pre">queue</span></code>。當接受到一個exception時會依照下面的流程去處理</p>
 <ol class="arabic simple">
@@ -479,7 +512,7 @@ document.write(`
 <p>之所以會拆開成這兩個步驟的原因是因為要實現<code class="docutils literal notranslate"><span class="pre">nested</span> <span class="pre">interrupt</span></code>。在建立<code class="docutils literal notranslate"><span class="pre">task</span></code>以及操作<code class="docutils literal notranslate"><span class="pre">task</span> <span class="pre">queue</span></code>的過程中會把<code class="docutils literal notranslate"><span class="pre">DAIF</span></code>給<code class="docutils literal notranslate"><span class="pre">masked</span></code>。而執行<code class="docutils literal notranslate"><span class="pre">task</span></code>的過程中必須把<code class="docutils literal notranslate"><span class="pre">DAIF</span></code>給<code class="docutils literal notranslate"><span class="pre">unmasked</span></code>。</p>
 </section>
 <section id="timer">
-<h4>Timer<a class="headerlink" href="#timer" title="Permalink to this heading">#</a></h4>
+<h4>Timer<a class="headerlink" href="#timer" title="Link to this heading">#</a></h4>
 <p>Rpi3提供的<code class="docutils literal notranslate"><span class="pre">timer</span></code>實際上就是個<code class="docutils literal notranslate"><span class="pre">倒數計時器</span></code>。這個部份的設計要分成兩部份</p>
 <ol class="arabic simple">
 <li><p>如何操作定時器</p></li>
@@ -488,7 +521,7 @@ document.write(`
 <p>關於第1個部份的程式碼可以參考<code class="docutils literal notranslate"><span class="pre">timer.c</span></code>裡面的<code class="docutils literal notranslate"><span class="pre">core_timer_enable</span></code>以及<code class="docutils literal notranslate"><span class="pre">set_period</span></code>。而第二個部份則是設計了一個<code class="docutils literal notranslate"><span class="pre">event</span> <span class="pre">queue</span></code>，這個queue的排序是依照event的<code class="docutils literal notranslate"><span class="pre">expired</span> <span class="pre">time</span></code>來排序。當要建立一個timer的時候實際上是在event queue裡面新增一個event。而當timer的<code class="docutils literal notranslate"><span class="pre">interrupt</span></code>發生時會先依照前面講的建立一個對應的<code class="docutils literal notranslate"><span class="pre">task</span></code>。這個task會再接著去處理event queue。把expired time最早的event處理掉。相關的程式碼主要是在<code class="docutils literal notranslate"><span class="pre">timer.h</span></code>與<code class="docutils literal notranslate"><span class="pre">timer.c</span></code>。</p>
 </section>
 <section id="async-io">
-<h4>Async IO<a class="headerlink" href="#async-io" title="Permalink to this heading">#</a></h4>
+<h4>Async IO<a class="headerlink" href="#async-io" title="Link to this heading">#</a></h4>
 <p>要實現<code class="docutils literal notranslate"><span class="pre">async</span> <span class="pre">io</span></code>的方式是使用<code class="docutils literal notranslate"><span class="pre">read</span> <span class="pre">buffer</span></code>與<code class="docutils literal notranslate"><span class="pre">write</span> <span class="pre">buffer</span></code>。主要的程式碼在<code class="docutils literal notranslate"><span class="pre">mini_uart.h</span></code>, <code class="docutils literal notranslate"><span class="pre">mini_uart.c</span></code>以及<code class="docutils literal notranslate"><span class="pre">exception.c</span></code>。</p>
 <p>對於<code class="docutils literal notranslate"><span class="pre">write</span></code>的時候就先將要寫入的字元寫入write buffer。接著在觸發一個interrupt，而對這個interrupt的處理則是主動去把write buffer裡面的字元撈出來並用mini uart寫出去。</p>
 <p>對於<code class="docutils literal notranslate"><span class="pre">read</span></code>的話則是要反過來看。當interrupt發生的時候就先將字元寫入read buffer。而當我們需要read的時候就去buffer裡面把沒被讀出的字元讀出來。如果沒有字元就是一直等到有interrupt發生把字元寫到buffer後再把它讀出來。</p>
@@ -496,7 +529,7 @@ document.write(`
 </section>
 </section>
 <section id="id2">
-<h2>參考 &amp; 補充資料<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>參考 &amp; 補充資料<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://developer.arm.com/documentation/ddi0487/aa/?lang=en">ARM Architecture Reference Manual ARMv8, for ARMv8-A architecture profile</a></p></li>
 <li><p><a class="reference external" href="https://developer.arm.com/documentation/ddi0595/2021-06/AArch64-Registers/DAIF--Interrupt-Mask-Bits">DAIF, Interrupt Mask Bits</a></p></li>
@@ -513,16 +546,12 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -530,6 +559,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -578,6 +608,7 @@ By Rein Wu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023, Rein Wu.
@@ -604,8 +635,8 @@ By Rein Wu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

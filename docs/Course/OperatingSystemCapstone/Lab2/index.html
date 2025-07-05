@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lab 2: Booting &#8212; Rein&#39;s Homepage</title>
   
@@ -15,44 +14,42 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/sphinx_highlight.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/documentation_options.js?v=e645c8fa"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
-    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Course/OperatingSystemCapstone/Lab2/index';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -66,19 +63,23 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -100,12 +101,20 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -120,6 +129,9 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../../index.html">
@@ -128,29 +140,48 @@
   
   
   
+  
     <p class="title logo__title">Rein's Homepage</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/Homepage/index.html">How To Build Personal Website with GitHub Pages</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/Homepage/index.html">How To Build Personal Website with GitHub Pages</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/foundation.html">Building Foundation of Homepage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/skeleton.html">Building Skeleton of Homepage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Homepage/note.html">Notes</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/Jansson/index.html">Jansson (a C library for JSON data) 使用教學</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/InstallUbuntu_22_04/index.html">Ubuntu 22.04 工具安裝</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/LearningGit/index.html">Git 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/LearningGit/index.html">Git 學習筆記</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/git_faq.html">Git FAQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/large_project_management.html">大型專案管理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/LearningGit/useful_setup.html">實用設定</a></li>
 </ul>
-</li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../StudyNote/Yocto/index.html">Yocto 學習筆記</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Yocto/yocto_introduction.html">Yocto 基本介紹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Yocto/yocto_start.html">如何開始一個 Yocto 專案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../StudyNote/Yocto/yocto_faq.html">Yocto FAQ</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../StudyNote/Docker/index.html">Docker Tutorial</a></li>
 </ul>
 
     </div>
@@ -166,7 +197,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -175,14 +206,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -338,26 +369,28 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -402,19 +435,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-2-booting">
-<h1>Lab 2: Booting<a class="headerlink" href="#lab-2-booting" title="Permalink to this heading">#</a></h1>
+<h1>Lab 2: Booting<a class="headerlink" href="#lab-2-booting" title="Link to this heading">#</a></h1>
 <section id="id1">
-<h2>搭配材料<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>搭配材料<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/lab2.html">Specification</a></p></li>
 <li><p><a class="reference external" href="https://github.com/gama79530/NYCU_2024_Operating_System_Capstone/tree/main/Lab2">Code</a></p></li>
 </ol>
 </section>
 <section id="lab">
-<h2>Lab 內容<a class="headerlink" href="#lab" title="Permalink to this heading">#</a></h2>
+<h2>Lab 內容<a class="headerlink" href="#lab" title="Link to this heading">#</a></h2>
 <p>這個Lab的主要目的有幾個</p>
 <ol class="arabic simple">
 <li><p>將<code class="docutils literal notranslate"><span class="pre">bootloader</span></code>與<code class="docutils literal notranslate"><span class="pre">kernel</span></code>分離。</p></li>
@@ -423,7 +456,7 @@ document.write(`
 <li><p>使用<code class="docutils literal notranslate"><span class="pre">Devicetree</span></code></p></li>
 </ol>
 <section id="basic-exercise-1-uart-bootloader">
-<h3>Basic Exercise 1 - UART Bootloader<a class="headerlink" href="#basic-exercise-1-uart-bootloader" title="Permalink to this heading">#</a></h3>
+<h3>Basic Exercise 1 - UART Bootloader<a class="headerlink" href="#basic-exercise-1-uart-bootloader" title="Link to this heading">#</a></h3>
 <p>這個部份主要的工作是要將<code class="docutils literal notranslate"><span class="pre">bootloader</span></code>與<code class="docutils literal notranslate"><span class="pre">kernel</span></code>分離，這麼做的最大好處是以後要在板子上跑剛寫好的程式的時候只需要插著uart把新的image file傳入後再載入即可。要達到這個目的，需要3個程式如下:</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">uploader</span></code>: 負責通過uart “與<code class="docutils literal notranslate"><span class="pre">bootloader</span></code>溝通” 以及 “將<code class="docutils literal notranslate"><span class="pre">kernel</span> <span class="pre">image</span></code>傳輸到Rpi3”。相關的程式都在<code class="docutils literal notranslate"><span class="pre">uploader</span></code>資料夾下。</p></li>
@@ -431,16 +464,16 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">kernel</span> <span class="pre">image</span></code>: 實際要執行的程式。相關的程式都在<code class="docutils literal notranslate"><span class="pre">kernel</span></code>資料夾下。</p></li>
 </ol>
 <section id="uploader">
-<h4>uploader<a class="headerlink" href="#uploader" title="Permalink to this heading">#</a></h4>
+<h4>uploader<a class="headerlink" href="#uploader" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">uploader</span></code>是利用<code class="docutils literal notranslate"><span class="pre">pySerial</span></code>這個package來實做。只要先把serial的<code class="docutils literal notranslate"><span class="pre">port</span></code>與<code class="docutils literal notranslate"><span class="pre">baudrate</span></code>設定好之後就可以開始與<code class="docutils literal notranslate"><span class="pre">loader</span></code>溝通傳輸資料。關於port的設定因為我是使用Ubuntu所以是<code class="docutils literal notranslate"><span class="pre">/dev/ttyUSBX</span></code>，如果是其他平台需要去找USB對應的port。而<code class="docutils literal notranslate"><span class="pre">baudrate</span></code>可以參考<a class="reference external" href="https://nycu-caslab.github.io/OSC2024/labs/hardware/uart.html#mini-uart">Mini UART</a>。因為pySerial這個傳輸資料的工具並沒有interrupt的機制，所以當程式開始傳輸一段資料時就只能等整段資料都傳輸完。因此我搭配了<code class="docutils literal notranslate"><span class="pre">Linux</span></code>的<code class="docutils literal notranslate"><span class="pre">select</span></code>這個<code class="docutils literal notranslate"><span class="pre">multiplexing</span></code>機制來完成互動溝通。</p>
 </section>
 <section id="bootloader">
-<h4>bootloader<a class="headerlink" href="#bootloader" title="Permalink to this heading">#</a></h4>
+<h4>bootloader<a class="headerlink" href="#bootloader" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">loader</span></code>也是一個小型的kernel程式。loader只需要提供基本的mini_uart IO功能，之後透過mini_uart 去與uploader溝通以取得真正的kernel程式並啟動執行。相關的程式可以從<code class="docutils literal notranslate"><span class="pre">shell.c</span></code>裡面的<code class="docutils literal notranslate"><span class="pre">command_download</span></code>與<code class="docutils literal notranslate"><span class="pre">command_boot</span></code>這兩個function作為起點去參考。</p>
 <p>在這個部份我們需要通過<code class="docutils literal notranslate"><span class="pre">config.txt</span></code>去告訴<code class="docutils literal notranslate"><span class="pre">Rpi3</span></code> loader要載入到記憶體的哪個位址。以及<code class="docutils literal notranslate"><span class="pre">kernel</span> <span class="pre">image</span></code>的檔案名稱，因為Rpi3預設是在<code class="docutils literal notranslate"><span class="pre">0x80000</span></code>開始執行kernel且預設檔名為<code class="docutils literal notranslate"><span class="pre">kernel8.img</span></code>，所以必須用這個檔案告訴Rpi3我們的loader是在<code class="docutils literal notranslate"><span class="pre">0x60000</span></code>以及loader的檔案名稱。之後會將kernel image下載到 0x80000 後跳到該處開始執行真正的kernel。</p>
 </section>
 <section id="id2">
-<h4>溝通機制<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h4>
+<h4>溝通機制<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
 <p>這個部份可以自由設計<code class="docutils literal notranslate"><span class="pre">uploader</span></code>與<code class="docutils literal notranslate"><span class="pre">loader</span></code>之間傳輸<code class="docutils literal notranslate"><span class="pre">kernel</span> <span class="pre">image</span></code>的機制。我設計的溝通方式如下</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">uploader</span></code>發送字串<code class="docutils literal notranslate"><span class="pre">&quot;download\n&quot;</span></code>給<code class="docutils literal notranslate"><span class="pre">loader</span></code>。</p></li>
@@ -454,29 +487,29 @@ document.write(`
 </section>
 </section>
 <section id="basic-exercise-2-initial-ramdisk">
-<h3>Basic Exercise 2 - Initial Ramdisk<a class="headerlink" href="#basic-exercise-2-initial-ramdisk" title="Permalink to this heading">#</a></h3>
+<h3>Basic Exercise 2 - Initial Ramdisk<a class="headerlink" href="#basic-exercise-2-initial-ramdisk" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">kernel</span></code>在啟動檔案系統之前，可能會有一些檔案已經需要先載入記憶體中。因此需要有一個簡易的機制來將檔案載入。Rpi3可以在<code class="docutils literal notranslate"><span class="pre">config.txt</span></code>中設定<code class="docutils literal notranslate"><span class="pre">initramfs</span></code>的<code class="docutils literal notranslate"><span class="pre">檔案名稱</span></code>與<code class="docutils literal notranslate"><span class="pre">記憶體位址</span></code>，用來指定要將SD卡的那一個檔案預先載入記憶體。在這個部份裡我們是使用<code class="docutils literal notranslate"><span class="pre">CPIO</span> <span class="pre">-</span> <span class="pre">New</span> <span class="pre">ASCII</span> <span class="pre">Format</span></code>來打包檔案。要如何去讀檔案內容可以參考<code class="docutils literal notranslate"><span class="pre">cpio.h</span></code>與<code class="docutils literal notranslate"><span class="pre">cpio.c</span></code>裡面的程式。</p>
 <p>在這個Lab裡<code class="docutils literal notranslate"><span class="pre">initramfs</span></code>的檔案我們是使用<code class="docutils literal notranslate"><span class="pre">cpio</span></code>這個工具來打包檔案。這個檔案必須與<code class="docutils literal notranslate"><span class="pre">loader</span></code>一起放到micro SD卡裡面。我的做法是先將要開啟的檔案放到<code class="docutils literal notranslate"><span class="pre">loader/advanced/rootfs</span></code>資料夾之下。在編譯loader的時候同時也會使用指令打包成<code class="docutils literal notranslate"><span class="pre">initramfs.cpio</span></code>這個檔案。這個檔案必須跟著loader的image一起放到micro SD卡裡。關於打包的指令可以參考<code class="docutils literal notranslate"><span class="pre">loader/advanced/makefile</span></code>。</p>
 </section>
 <section id="basic-exercise-3-simple-allocator">
-<h3>Basic Exercise 3 - Simple Allocator<a class="headerlink" href="#basic-exercise-3-simple-allocator" title="Permalink to this heading">#</a></h3>
+<h3>Basic Exercise 3 - Simple Allocator<a class="headerlink" href="#basic-exercise-3-simple-allocator" title="Link to this heading">#</a></h3>
 <p>這個部份需要一個簡易的<code class="docutils literal notranslate"><span class="pre">malloc</span></code>，只需要找到一塊沒有被使用的記憶體區段做分配就可以。可以參考<code class="docutils literal notranslate"><span class="pre">memory.h</span></code>與<code class="docutils literal notranslate"><span class="pre">memory.c</span></code>。</p>
 </section>
 <section id="advanced-exercise-1-bootloader-self-relocation">
-<h3>Advanced Exercise 1 - Bootloader Self Relocation<a class="headerlink" href="#advanced-exercise-1-bootloader-self-relocation" title="Permalink to this heading">#</a></h3>
+<h3>Advanced Exercise 1 - Bootloader Self Relocation<a class="headerlink" href="#advanced-exercise-1-bootloader-self-relocation" title="Link to this heading">#</a></h3>
 <p>在這個部份與basic的不同之處只在於一開始的loader也不透過’config.txt’指定<code class="docutils literal notranslate"><span class="pre">loader</span></code>的位址。因此loader會被載入到預設的<code class="docutils literal notranslate"><span class="pre">0x80000</span></code>。因此在進入’loader’的<code class="docutils literal notranslate"><span class="pre">main</span></code>之前需要先把loader的內容複製到<code class="docutils literal notranslate"><span class="pre">0x60000</span></code>。之後在執行複製過後的程式碼。與原本的作法相比主要變動的部份在<code class="docutils literal notranslate"><span class="pre">linker.ld</span></code>與<code class="docutils literal notranslate"><span class="pre">boot.S</span></code>。</p>
 </section>
 <section id="advanced-exercise-2-devicetree">
-<h3>Advanced Exercise 2 - Devicetree<a class="headerlink" href="#advanced-exercise-2-devicetree" title="Permalink to this heading">#</a></h3>
+<h3>Advanced Exercise 2 - Devicetree<a class="headerlink" href="#advanced-exercise-2-devicetree" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">tree</span></code>是一個用來描述電腦系統有哪些週邊設備以及其性質的檔案。<code class="docutils literal notranslate"><span class="pre">dts</span></code>是compile之前的source檔案，可以從<a class="reference external" href="https://github.com/raspberrypi/linux/tree/rpi-5.10.y/arch/arm64/boot/dts/broadcom">這裡</a>找到Rpi各個系列的檔案。<code class="docutils literal notranslate"><span class="pre">dtb</span></code>則是已經compile之後的檔案，可以從<a class="reference external" href="https://github.com/raspberrypi/firmware/tree/master/boot">這裡</a>找到對應的檔案。我使用的板子是Rpi3b，所以要下載的檔案是<code class="docutils literal notranslate"><span class="pre">bcm2710-rpi-3-b.dtb</span></code>這個檔案。這個檔案也必須放入micro SD裡面。關於讀取device tree的程式可以參考<code class="docutils literal notranslate"><span class="pre">dtb.h</span></code>以及<code class="docutils literal notranslate"><span class="pre">dtb.c</span></code>。</p>
 <p>Rpi3b在啟動時會自動把device tree所在的記憶體位址放在<code class="docutils literal notranslate"><span class="pre">x0</span></code>這個register。因此在loader或者kernel進入<code class="docutils literal notranslate"><span class="pre">main</span> <span class="pre">function</span></code>之前如果會需要使用該register的話要先將的值先存到別的register，並且在呼叫之前把值還原回去。因為ARM會把<code class="docutils literal notranslate"><span class="pre">x0</span></code>用在function call，所以<code class="docutils literal notranslate"><span class="pre">main</span></code>需要新增一個傳入參數讓後去用C語言寫的DTB處理程式可以收到這個位址。</p>
 </section>
 </section>
 <section id="id3">
-<h2>參考 &amp; 補充資料<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>參考 &amp; 補充資料<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://pyserial.readthedocs.io/en/latest/">Welcome to pySerial’s documentation</a></p></li>
-<li><p><a class="reference external" href="https://man.freebsd.org/cgi/man.cgi?query=cpio&amp;sektion=5">FreeBSD Manual Pages</a></p></li>
+<li><p><a class="reference external" href="https://man.freebsd.org/cgi/man.cgi?query=cpio&amp;amp;sektion=5">FreeBSD Manual Pages</a></p></li>
 <li><p><a class="reference external" href="https://hackmd.io/&#64;0xff07/r1cJFN4QD">article: Device Tree</a></p></li>
 <li><p><a class="reference external" href="https://community.arm.com/oss-platforms/w/docs/525/device-tree">arm community: Device Tree</a></p></li>
 <li><p><a class="reference external" href="https://blog.csdn.net/u014100559/article/details/113105083">ARM Parameters in general-purpose registers</a></p></li>
@@ -490,16 +523,12 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -507,6 +536,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -550,6 +580,7 @@ By Rein Wu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2023, Rein Wu.
@@ -576,8 +607,8 @@ By Rein Wu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

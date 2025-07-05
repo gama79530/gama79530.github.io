@@ -1,0 +1,899 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Docker Tutorial &#8212; Rein&#39;s Homepage</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=e645c8fa"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'StudyNote/Docker/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Yocto FAQ" href="../Yocto/yocto_faq.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Rein's Homepage</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Homepage/index.html">How To Build Personal Website with GitHub Pages</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Homepage/foundation.html">Building Foundation of Homepage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homepage/skeleton.html">Building Skeleton of Homepage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homepage/note.html">Notes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Jansson/index.html">Jansson (a C library for JSON data) 使用教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../InstallUbuntu_22_04/index.html">Ubuntu 22.04 工具安裝</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../LearningGit/index.html">Git 學習筆記</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LearningGit/git_faq.html">Git FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearningGit/large_project_management.html">大型專案管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearningGit/useful_setup.html">實用設定</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Yocto/index.html">Yocto 學習筆記</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Yocto/yocto_introduction.html">Yocto 基本介紹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Yocto/yocto_start.html">如何開始一個 Yocto 專案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Yocto/yocto_faq.html">Yocto FAQ</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Docker Tutorial</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/StudyNote/Docker/index.md?plain=1" target="_blank"
+   class="btn btn-sm btn-source-file-button dropdown-item"
+   title="Show source"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-code"></i>
+  </span>
+<span class="btn__text-container">Show source</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/StudyNote/Docker/index.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2FStudyNote/Docker/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/StudyNote/Docker/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Docker Tutorial</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">目錄</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-docker">什麼是 Docker 與 Docker 基礎概念</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">什麼是 Docker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">Image</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Image 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#container">Container</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Container 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-volume">Docker Volume</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Docker Volume 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-network">Docker Network</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Docker Network 相關指令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Image 管理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">快照指令</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">快照指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dockerfile">Dockerfile</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Dockerfile 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registry">Registry</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Registry 相關指令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Dockerfile 介紹</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer">Layer</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cache">Cache 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-image">Base Image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage">Stage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose-yml">docker-compose.yml 介紹</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">類別定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">物件定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">屬性定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose">Docker Compose 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">進階觀念</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#container-mount">Container 的 mount</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose-network">docker-compose 的 network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-capabilities-docker">Linux capabilities 與 Docker 權限控制</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-capabilities">Linux Capabilities 相關指令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">接下來?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="docker-tutorial">
+<h1>Docker Tutorial<a class="headerlink" href="#docker-tutorial" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>目錄<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#docker-docker">什麼是 Docker 與 Docker 基礎概念</a></p></li>
+<li><p><a class="reference internal" href="#id6">Image 管理</a></p></li>
+<li><p><a class="reference internal" href="#id11">Dockerfile 介紹</a></p></li>
+<li><p><a class="reference internal" href="#docker-compose-yml">docker-compose.yml 介紹</a></p></li>
+<li><p><a class="reference internal" href="#id15">進階觀念</a></p></li>
+</ul>
+</section>
+<section id="docker-docker">
+<h2>什麼是 Docker 與 Docker 基礎概念<a class="headerlink" href="#docker-docker" title="Link to this heading">#</a></h2>
+<section id="docker">
+<h3>什麼是 Docker<a class="headerlink" href="#docker" title="Link to this heading">#</a></h3>
+<p>Docker 的定位很接近<code class="docutils literal notranslate"><span class="pre">虛擬機(Virtual</span> <span class="pre">Machine)</span></code>，它提供一個輕量級、隔離的環境，可用來編譯原始碼、執行應用程式、進行測試等。不過相較於傳統的虛擬機，Docker 更加輕量，對系統資源的負擔也較小（因為與 host 共用 kernel），而且部署與使用方式也相對簡單。</p>
+<p>Docker 有幾個重要的基本概念：</p>
+<ul class="simple">
+<li><p>Image</p></li>
+<li><p>Container</p></li>
+<li><p>Volume</p></li>
+<li><p>Network</p></li>
+</ul>
+</section>
+<section id="image">
+<h3>Image<a class="headerlink" href="#image" title="Link to this heading">#</a></h3>
+<p>Image 可以想像成系統的快照，封裝了執行環境所需的所有依賴與設定，能夠重現特定的執行狀態。比較重要的特點是 Image 是唯讀的檔案，只能整體重建，不能做部分修改。</p>
+<section id="id2">
+<h4>Image 相關指令<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>docker<span class="w"> </span>images<span class="w"> </span>--help
+<span class="linenos">2</span>docker<span class="w"> </span>image<span class="w"> </span>rmi<span class="w"> </span>--help
+</pre></div>
+</div>
+</section>
+</section>
+<section id="container">
+<h3>Container<a class="headerlink" href="#container" title="Link to this heading">#</a></h3>
+<p>Container 是 Image 的實體化，兩者的關係就像物件導向裡的<code class="docutils literal notranslate"><span class="pre">類別</span></code>與<code class="docutils literal notranslate"><span class="pre">實體</span></code>的關係。
+舉例來說，<code class="docutils literal notranslate"><span class="pre">ubuntu</span></code> 是一個 Image，我們可以透過 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-it</span> <span class="pre">ubuntu</span></code> 來啟動一個基於該 Image 的 Container。</p>
+<section id="id3">
+<h4>Container 相關指令<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>docker<span class="w"> </span>ps<span class="w"> </span>--help
+<span class="linenos">2</span>docker<span class="w"> </span>run<span class="w"> </span>--help
+<span class="linenos">3</span><span class="w">    </span>-it,<span class="w"> </span>-d,<span class="w"> </span>-p,<span class="w"> </span>-e,<span class="w">  </span>-P,<span class="w">  </span>--env-file,<span class="w">  </span>--mount
+<span class="linenos">4</span>docker<span class="w"> </span>stop<span class="w"> </span>--help
+<span class="linenos">5</span>docker<span class="w"> </span>start<span class="w"> </span>--help
+<span class="linenos">6</span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>--help
+<span class="linenos">7</span>docker<span class="w"> </span>create<span class="w"> </span>--help
+<span class="linenos">8</span>docker<span class="w"> </span>rm<span class="w"> </span>--help
+<span class="linenos">9</span><span class="w">    </span>-f
+</pre></div>
+</div>
+</section>
+</section>
+<section id="docker-volume">
+<h3>Docker Volume<a class="headerlink" href="#docker-volume" title="Link to this heading">#</a></h3>
+<p>Docker Volume 的設計是為了讓 Container 可以持久化儲存資料。由於 Image 本身是唯讀的，若程式會產生資料（例如資料庫的儲存檔），這些資料應該被存放在 Volume 中，才能在 Container 停止或刪除後仍保留。</p>
+<section id="id4">
+<h4>Docker Volume 相關指令<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>docker<span class="w"> </span>volume<span class="w"> </span>create<span class="w"> </span>--help
+<span class="linenos">2</span>docker<span class="w"> </span>volume<span class="w"> </span>ls<span class="w"> </span>--help
+<span class="linenos">3</span>docker<span class="w"> </span>volume<span class="w"> </span>rm<span class="w"> </span>--help
+<span class="linenos">4</span>docker<span class="w"> </span>volume<span class="w"> </span>prune<span class="w"> </span>--help
+</pre></div>
+</div>
+</section>
+</section>
+<section id="docker-network">
+<h3>Docker Network<a class="headerlink" href="#docker-network" title="Link to this heading">#</a></h3>
+<p>Docker Network 允許 Container 之間的網路溝通，並與 Host 的網路隔離。這樣設計有助於提高安全性與可管理性，也能支援多 Container 應用部署架構（如微服務）。</p>
+<section id="id5">
+<h4>Docker Network 相關指令<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>docker<span class="w"> </span>network<span class="w"> </span>ls<span class="w"> </span>--help
+<span class="linenos">2</span>docker<span class="w"> </span>network<span class="w"> </span>create<span class="w"> </span>--help
+<span class="linenos">3</span>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w"> </span>--help
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id6">
+<h2>Image 管理<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>要啟動 container 之前必須先有一個 image 。要如何建立 image ? 可以使用指令來建立，也可以從網路上的 <code class="docutils literal notranslate"><span class="pre">Registry</span></code> 取得現成的 image 。</p>
+<section id="id7">
+<h3>快照指令<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>我們可以使用指令將<code class="docutils literal notranslate"><span class="pre">執行中</span></code>的 container 快照下來，轉換成一個新的 image。</p>
+<section id="id8">
+<h4>快照指令<a class="headerlink" href="#id8" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>docker<span class="w"> </span>commit<span class="w"> </span>--help
+</pre></div>
+</div>
+</section>
+</section>
+<section id="dockerfile">
+<h3>Dockerfile<a class="headerlink" href="#dockerfile" title="Link to this heading">#</a></h3>
+<p>我們使用指令可以搭配 <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> 來建立。Dockerfile 就像是個食譜，用來描述要如何建立一個 image 。</p>
+<section id="id9">
+<h4>Dockerfile 相關指令<a class="headerlink" href="#id9" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>docker<span class="w"> </span>build<span class="w"> </span>--help
+<span class="linenos">2</span><span class="w">    </span>-t,<span class="w">  </span>--target,<span class="w">  </span>--no-cache
+</pre></div>
+</div>
+</section>
+</section>
+<section id="registry">
+<h3>Registry<a class="headerlink" href="#registry" title="Link to this heading">#</a></h3>
+<p>若將 Dockerfile 想像成建構 Image 的<code class="docutils literal notranslate"><span class="pre">食譜</span></code>，那 Registry 就是存放各種已建構好 Image 的<code class="docutils literal notranslate"><span class="pre">倉庫</span></code>。
+最常見的 Registry 是 <a class="reference external" href="https://hub.docker.com/">Docker Hub</a>，我們可以從中搜尋、下載，甚至推送自定義的 image。
+在實務上我們可能會用 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">repository</span></code> 去對單一食譜做版本控制。我們通常會搭配 <code class="docutils literal notranslate"><span class="pre">tag</span></code> 機制，將相同應用的不同版本清楚標示在 Registry 中，方便團隊或使用者拉取特定版本的 Image。</p>
+<section id="id10">
+<h4>Registry 相關指令<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>docker<span class="w"> </span>tag<span class="w"> </span>--help
+<span class="linenos">2</span>
+<span class="linenos">3</span>docker<span class="w"> </span>search<span class="w"> </span>--help
+<span class="linenos">4</span>docker<span class="w"> </span>pull<span class="w"> </span>--help
+<span class="linenos">5</span>docker<span class="w"> </span>push<span class="w"> </span>--help
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id11">
+<h2>Dockerfile 介紹<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>標準的 Dockerfile 架構有下面幾個部分</p>
+<ul class="simple">
+<li><p>Stage (如下圖紅色框框部分)</p></li>
+<li><p>Base Image (如下圖藍色框框部分)</p></li>
+<li><p>Layer (如下圖黃色框框部分)</p></li>
+</ul>
+<p><img alt="dockerfile_struct" src="../../_images/dockerfile_struct.png" /></p>
+<section id="layer">
+<h3>Layer<a class="headerlink" href="#layer" title="Link to this heading">#</a></h3>
+<p>每一個 <code class="docutils literal notranslate"><span class="pre">Layer</span></code> 會對應到建構環境要使用的操作指令，例如 <code class="docutils literal notranslate"><span class="pre">RUN</span></code>, <code class="docutils literal notranslate"><span class="pre">ENV</span></code>, <code class="docutils literal notranslate"><span class="pre">ARG</span></code>, <code class="docutils literal notranslate"><span class="pre">USER</span></code> 等。有哪些指令以及各自的功能可以參考 <a class="reference external" href="https://docs.docker.com/reference/dockerfile/">Dockerfile reference</a> 。</p>
+<p>在建構過程中，Docker 會為每個 Layer 建立 cache，以便在下次建構時重複使用未改變的層級，加快建構速度。 Docker 在 build 的時候會自動檢查是否可以套用 cache 來加快速度，但如果想要強制不使用 cache 的話可以在 build 指令加入 <code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code> 或者直接使用指令把 cache 清除之後再重建。</p>
+<section id="cache">
+<h4>Cache 相關指令<a class="headerlink" href="#cache" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>docker<span class="w"> </span>builder<span class="w"> </span>prune<span class="w"> </span>--help
+</pre></div>
+</div>
+</section>
+</section>
+<section id="base-image">
+<h3>Base Image<a class="headerlink" href="#base-image" title="Link to this heading">#</a></h3>
+<p>每個 Stage 都需指定一個 <code class="docutils literal notranslate"><span class="pre">Base</span> <span class="pre">Image</span></code>，作為該階段的基礎執行環境。它實際上是最底層的一個 Layer，後續的 Layer 都是在此基礎上進行修改與擴充。</p>
+</section>
+<section id="stage">
+<h3>Stage<a class="headerlink" href="#stage" title="Link to this heading">#</a></h3>
+<p>Dockerfile 的 stage 主要是將 image 的建構分階段。每一個階段都可以是一個獨立的 image ，但預設只有最後一個 stage 的 image 會被產生。</p>
+<p>會使用 multi-stage 的原因通常是因為要精簡 image 的 size 。下面是一個官方提供的範例:<br />
+你要從原始碼開始搭建一個實際運行的 container ，因此需要先做編譯，接著再佈署。 有些工具是只有在編譯時有需要但執行時不需要。例如<code class="docutils literal notranslate"><span class="pre">編譯</span> <span class="pre">c</span> <span class="pre">與</span> <span class="pre">c++</span> <span class="pre">程式的</span> <span class="pre">gcc</span></code> 、 <code class="docutils literal notranslate"><span class="pre">編譯</span> <span class="pre">Java</span> <span class="pre">的</span> <span class="pre">JDK</span></code>。因此可以在 stage 1 安裝這些工具並且執行編譯，接著在 stage 2 使用 <code class="docutils literal notranslate"><span class="pre">COPY</span></code> 指令把 stage 1 編譯出來的結果複製進來並安裝相關會使用到的工具。</p>
+</section>
+</section>
+<section id="docker-compose-yml">
+<h2>docker-compose.yml 介紹<a class="headerlink" href="#docker-compose-yml" title="Link to this heading">#</a></h2>
+<p>在官方的 turtioral 裡面有提到，<strong>每一個 container 應該要努力做好一件小事，而不是完成一件大事</strong>。最簡單的例子就是架設一個 web 網站。通常 web 網站最少會需要一個<code class="docutils literal notranslate"><span class="pre">前後端</span> <span class="pre">server</span></code> 以及一個 <code class="docutils literal notranslate"><span class="pre">資料庫</span></code>。 官方建議將功能拆分成多個 Container，每個 Container 各自負責單一職責，例如前端伺服器與資料庫分別運作於不同 Container 中。但如果要這樣做的話會有一個問題是不同 Container 之間的通訊要自己手動設定，這是個麻煩且容易出錯的工作。在這個使用場景之下可以使用 <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">Compose</span></code> 來解決這個問題。</p>
+<p>經典的 docker-compose.yml 的結構有以下部分</p>
+<ul class="simple">
+<li><p>類別定義 (下圖紅色框部分)</p></li>
+<li><p>物件定義 (下圖藍色框部分)</p></li>
+<li><p>屬性定義 (下圖黃色框部分)</p></li>
+</ul>
+<p><img alt="docker-compose_struct" src="../../_images/docker-compose_struct.png" /></p>
+<section id="id12">
+<h3>類別定義<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>這些定義會對應到常見的 Docker 資源類別。例如：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">services</span></code> 對應到 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">container</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">volumes</span></code> 對應到 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">networks</span></code> 對應到 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">network</span></code></p></li>
+</ul>
+<p>其他可定義的類別如下</p>
+<ul class="simple">
+<li><p>networks</p></li>
+<li><p>configs</p></li>
+<li><p>secrets</p></li>
+<li><p>name</p></li>
+<li><p>profiles</p></li>
+<li><p>extensions (x-…)</p></li>
+</ul>
+</section>
+<section id="id13">
+<h3>物件定義<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<p>根據類別定義出實體，例如圖片上的 <code class="docutils literal notranslate"><span class="pre">services</span></code> 類別裡面會有 <code class="docutils literal notranslate"><span class="pre">app</span></code> 與 <code class="docutils literal notranslate"><span class="pre">mysql</span></code> 兩個物件，這兩個物件會對應到兩個獨立的 <code class="docutils literal notranslate"><span class="pre">container</span></code> 。而 <code class="docutils literal notranslate"><span class="pre">volumes</span></code> 類別裡面的 <code class="docutils literal notranslate"><span class="pre">todo-mysql-data</span></code> 則是對應到一個 Docker Volume。</p>
+</section>
+<section id="id14">
+<h3>屬性定義<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<p>這些屬性定義對應的是你使用 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> 或 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">volume</span> <span class="pre">create</span></code> 指令時所指定的的 <code class="docutils literal notranslate"><span class="pre">OPTIONS</span></code> 。用來設定物件的設定。</p>
+</section>
+<section id="docker-compose">
+<h3>Docker Compose 相關指令<a class="headerlink" href="#docker-compose" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--help
+<span class="linenos">2</span><span class="w">     </span>--build,<span class="w"> </span>-d
+<span class="linenos">3</span>docker<span class="w"> </span>compose<span class="w"> </span>run<span class="w"> </span>--help
+<span class="linenos">4</span>docker<span class="w"> </span>compose<span class="w"> </span>start<span class="w"> </span>--help
+<span class="linenos">5</span>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span>--help
+<span class="linenos">6</span>docker<span class="w"> </span>compose<span class="w"> </span>build<span class="w"> </span>--help
+<span class="linenos">7</span><span class="w">    </span>-build-arg
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id15">
+<h2>進階觀念<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<section id="container-mount">
+<h3>Container 的 mount<a class="headerlink" href="#container-mount" title="Link to this heading">#</a></h3>
+<p>container 的 mount 有兩種模式</p>
+<ul class="simple">
+<li><p>mount <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">Volume</span></code></p></li>
+<li><p>bind mount</p></li>
+</ul>
+<p>第一種方式就如名稱所示，是把指定的路徑綁訂到某個 Docker Volume 上。<br />
+第二種方式則是類似建立一個捷徑把 <code class="docutils literal notranslate"><span class="pre">container</span></code> 指定的路徑連接到 <code class="docutils literal notranslate"><span class="pre">host</span></code> 的指定路徑。</p>
+<p>常見的使用場景如下:</p>
+<ul class="simple">
+<li><p>將 project directory 綁訂到 container 某個路徑下面</p></li>
+<li><p>將 ~/.git 的設定綁訂到 container 的 ${HOME_DIR}/.git 或 /root/.git 下面</p></li>
+<li><p>將 ~/.ssh 的設定綁訂到 container 的 ${HOME_DIR}/.ssh 或 /root/.ssh 下面</p></li>
+</ul>
+<p>在使用 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> 的時候可以使用 <code class="docutils literal notranslate"><span class="pre">-v</span> <span class="pre">&lt;source&gt;:&lt;target&gt;[:&lt;mode&gt;]</span></code> 的 <code class="docutils literal notranslate"><span class="pre">OPTION</span></code> 來指定 mount 。預設狀況是使用 mount Docker Volume 的方式去解讀，但如果 source 是使用<code class="docutils literal notranslate"><span class="pre">絕對路徑</span> <span class="pre">(不可以使用相對路徑)</span></code>來描述的話會視作為 bind mount 。</p>
+</section>
+<section id="docker-compose-network">
+<h3>docker-compose 的 network<a class="headerlink" href="#docker-compose-network" title="Link to this heading">#</a></h3>
+<p>前面的介紹有提到，使用 <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">Compose</span></code> 的目的是要隔離大型應用的每一個部分，但 container 之間又要能互相通訊。這實際上是依靠建立 <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">Network</span></code> 並且在 <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span></code> 的時候使用 <code class="docutils literal notranslate"><span class="pre">--network</span> <span class="pre">&lt;network&gt;</span></code> 把所有的 container 連接到同一個網路來解決。如果使用了 Docker Compose 的方式的話在執行的時候 Docker 會自動建立一個對應的的 <code class="docutils literal notranslate"><span class="pre">bridge</span></code> 網路 <code class="docutils literal notranslate"><span class="pre">&lt;project_name&gt;_default</span></code> 。沒有指定網路設定的 service 預設就會連接到這個網路因此可以互相通訊，但如果有指定網路的 service 如果沒有指定到同一個網路的話彼此之間就無法通訊。</p>
+</section>
+<section id="linux-capabilities-docker">
+<h3>Linux capabilities 與 Docker 權限控制<a class="headerlink" href="#linux-capabilities-docker" title="Link to this heading">#</a></h3>
+<p>在某些情況下，我們的程式可能需要執行一些系統層級的操作，例如修改網路設定、調整時間或掛載檔案系統。傳統的 Linux 權限模型只有一個 <code class="docutils literal notranslate"><span class="pre">super</span> <span class="pre">user:</span> <span class="pre">root</span></code>，這導致若要執行上述操作，通常必須將程式以 root 權限執行，導致過度授權與潛在風險。</p>
+<p>從 Linux 2.2 開始，系統引入了 <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">Capabilities</span></code> 機制，將原本屬於 root 的權限細分為多個<code class="docutils literal notranslate"><span class="pre">能力模組</span></code>。我們可以將特定的 capability 授予某個 process，使其能執行特定的系統操作，而不需要完整的 root 權限。例如，<code class="docutils literal notranslate"><span class="pre">CAP_NET_ADMIN</span></code> 允許修改網路設定，<code class="docutils literal notranslate"><span class="pre">CAP_SYS_TIME</span></code> 允許修改系統時間等。</p>
+<p>這些 capability 是附加在 process 上，執行檔雖可透過 <code class="docutils literal notranslate"><span class="pre">setcap</span></code> 指定 capability，但最終生效的是執行時的 process。詳細說明可參考官方文件：<a class="reference external" href="https://man7.org/linux/man-pages/man7/capabilities.7.html">capabilities(7) — Linux manual page</a> 。</p>
+<p>在 Docker 中，雖然容器內的 process 預設以 root (UID 0) 身分執行，但它並不擁有完整的 root 能力，因為 Docker 會限制其預設的 capability 集合。若希望某個 container 能具有執行系統層級操作的能力，可以透過 <code class="docutils literal notranslate"><span class="pre">--cap-add</span></code> 為 container 的 process 加入額外能力。</p>
+<section id="linux-capabilities">
+<h4>Linux Capabilities 相關指令<a class="headerlink" href="#linux-capabilities" title="Link to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>setcap<span class="w"> </span>--help
+<span class="linenos">2</span>getcap<span class="w"> </span>--help
+<span class="linenos">3</span>
+<span class="linenos">4</span>getpcaps<span class="w"> </span>--help
+<span class="linenos">5</span>man<span class="w"> </span>capsh
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="id16">
+<h2>接下來?<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<p>這篇文章的主要目的是要幫助你可以知道要如何讀懂別人的 Dockerfile 與 docker-compose.yml 。接下來你只需要找一些實際的 Dockerfile 與 docker-compose.yml 的範例來邊看邊學，不知道要如何使用的指令可以使用 chatGPT 這類 AI 工具幫忙解答。</p>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.docker.com/get-started/">dockerdocs - Get started</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/manuals/">dockerdocs - Manuals</a></p></li>
+<li><p><a class="reference external" href="https://man7.org/linux/man-pages/man7/capabilities.7.html">capabilities(7) — Linux manual page</a></p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Yocto/yocto_faq.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Yocto FAQ</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">目錄</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-docker">什麼是 Docker 與 Docker 基礎概念</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">什麼是 Docker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">Image</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Image 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#container">Container</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Container 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-volume">Docker Volume</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Docker Volume 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-network">Docker Network</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Docker Network 相關指令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Image 管理</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">快照指令</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">快照指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dockerfile">Dockerfile</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Dockerfile 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registry">Registry</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Registry 相關指令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Dockerfile 介紹</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#layer">Layer</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cache">Cache 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#base-image">Base Image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage">Stage</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose-yml">docker-compose.yml 介紹</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">類別定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">物件定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">屬性定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose">Docker Compose 相關指令</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">進階觀念</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#container-mount">Container 的 mount</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#docker-compose-network">docker-compose 的 network</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-capabilities-docker">Linux capabilities 與 Docker 權限控制</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-capabilities">Linux Capabilities 相關指令</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">接下來?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Rein Wu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023, Rein Wu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

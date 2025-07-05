@@ -15,6 +15,8 @@
 3. [Jansson (a C library for JSON data) 使用教學](./StudyNote/Jansson/index.md)
 4. [Ubuntu 22.04 工具安裝](./StudyNote/InstallUbuntu_22_04/index.md)
 5. [Git 學習筆記](./StudyNote/LearningGit/index.md)
+6. [Yocto 學習筆記](./StudyNote/Yocto/index.md)
+7. [Docker Tutorial](./StudyNote/Docker/index.md)
 
 ```{toctree}
 :hidden:
@@ -26,6 +28,8 @@ StudyNote/LinkLoadDemo/index
 StudyNote/Jansson/index
 StudyNote/InstallUbuntu_22_04/index
 StudyNote/LearningGit/index
+StudyNote/Yocto/index
+StudyNote/Docker/index
 ```
 
 ## Course
