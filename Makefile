@@ -26,6 +26,7 @@ publish:
 	@make html
 	@cp -r build/html/* docs
 	@git add -f docs/
+	@git commit -m "Publish"
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
