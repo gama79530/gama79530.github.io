@@ -10,7 +10,7 @@
 
 ## 什麼是 Docker 與 Docker 基礎概念
 
-### 什麼是 Docker 
+### 什麼是 Docker
 
 Docker 的定位很接近`虛擬機(Virtual Machine)`，它提供一個輕量級、隔離的環境，可用來編譯原始碼、執行應用程式、進行測試等。不過相較於傳統的虛擬機，Docker 更加輕量，對系統資源的負擔也較小（因為與 host 共用 kernel），而且部署與使用方式也相對簡單。
 
@@ -83,8 +83,6 @@ docker network inspect --help
 ### 快照指令
 
 我們可以使用指令將`執行中`的 container 快照下來，轉換成一個新的 image。
-
-#### 快照指令
 
 ```bash
 docker commit --help
@@ -223,15 +221,38 @@ container 的 mount 有兩種模式
 
 前面的介紹有提到，使用 `Docker Compose` 的目的是要隔離大型應用的每一個部分，但 container 之間又要能互相通訊。這實際上是依靠建立 `Docker Network` 並且在 `docker run` 的時候使用 `--network <network>` 把所有的 container 連接到同一個網路來解決。如果使用了 Docker Compose 的方式的話在執行的時候 Docker 會自動建立一個對應的的 `bridge` 網路 `<project_name>_default` 。沒有指定網路設定的 service 預設就會連接到這個網路因此可以互相通訊，但如果有指定網路的 service 如果沒有指定到同一個網路的話彼此之間就無法通訊。
 
+### Docker security
+
+#### Docker 啟動的步驟以及安全機制
+
+1. 由 Docker Engine 呼叫 `containerd`，再透過 `runc` 建立 container
+   - Docker 使用 containerd 作為 container 執行與生命週期管理的中介，再透過符合 OCI 標準的 runtime (預設為 runc ) 來啟動實際的 container process。
+2. 建立 Linux namespaces，隔離 container 資源，包括:
+   - Process
+   - Network
+   - File system
+   - User
+   - IPC
+3. 根據 image 的 layer 結構，使用 overlay filesystem 組合成 container 的 root filesystem，同時根據 volumes 或 bind mounts 的設定，將指定的目錄掛載至 container 內的對應路徑。
+4. 使用 Linux 的 `cgroups` 限制 CPU / Memory 使用量
+5. 使用 Linux 的 `seccomp` 屏蔽高風險的 `systemcall`
+
+Docker 之所以能提供相對安全的執行環境，主要是因為在啟動 container 時，會為 container 的各項資源建立獨立的 Linux namespaces，使其運作與 host 系統相互隔離。
+
+#### Docker 的安全隱患
+
+在未啟用 `User Namespace Remapping` 的情況下， container 內部的 root 使用者（UID 0）在 host 上也是真正的 root，兩者幾乎擁有相同權限。
+雖然 Docker 預設會移除一些高風險的 Linux capabilities（例如 `CAP_SYS_ADMIN`, `CAP_NET_ADMIN`），因此 container 內的 root 無法執行某些操作（如掛載檔案系統、修改網路介面等），但這仍無法完全避免風險。若在 `docker run` 的時候加上了 `--privileged` OPTION，則 container 將會被賦予所有 capabilities，並解除 AppArmor、seccomp 等限制。此時 container 內的 root 就與 host 的 root 幾乎無異，擁有完整權限。這代表 container 中的 process 可以掛載 host 上的檔案系統，例如將 `/root` 或 `/etc` 掛載進 container 中，造成系統安全重大風險。
+
 ### Linux capabilities 與 Docker 權限控制
 
-在某些情況下，我們的程式可能需要執行一些系統層級的操作，例如修改網路設定、調整時間或掛載檔案系統。傳統的 Linux 權限模型只有一個 `super user: root`，這導致若要執行上述操作，通常必須將程式以 root 權限執行，導致過度授權與潛在風險。
+在某些情況下，應用程式可能需要執行系統層級的操作，例如修改網路設定、調整系統時間，或掛載檔案系統。傳統的 Linux 權限模型僅有一個超級使用者 `root` ，因此若要執行上述操作，通常必須以 root 權限執行程式，這容易導致權限過度開放與安全風險。
 
-從 Linux 2.2 開始，系統引入了 `Linux Capabilities` 機制，將原本屬於 root 的權限細分為多個`能力模組`。我們可以將特定的 capability 授予某個 process，使其能執行特定的系統操作，而不需要完整的 root 權限。例如，`CAP_NET_ADMIN` 允許修改網路設定，`CAP_SYS_TIME` 允許修改系統時間等。
+從 Linux 2.2 開始，系統引入了 `Linux Capabilities` 機制，將原本屬於 root 的權限細分為多個 `能力模組(capabilities)`。我們可以將特定的 capability 授予某個 process，使其能執行特定的系統操作，而不需要完整的 root 權限。例如，`CAP_NET_ADMIN` 允許修改網路設定，`CAP_SYS_TIME` 允許修改系統時間等。
 
 這些 capability 是附加在 process 上，執行檔雖可透過 `setcap` 指定 capability，但最終生效的是執行時的 process。詳細說明可參考官方文件：[capabilities(7) — Linux manual page](https://man7.org/linux/man-pages/man7/capabilities.7.html) 。
 
-在 Docker 中，雖然容器內的 process 預設以 root (UID 0) 身分執行，但它並不擁有完整的 root 能力，因為 Docker 會限制其預設的 capability 集合。若希望某個 container 能具有執行系統層級操作的能力，可以透過 `--cap-add` 為 container 的 process 加入額外能力。
+當使用 `docker run` 啟動 container 的時候，如果加上 `--cap-add` 的 `OPTION` 的話 container 的 process 會被賦予對應的 capability 。在 container 裡面 fork 的任何 process 都會自動繼承這些 capabilities 。因此，透過該選項賦予的 capability 將套用至整個 container 中所有的 process。
 
 #### Linux Capabilities 相關指令
 
@@ -245,9 +266,15 @@ man capsh
 
 ## 接下來?
 
-這篇文章的主要目的是要幫助你可以知道要如何讀懂別人的 Dockerfile 與 docker-compose.yml 。接下來你只需要找一些實際的 Dockerfile 與 docker-compose.yml 的範例來邊看邊學，不知道要如何使用的指令可以使用 chatGPT 這類 AI 工具幫忙解答。
+這篇文章的主要目的是幫助你理解如何閱讀與理解別人的 `Dockerfile` 和 `docker-compose.yml`。在不同的應用場景中，會需要不同的設定方式；即使是相同的需求，也可能有多種實現方式，因此學會閱讀別人的設定檔，能幫助你更快上手與應變。
+
+接下來的建議學習方式是：找一些實際的 `Dockerfile` 和 `docker-compose.yml` 範例，動手分析它們的寫法與用途，觀察各種指令與欄位的使用差異，並試著親自執行看看。
+
+如果在過程中遇到不懂的設定項目或指令，不妨善用像是 ChatGPT 這類 AI 工具，或參考官方文件來查詢說明。透過大量實作與查詢，會讓你越來越熟悉 Docker 的生態與使用習慣。
 
 ## Reference
+
 - [dockerdocs - Get started](https://docs.docker.com/get-started/)
 - [dockerdocs - Manuals](https://docs.docker.com/manuals/)
 - [capabilities(7) — Linux manual page](https://man7.org/linux/man-pages/man7/capabilities.7.html)
+- [Why Running Docker Containers as Root is a Security Nightmare (And How to Fix It)](https://medium.com/@ayoubseddiki132/why-running-docker-containers-as-root-is-a-security-nightmare-and-how-to-fix-it-83a60509d9bf)
