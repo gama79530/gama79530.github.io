@@ -13,7 +13,7 @@
 1. [How To Build Personal Website with GitHub Pages](./StudyNote/Homepage/index.md)
 2. [(C/C++) 如何在Linux上編譯與使用 static /shared library](./StudyNote/LinkLoadDemo/index.md)
 3. [Jansson (a C library for JSON data) 使用教學](./StudyNote/Jansson/index.md)
-4. [Ubuntu 22.04 工具安裝](./StudyNote/InstallUbuntu_22_04/index.md)
+4. [Ubuntu 工具安裝](./StudyNote/UbuntuSetup/index.md)
 5. [Git 學習筆記](./StudyNote/LearningGit/index.md)
 6. [Yocto 學習筆記](./StudyNote/Yocto/index.md)
 7. [Docker Tutorial](./StudyNote/Docker/index.md)

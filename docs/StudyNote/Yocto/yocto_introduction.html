@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Yocto 基本介紹 &#8212; Rein&#39;s Homepage</title>
   
@@ -14,42 +15,44 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
-    <script src="../../_static/documentation_options.js?v=e645c8fa"></script>
-    <script src="../../_static/doctools.js?v=9bcbadda"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'StudyNote/Yocto/yocto_introduction';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -65,23 +68,19 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -103,20 +102,12 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +122,6 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
-  
-    
   
 
 <a class="navbar-brand logo" href="../../index.html">
@@ -142,47 +130,34 @@
   
   
   
-  
     <p class="title logo__title">Rein's Homepage</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Homepage/index.html">How To Build Personal Website with GitHub Pages</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Homepage/index.html">How To Build Personal Website with GitHub Pages</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Homepage/foundation.html">Building Foundation of Homepage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Homepage/skeleton.html">Building Skeleton of Homepage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Homepage/note.html">Notes</a></li>
 </ul>
-</details></li>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Jansson/index.html">Jansson (a C library for JSON data) 使用教學</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../InstallUbuntu_22_04/index.html">Ubuntu 22.04 工具安裝</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../LearningGit/index.html">Git 學習筆記</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../LearningGit/index.html">Git 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../LearningGit/git_faq.html">Git FAQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../LearningGit/large_project_management.html">大型專案管理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../LearningGit/useful_setup.html">實用設定</a></li>
 </ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Yocto 學習筆記</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Yocto 學習筆記</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Yocto 基本介紹</a></li>
 <li class="toctree-l2"><a class="reference internal" href="yocto_start.html">如何開始一個 Yocto 專案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="yocto_faq.html">FAQ</a></li>
 </ul>
-</details></li>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Docker/index.html">Docker Tutorial</a></li>
 </ul>
 
@@ -199,7 +174,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -208,14 +183,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -371,28 +346,26 @@
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -435,10 +408,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="yocto">
-<h1>Yocto 基本介紹<a class="headerlink" href="#yocto" title="Link to this heading">#</a></h1>
+<h1>Yocto 基本介紹<a class="headerlink" href="#yocto" title="Permalink to this heading">#</a></h1>
 <p>Yocto 是一個開源專案，提供了一個用於**製作以 Linux 為基礎的系統（通常是嵌入式系統）**的框架（framework）。在製作以 Linux 為基礎的系統時，常會遇到以下問題：</p>
 <ol class="arabic simple">
 <li><p>需要安裝哪些軟體？這些軟體之間是否有相依性？</p></li>
@@ -456,10 +429,10 @@ document.write(`
 </ol>
 </div>
 <section id="id1">
-<h2>Yocto 相關術語<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>Yocto 相關術語<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>以下是我根據官方術語介紹所精煉的描述：</p>
 <section id="metadata">
-<h3>Metadata<a class="headerlink" href="#metadata" title="Link to this heading">#</a></h3>
+<h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this heading">#</a></h3>
 <p>Metadata 是 Yocto Project 中用來建構 Linux 發行版的所有建構資訊的總稱。這些資訊包含：</p>
 <ul class="simple">
 <li><p>程式套件的 recipe</p></li>
@@ -471,7 +444,7 @@ document.write(`
 <p>這些 Metadata 分散於不同的 Layer 中。OpenEmbedded-Core（oe-core）即為一組經過驗證的 Metadata。</p>
 </section>
 <section id="packages">
-<h3>Packages<a class="headerlink" href="#packages" title="Link to this heading">#</a></h3>
+<h3>Packages<a class="headerlink" href="#packages" title="Permalink to this heading">#</a></h3>
 <p>Packages 是 build system 的輸出結果，代表一個個可安裝的軟體單元（如 <code class="docutils literal notranslate"><span class="pre">.ipk</span></code>、<code class="docutils literal notranslate"><span class="pre">.deb</span></code>、<code class="docutils literal notranslate"><span class="pre">.rpm</span></code> 等格式）。這些套件會被用來：</p>
 <ul class="simple">
 <li><p>製作最終的系統映像檔（Image）</p></li>
@@ -479,15 +452,15 @@ document.write(`
 </ul>
 </section>
 <section id="extensible-software-development-kit-esdk">
-<h3>Extensible Software Development Kit (ESDK)<a class="headerlink" href="#extensible-software-development-kit-esdk" title="Link to this heading">#</a></h3>
+<h3>Extensible Software Development Kit (ESDK)<a class="headerlink" href="#extensible-software-development-kit-esdk" title="Permalink to this heading">#</a></h3>
 <p>ESDK 是一組可擴充的開發工具組，提供給應用程式開發人員使用，讓他們能在不依賴完整 Yocto Build 系統的情況下，針對目標平台進行開發、建構與封裝。開發者也可以透過 ESDK 修改或擴充現有的套件，並將變更整合回原始映像檔。</p>
 </section>
 <section id="image">
-<h3>Image<a class="headerlink" href="#image" title="Link to this heading">#</a></h3>
+<h3>Image<a class="headerlink" href="#image" title="Permalink to this heading">#</a></h3>
 <p>Image 是以二進位格式產生的作業系統映像檔，通常會被燒錄到硬體裝置上，用來啟動目標系統。</p>
 </section>
 <section id="configuration-files">
-<h3>Configuration Files<a class="headerlink" href="#configuration-files" title="Link to this heading">#</a></h3>
+<h3>Configuration Files<a class="headerlink" href="#configuration-files" title="Permalink to this heading">#</a></h3>
 <p>Configuration files 為 Yocto 提供建構過程中的變數與設定。內容包含：</p>
 <ul class="simple">
 <li><p>官方定義的變數（如 <code class="docutils literal notranslate"><span class="pre">MACHINE</span></code>, <code class="docutils literal notranslate"><span class="pre">DISTRO</span></code>, <code class="docutils literal notranslate"><span class="pre">IMAGE_FEATURES</span></code> 等）</p></li>
@@ -497,7 +470,7 @@ document.write(`
 <p>這些設定檔會告訴 Build System 要建構什麼、如何建構，以及要支援哪些功能。</p>
 </section>
 <section id="layer">
-<h3>Layer<a class="headerlink" href="#layer" title="Link to this heading">#</a></h3>
+<h3>Layer<a class="headerlink" href="#layer" title="Permalink to this heading">#</a></h3>
 <p>Layer 是 Yocto 用來組織 recipes 的單位。每個 Layer 包含一組功能相關的 recipes、設定與檔案。Layer 可用來：</p>
 <ul class="simple">
 <li><p>客製化系統功能</p></li>
@@ -507,7 +480,7 @@ document.write(`
 <p>Yocto 允許使用多個 Layer 並透過 Layer 優先權機制進行覆蓋與整合。</p>
 </section>
 <section id="recipe">
-<h3>Recipe<a class="headerlink" href="#recipe" title="Link to this heading">#</a></h3>
+<h3>Recipe<a class="headerlink" href="#recipe" title="Permalink to this heading">#</a></h3>
 <p>Recipe 是最基本的 Metadata 單元，用來描述如何建構單一套件。內容通常包含：</p>
 <ul class="simple">
 <li><p>原始碼來源（如 Git、tarball）</p></li>
@@ -519,7 +492,7 @@ document.write(`
 <p>Recipe 通常儲存在 Layer 中，並以 <code class="docutils literal notranslate"><span class="pre">.bb</span></code> 為副檔名。</p>
 </section>
 <section id="build-system-bitbake">
-<h3>Build System – BitBake<a class="headerlink" href="#build-system-bitbake" title="Link to this heading">#</a></h3>
+<h3>Build System – BitBake<a class="headerlink" href="#build-system-bitbake" title="Permalink to this heading">#</a></h3>
 <p>BitBake 是 Yocto 的建構引擎，負責解析 recipes 與設定檔、建立相依樹、排程與執行建構流程。它類似 <code class="docutils literal notranslate"><span class="pre">make</span></code>，但更適合複雜的交叉編譯環境。特點如下：</p>
 <ul class="simple">
 <li><p>分析所有 Metadata（recipes、class、設定）</p></li>
@@ -529,7 +502,7 @@ document.write(`
 </ul>
 </section>
 <section id="openembedded-core-oe-core">
-<h3>OpenEmbedded-Core (oe-core)<a class="headerlink" href="#openembedded-core-oe-core" title="Link to this heading">#</a></h3>
+<h3>OpenEmbedded-Core (oe-core)<a class="headerlink" href="#openembedded-core-oe-core" title="Permalink to this heading">#</a></h3>
 <p>OpenEmbedded-Core 是 OpenEmbedded 專案中被精選出來的一組核心 metadata，包含：</p>
 <ul class="simple">
 <li><p>基本系統建構所需的 recipes、class 與設定檔</p></li>
@@ -539,7 +512,7 @@ document.write(`
 <p>在 Poky 中，oe-core 通常放在 <code class="docutils literal notranslate"><span class="pre">meta</span></code> 這個 Layer 之中。</p>
 </section>
 <section id="poky">
-<h3>Poky<a class="headerlink" href="#poky" title="Link to this heading">#</a></h3>
+<h3>Poky<a class="headerlink" href="#poky" title="Permalink to this heading">#</a></h3>
 <p>Poky 是 Yocto Project 提供的參考整合層（reference distribution），具備以下目的：</p>
 <ol class="arabic simple">
 <li><p>提供可客製化的基礎發行版本</p></li>
@@ -557,10 +530,11 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer d-print-none">
+                <footer class="bd-footer-article">
                   
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="index.html"
@@ -580,7 +554,10 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -588,7 +565,6 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -630,7 +606,6 @@ By Rein Wu
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2023, Rein Wu.
@@ -657,8 +632,8 @@ By Rein Wu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>
