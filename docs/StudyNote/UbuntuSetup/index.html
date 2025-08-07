@@ -57,6 +57,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'StudyNote/UbuntuSetup/index';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Git 學習筆記" href="../LearningGit/index.html" />
+    <link rel="prev" title="Jansson (a C library for JSON data) 使用教學" href="../Jansson/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -134,7 +136,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Homepage/index.html">How To Build Personal Website with GitHub Pages</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Homepage/foundation.html">Building Foundation of Homepage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Homepage/skeleton.html">Building Skeleton of Homepage</a></li>
@@ -143,6 +145,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Jansson/index.html">Jansson (a C library for JSON data) 使用教學</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ubuntu 工具安裝</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../LearningGit/index.html">Git 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../LearningGit/git_faq.html">Git FAQ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
@@ -392,7 +395,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-grub">GNU GRUB</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-ubuntu-system-time-synchronization">Windows / Ubuntu system time synchronization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-sticky-notes-only-for-ubuntu-22-04">Indicator Sticky Notes (Only for ubuntu 22.04)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-sticky-notes">Indicator Sticky Notes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-store">Snap Store</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-disable-snap-on-ubuntu-22-04">How to Disable Snap on Ubuntu 22.04</a></li>
 </ul>
@@ -419,7 +422,8 @@ document.write(`
 <li><p><a class="reference internal" href="#build-essential-package"><span class="std std-doc">Build Essential Package</span></a></p></li>
 <li><p><a class="reference internal" href="#gnu-grub"><span class="std std-doc">GNU GRUB</span></a></p></li>
 <li><p><a class="reference internal" href="#windows-ubuntu-system-time-synchronization"><span class="std std-doc">Windows / Ubuntu system time synchronization</span></a></p></li>
-<li><p><span class="xref myst">Indicator Sticky Notes</span></p></li>
+<li><p><a class="reference internal" href="#docker"><span class="std std-doc">Docker</span></a></p></li>
+<li><p><a class="reference internal" href="#indicator-sticky-notes"><span class="std std-doc">Indicator Sticky Notes</span></a></p></li>
 <li><p><a class="reference internal" href="#snap-store"><span class="std std-doc">Snap Store</span></a></p></li>
 </ol>
 </section>
@@ -559,8 +563,9 @@ document.write(`
 </ol>
 </div>
 </section>
-<section id="indicator-sticky-notes-only-for-ubuntu-22-04">
-<h2>Indicator Sticky Notes (Only for ubuntu 22.04)<a class="headerlink" href="#indicator-sticky-notes-only-for-ubuntu-22-04" title="Permalink to this heading">#</a></h2>
+<section id="indicator-sticky-notes">
+<h2>Indicator Sticky Notes<a class="headerlink" href="#indicator-sticky-notes" title="Permalink to this heading">#</a></h2>
+<p>Only for ubuntu 22.04</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:umang/indicator-stickynotes
 <span class="linenos">2</span>sudo<span class="w"> </span>apt<span class="w"> </span>update
 <span class="linenos">3</span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>indicator-stickynotes
@@ -632,6 +637,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../Jansson/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Jansson (a C library for JSON data) 使用教學</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../LearningGit/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Git 學習筆記</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -658,7 +681,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-grub">GNU GRUB</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-ubuntu-system-time-synchronization">Windows / Ubuntu system time synchronization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docker">Docker</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-sticky-notes-only-for-ubuntu-22-04">Indicator Sticky Notes (Only for ubuntu 22.04)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-sticky-notes">Indicator Sticky Notes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#snap-store">Snap Store</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-disable-snap-on-ubuntu-22-04">How to Disable Snap on Ubuntu 22.04</a></li>
 </ul>
