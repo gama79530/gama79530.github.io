@@ -10,8 +10,9 @@
 4. [Build Essential Package](#build-essential-package)
 5. [GNU GRUB](#gnu-grub)
 6. [Windows / Ubuntu system time synchronization](#windows--ubuntu-system-time-synchronization)
-7. [Indicator Sticky Notes](#indicator-sticky-notes-only-for-ubuntu-22-04)
-8. [Snap Store](#snap-store)
+7. [Docker](#docker)
+8. [Indicator Sticky Notes](#indicator-sticky-notes)
+9. [Snap Store](#snap-store)
 
 ## Softwares
 
@@ -142,7 +143,9 @@ sudo docker run hello-world
 1. [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 ```
 
-## Indicator Sticky Notes (Only for ubuntu 22.04)
+## Indicator Sticky Notes
+
+Only for ubuntu 22.04
 
 ```bash
 sudo add-apt-repository ppa:umang/indicator-stickynotes

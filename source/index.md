@@ -26,7 +26,7 @@
 StudyNote/Homepage/index
 StudyNote/LinkLoadDemo/index
 StudyNote/Jansson/index
-StudyNote/InstallUbuntu_22_04/index
+StudyNote/UbuntuSetup/index
 StudyNote/LearningGit/index
 StudyNote/Yocto/index
 StudyNote/Docker/index
