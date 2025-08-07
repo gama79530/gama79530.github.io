@@ -1,0 +1,22 @@
+# docker compose run --rm github.io
+services:
+  github.io:
+    build:
+      dockerfile: ./Dockerfile
+      args:
+        USERNAME: rein  # whoami
+        USER_UID: 1000  # id -u
+        USER_GID: 1000  # id -g
+    image: github.io
+    container_name: github.io
+    stdin_open: true
+    tty: true
+    restart: "no"
+    entrypoint: "/bin/bash"
+    working_dir: ${PWD}
+    network_mode: "host"
+    volumes:
+      - "${PWD}:${PWD}"
+      - "${HOME}/.gitconfig:${HOME}/.gitconfig"
+      - "${HOME}/.ssh:${HOME}/.ssh"
+
