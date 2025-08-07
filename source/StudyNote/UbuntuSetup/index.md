@@ -1,14 +1,16 @@
-# Ubuntu 22.04 工具安裝
+# Ubuntu 工具安裝
+
+
 
 ## 總整理
 
 1. [Softwares](#softwares)
-2. [google chrome](#google-chrome)
+2. [Google Chrome](#google-chrome)
 3. [Visual Studio Code](#visual-studio-code)
 4. [Build Essential Package](#build-essential-package)
 5. [GNU GRUB](#gnu-grub)
-6. [Window 10 / ubuntu system time synchronization](#window-10--ubuntu-system-time-synchronization)
-7. [Indicator Sticky Notes](#indicator-sticky-notes)
+6. [Windows / Ubuntu system time synchronization](#windows--ubuntu-system-time-synchronization)
+7. [Indicator Sticky Notes](#indicator-sticky-notes-only-for-ubuntu-22-04)
 8. [Snap Store](#snap-store)
 
 ## Softwares
@@ -37,9 +39,11 @@ sudo apt install gcc-aarch64-linux-gnu
 sudo apt install qemu-system-aarch64
 # screen
 sudo apt install screen
+# chewing chinese input
+sudo apt install ibus-chewing
 ```
 
-## google chrome
+## Google Chrome
 
 ```bash
 mkdir /etc/apt/keyrings
@@ -63,7 +67,6 @@ wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > pa
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
 echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
 rm -f packages.microsoft.gpg
-sudo apt install apt-transport-https
 sudo apt update
 sudo apt install code # or code-insiders
 ```
@@ -87,6 +90,7 @@ sudo apt-get install build-essential
 ## GNU GRUB
 
 ```bash
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer # ubuntu 24.04 need to add ppa
 sudo apt install grub-customizer
 ```
 
@@ -99,10 +103,11 @@ sudo apt install grub-customizer
     ```
 ```
 
-## Window 10 / ubuntu system time synchronization
+## Windows / Ubuntu system time synchronization
 
 ```bash
-sudo timedatectl set-local-rtc 1
+sudo timedatectl set-local-rtc 1 --adjust-system-clock
+# validate setting, RTC in local TZ: yes
 timedatectl | grep local
 ```
 
@@ -111,7 +116,33 @@ timedatectl | grep local
 1. [Ubuntu 與 Windows 雙系統時間不同步修正](https://hackmd.io/@Z5feOdXLT-eld5sA3Shfbg/SJUFkZv22#Ubuntu-%E8%88%87-Windows-%E9%9B%99%E7%B3%BB%E7%B5%B1%E6%99%82%E9%96%93%E4%B8%8D%E5%90%8C%E6%AD%A5%E4%BF%AE%E6%AD%A3)
 ```
 
-## Indicator Sticky Notes
+## Docker
+
+```bash
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+# install
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose docker-compose-plugin
+# install validation
+sudo docker run hello-world
+```
+
+```{seealso}
+:class: dropdown
+1. [Install Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+```
+
+## Indicator Sticky Notes (Only for ubuntu 22.04)
 
 ```bash
 sudo add-apt-repository ppa:umang/indicator-stickynotes
