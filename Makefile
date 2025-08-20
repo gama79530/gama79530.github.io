@@ -7,6 +7,7 @@ SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = source
 BUILDDIR      = build
+USEDOCKER     = true
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -18,12 +19,12 @@ clean:
 	@rm -rf docs build
 
 preview:
-	@rm -rf build && make html
+	@$(if $(filter true, $(USEDOCKER)), docker compose run --rm github.io, bash) -c "rm -rf build && make html"
 
 publish:
 	@rm -rf docs build && mkdir docs
 	@touch docs/.nojekyll
-	@make html
+	@$(if $(filter true, $(USEDOCKER)), docker compose run --rm github.io, bash) -c "make html"
 	@cp -r build/html/* docs
 	@git add -f docs/
 	@git commit -m "Publish"

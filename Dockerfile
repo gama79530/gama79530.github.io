@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 USER root
 
 RUN apt-get update \
-&&  apt-get install -y git locales \
+&&  apt-get install -y locales \
 &&  apt-get install -y python3 python3-setuptools python3-pip python3-distutils python3-venv \
 &&  apt-get install -y build-essential \
 &&  rm -rf /var/lib/apt/lists/* 

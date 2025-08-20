@@ -17,6 +17,4 @@ services:
     network_mode: "host"
     volumes:
       - "${PWD}:${PWD}"
-      - "${HOME}/.gitconfig:${HOME}/.gitconfig"
-      - "${HOME}/.ssh:${HOME}/.ssh"
 
