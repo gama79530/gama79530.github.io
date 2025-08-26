@@ -17,6 +17,7 @@
 5. [Git 學習筆記](./StudyNote/LearningGit/index.md)
 6. [Yocto 學習筆記](./StudyNote/Yocto/index.md)
 7. [Docker Tutorial](./StudyNote/Docker/index.md)
+8. [專業術語筆記](./StudyNote/Terminology/index.md)
 
 ```{toctree}
 :hidden:
@@ -30,6 +31,7 @@ StudyNote/UbuntuSetup/index
 StudyNote/LearningGit/index
 StudyNote/Yocto/index
 StudyNote/Docker/index
+StudyNote/Terminology/index
 ```
 
 ## Course
