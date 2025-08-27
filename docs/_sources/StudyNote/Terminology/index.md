@@ -14,6 +14,18 @@ GPIO 是一些直接連接到積體電路或開發板的針腳，這些針腳可
 
 `alternate function` 指 GPIO 的其他可選功能，例如 I2C, SPI, USART, CCP, PWM, Clock 等。GPIO 如何使用這些功能，取決於外部設備（peripheral）及其驅動程式的配置。
 
+### WDT (Watchdog Timer)
+
+`Watchdog timer` 是一個用來偵測並修復系統故障的倒數計時器。常見的工作流程是：先設定一個定時器，若系統正常執行，就會定期重置(或關閉)這個定時器以避免觸發 timeout。當 timeout 發生時，WDT 會發送一個 signal，讓系統根據 signal 進行故障通報或修復。Watchdog 通常由硬體實作並整合在晶片中，但也可以透過軟體方式來實作。
+
+#### 常見的 watchdog 操作
+
+- **Enable / Start**: 啟動 timer 開始倒數  
+- **Kick / Feed**: 重置 timer，避免 timeout  
+- **Disable / Stop**: 關閉 timer  
+- **Set Timeout**: 設定多久後發生 timeout  
+- **Bind Handler / Register Callback**: 設定當 timeout 發生後要執行的處理程序  
+- **Query / Get Status**: 查詢 watchdog 目前的狀態  
 
 ## 軟體
 

@@ -395,6 +395,10 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternate-function">alternate function</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wdt-watchdog-timer">WDT (Watchdog Timer)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#watchdog">常見的 watchdog 操作</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">軟體</a><ul class="nav section-nav flex-column">
@@ -441,6 +445,21 @@ document.write(`
 <section id="alternate-function">
 <h4>alternate function<a class="headerlink" href="#alternate-function" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">alternate</span> <span class="pre">function</span></code> 指 GPIO 的其他可選功能，例如 I2C, SPI, USART, CCP, PWM, Clock 等。GPIO 如何使用這些功能，取決於外部設備（peripheral）及其驅動程式的配置。</p>
+</section>
+</section>
+<section id="wdt-watchdog-timer">
+<h3>WDT (Watchdog Timer)<a class="headerlink" href="#wdt-watchdog-timer" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Watchdog</span> <span class="pre">timer</span></code> 是一個用來偵測並修復系統故障的倒數計時器。常見的工作流程是：先設定一個定時器，若系統正常執行，就會定期重置(或關閉)這個定時器以避免觸發 timeout。當 timeout 發生時，WDT 會發送一個 signal，讓系統根據 signal 進行故障通報或修復。Watchdog 通常由硬體實作並整合在晶片中，但也可以透過軟體方式來實作。</p>
+<section id="watchdog">
+<h4>常見的 watchdog 操作<a class="headerlink" href="#watchdog" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Enable / Start</strong>: 啟動 timer 開始倒數</p></li>
+<li><p><strong>Kick / Feed</strong>: 重置 timer，避免 timeout</p></li>
+<li><p><strong>Disable / Stop</strong>: 關閉 timer</p></li>
+<li><p><strong>Set Timeout</strong>: 設定多久後發生 timeout</p></li>
+<li><p><strong>Bind Handler / Register Callback</strong>: 設定當 timeout 發生後要執行的處理程序</p></li>
+<li><p><strong>Query / Get Status</strong>: 查詢 watchdog 目前的狀態</p></li>
+</ul>
 </section>
 </section>
 </section>
@@ -551,6 +570,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bmc-baseboard-management-controller">BMC (Baseboard Management Controller)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpio-general-purpose-input-output">GPIO (General Purpose Input/Output)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternate-function">alternate function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wdt-watchdog-timer">WDT (Watchdog Timer)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#watchdog">常見的 watchdog 操作</a></li>
 </ul>
 </li>
 </ul>
