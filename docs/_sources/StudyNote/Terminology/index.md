@@ -43,7 +43,7 @@ U-Boot 是一個`開源的`、`用在嵌入式裝置的` bootloader 。它同時
 
 bootloader 是一個開機過程中會使用到的小程式，它主要負責的工作是`初始化底層硬體`以及`將作業系統的 kernel 載入與啟動`。根據工作的流程通常會把負責`初始化底層硬體`的部份稱為 `first-stage bootloader` ，而負責將作業系統的 kernel 載入與啟動的部份稱之為 `second-stage bootloader` 。這兩個 stage 可以視同一個程式，也可以是兩個不同的程式。常見的 first-stage bootloader 包含 BIOS, UEFI, coreboot, Libreboot 與 Das U-Boot 等。而常見的 second-stage bootloader 則是有 GNU GRUB, rEFInd, BOOTMGR, Syslinux 與 NTLDR 等。
 
-## 系統
+## 系統架構
 
 ### In-band, Side-band and Out-of-band
 
@@ -58,6 +58,27 @@ bootloader 是一個開機過程中會使用到的小程式，它主要負責的
 #### 額外補充
 
 物理通道就是實際對應到硬體建立的通道，邏輯通道則是通過軟體控制劃分的方式將物理通道切割產生的通道。
+
+## 技術標準
+
+### PFR (Platform Firmware Resilience)
+
+PFR 是一個技術標準，由 NIST 在 2018 年發佈，標準編號為 [NIST SP 800-193](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf)。  
+該標準的重點分為三個項目：
+
+- **Protection (保護):** 提供機制以確保平台韌體與關鍵資料的 `完整性 (integrity)`，並防止其遭到破壞。例如，確保韌體更新過程的可靠性與完整性。  
+- **Detection (檢測):** 提供機制檢測平台韌體與關鍵資料是否遭到竄改，或是否從授權狀態被更改。  
+- **Recovery (恢復):** 當檢測到韌體或關鍵資料遭到破壞，或透過授權機制強制恢復時，將其修復到具完整性的狀態。恢復範圍僅限於韌體與關鍵資料。  
+
+※ 註：這裡的`完整性 (integrity)` 指的是資料或韌體經過驗證，被認為是可靠且未遭到未授權更改。  
+
+實現方式有很多種，目前較常見的作法是利用額外的 FPGA 或 SoC 硬體，搭配特定的軟體來完成。
+
+## 資訊安全
+
+### PDoS (Permanent Denial-of-Service Attacks)
+
+PDoS 也稱作 `phlashing`，是一種 `DoS` 攻擊方式，其核心概念是攻擊目標裝置的硬體。這類攻擊並非透過物理方式，而是利用安全性漏洞覆寫負責控制硬體的韌體，進而破壞硬體功能。最著名的案例發生在 2017 年的 [BrickerBot](https://en.wikipedia.org/wiki/BrickerBot) 攻擊事件。
 
 ## 商業術語
 

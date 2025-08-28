@@ -409,14 +409,22 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">系統</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">系統架構</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-band-side-band-and-out-of-band">In-band, Side-band and Out-of-band</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">額外補充</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">技術標準</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-platform-firmware-resilience">PFR (Platform Firmware Resilience)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">資訊安全</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
@@ -480,7 +488,7 @@ document.write(`
 </section>
 </section>
 <section id="id4">
-<h2>系統<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2>系統架構<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <section id="in-band-side-band-and-out-of-band">
 <h3>In-band, Side-band and Out-of-band<a class="headerlink" href="#in-band-side-band-and-out-of-band" title="Permalink to this heading">#</a></h3>
 <p>這三個術語是用來分類通訊的方式</p>
@@ -509,7 +517,29 @@ document.write(`
 </section>
 </section>
 <section id="id6">
-<h2>商業術語<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2>技術標準<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<section id="pfr-platform-firmware-resilience">
+<h3>PFR (Platform Firmware Resilience)<a class="headerlink" href="#pfr-platform-firmware-resilience" title="Permalink to this heading">#</a></h3>
+<p>PFR 是一個技術標準，由 NIST 在 2018 年發佈，標準編號為 <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf">NIST SP 800-193</a>。<br />
+該標準的重點分為三個項目：</p>
+<ul class="simple">
+<li><p><strong>Protection (保護):</strong> 提供機制以確保平台韌體與關鍵資料的 <code class="docutils literal notranslate"><span class="pre">完整性</span> <span class="pre">(integrity)</span></code>，並防止其遭到破壞。例如，確保韌體更新過程的可靠性與完整性。</p></li>
+<li><p><strong>Detection (檢測):</strong> 提供機制檢測平台韌體與關鍵資料是否遭到竄改，或是否從授權狀態被更改。</p></li>
+<li><p><strong>Recovery (恢復):</strong> 當檢測到韌體或關鍵資料遭到破壞，或透過授權機制強制恢復時，將其修復到具完整性的狀態。恢復範圍僅限於韌體與關鍵資料。</p></li>
+</ul>
+<p>※ 註：這裡的<code class="docutils literal notranslate"><span class="pre">完整性</span> <span class="pre">(integrity)</span></code> 指的是資料或韌體經過驗證，被認為是可靠且未遭到未授權更改。</p>
+<p>實現方式有很多種，目前較常見的作法是利用額外的 FPGA 或 SoC 硬體，搭配特定的軟體來完成。</p>
+</section>
+</section>
+<section id="id7">
+<h2>資訊安全<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="pdos-permanent-denial-of-service-attacks">
+<h3>PDoS (Permanent Denial-of-Service Attacks)<a class="headerlink" href="#pdos-permanent-denial-of-service-attacks" title="Permalink to this heading">#</a></h3>
+<p>PDoS 也稱作 <code class="docutils literal notranslate"><span class="pre">phlashing</span></code>，是一種 <code class="docutils literal notranslate"><span class="pre">DoS</span></code> 攻擊方式，其核心概念是攻擊目標裝置的硬體。這類攻擊並非透過物理方式，而是利用安全性漏洞覆寫負責控制硬體的韌體，進而破壞硬體功能。最著名的案例發生在 2017 年的 <a class="reference external" href="https://en.wikipedia.org/wiki/BrickerBot">BrickerBot</a> 攻擊事件。</p>
+</section>
+</section>
+<section id="id8">
+<h2>商業術語<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <section id="linux-distribution">
 <h3>Linux distribution<a class="headerlink" href="#linux-distribution" title="Permalink to this heading">#</a></h3>
 <p>簡單來說，Linux distribution（發行版）就是將 Linux 核心（Kernel）搭配一系列預先整合好的套件與工具，打包成一個可以安裝使用的作業系統。
@@ -586,14 +616,22 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">系統</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">系統架構</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-band-side-band-and-out-of-band">In-band, Side-band and Out-of-band</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">額外補充</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">技術標準</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-platform-firmware-resilience">PFR (Platform Firmware Resilience)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">資訊安全</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
