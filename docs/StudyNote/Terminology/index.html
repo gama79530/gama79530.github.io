@@ -404,9 +404,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">缺點</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pch-platform-controller-hub">PCH (Platform Controller Hub)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">架構改進</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">總結</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pch">PCH 架構圖</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">軟體</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">軟體</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openbmc">OpenBMC</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-boot-universal-boot-loader">U-boot (Universal Boot Loader)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bootloader-a-k-a-bootstrap-loader">bootloader (a.k.a. bootstrap loader)</a></li>
@@ -414,22 +420,22 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">系統架構</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">系統架構</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-band-side-band-and-out-of-band">In-band, Side-band and Out-of-band</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">額外補充</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">額外補充</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">技術標準</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">技術標準</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-platform-firmware-resilience">PFR (Platform Firmware Resilience)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">資訊安全</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">資訊安全</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
@@ -496,9 +502,33 @@ document.write(`
 </ul>
 </section>
 </section>
-</section>
+<section id="pch-platform-controller-hub">
+<h3>PCH (Platform Controller Hub)<a class="headerlink" href="#pch-platform-controller-hub" title="Permalink to this heading">#</a></h3>
+<p>PCH 是 Intel 架構下的一種晶片組。隨著處理器頻率不斷提升，傳統的 FSB 成為瓶頸。為了解決這個問題，Intel 導入 <strong>PCH 架構</strong>，取代更舊的南北橋架構。</p>
+<ul class="simple">
+<li><p><strong>北橋</strong>：主要負責高速 I/O，例如處理器與 RAM 之間的存取，以及高速 PCI-E 連線。</p></li>
+<li><p><strong>南橋</strong>：主要負責低速 I/O，例如 SATA, USB, LAN 等。</p></li>
+</ul>
 <section id="id5">
-<h2>軟體<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h4>架構改進<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>記憶體控制器, iGPU, 高速 PCI-E 控制器</strong>：從北橋轉移並整合到處理器內部。</p></li>
+<li><p><strong>PCH</strong>：則承擔原本南橋的功能集（如 SATA, USB, 音效, 網路控制等）。</p></li>
+<li><p><strong>處理器與 PCH 之間</strong>：透過 DMI 連接。DMI 也是早期北橋與南橋之間的連接方式。</p></li>
+</ul>
+</section>
+<section id="id6">
+<h4>總結<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<p>PCH 架構將高速功能集中於處理器，低速周邊功能交由 PCH 負責，成功消除了 FSB 瓶頸，使得 CPU 與記憶體、高速 I/O 之間的效能大幅提升。</p>
+</section>
+<section id="pch">
+<h4>PCH 架構圖<a class="headerlink" href="#pch" title="Permalink to this heading">#</a></h4>
+<p><img alt="" src="../../_images/PCH.png" /></p>
+</section>
+</section>
+</section>
+<section id="id7">
+<h2>軟體<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <section id="openbmc">
 <h3>OpenBMC<a class="headerlink" href="#openbmc" title="Permalink to this heading">#</a></h3>
 <p>OpenBMC 是一個開源專案，其主要目的是建立一個專為 BMC 硬體設計的 <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">發行版（Linux</span> <span class="pre">distribution）</span></code>，用來提供各種伺服器遠端管理與監控功能。該專案目前由 <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">Foundation</span></code> 主導與維護，並有多家業界廠商 (例如 IBM, Intel, Facebook, Google 等) 參與貢獻。</p>
@@ -513,8 +543,8 @@ document.write(`
 </section>
 </section>
 </section>
-<section id="id6">
-<h2>系統架構<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<section id="id8">
+<h2>系統架構<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <section id="in-band-side-band-and-out-of-band">
 <h3>In-band, Side-band and Out-of-band<a class="headerlink" href="#in-band-side-band-and-out-of-band" title="Permalink to this heading">#</a></h3>
 <p>這三個術語是用來分類通訊的方式</p>
@@ -536,14 +566,14 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<section id="id7">
-<h4>額外補充<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<section id="id9">
+<h4>額外補充<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
 <p>物理通道就是實際對應到硬體建立的通道，邏輯通道則是通過軟體控制劃分的方式將物理通道切割產生的通道。</p>
 </section>
 </section>
 </section>
-<section id="id8">
-<h2>技術標準<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h2>技術標準<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <section id="pfr-platform-firmware-resilience">
 <h3>PFR (Platform Firmware Resilience)<a class="headerlink" href="#pfr-platform-firmware-resilience" title="Permalink to this heading">#</a></h3>
 <p>PFR 是一個技術標準，由 NIST 在 2018 年發佈，標準編號為 <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf">NIST SP 800-193</a>。<br />
@@ -557,15 +587,15 @@ document.write(`
 <p>實現方式有很多種，目前較常見的作法是利用額外的 FPGA 或 SoC 硬體，搭配特定的軟體來完成。</p>
 </section>
 </section>
-<section id="id9">
-<h2>資訊安全<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<section id="id11">
+<h2>資訊安全<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <section id="pdos-permanent-denial-of-service-attacks">
 <h3>PDoS (Permanent Denial-of-Service Attacks)<a class="headerlink" href="#pdos-permanent-denial-of-service-attacks" title="Permalink to this heading">#</a></h3>
 <p>PDoS 也稱作 <code class="docutils literal notranslate"><span class="pre">phlashing</span></code>，是一種 <code class="docutils literal notranslate"><span class="pre">DoS</span></code> 攻擊方式，其核心概念是攻擊目標裝置的硬體。這類攻擊並非透過物理方式，而是利用安全性漏洞覆寫負責控制硬體的韌體，進而破壞硬體功能。最著名的案例發生在 2017 年的 <a class="reference external" href="https://en.wikipedia.org/wiki/BrickerBot">BrickerBot</a> 攻擊事件。</p>
 </section>
 </section>
-<section id="id10">
-<h2>商業術語<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<section id="id12">
+<h2>商業術語<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
 <section id="linux-distribution">
 <h3>Linux distribution<a class="headerlink" href="#linux-distribution" title="Permalink to this heading">#</a></h3>
 <p>簡單來說，Linux distribution（發行版）就是將 Linux 核心（Kernel）搭配一系列預先整合好的套件與工具，打包成一個可以安裝使用的作業系統。
@@ -637,9 +667,15 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">缺點</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pch-platform-controller-hub">PCH (Platform Controller Hub)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">架構改進</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">總結</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pch">PCH 架構圖</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">軟體</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">軟體</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openbmc">OpenBMC</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-boot-universal-boot-loader">U-boot (Universal Boot Loader)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bootloader-a-k-a-bootstrap-loader">bootloader (a.k.a. bootstrap loader)</a></li>
@@ -647,22 +683,22 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">系統架構</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">系統架構</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-band-side-band-and-out-of-band">In-band, Side-band and Out-of-band</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">額外補充</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">額外補充</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">技術標準</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">技術標準</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-platform-firmware-resilience">PFR (Platform Firmware Resilience)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">資訊安全</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">資訊安全</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
