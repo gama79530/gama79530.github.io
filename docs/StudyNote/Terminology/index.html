@@ -429,13 +429,17 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">技術標準</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-platform-firmware-resilience">PFR (Platform Firmware Resilience)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i2c-inter-integrated-circuit">I²C (Inter-Integrated Circuit)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">特點</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">資訊安全</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">資訊安全</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
@@ -586,16 +590,33 @@ document.write(`
 <p>※ 註：這裡的<code class="docutils literal notranslate"><span class="pre">完整性</span> <span class="pre">(integrity)</span></code> 指的是資料或韌體經過驗證，被認為是可靠且未遭到未授權更改。</p>
 <p>實現方式有很多種，目前較常見的作法是利用額外的 FPGA 或 SoC 硬體，搭配特定的軟體來完成。</p>
 </section>
-</section>
+<section id="i2c-inter-integrated-circuit">
+<h3>I²C (Inter-Integrated Circuit)<a class="headerlink" href="#i2c-inter-integrated-circuit" title="Permalink to this heading">#</a></h3>
+<p>I²C 是由 Philips Semiconductors（現 NXP Semiconductors）提出的一種 <strong>短距離串列通訊協定</strong>，用來在單一電路板上連接 <strong>處理器、微控制器以及其他低速週邊設備</strong>。<br />
+它僅需兩條訊號線（SDA：資料線、SCL：時脈線），因此特別適合板內通訊。</p>
 <section id="id11">
-<h2>資訊安全<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<h4>特點<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>同步架構</strong>：由 SCL 提供時脈，所有裝置同步傳輸資料。</p></li>
+<li><p><strong>主從架構</strong>：由主機發起通訊，從機依位址回應。支援多主機設計。</p></li>
+<li><p><strong>半雙工</strong>：資料在 SDA 上單向傳輸，每次僅有一方傳送資料。</p></li>
+<li><p><strong>多裝置支援</strong>：每個從機有唯一位址，可同時掛載多個設備。</p></li>
+<li><p><strong>速率模式</strong>：標準模式 (100 kbps)、快速模式 (400 kbps)、快速模式+ (1 Mbps) 、高速模式 (3.4 Mbps)等。</p></li>
+</ul>
+<p><strong>標準的架構圖如下</strong></p>
+<p><img alt="" src="../../_images/I2C.jpeg" /></p>
+</section>
+</section>
+</section>
+<section id="id12">
+<h2>資訊安全<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
 <section id="pdos-permanent-denial-of-service-attacks">
 <h3>PDoS (Permanent Denial-of-Service Attacks)<a class="headerlink" href="#pdos-permanent-denial-of-service-attacks" title="Permalink to this heading">#</a></h3>
 <p>PDoS 也稱作 <code class="docutils literal notranslate"><span class="pre">phlashing</span></code>，是一種 <code class="docutils literal notranslate"><span class="pre">DoS</span></code> 攻擊方式，其核心概念是攻擊目標裝置的硬體。這類攻擊並非透過物理方式，而是利用安全性漏洞覆寫負責控制硬體的韌體，進而破壞硬體功能。最著名的案例發生在 2017 年的 <a class="reference external" href="https://en.wikipedia.org/wiki/BrickerBot">BrickerBot</a> 攻擊事件。</p>
 </section>
 </section>
-<section id="id12">
-<h2>商業術語<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<section id="id13">
+<h2>商業術語<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
 <section id="linux-distribution">
 <h3>Linux distribution<a class="headerlink" href="#linux-distribution" title="Permalink to this heading">#</a></h3>
 <p>簡單來說，Linux distribution（發行版）就是將 Linux 核心（Kernel）搭配一系列預先整合好的套件與工具，打包成一個可以安裝使用的作業系統。
@@ -692,13 +713,17 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">技術標準</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-platform-firmware-resilience">PFR (Platform Firmware Resilience)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i2c-inter-integrated-circuit">I²C (Inter-Integrated Circuit)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">特點</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">資訊安全</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">資訊安全</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
