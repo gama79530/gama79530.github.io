@@ -109,7 +109,7 @@ PFR 是一個技術標準，由 NIST 在 2018 年發佈，標準編號為 [NIST 
 
 實現方式有很多種，目前較常見的作法是利用額外的 FPGA 或 SoC 硬體，搭配特定的軟體來完成。
 
-### I²C (Inter-Integrated Circuit)
+### I²C (Inter-Integrated Circuit) bus
 
 I²C 是由 Philips Semiconductors（現 NXP Semiconductors）提出的一種 **短距離串列通訊協定**，用來在單一電路板上連接 **處理器、微控制器以及其他低速週邊設備**。  
 它僅需兩條訊號線（SDA：資料線、SCL：時脈線），因此特別適合板內通訊。
@@ -125,6 +125,19 @@ I²C 是由 Philips Semiconductors（現 NXP Semiconductors）提出的一種 **
 **標準的架構圖如下**
 
 ![](../../_static/StudyNote/Terminology/I2C.jpeg)
+
+### LPC (Low Pin Count) bus
+
+LPC (Low Pin Count) 是一種低速匯流排，主要用於 IBM-compatible PC 架構中，連接 CPU 與各種低速設備。它最早由 Intel 提出，用來取代更古老的 ISA（Industry Standard Architecture）匯流排。
+
+#### 主要應用
+
+- **BIOS ROM**：早期透過 LPC 存取 BIOS，現今逐漸被 SPI/eSPI 標準取代。  
+- **Legacy I/O device**：如序列埠、並列埠、PS/2 等，後來多被整合到 Super I/O、Embedded Controller(CPLD) 或 IPMI 晶片中。  
+- **Trusted Platform Module (TPM)**：安全模組常透過 LPC 連接。  
+
+#### 後繼規格
+隨著系統整合度提升與需求變化，LPC 的角色逐漸被 **SPI** 與 **eSPI（Enhanced Serial Peripheral Interface）** 取代。  
 
 ## 資訊安全
 
