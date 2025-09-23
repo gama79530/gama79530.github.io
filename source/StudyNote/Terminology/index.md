@@ -139,6 +139,18 @@ LPC (Low Pin Count) 是一種低速匯流排，主要用於 IBM-compatible PC �
 #### 後繼規格
 隨著系統整合度提升與需求變化，LPC 的角色逐漸被 **SPI** 與 **eSPI（Enhanced Serial Peripheral Interface）** 取代。  
 
+### NTP (Network Time Protocol)
+
+NTP 是一個 **透過網路進行時間同步** 的通訊協定，屬於 **應用層**，使用 **UDP 123 Port**。 
+
+#### 特點
+- **Master-Slave、Strata 架構**：  
+  - Stratum 0：高精度時間來源 (例如 GPS、原子鐘)。  
+  - Stratum 1：直接與 Stratum 0 相連的伺服器。  
+  - Stratum 2/3...：透過網路層層同步的伺服器與客戶端。  
+- **延遲估算與補償**：會計算網路延遲，並對本地時鐘做調整，而非直接重設。  
+- **高精準度**：在理想網路環境可達毫秒 (ms) 級精度；區域網路甚至可達微秒 (µs) 級。  
+
 ## 資訊安全
 
 ### PDoS (Permanent Denial-of-Service Attacks)
