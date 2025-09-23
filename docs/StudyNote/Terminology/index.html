@@ -438,13 +438,17 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">後繼規格</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ntp-network-time-protocol">NTP (Network Time Protocol)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">特點</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">資訊安全</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">資訊安全</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
@@ -628,16 +632,34 @@ document.write(`
 <p>隨著系統整合度提升與需求變化，LPC 的角色逐漸被 <strong>SPI</strong> 與 <strong>eSPI（Enhanced Serial Peripheral Interface）</strong> 取代。</p>
 </section>
 </section>
-</section>
+<section id="ntp-network-time-protocol">
+<h3>NTP (Network Time Protocol)<a class="headerlink" href="#ntp-network-time-protocol" title="Permalink to this heading">#</a></h3>
+<p>NTP 是一個 <strong>透過網路進行時間同步</strong> 的通訊協定，屬於 <strong>應用層</strong>，使用 <strong>UDP 123 Port</strong>。</p>
 <section id="id14">
-<h2>資訊安全<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
+<h4>特點<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Master-Slave、Strata 架構</strong>：</p>
+<ul>
+<li><p>Stratum 0：高精度時間來源 (例如 GPS、原子鐘)。</p></li>
+<li><p>Stratum 1：直接與 Stratum 0 相連的伺服器。</p></li>
+<li><p>Stratum 2/3…：透過網路層層同步的伺服器與客戶端。</p></li>
+</ul>
+</li>
+<li><p><strong>延遲估算與補償</strong>：會計算網路延遲，並對本地時鐘做調整，而非直接重設。</p></li>
+<li><p><strong>高精準度</strong>：在理想網路環境可達毫秒 (ms) 級精度；區域網路甚至可達微秒 (µs) 級。</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id15">
+<h2>資訊安全<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
 <section id="pdos-permanent-denial-of-service-attacks">
 <h3>PDoS (Permanent Denial-of-Service Attacks)<a class="headerlink" href="#pdos-permanent-denial-of-service-attacks" title="Permalink to this heading">#</a></h3>
 <p>PDoS 也稱作 <code class="docutils literal notranslate"><span class="pre">phlashing</span></code>，是一種 <code class="docutils literal notranslate"><span class="pre">DoS</span></code> 攻擊方式，其核心概念是攻擊目標裝置的硬體。這類攻擊並非透過物理方式，而是利用安全性漏洞覆寫負責控制硬體的韌體，進而破壞硬體功能。最著名的案例發生在 2017 年的 <a class="reference external" href="https://en.wikipedia.org/wiki/BrickerBot">BrickerBot</a> 攻擊事件。</p>
 </section>
 </section>
-<section id="id15">
-<h2>商業術語<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<section id="id16">
+<h2>商業術語<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
 <section id="linux-distribution">
 <h3>Linux distribution<a class="headerlink" href="#linux-distribution" title="Permalink to this heading">#</a></h3>
 <p>簡單來說，Linux distribution（發行版）就是將 Linux 核心（Kernel）搭配一系列預先整合好的套件與工具，打包成一個可以安裝使用的作業系統。
@@ -743,13 +765,17 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">後繼規格</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ntp-network-time-protocol">NTP (Network Time Protocol)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">特點</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">資訊安全</a><ul class="nav section-nav flex-column">
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">資訊安全</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
