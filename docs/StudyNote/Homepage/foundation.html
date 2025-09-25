@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Building Foundation of Homepage &#8212; Rein&#39;s Homepage</title>
+    <title>網站架構 &#8212; Rein&#39;s Homepage</title>
   
   
   
@@ -57,8 +57,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'StudyNote/Homepage/foundation';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Building Skeleton of Homepage" href="skeleton.html" />
-    <link rel="prev" title="How To Build Personal Website with GitHub Pages" href="index.html" />
+    <link rel="next" title="網頁架構" href="skeleton.html" />
+    <link rel="prev" title="如何使用 GitHub Pages 以及 Sphinx 套件建立個人網頁" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -137,10 +137,10 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">How To Build Personal Website with GitHub Pages</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Building Foundation of Homepage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skeleton.html">Building Skeleton of Homepage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note.html">Notes</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">如何使用 GitHub Pages 以及 Sphinx 套件建立個人網頁</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">網站架構</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skeleton.html">網頁架構</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note.html">常用語法與 Documents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
@@ -379,7 +379,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Building Foundation of Homepage</h1>
+    <h1>網站架構</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -389,18 +389,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment">Environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-sphinx-architecture">build sphinx architecture</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-conf-py">set <strong>conf.py</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">開發環境</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">安裝指令</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish">Publish</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-repository-on-github">configure the repository on github</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-all-derivative-files">cleaning all derivative files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#previewing-while-editing">previewing while editing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-the-result-to-the-github-pages">publish the result to the github pages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">設置環境</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">初始化環境</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conf-py">設定 conf.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">設定要使用的外掛套件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#html">設定 html 相關的選項</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#myst">設定 myst</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#myst-nb">設定 myst-nb</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#graphviz">設定 graphviz</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">發布內容</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-pages">設定 GitHub Pages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-makefile">使用 project 提供的 makefile 指令發布</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">清除之前產出的相關檔案</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#build">產出檔案到 build 方便預覽</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github">產出要上傳到 github 發布的檔案</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -414,20 +426,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="building-foundation-of-homepage">
-<h1>Building Foundation of Homepage<a class="headerlink" href="#building-foundation-of-homepage" title="Permalink to this heading">#</a></h1>
-<section id="environment">
-<h2>Environment<a class="headerlink" href="#environment" title="Permalink to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>網站架構<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section id="id2">
+<h2>開發環境<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Ubuntu 22.04 LTS</p></li>
 <li><p>Python 3.10.12</p></li>
 <li><p>sphinx-book-theme</p></li>
 <li><p>MyST-NB (MyST is included)</p></li>
 </ol>
-</section>
-<section id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
-<p>Install python modules by the following commands</p>
+<section id="id3">
+<h3>安裝指令<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pip<span class="w"> </span>install<span class="w"> </span>sphinx-book-theme
 <span class="linenos">2</span>pip<span class="w"> </span>install<span class="w"> </span>sphinx-copybutton
 <span class="linenos">3</span>pip<span class="w"> </span>install<span class="w"> </span>sphinx-togglebutton
@@ -437,34 +447,32 @@ document.write(`
 <span class="linenos">7</span>pip<span class="w"> </span>install<span class="w"> </span>pandas
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can create an isolated virtual environment and install the enviornment in this virtual environment.</p>
+<p>或者可以使用我提供的 <code class="docutils literal notranslate"><span class="pre">requirement.txt</span></code> 來安裝。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirement.txt
+</pre></div>
+</div>
+<div class="dropdown admonition tip">
+<p class="admonition-title">Tip</p>
+<p>可以用下面的指令來建立獨立的 virtual environment 。</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
 <span class="linenos">2</span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
 </pre></div>
 </div>
 </div>
-<div class="dropdown admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can also install these package by the “requirement.txt” in this repository</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="w">    </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirement.txt
-</pre></div>
-</div>
-</div>
 </section>
-<section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
-<section id="build-sphinx-architecture">
-<h3>build sphinx architecture<a class="headerlink" href="#build-sphinx-architecture" title="Permalink to this heading">#</a></h3>
-<p>Executing the following command to initialize a Sphinx project</p>
+</section>
+<section id="id4">
+<h2>設置環境<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<section id="id5">
+<h3>初始化環境<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>使用下面的指令將 project 初始化</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>sphinx-quickstart
 <span class="linenos">2</span>rm<span class="w"> </span>-rf<span class="w"> </span>source/index.rst
 </pre></div>
 </div>
 <div class="admonition caution">
 <p class="admonition-title">Caution</p>
-<p>There are 5 configuration options in the building process</p>
+<p>使用指令之後會有 5 個步驟如下:</p>
 <ol class="arabic simple">
 <li><p>Separate source and build directories (y/n) [n]:</p></li>
 <li><p>Project name:</p></li>
@@ -472,15 +480,15 @@ document.write(`
 <li><p>Project release []:</p></li>
 <li><p>Project language [en]:</p></li>
 </ol>
-<p>You can make your own configuration by except the 1st option. You should set the 1st option <strong>y</strong>.
-The other 4 options can be change by changing the setting option in the <strong>conf.py</strong> file.</p>
+<p>如果要照我的教學實做的話第一個選項必須要是 <strong>y</strong> 。
+其它 4 個選項可以依照需求去選。此外，這 4 個選項之後也可以在指令產出的 <strong>conf.py</strong> 去修改設定</p>
 </div>
 </section>
-<section id="set-conf-py">
-<h3>set <strong>conf.py</strong><a class="headerlink" href="#set-conf-py" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
-<li><p>configure your existing Sphinx configuration</p></li>
-</ul>
+<section id="conf-py">
+<h3>設定 conf.py<a class="headerlink" href="#conf-py" title="Permalink to this heading">#</a></h3>
+<p>完整的設定可以參考這個 Project 的 <a class="reference external" href="https://github.com/gama79530/gama79530.github.io/blob/main/source/conf.py">conf.py</a> 。下面會一段一段解釋一些設定。</p>
+<section id="id6">
+<h4>設定要使用的外掛套件<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>    <span class="n">extensions</span> <span class="o">=</span> <span class="p">[</span>
 <span class="linenos">2</span>        <span class="s2">&quot;sphinx_copybutton&quot;</span><span class="p">,</span>
 <span class="linenos">3</span>        <span class="s2">&quot;sphinx_togglebutton&quot;</span><span class="p">,</span>
@@ -489,9 +497,9 @@ The other 4 options can be change by changing the setting option in the <strong>
 <span class="linenos">6</span>    <span class="p">]</span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>configure html options</p></li>
-</ul>
+</section>
+<section id="html">
+<h4>設定 html 相關的選項<a class="headerlink" href="#html" title="Permalink to this heading">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>   <span class="n">html_theme</span> <span class="o">=</span> <span class="s1">&#39;sphinx_book_theme&#39;</span>
 <span class="linenos"> 2</span>   
 <span class="linenos"> 3</span>   <span class="n">html_logo</span> <span class="o">=</span> <span class="s2">&quot;_static/{your logo}&quot;</span>
@@ -499,36 +507,29 @@ The other 4 options can be change by changing the setting option in the <strong>
 <span class="linenos"> 5</span>
 <span class="linenos"> 6</span>   <span class="n">html_theme_options</span> <span class="o">=</span> <span class="p">{</span>
 <span class="linenos"> 7</span>        <span class="s2">&quot;use_download_button&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos"> 8</span>        <span class="s2">&quot;repository_provider&quot;</span><span class="p">:</span> <span class="s2">&quot;{your-provider}&quot;</span><span class="p">,</span>
-<span class="linenos"> 9</span>        <span class="s2">&quot;repository_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://{your-provider}/</span><span class="si">{org}</span><span class="s2">/</span><span class="si">{repo}</span><span class="s2">&quot;</span><span class="p">,</span>
-<span class="linenos">10</span>        <span class="s2">&quot;use_source_button&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos">11</span>        <span class="s2">&quot;use_edit_page_button&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos">12</span>        <span class="s2">&quot;use_repository_button&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos">13</span>        <span class="s2">&quot;use_issues_button&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
-<span class="linenos">14</span>   <span class="p">}</span>
+<span class="linenos"> 8</span>        <span class="s2">&quot;use_source_button&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos"> 9</span>        <span class="s2">&quot;use_edit_page_button&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">10</span>        <span class="s2">&quot;use_repository_button&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">11</span>        <span class="s2">&quot;use_issues_button&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+<span class="linenos">12</span>        <span class="s2">&quot;repository_provider&quot;</span><span class="p">:</span> <span class="s2">&quot;{your-provider}&quot;</span><span class="p">,</span>
+<span class="linenos">13</span>        <span class="s2">&quot;repository_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://{your-provider}/</span><span class="si">{org}</span><span class="s2">/</span><span class="si">{repo}</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="linenos">14</span>        <span class="s2">&quot;repository_branch&quot;</span><span class="p">:</span> <span class="s2">&quot;main&quot;</span><span class="p">,</span>
+<span class="linenos">15</span>        <span class="s2">&quot;path_to_docs&quot;</span><span class="p">:</span> <span class="s2">&quot;source&quot;</span>
+<span class="linenos">16</span>   <span class="p">}</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol class="arabic simple">
-<li><p>html_logo and html_title is used to customize your left sidebar. see also <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/stable/tutorials/get-started.html#customize-your-left-sidebar">Customize your left sidebar</a></p></li>
-<li><p>use_download_button allows you to download source of webpage. see also <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/stable/components/download.html">Add a download page button</a></p></li>
-<li><p>The other options are related to the settings of remote repository. see also <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/stable/components/source-files.html#">Buttons that link to source files</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_logo</span></code> 與 <code class="docutils literal notranslate"><span class="pre">html_title</span></code> 是用來對左側 sidebar 做客製化的設定，可以參考 <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/stable/tutorials/get-started.html#customize-your-left-sidebar">Customize your left sidebar</a></p></li>
+<li><p>設定 <code class="docutils literal notranslate"><span class="pre">use_download_button</span></code> 讓你可以下載這個網頁的 markdown 原始碼。可以參考 <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/stable/components/download.html">Add a download page button</a></p></li>
+<li><p>其它的設定與 remote repository 相關的設定。 可以參考 <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/stable/components/source-files.html#">Buttons that link to source files</a></p></li>
 </ol>
 </div>
-<div class="dropdown admonition tip">
-<p class="admonition-title">Tip</p>
-<p>configuration of my homepage is:</p>
-<ul class="simple">
-<li><p>skip html_logo</p></li>
-<li><p>html_title = “Rein’s Homepage”</p></li>
-<li><p>“repository_provider”: “github”,</p></li>
-<li><p>“repository_url”: “https://github.com/gama79530/gama79530.github.io”,</p></li>
-</ul>
-</div>
-<ul class="simple">
-<li><p>configure myst options</p></li>
-</ul>
+</section>
+<section id="myst">
+<h4>設定 myst<a class="headerlink" href="#myst" title="Permalink to this heading">#</a></h4>
+<p>這個外掛是讓 Sphinx 可以使用 <code class="docutils literal notranslate"><span class="pre">.md</span></code> 作為 source 。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">myst_enable_extensions</span> <span class="o">=</span> <span class="p">[</span>
 <span class="linenos"> 2</span>    <span class="s2">&quot;amsmath&quot;</span><span class="p">,</span>
 <span class="linenos"> 3</span>    <span class="s2">&quot;colon_fence&quot;</span><span class="p">,</span>
@@ -545,13 +546,14 @@ The other 4 options can be change by changing the setting option in the <strong>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol class="arabic simple">
-<li><p>You can see the function of myst_url_schemes from <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/develop/_changelog.html#set-url-scheme-defaults">Set URL scheme defaults ‼️</a></p></li>
-<li><p>You can see the functions of other settings from <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/configuration.html">Global configuration</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">myst_url_schemes</span></code> 這個設定是用來設定哪些格式會被判定為外部連結，可以參考 <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/develop/_changelog.html#set-url-scheme-defaults">Set URL scheme defaults ‼️</a></p></li>
+<li><p>其它相關的設定可以參考 <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/configuration.html">Global configuration</a></p></li>
 </ol>
 </div>
-<ul class="simple">
-<li><p>configure myst-nb options</p></li>
-</ul>
+</section>
+<section id="myst-nb">
+<h4>設定 myst-nb<a class="headerlink" href="#myst-nb" title="Permalink to this heading">#</a></h4>
+<p>這個外掛是讓 Sphinx 可以使用 <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> 作為 source 。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">number_source_lines</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="linenos">2</span><span class="n">nb_number_source_lines</span> <span class="o">=</span> <span class="kc">True</span>
 </pre></div>
@@ -559,49 +561,53 @@ The other 4 options can be change by changing the setting option in the <strong>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol class="arabic simple">
-<li><p>You can see the functions of these 2 settings from <a class="reference external" href="https://myst-nb.readthedocs.io/en/latest/configuration.html#rendering">Configuration</a></p></li>
+<li><p>這兩個設定是讓 code cell 可以顯示行數，更多相關設定可以參考 <a class="reference external" href="https://myst-nb.readthedocs.io/en/latest/configuration.html#rendering">Configuration</a></p></li>
 </ol>
 </div>
-<ul class="simple">
-<li><p>configure graphviz options</p></li>
-</ul>
+</section>
+<section id="graphviz">
+<h4>設定 graphviz<a class="headerlink" href="#graphviz" title="Permalink to this heading">#</a></h4>
+<p>這個設定會影響當用 <code class="docutils literal notranslate"><span class="pre">Graphviz</span></code> 畫圖時所用的格式</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">graphviz_output_format</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol class="arabic simple">
-<li><p>You can see the functions of graphviz_output_format from <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/graphviz.html#confval-graphviz_output_format">sphinx.ext.graphviz</a></p></li>
+<li><p>關於 <code class="docutils literal notranslate"><span class="pre">graphviz_output_format</span></code> 更多的說明可以參考 <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/graphviz.html#confval-graphviz_output_format">sphinx.ext.graphviz</a></p></li>
 </ol>
 </div>
 </section>
 </section>
-<section id="publish">
-<h2>Publish<a class="headerlink" href="#publish" title="Permalink to this heading">#</a></h2>
-<section id="configure-the-repository-on-github">
-<h3>configure the repository on github<a class="headerlink" href="#configure-the-repository-on-github" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="id7">
+<h2>發布內容<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="github-pages">
+<h3>設定 GitHub Pages<a class="headerlink" href="#github-pages" title="Permalink to this heading">#</a></h3>
+<p>參考下面圖這張圖設定 github 的 repository</p>
 <p><img alt="Publish Homepage" src="../../_images/publish_website.png" /></p>
 </section>
-<section id="cleaning-all-derivative-files">
-<h3>cleaning all derivative files<a class="headerlink" href="#cleaning-all-derivative-files" title="Permalink to this heading">#</a></h3>
-<p>you can clear all derivative files by the following command.</p>
+<section id="project-makefile">
+<h3>使用 project 提供的 makefile 指令發布<a class="headerlink" href="#project-makefile" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h4>清除之前產出的相關檔案<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>make<span class="w"> </span>clean
 </pre></div>
 </div>
 </section>
-<section id="previewing-while-editing">
-<h3>previewing while editing<a class="headerlink" href="#previewing-while-editing" title="Permalink to this heading">#</a></h3>
-<p>you can preview the homepage by opening build/html/index.html on a web browser after executing the following command.</p>
+<section id="build">
+<h4>產出檔案到 build 方便預覽<a class="headerlink" href="#build" title="Permalink to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>make<span class="w"> </span>preview
 </pre></div>
 </div>
+<p>可以從 <code class="docutils literal notranslate"><span class="pre">build/html/index.html</span></code> 作為首頁去預覽</p>
 </section>
-<section id="publish-the-result-to-the-github-pages">
-<h3>publish the result to the github pages<a class="headerlink" href="#publish-the-result-to-the-github-pages" title="Permalink to this heading">#</a></h3>
-<p>executing the following command and push the files in docs directory to the github repository.</p>
+<section id="github">
+<h4>產出要上傳到 github 發布的檔案<a class="headerlink" href="#github" title="Permalink to this heading">#</a></h4>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>make<span class="w"> </span>publish
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 </section>
@@ -624,7 +630,7 @@ The other 4 options can be change by changing the setting option in the <strong>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">How To Build Personal Website with GitHub Pages</p>
+        <p class="prev-next-title">如何使用 GitHub Pages 以及 Sphinx 套件建立個人網頁</p>
       </div>
     </a>
     <a class="right-next"
@@ -632,7 +638,7 @@ The other 4 options can be change by changing the setting option in the <strong>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Building Skeleton of Homepage</p>
+        <p class="prev-next-title">網頁架構</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -654,18 +660,30 @@ The other 4 options can be change by changing the setting option in the <strong>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#environment">Environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-sphinx-architecture">build sphinx architecture</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-conf-py">set <strong>conf.py</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">開發環境</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">安裝指令</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#publish">Publish</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configure-the-repository-on-github">configure the repository on github</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-all-derivative-files">cleaning all derivative files</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#previewing-while-editing">previewing while editing</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#publish-the-result-to-the-github-pages">publish the result to the github pages</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">設置環境</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">初始化環境</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conf-py">設定 conf.py</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">設定要使用的外掛套件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#html">設定 html 相關的選項</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#myst">設定 myst</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#myst-nb">設定 myst-nb</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#graphviz">設定 graphviz</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">發布內容</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-pages">設定 GitHub Pages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-makefile">使用 project 提供的 makefile 指令發布</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">清除之前產出的相關檔案</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#build">產出檔案到 build 方便預覽</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#github">產出要上傳到 github 發布的檔案</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

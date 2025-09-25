@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Building Skeleton of Homepage &#8212; Rein&#39;s Homepage</title>
+    <title>網頁架構 &#8212; Rein&#39;s Homepage</title>
   
   
   
@@ -57,8 +57,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'StudyNote/Homepage/skeleton';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Notes" href="note.html" />
-    <link rel="prev" title="Building Foundation of Homepage" href="foundation.html" />
+    <link rel="next" title="常用語法與 Documents" href="note.html" />
+    <link rel="prev" title="網站架構" href="foundation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -137,10 +137,10 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">How To Build Personal Website with GitHub Pages</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="foundation.html">Building Foundation of Homepage</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Building Skeleton of Homepage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="note.html">Notes</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">如何使用 GitHub Pages 以及 Sphinx 套件建立個人網頁</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="foundation.html">網站架構</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">網頁架構</a></li>
+<li class="toctree-l2"><a class="reference internal" href="note.html">常用語法與 Documents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
@@ -379,7 +379,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Building Skeleton of Homepage</h1>
+    <h1>網頁架構</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -389,9 +389,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-your-left-sidebar">Customize your left sidebar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-some-margin-content-to-a-page">Add some margin content to a page</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-hierarchy-of-pages-by-toctree">Build hierarchy of pages by toctree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sidebar">設定左側的 sidebar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margin-content">增加內容在 margin content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">建立網站的網頁框架</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">首頁</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toctree">toctree</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
             </nav>
@@ -404,56 +408,85 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="building-skeleton-of-homepage">
-<h1>Building Skeleton of Homepage<a class="headerlink" href="#building-skeleton-of-homepage" title="Permalink to this heading">#</a></h1>
-<section id="customize-your-left-sidebar">
-<h2>Customize your left sidebar<a class="headerlink" href="#customize-your-left-sidebar" title="Permalink to this heading">#</a></h2>
-<p>You can learn how to customize your left sidebar from the <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/latest/tutorials/get-started.html#customize-your-left-sidebar">official turtioral</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>網頁架構<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<section id="sidebar">
+<h2>設定左側的 sidebar<a class="headerlink" href="#sidebar" title="Permalink to this heading">#</a></h2>
+<p>主要可以設定的選項</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">html_logo</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">html_title</span></code></p></li>
+</ul>
+<p>詳細說明可以參照 <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/latest/tutorials/get-started.html#customize-your-left-sidebar">official turtioral</a><br />
+更多細緻的選項可以參照 <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/latest/sections/sidebar-primary.html#sidebar-primary-items">Control the left sidebar items</a></p>
 </section>
-<section id="add-some-margin-content-to-a-page">
-<h2>Add some margin content to a page<a class="headerlink" href="#add-some-margin-content-to-a-page" title="Permalink to this heading">#</a></h2>
-<p>You can learn how to add some margin content to a page from the <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/latest/tutorials/get-started.html#add-some-margin-content-to-a-page">official turtioral</a></p>
-</section>
-<section id="build-hierarchy-of-pages-by-toctree">
-<h2>Build hierarchy of pages by toctree<a class="headerlink" href="#build-hierarchy-of-pages-by-toctree" title="Permalink to this heading">#</a></h2>
-<p>The basic syntax of toctree is as follow:</p>
-<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>```{toctree}  
-<span class="linenos">2</span>properties...  
-<span class="linenos">3</span>
-<span class="linenos">4</span>children pages...  
-<span class="linenos">5</span>```
+<section id="margin-content">
+<h2>增加內容在 margin content<a class="headerlink" href="#margin-content" title="Permalink to this heading">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title">Look, some margin content!</p>
+<p>On wider screens, this content will pop out to the side!</p>
+</aside>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>```{margin} Look, some margin content!
+<span class="linenos">2</span>On wider screens, this content will pop out to the side!
+<span class="linenos">3</span>```
 </pre></div>
 </div>
+<p>這一段示範了 margin content 是什麼以及語法，須注意的是 margin content 的內容會對其後續的主要內容。詳細說明可以參考 <a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/latest/tutorials/get-started.html#add-some-margin-content-to-a-page">Add some margin content to a page</a></p>
+</section>
+<section id="id2">
+<h2>建立網站的網頁框架<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="id3">
+<h3>首頁<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p><img alt="page hierarchy" src="../../_images/page_hierarchy.png" /></p>
-<p>This page is the homepage of the website. The corresponding file is “source/index.md”. This homepage is also the root of all blocks. Each block is the root of a toctree. The section 4 describes that my website contains a block and the block contains a 2 levels toctree. The toctree consists of a caption (section 1), a level 1 page (section 2) and three level 2 pages (section 3).</p>
-<p><img alt="folder hierarchy" src="../../_images/folder_hierarchy.png" />
-<img alt="homepage" src="../../_images/homepage_code.png" /></p>
-<p>To build the toctree structure, I add the following code into the “source/index.md”.</p>
-<ol class="arabic simple">
-<li><p><strong>“:caption: Project”</strong> make a block with caption <strong>“Project”</strong></p></li>
-<li><p><strong>:maxdepth: 2</strong> represents that this block contains a 2 levels toctree.</p></li>
-<li><p><strong>homepage/index</strong> indicate where the child page is. (This child is level 1 pages.)</p></li>
-</ol>
+<p>上面的圖片是首頁的圖片，對應到的檔案為 <code class="docutils literal notranslate"><span class="pre">source/index.md</span></code> 。 首頁同是所有 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> 的 <code class="docutils literal notranslate"><span class="pre">root</span></code> ，同時每個 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> 都由<code class="docutils literal notranslate"><span class="pre">屬性</span></code> 與 <code class="docutils literal notranslate"><span class="pre">子頁面</span></code> 組成 。</p>
+<p>圖片上編號 4 紅色框顯示了我的網站是由一個兩層的 toctree 構成。這個 toctree 包含了</p>
+<ul class="simple">
+<li><p>標題: 編號 1 紅色框</p></li>
+<li><p>level 1 頁面: 編號 2 紅色框</p></li>
+<li><p>level 2 頁面: 編號 3 紅色框</p></li>
+</ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>A website can be composed of several blocks.</p></li>
-<li><p>A block can be composed of several level 1 pages.</p></li>
-<li><p>A level i page can consist several level i+1 pages.</p></li>
+<li><p>一個網站可以由任意數量個 toctree 組成.</p></li>
+<li><p>一個 toctree 可以有多個 level 1 的子頁面</p></li>
+<li><p>level i 的子頁面可以有任意數量個 level i+1 的子頁面。</p></li>
 </ul>
 </div>
-<div class="dropdown admonition tip">
+</section>
+<section id="toctree">
+<h3>toctree<a class="headerlink" href="#toctree" title="Permalink to this heading">#</a></h3>
+<p>基本的 <code class="docutils literal notranslate"><span class="pre">toctree</span></code> 語法如下</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>```{toctree}  
+<span class="linenos">2</span>&lt;properties&gt;
+<span class="linenos">3</span>...
+<span class="linenos">4</span>
+<span class="linenos">5</span>&lt;children pages&gt;
+<span class="linenos">6</span>...
+<span class="linenos">7</span>
+<span class="linenos">8</span>```
+</pre></div>
+</div>
+<p><img alt="folder hierarchy" src="../../_images/folder_hierarchy.png" />
+<img alt="homepage" src="../../_images/homepage_code.png" /></p>
+<p>上面的圖片展示了我的網站首頁的 toctree 內容以及對應到的檔案 <code class="docutils literal notranslate"><span class="pre">source/index.md</span></code></p>
+<ul class="simple">
+<li><p>toctree 的標題</p></li>
+<li><p>toctree 高度為 2。</p></li>
+<li><p>一個子頁面 <code class="docutils literal notranslate"><span class="pre">homepage/index</span></code></p></li>
+</ul>
+<div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If you don’t want to show the toctree structure in main page (block 5), you can add a properity “:hidden:”.</p>
+<p>編號 5 紅色框的部份只要定義了 toctree 就會自動產生，如果不想要的話可以加上 <code class="docutils literal notranslate"><span class="pre">:hidden:</span></code> 屬性。</p>
 </div>
 <p><img alt="folder hierarchy" src="../../_images/folder_hierarchy.png" />
 <img alt="level 1 page" src="../../_images/level1_page_code.png" /></p>
-<p>According to the previous setting, we know the level 1 page is “source/homepage/index.md” The title “How To Build Personal Website with GitHub Pages” is the heading 1 of this file. To configure the other three level 2 pages, you have to add a toctree description in this file.</p>
-<p>Configuration of level 2 pages is similar to configure level page 1. Hence I ommit the explanation of this part.</p>
-<div class="dropdown admonition tip">
-<p class="admonition-title">Tip</p>
-<p>A toctree can be more than 2 levels. The logic of configuration is the smae.</p>
+<p>接著需要定義 level 1 的頁面，從上面的圖片以及更前面首頁的圖片可以看到這個 level 1 的頁面標題是 <code class="docutils literal notranslate"><span class="pre">How</span> <span class="pre">To</span> <span class="pre">Build</span> <span class="pre">Personal</span> <span class="pre">Website</span> <span class="pre">with</span> <span class="pre">GitHub</span> <span class="pre">Pages</span></code>。上面兩張圖片展示了如何在這個頁面上定義後續的 level 2 頁面。如果有 level 3 的頁面就在 level 2 頁面用相同方式定義。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果沒有後續的子頁面的話可以直接省略 toctree 區塊</p>
 </div>
+</section>
 </section>
 <section id="reference">
 <h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h2>
@@ -481,7 +514,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Building Foundation of Homepage</p>
+        <p class="prev-next-title">網站架構</p>
       </div>
     </a>
     <a class="right-next"
@@ -489,7 +522,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Notes</p>
+        <p class="prev-next-title">常用語法與 Documents</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -511,9 +544,13 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#customize-your-left-sidebar">Customize your left sidebar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-some-margin-content-to-a-page">Add some margin content to a page</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-hierarchy-of-pages-by-toctree">Build hierarchy of pages by toctree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sidebar">設定左側的 sidebar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#margin-content">增加內容在 margin content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">建立網站的網頁框架</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">首頁</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toctree">toctree</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference">Reference</a></li>
 </ul>
   </nav></div>

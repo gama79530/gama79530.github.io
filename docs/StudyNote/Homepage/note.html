@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Notes &#8212; Rein&#39;s Homepage</title>
+    <title>常用語法與 Documents &#8212; Rein&#39;s Homepage</title>
   
   
   
@@ -58,7 +58,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="(C/C++) 如何在Linux上編譯與使用 static /shared library" href="../LinkLoadDemo/index.html" />
-    <link rel="prev" title="Building Skeleton of Homepage" href="skeleton.html" />
+    <link rel="prev" title="網頁架構" href="skeleton.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -137,10 +137,10 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">How To Build Personal Website with GitHub Pages</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="foundation.html">Building Foundation of Homepage</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skeleton.html">Building Skeleton of Homepage</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Notes</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">如何使用 GitHub Pages 以及 Sphinx 套件建立個人網頁</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="foundation.html">網站架構</a></li>
+<li class="toctree-l2"><a class="reference internal" href="skeleton.html">網頁架構</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">常用語法與 Documents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
@@ -379,7 +379,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Notes</h1>
+    <h1>常用語法與 Documents</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -389,9 +389,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#official-site">Official site</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">常用語法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admonition">Admonition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type">Type 列表</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property">property 列表</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Documents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#official-site">Official site</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -403,31 +412,73 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="notes">
-<h1>Notes<a class="headerlink" href="#notes" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="documents">
+<h1>常用語法與 Documents<a class="headerlink" href="#documents" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>常用語法<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="admonition">
+<h3>Admonition<a class="headerlink" href="#admonition" title="Permalink to this heading">#</a></h3>
+<p>語法如下</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>```{&lt;type&gt;}
+<span class="linenos">2</span>:name: &lt;xxx&gt;
+<span class="linenos">3</span>:class: &lt;property&gt;
+<span class="linenos">4</span>...
+<span class="linenos">5</span>
+<span class="linenos">6</span>content
+<span class="linenos">7</span>...
+<span class="linenos">8</span>
+<span class="linenos">9</span>```
+</pre></div>
+</div>
+</section>
+<section id="type">
+<h3>Type 列表<a class="headerlink" href="#type" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>attention</p></li>
+<li><p>caution</p></li>
+<li><p>danger</p></li>
+<li><p>error</p></li>
+<li><p>hint</p></li>
+<li><p>important</p></li>
+<li><p>note</p></li>
+<li><p>seealso</p></li>
+<li><p>tip</p></li>
+<li><p>warning</p></li>
+</ul>
+</section>
+<section id="property">
+<h3>property 列表<a class="headerlink" href="#property" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>dropdown</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2>Documents<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <section id="tools">
-<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this heading">#</a></h2>
+<h3>Tools<a class="headerlink" href="#tools" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/syntax/admonitions.html">Admonitions</a></p></li>
 <li><p><a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/syntax/images_and_figures.html#">Images and figures</a></p></li>
 </ul>
 </section>
 <section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
 <li><p><a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/configuration.html">MyST</a></p></li>
 <li><p><a class="reference external" href="https://myst-nb.readthedocs.io/en/latest/configuration.html">MyST-NB</a></p></li>
 <li><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/graphviz.html#confval-graphviz_output_format">sphinx.ext.graphviz</a></p></li>
-</ol>
+</ul>
 </section>
 <section id="official-site">
-<h2>Official site<a class="headerlink" href="#official-site" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
+<h3>Official site<a class="headerlink" href="#official-site" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
 <li><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/index.html">Sphinx</a></p></li>
 <li><p><a class="reference external" href="https://sphinx-book-theme.readthedocs.io/en/stable/index.html">Sphinx-book-theme</a></p></li>
 <li><p><a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/index.html">MyST</a></p></li>
 <li><p><a class="reference external" href="https://myst-nb.readthedocs.io/en/latest/index.html">MyST-NB</a></p></li>
-</ol>
+</ul>
+</section>
 </section>
 </section>
 
@@ -449,7 +500,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Building Skeleton of Homepage</p>
+        <p class="prev-next-title">網頁架構</p>
       </div>
     </a>
     <a class="right-next"
@@ -479,9 +530,18 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#official-site">Official site</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">常用語法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#admonition">Admonition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type">Type 列表</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property">property 列表</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Documents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tools">Tools</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuration">Configuration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#official-site">Official site</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

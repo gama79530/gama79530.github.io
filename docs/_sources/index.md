@@ -10,7 +10,7 @@
 
 ## Study Note
 
-1. [How To Build Personal Website with GitHub Pages](./StudyNote/Homepage/index.md)
+1. [如何使用 GitHub Pages 以及 Sphinx 套件建立個人網頁](./StudyNote/Homepage/index.md)
 2. [(C/C++) 如何在Linux上編譯與使用 static /shared library](./StudyNote/LinkLoadDemo/index.md)
 3. [Jansson (a C library for JSON data) 使用教學](./StudyNote/Jansson/index.md)
 4. [Ubuntu 工具安裝](./StudyNote/UbuntuSetup/index.md)
