@@ -37,14 +37,14 @@ html_title = "Rein's Homepage"
 
 html_theme_options = {
     "use_download_button": True,
-    "repository_provider": "github",
-    "repository_url": "https://github.com/gama79530/gama79530.github.io",
     "use_source_button": True,
-    "repository_branch": "main",
-    "path_to_docs": "source",
     "use_edit_page_button": True,
     "use_repository_button": True,
     "use_issues_button": True,
+    "repository_provider": "github",
+    "repository_url": "https://github.com/gama79530/gama79530.github.io",
+    "repository_branch": "main",
+    "path_to_docs": "source",
 }
 
 myst_enable_extensions = [
