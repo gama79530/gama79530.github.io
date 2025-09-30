@@ -62,6 +62,14 @@ PCH 架構將高速功能集中於處理器，低速周邊功能交由 PCH 負�
 #### PCH 架構圖
 ![](../../_static/StudyNote/Terminology/PCH.png)
 
+### Super I/O (Super Input/Output)
+
+Super I/O 是主機板上的一顆控制晶片，用來整合傳統的低速 I/O 介面，例如溫度與電壓監控, 風扇轉速偵測, COM Port, PS/2, LPT 等。  
+Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到 PCH，再由 PCH 與 CPU 溝通。  
+
+之所以不把這些低速 I/O 介面直接整合進 PCH，是因為這些功能在不同平台上的需求差異很大 (例如伺服器需要完整的監控與 COM Port，但一般筆電可能完全不需要) 。  
+將這些功能獨立在 Super I/O 晶片裡，可以降低 PCH 的設計複雜度與成本，同時讓主機板廠商依需求選擇不同型號的 Super I/O 晶片。
+
 ## 軟體
 
 ### OpenBMC
