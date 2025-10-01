@@ -90,17 +90,24 @@ bootloader 是一個開機過程中會使用到的小程式，它主要負責的
 
 ### In-band, Side-band and Out-of-band
 
-這三個術語是用來分類通訊的方式
+#### 用通訊的方式分類
 
 | 分類 | 定義 |
 | - | - |
 | In-band | 與主要資料共用同一物理和邏輯通道 |
-| Side-band | 與主要資料共用同一物理通道，但使用不同邏輯通道或協定 |
 | Out-of-band | 使用完全獨立的物理和邏輯通道 |
+| Side-band | 與主要資料共用同一物理通道，但使用不同邏輯通道或協定 |
 
-#### 額外補充
-
+```{note}
 物理通道就是實際對應到硬體建立的通道，邏輯通道則是通過軟體控制劃分的方式將物理通道切割產生的通道。
+```
+#### 用系統管理的方式分類
+
+| 分類 | 定義 | 例子 |
+| - | - | - |
+| In-band | 通過作業系統的主要通道來管理 | SSH, RDP, Redfish 等 |
+| Out-of-band | 通過與作業系統分離的獨立通道來管理 | BMC 上的 IPMI, Redfish 等 |
+| Side-band | 介於兩者之間，與作業系統共用網路介面但由特定的控制器 (例如 BMC) 去管理 | Intel 平台的 NC-SI, SMBus 等 |
 
 ## 技術標準
 
@@ -158,6 +165,40 @@ NTP 是一個 **透過網路進行時間同步** 的通訊協定，屬於 **應�
   - Stratum 2/3...：透過網路層層同步的伺服器與客戶端。  
 - **延遲估算與補償**：會計算網路延遲，並對本地時鐘做調整，而非直接重設。  
 - **高精準度**：在理想網路環境可達毫秒 (ms) 級精度；區域網路甚至可達微秒 (µs) 級。  
+
+### IPMI (Intelligent Platform Management Interface)
+
+IPMI 是一組開源的電腦介面的規格， 由 Intel 主導，並由 Dell, HP, NEC 等多家廠商共同制定。用來在伺服器或嵌入式系統中進行硬體層級的管理與監控, 例如 CPU, Firmware (BIOS or UEFI)。 它的特點是獨立於 OS ，不只系統本身，電源管理本身也與 OS 獨立。
+
+#### 核心組件
+
+- BMC (Baseboard Management Controller)
+  - IPMI 的核心晶片，負責收集感測器資料、接收管理指令並執行控制。
+  - 通常整合於主機板上，具備獨立網路介面（或共享 LAN port）。
+- Sensors (感測器)
+  - 偵測溫度、電壓、風扇轉速、電源狀態等。
+  - BMC 會透過 IPMI 報告這些數據。
+- IPMI Interface
+  - 管理者與 BMC 的溝通協定。
+  - 支援多種通訊方式：
+    - KCS (Keyboard Controller Style)：透過 I/O port 與 CPU 溝通，本地管理使用。
+    - LAN / RMCP+：遠端網路存取。
+    - Serial / USB：某些系統額外提供。
+
+#### 主要功能
+
+- 硬體監控
+  - 監測 CPU、主機板、電源供應器的溫度、電壓、風扇狀態。
+  - 記錄事件（SEL：System Event Log）。
+- 遠端控制
+  - Power On / Off / Reset 主機。
+  - 進行 硬體層級的 KVM over IP（視 BMC 廠商支援）。
+- 事件與告警
+  - 記錄並回報系統異常事件（如過熱、電源異常）。
+  - 可透過 SNMP Trap, Email 通知。
+- 系統存取
+  - 即使 OS 損壞或無法啟動，仍能透過 IPMI 存取 Console、重新開機或更新 BIOS。
+- Firmware 與 BIOS 更新（視廠商支援）。
 
 ## 資訊安全
 
