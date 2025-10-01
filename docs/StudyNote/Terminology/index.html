@@ -423,33 +423,39 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">系統架構</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-band-side-band-and-out-of-band">In-band, Side-band and Out-of-band</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">額外補充</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">用通訊的方式分類</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">用系統管理的方式分類</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">技術標準</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">技術標準</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-platform-firmware-resilience">PFR (Platform Firmware Resilience)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i2c-inter-integrated-circuit-bus">I²C (Inter-Integrated Circuit) bus</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">特點</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">特點</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lpc-low-pin-count-bus">LPC (Low Pin Count) bus</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">主要應用</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">後繼規格</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">主要應用</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">後繼規格</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ntp-network-time-protocol">NTP (Network Time Protocol)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">特點</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">特點</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipmi-intelligent-platform-management-interface">IPMI (Intelligent Platform Management Interface)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">核心組件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">主要功能</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">資訊安全</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">資訊安全</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
@@ -568,7 +574,8 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <h2>系統架構<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <section id="in-band-side-band-and-out-of-band">
 <h3>In-band, Side-band and Out-of-band<a class="headerlink" href="#in-band-side-band-and-out-of-band" title="Permalink to this heading">#</a></h3>
-<p>這三個術語是用來分類通訊的方式</p>
+<section id="id9">
+<h4>用通訊的方式分類<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>分類</p></th>
@@ -579,22 +586,48 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <tr class="row-even"><td><p>In-band</p></td>
 <td><p>與主要資料共用同一物理和邏輯通道</p></td>
 </tr>
-<tr class="row-odd"><td><p>Side-band</p></td>
-<td><p>與主要資料共用同一物理通道，但使用不同邏輯通道或協定</p></td>
-</tr>
-<tr class="row-even"><td><p>Out-of-band</p></td>
+<tr class="row-odd"><td><p>Out-of-band</p></td>
 <td><p>使用完全獨立的物理和邏輯通道</p></td>
+</tr>
+<tr class="row-even"><td><p>Side-band</p></td>
+<td><p>與主要資料共用同一物理通道，但使用不同邏輯通道或協定</p></td>
 </tr>
 </tbody>
 </table>
-<section id="id9">
-<h4>額外補充<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>物理通道就是實際對應到硬體建立的通道，邏輯通道則是通過軟體控制劃分的方式將物理通道切割產生的通道。</p>
-</section>
-</section>
+</div>
 </section>
 <section id="id10">
-<h2>技術標準<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<h4>用系統管理的方式分類<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>分類</p></th>
+<th class="head"><p>定義</p></th>
+<th class="head"><p>例子</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>In-band</p></td>
+<td><p>通過作業系統的主要通道來管理</p></td>
+<td><p>SSH, RDP, Redfish 等</p></td>
+</tr>
+<tr class="row-odd"><td><p>Out-of-band</p></td>
+<td><p>通過與作業系統分離的獨立通道來管理</p></td>
+<td><p>BMC 上的 IPMI, Redfish 等</p></td>
+</tr>
+<tr class="row-even"><td><p>Side-band</p></td>
+<td><p>介於兩者之間，與作業系統共用網路介面但由特定的控制器 (例如 BMC) 去管理</p></td>
+<td><p>Intel 平台的 NC-SI, SMBus 等</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="id11">
+<h2>技術標準<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <section id="pfr-platform-firmware-resilience">
 <h3>PFR (Platform Firmware Resilience)<a class="headerlink" href="#pfr-platform-firmware-resilience" title="Permalink to this heading">#</a></h3>
 <p>PFR 是一個技術標準，由 NIST 在 2018 年發佈，標準編號為 <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf">NIST SP 800-193</a>。<br />
@@ -611,8 +644,8 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <h3>I²C (Inter-Integrated Circuit) bus<a class="headerlink" href="#i2c-inter-integrated-circuit-bus" title="Permalink to this heading">#</a></h3>
 <p>I²C 是由 Philips Semiconductors（現 NXP Semiconductors）提出的一種 <strong>短距離串列通訊協定</strong>，用來在單一電路板上連接 <strong>處理器、微控制器以及其他低速週邊設備</strong>。<br />
 它僅需兩條訊號線（SDA：資料線、SCL：時脈線），因此特別適合板內通訊。</p>
-<section id="id11">
-<h4>特點<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<section id="id12">
+<h4>特點<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>同步架構</strong>：由 SCL 提供時脈，所有裝置同步傳輸資料。</p></li>
 <li><p><strong>主從架構</strong>：由主機發起通訊，從機依位址回應。支援多主機設計。</p></li>
@@ -627,24 +660,24 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <section id="lpc-low-pin-count-bus">
 <h3>LPC (Low Pin Count) bus<a class="headerlink" href="#lpc-low-pin-count-bus" title="Permalink to this heading">#</a></h3>
 <p>LPC (Low Pin Count) 是一種低速匯流排，主要用於 IBM-compatible PC 架構中，連接 CPU 與各種低速設備。它最早由 Intel 提出，用來取代更古老的 ISA（Industry Standard Architecture）匯流排。</p>
-<section id="id12">
-<h4>主要應用<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<section id="id13">
+<h4>主要應用<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>BIOS ROM</strong>：早期透過 LPC 存取 BIOS，現今逐漸被 SPI/eSPI 標準取代。</p></li>
 <li><p><strong>Legacy I/O device</strong>：如序列埠、並列埠、PS/2 等，後來多被整合到 Super I/O、Embedded Controller(CPLD) 或 IPMI 晶片中。</p></li>
 <li><p><strong>Trusted Platform Module (TPM)</strong>：安全模組常透過 LPC 連接。</p></li>
 </ul>
 </section>
-<section id="id13">
-<h4>後繼規格<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<section id="id14">
+<h4>後繼規格<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
 <p>隨著系統整合度提升與需求變化，LPC 的角色逐漸被 <strong>SPI</strong> 與 <strong>eSPI（Enhanced Serial Peripheral Interface）</strong> 取代。</p>
 </section>
 </section>
 <section id="ntp-network-time-protocol">
 <h3>NTP (Network Time Protocol)<a class="headerlink" href="#ntp-network-time-protocol" title="Permalink to this heading">#</a></h3>
 <p>NTP 是一個 <strong>透過網路進行時間同步</strong> 的通訊協定，屬於 <strong>應用層</strong>，使用 <strong>UDP 123 Port</strong>。</p>
-<section id="id14">
-<h4>特點<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
+<section id="id15">
+<h4>特點<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Master-Slave、Strata 架構</strong>：</p>
 <ul>
@@ -658,16 +691,78 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 </ul>
 </section>
 </section>
+<section id="ipmi-intelligent-platform-management-interface">
+<h3>IPMI (Intelligent Platform Management Interface)<a class="headerlink" href="#ipmi-intelligent-platform-management-interface" title="Permalink to this heading">#</a></h3>
+<p>IPMI 是一組開源的電腦介面的規格， 由 Intel 主導，並由 Dell, HP, NEC 等多家廠商共同制定。用來在伺服器或嵌入式系統中進行硬體層級的管理與監控, 例如 CPU, Firmware (BIOS or UEFI)。 它的特點是獨立於 OS ，不只系統本身，電源管理本身也與 OS 獨立。</p>
+<section id="id16">
+<h4>核心組件<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>BMC (Baseboard Management Controller)</p>
+<ul>
+<li><p>IPMI 的核心晶片，負責收集感測器資料、接收管理指令並執行控制。</p></li>
+<li><p>通常整合於主機板上，具備獨立網路介面（或共享 LAN port）。</p></li>
+</ul>
+</li>
+<li><p>Sensors (感測器)</p>
+<ul>
+<li><p>偵測溫度、電壓、風扇轉速、電源狀態等。</p></li>
+<li><p>BMC 會透過 IPMI 報告這些數據。</p></li>
+</ul>
+</li>
+<li><p>IPMI Interface</p>
+<ul>
+<li><p>管理者與 BMC 的溝通協定。</p></li>
+<li><p>支援多種通訊方式：</p>
+<ul>
+<li><p>KCS (Keyboard Controller Style)：透過 I/O port 與 CPU 溝通，本地管理使用。</p></li>
+<li><p>LAN / RMCP+：遠端網路存取。</p></li>
+<li><p>Serial / USB：某些系統額外提供。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </section>
-<section id="id15">
-<h2>資訊安全<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<section id="id17">
+<h4>主要功能<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>硬體監控</p>
+<ul>
+<li><p>監測 CPU、主機板、電源供應器的溫度、電壓、風扇狀態。</p></li>
+<li><p>記錄事件（SEL：System Event Log）。</p></li>
+</ul>
+</li>
+<li><p>遠端控制</p>
+<ul>
+<li><p>Power On / Off / Reset 主機。</p></li>
+<li><p>進行 硬體層級的 KVM over IP（視 BMC 廠商支援）。</p></li>
+</ul>
+</li>
+<li><p>事件與告警</p>
+<ul>
+<li><p>記錄並回報系統異常事件（如過熱、電源異常）。</p></li>
+<li><p>可透過 SNMP Trap, Email 通知。</p></li>
+</ul>
+</li>
+<li><p>系統存取</p>
+<ul>
+<li><p>即使 OS 損壞或無法啟動，仍能透過 IPMI 存取 Console、重新開機或更新 BIOS。</p></li>
+</ul>
+</li>
+<li><p>Firmware 與 BIOS 更新（視廠商支援）。</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="id18">
+<h2>資訊安全<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
 <section id="pdos-permanent-denial-of-service-attacks">
 <h3>PDoS (Permanent Denial-of-Service Attacks)<a class="headerlink" href="#pdos-permanent-denial-of-service-attacks" title="Permalink to this heading">#</a></h3>
 <p>PDoS 也稱作 <code class="docutils literal notranslate"><span class="pre">phlashing</span></code>，是一種 <code class="docutils literal notranslate"><span class="pre">DoS</span></code> 攻擊方式，其核心概念是攻擊目標裝置的硬體。這類攻擊並非透過物理方式，而是利用安全性漏洞覆寫負責控制硬體的韌體，進而破壞硬體功能。最著名的案例發生在 2017 年的 <a class="reference external" href="https://en.wikipedia.org/wiki/BrickerBot">BrickerBot</a> 攻擊事件。</p>
 </section>
 </section>
-<section id="id16">
-<h2>商業術語<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h2>
+<section id="id19">
+<h2>商業術語<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
 <section id="linux-distribution">
 <h3>Linux distribution<a class="headerlink" href="#linux-distribution" title="Permalink to this heading">#</a></h3>
 <p>簡單來說，Linux distribution（發行版）就是將 Linux 核心（Kernel）搭配一系列預先整合好的套件與工具，打包成一個可以安裝使用的作業系統。
@@ -758,33 +853,39 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">系統架構</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-band-side-band-and-out-of-band">In-band, Side-band and Out-of-band</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">額外補充</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">用通訊的方式分類</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">用系統管理的方式分類</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">技術標準</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">技術標準</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-platform-firmware-resilience">PFR (Platform Firmware Resilience)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i2c-inter-integrated-circuit-bus">I²C (Inter-Integrated Circuit) bus</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">特點</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">特點</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lpc-low-pin-count-bus">LPC (Low Pin Count) bus</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">主要應用</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">後繼規格</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">主要應用</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">後繼規格</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ntp-network-time-protocol">NTP (Network Time Protocol)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">特點</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">特點</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipmi-intelligent-platform-management-interface">IPMI (Intelligent Platform Management Interface)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">核心組件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">主要功能</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">資訊安全</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">資訊安全</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
