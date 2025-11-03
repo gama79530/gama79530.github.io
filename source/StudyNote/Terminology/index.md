@@ -200,6 +200,24 @@ IPMI 是一組開源的電腦介面的規格， 由 Intel 主導，並由 Dell, 
   - 即使 OS 損壞或無法啟動，仍能透過 IPMI 存取 Console、重新開機或更新 BIOS。
 - Firmware 與 BIOS 更新（視廠商支援）。
 
+### Advanced Error Reporting (AER)
+
+AER 是屬於 PCIe 標準的其中一小部份，用來制定出一個更強健的錯誤回報機制。AER 是屬於硬體層級的錯誤偵測與回報機制。主要用途是：
+
+- 偵測、分類、記錄並回報 PCIe 裝置 (例如網卡, GPU, NVMe, SSD) 發生的各種錯誤。
+- 幫助系統軟體 (例如 BIOS, OS, BMC) 在硬體層偵測到錯誤時能採取對應動作。
+
+AER 會將錯誤分成下面三大類讓 BIOS / BMC / OS 可以通過透過 PCI subsystem 讀取 AER log 後決定處理策略
+
+1. Correctable Error
+2. Non-Fatal Error
+3. Fatal Error
+
+```{note}
+想了解的比較深入可以參考 [原理PCI Express: Advanced Error Reporting(AER)](https://datongfirmware.blogspot.com/2020/05/pci-express-advanced-error-reportingaer.html)
+```
+
+
 ## 資訊安全
 
 ### PDoS (Permanent Denial-of-Service Attacks)
