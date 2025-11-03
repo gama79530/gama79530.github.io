@@ -449,6 +449,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">主要功能</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-error-reporting-aer">Advanced Error Reporting (AER)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">資訊安全</a><ul class="nav section-nav flex-column">
@@ -753,6 +754,24 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 </ul>
 </section>
 </section>
+<section id="advanced-error-reporting-aer">
+<h3>Advanced Error Reporting (AER)<a class="headerlink" href="#advanced-error-reporting-aer" title="Permalink to this heading">#</a></h3>
+<p>AER 是屬於 PCIe 標準的其中一小部份，用來制定出一個更強健的錯誤回報機制。AER 是屬於硬體層級的錯誤偵測與回報機制。主要用途是：</p>
+<ul class="simple">
+<li><p>偵測、分類、記錄並回報 PCIe 裝置 (例如網卡, GPU, NVMe, SSD) 發生的各種錯誤。</p></li>
+<li><p>幫助系統軟體 (例如 BIOS, OS, BMC) 在硬體層偵測到錯誤時能採取對應動作。</p></li>
+</ul>
+<p>AER 會將錯誤分成下面三大類讓 BIOS / BMC / OS 可以通過透過 PCI subsystem 讀取 AER log 後決定處理策略</p>
+<ol class="arabic simple">
+<li><p>Correctable Error</p></li>
+<li><p>Non-Fatal Error</p></li>
+<li><p>Fatal Error</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>想了解的比較深入可以參考 <a class="reference external" href="https://datongfirmware.blogspot.com/2020/05/pci-express-advanced-error-reportingaer.html">原理PCI Express: Advanced Error Reporting(AER)</a></p>
+</div>
+</section>
 </section>
 <section id="id18">
 <h2>資訊安全<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
@@ -879,6 +898,7 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">主要功能</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-error-reporting-aer">Advanced Error Reporting (AER)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">資訊安全</a><ul class="nav section-nav flex-column">
