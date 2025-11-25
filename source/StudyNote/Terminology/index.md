@@ -70,6 +70,41 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 之所以不把這些低速 I/O 介面直接整合進 PCH，是因為這些功能在不同平台上的需求差異很大 (例如伺服器需要完整的監控與 COM Port，但一般筆電可能完全不需要) 。  
 將這些功能獨立在 Super I/O 晶片裡，可以降低 PCH 的設計複雜度與成本，同時讓主機板廠商依需求選擇不同型號的 Super I/O 晶片。
 
+### Automatic Boot Recovery (ABR)
+
+ABR 是 ASPEED BMC SoC 的 Boot ROM 提供的功能，用來在 Primary flash 異常時系統會自動切換到 Secondary flash 開機。
+
+```{note}
+ABR 是 ASPEED 專門的術語，其他廠牌的 BMC 多數也會提供類似的功能，但可能名稱不一樣
+```
+
+ABR 除了有硬體實做之外也有軟體實做，硬體實做的 ABR 是核心功能，而軟體 ABR 則像是硬體 ABR 的擴充功能。
+
+#### 硬體 ABR 與 軟體 ABR 的比較
+
+##### 硬體 ABR
+
+1. 只做最基本的硬體檢查，例如
+   - flash 功能是否正常?
+   - Secure Boot 簽章是否正確
+2. 決策點非常的早，用來確保 SoC 可以運作而不是系統本身
+3. 能做的決策很有限
+
+##### 軟體 ABR
+
+1. 可以對系統做比較完整的檢查，例如
+   - 驗證完整性（SHA, signature）
+   - 驗證版本
+2. 決策點比 `硬體 ABR` 更晚，用來確保系統可以正常運作
+3. 能做的決策比較豐富
+4. 做在 `second-stage boot loader` 或者 `BMC firmware early userspace` 裡面
+
+#### ABR 的開機流程流程
+
+1. 硬體 ABR 檢查 
+2. 啟動 first-stage boot loader
+3. 啟動 second-stage boot loader
+
 ## 軟體
 
 ### OpenBMC
