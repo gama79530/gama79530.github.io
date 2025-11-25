@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>成大jserv Linux 核心設計/實作 (Linux Kernel Internals) &#8212; Rein&#39;s Homepage</title>
+    <title>Effective Modern C++ 筆記 &#8212; Rein&#39;s Homepage</title>
   
   
   
@@ -54,9 +54,11 @@
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Course/LinuxKernelInternals/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'StudyNote/EffectiveModernCpp/index';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction" href="introduction.html" />
+    <link rel="prev" title="品牌廠商與相關產品筆記" href="../Brand/index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -134,35 +136,35 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Study Note</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../StudyNote/Homepage/index.html">如何使用 GitHub Pages 以及 Sphinx 套件建立個人網頁</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/Homepage/foundation.html">網站架構</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/Homepage/skeleton.html">網頁架構</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/Homepage/note.html">常用語法與 Documents</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Homepage/index.html">如何使用 GitHub Pages 以及 Sphinx 套件建立個人網頁</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Homepage/foundation.html">網站架構</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homepage/skeleton.html">網頁架構</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Homepage/note.html">常用語法與 Documents</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../StudyNote/LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../StudyNote/Jansson/index.html">Jansson (a C library for JSON data) 使用教學</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../StudyNote/UbuntuSetup/index.html">Ubuntu 工具安裝</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../StudyNote/LearningGit/index.html">Git 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/LearningGit/git_faq.html">Git FAQ</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/LearningGit/large_project_management.html">大型專案管理</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/LearningGit/useful_setup.html">實用設定</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../LinkLoadDemo/index.html">(C/C++) 如何在Linux上編譯與使用 static /shared library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Jansson/index.html">Jansson (a C library for JSON data) 使用教學</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../UbuntuSetup/index.html">Ubuntu 工具安裝</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../LearningGit/index.html">Git 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../LearningGit/git_faq.html">Git FAQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearningGit/auto_complete.html">Git 指令自動補齊</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearningGit/large_project_management.html">大型專案管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LearningGit/useful_setup.html">實用設定</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../StudyNote/Yocto/index.html">Yocto 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/Yocto/yocto_introduction.html">Yocto 基本介紹</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/Yocto/yocto_start.html">如何開始一個 Yocto 專案</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/Yocto/yocto_faq.html">FAQ</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Yocto/index.html">Yocto 學習筆記</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Yocto/yocto_introduction.html">Yocto 基本介紹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Yocto/yocto_start.html">如何開始一個 Yocto 專案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Yocto/yocto_faq.html">FAQ</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../StudyNote/Docker/index.html">Docker Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../StudyNote/Terminology/index.html">專業術語筆記</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../StudyNote/Brand/index.html">品牌廠商與相關產品筆記</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../StudyNote/EffectiveModernCpp/index.html">Effective Modern C++ 筆記</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/EffectiveModernCpp/introduction.html">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../StudyNote/EffectiveModernCpp/item1.html">Item 1: Understand template type deduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Docker/index.html">Docker Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Terminology/index.html">專業術語筆記</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Brand/index.html">品牌廠商與相關產品筆記</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Effective Modern C++ 筆記</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="item1.html">Item 1: Understand template type deduction</a></li>
 </ul>
 </li>
 </ul>
@@ -236,7 +238,7 @@
       
       
       
-      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/Course/LinuxKernelInternals/index.md?plain=1" target="_blank"
+      <li><a href="https://github.com/gama79530/gama79530.github.io/blob/main/source/StudyNote/EffectiveModernCpp/index.md?plain=1" target="_blank"
    class="btn btn-sm btn-source-file-button dropdown-item"
    title="Show source"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -253,7 +255,7 @@
       
       
       
-      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/Course/LinuxKernelInternals/index.md" target="_blank"
+      <li><a href="https://github.com/gama79530/gama79530.github.io/edit/main/source/StudyNote/EffectiveModernCpp/index.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -270,7 +272,7 @@
       
       
       
-      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2FCourse/LinuxKernelInternals/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/gama79530/gama79530.github.io/issues/new?title=Issue%20on%20page%20%2FStudyNote/EffectiveModernCpp/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -300,7 +302,7 @@
       
       
       
-      <li><a href="../../_sources/Course/LinuxKernelInternals/index.md" target="_blank"
+      <li><a href="../../_sources/StudyNote/EffectiveModernCpp/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -369,7 +371,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -380,11 +384,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>成大jserv Linux 核心設計/實作 (Linux Kernel Internals)</h1>
+    <h1>Effective Modern C++ 筆記</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">目錄</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -394,14 +406,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="jserv-linux-linux-kernel-internals">
-<h1>成大jserv Linux 核心設計/實作 (Linux Kernel Internals)<a class="headerlink" href="#jserv-linux-linux-kernel-internals" title="Permalink to this heading">#</a></h1>
-<p>這是參考成大jserv公開的<a class="reference external" href="http://wiki.csie.ncku.edu.tw/linux/schedule">課程網頁</a>所做的筆記與練習</p>
-<ol class="arabic simple">
-<li><p><a class="reference internal" href="week1/week1.html"><span class="doc std std-doc">Week 1</span></a></p></li>
-</ol>
+  <section class="tex2jax_ignore mathjax_ignore" id="effective-modern-c">
+<h1>Effective Modern C++ 筆記<a class="headerlink" href="#effective-modern-c" title="Permalink to this heading">#</a></h1>
+<p>這裡會紀錄我閱讀 <a class="reference external" href="https://www.amazon.com/Effective-Modern-Specific-Ways-Improve/dp/1491903996">Effective Modern C++</a> 這本書之後節錄的重點筆記。這本書主要是以 <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">11</span></code> 以及 <code class="docutils literal notranslate"><span class="pre">C++</span> <span class="pre">14</span></code> 的標準作為主要的內容，但我會針對我有興趣或者有疑問的內容去查看更新的 C++ 標準是否有相關的內容更動。</p>
+<section id="id1">
+<h2>目錄<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="introduction.html"><span class="doc std std-doc">Introduction</span></a></p></li>
+<li><p><a class="reference internal" href="item1.html"><span class="doc std std-doc">Item 1: Understand template type deduction</span></a></p></li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
+</section>
 </section>
 
 
@@ -416,6 +432,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../Brand/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">品牌廠商與相關產品筆記</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -425,6 +459,20 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">目錄</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

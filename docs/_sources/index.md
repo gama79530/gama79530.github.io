@@ -19,6 +19,7 @@
 7. [Docker Tutorial](./StudyNote/Docker/index.md)
 8. [專業術語筆記](./StudyNote/Terminology/index.md)
 9. [品牌廠商整理](./StudyNote/Brand/index.md)
+10. [Effective Modern C++ 筆記](./StudyNote/EffectiveModernCpp/index.md)
 
 ```{toctree}
 :hidden:
@@ -34,6 +35,7 @@ StudyNote/Yocto/index
 StudyNote/Docker/index
 StudyNote/Terminology/index
 StudyNote/Brand/index
+StudyNote/EffectiveModernCpp/index
 ```
 
 ## Course

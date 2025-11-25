@@ -162,6 +162,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../Docker/index.html">Docker Tutorial</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">專業術語筆記</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Brand/index.html">品牌廠商與相關產品筆記</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../EffectiveModernCpp/index.html">Effective Modern C++ 筆記</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../EffectiveModernCpp/introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../EffectiveModernCpp/item1.html">Item 1: Understand template type deduction</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -411,9 +416,18 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#super-i-o-super-input-output">Super I/O (Super Input/Output)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-boot-recovery-abr">Automatic Boot Recovery (ABR)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abr-abr">硬體 ABR 與 軟體 ABR 的比較</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#abr">硬體 ABR</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">軟體 ABR</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">軟體</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ABR 的開機流程流程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">軟體</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openbmc">OpenBMC</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-boot-universal-boot-loader">U-boot (Universal Boot Loader)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bootloader-a-k-a-bootstrap-loader">bootloader (a.k.a. bootstrap loader)</a></li>
@@ -421,42 +435,42 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">系統架構</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">系統架構</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-band-side-band-and-out-of-band">In-band, Side-band and Out-of-band</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">用通訊的方式分類</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">用系統管理的方式分類</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">用通訊的方式分類</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">用系統管理的方式分類</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">技術標準</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">技術標準</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-platform-firmware-resilience">PFR (Platform Firmware Resilience)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i2c-inter-integrated-circuit-bus">I²C (Inter-Integrated Circuit) bus</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">特點</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">特點</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lpc-low-pin-count-bus">LPC (Low Pin Count) bus</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">主要應用</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">後繼規格</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">主要應用</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">後繼規格</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ntp-network-time-protocol">NTP (Network Time Protocol)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">特點</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">特點</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipmi-intelligent-platform-management-interface">IPMI (Intelligent Platform Management Interface)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">核心組件</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">主要功能</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">核心組件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">主要功能</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-error-reporting-aer">Advanced Error Reporting (AER)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">資訊安全</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">資訊安全</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
@@ -554,9 +568,56 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <p>之所以不把這些低速 I/O 介面直接整合進 PCH，是因為這些功能在不同平台上的需求差異很大 (例如伺服器需要完整的監控與 COM Port，但一般筆電可能完全不需要) 。<br />
 將這些功能獨立在 Super I/O 晶片裡，可以降低 PCH 的設計複雜度與成本，同時讓主機板廠商依需求選擇不同型號的 Super I/O 晶片。</p>
 </section>
+<section id="automatic-boot-recovery-abr">
+<h3>Automatic Boot Recovery (ABR)<a class="headerlink" href="#automatic-boot-recovery-abr" title="Permalink to this heading">#</a></h3>
+<p>ABR 是 ASPEED BMC SoC 的 Boot ROM 提供的功能，用來在 Primary flash 異常時系統會自動切換到 Secondary flash 開機。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ABR 是 ASPEED 專門的術語，其他廠牌的 BMC 多數也會提供類似的功能，但可能名稱不一樣</p>
+</div>
+<p>ABR 除了有硬體實做之外也有軟體實做，硬體實做的 ABR 是核心功能，而軟體 ABR 則像是硬體 ABR 的擴充功能。</p>
+<section id="abr-abr">
+<h4>硬體 ABR 與 軟體 ABR 的比較<a class="headerlink" href="#abr-abr" title="Permalink to this heading">#</a></h4>
+<section id="abr">
+<h5>硬體 ABR<a class="headerlink" href="#abr" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p>只做最基本的硬體檢查，例如</p>
+<ul class="simple">
+<li><p>flash 功能是否正常?</p></li>
+<li><p>Secure Boot 簽章是否正確</p></li>
+</ul>
+</li>
+<li><p>決策點非常的早，用來確保 SoC 可以運作而不是系統本身</p></li>
+<li><p>能做的決策很有限</p></li>
+</ol>
 </section>
 <section id="id7">
-<h2>軟體<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<h5>軟體 ABR<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h5>
+<ol class="arabic simple">
+<li><p>可以對系統做比較完整的檢查，例如</p>
+<ul class="simple">
+<li><p>驗證完整性（SHA, signature）</p></li>
+<li><p>驗證版本</p></li>
+</ul>
+</li>
+<li><p>決策點比 <code class="docutils literal notranslate"><span class="pre">硬體</span> <span class="pre">ABR</span></code> 更晚，用來確保系統可以正常運作</p></li>
+<li><p>能做的決策比較豐富</p></li>
+<li><p>做在 <code class="docutils literal notranslate"><span class="pre">second-stage</span> <span class="pre">boot</span> <span class="pre">loader</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">BMC</span> <span class="pre">firmware</span> <span class="pre">early</span> <span class="pre">userspace</span></code> 裡面</p></li>
+</ol>
+</section>
+</section>
+<section id="id8">
+<h4>ABR 的開機流程流程<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>硬體 ABR 檢查</p></li>
+<li><p>啟動 first-stage boot loader</p></li>
+<li><p>啟動 second-stage boot loader</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="id9">
+<h2>軟體<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <section id="openbmc">
 <h3>OpenBMC<a class="headerlink" href="#openbmc" title="Permalink to this heading">#</a></h3>
 <p>OpenBMC 是一個開源專案，其主要目的是建立一個專為 BMC 硬體設計的 <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">發行版（Linux</span> <span class="pre">distribution）</span></code>，用來提供各種伺服器遠端管理與監控功能。該專案目前由 <code class="docutils literal notranslate"><span class="pre">Linux</span> <span class="pre">Foundation</span></code> 主導與維護，並有多家業界廠商 (例如 IBM, Intel, Facebook, Google 等) 參與貢獻。</p>
@@ -571,12 +632,12 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 </section>
 </section>
 </section>
-<section id="id8">
-<h2>系統架構<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h2>系統架構<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <section id="in-band-side-band-and-out-of-band">
 <h3>In-band, Side-band and Out-of-band<a class="headerlink" href="#in-band-side-band-and-out-of-band" title="Permalink to this heading">#</a></h3>
-<section id="id9">
-<h4>用通訊的方式分類<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<section id="id11">
+<h4>用通訊的方式分類<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>分類</p></th>
@@ -600,8 +661,8 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <p>物理通道就是實際對應到硬體建立的通道，邏輯通道則是通過軟體控制劃分的方式將物理通道切割產生的通道。</p>
 </div>
 </section>
-<section id="id10">
-<h4>用系統管理的方式分類<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
+<section id="id12">
+<h4>用系統管理的方式分類<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>分類</p></th>
@@ -627,8 +688,8 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 </section>
 </section>
 </section>
-<section id="id11">
-<h2>技術標準<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<section id="id13">
+<h2>技術標準<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
 <section id="pfr-platform-firmware-resilience">
 <h3>PFR (Platform Firmware Resilience)<a class="headerlink" href="#pfr-platform-firmware-resilience" title="Permalink to this heading">#</a></h3>
 <p>PFR 是一個技術標準，由 NIST 在 2018 年發佈，標準編號為 <a class="reference external" href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-193.pdf">NIST SP 800-193</a>。<br />
@@ -645,8 +706,8 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <h3>I²C (Inter-Integrated Circuit) bus<a class="headerlink" href="#i2c-inter-integrated-circuit-bus" title="Permalink to this heading">#</a></h3>
 <p>I²C 是由 Philips Semiconductors（現 NXP Semiconductors）提出的一種 <strong>短距離串列通訊協定</strong>，用來在單一電路板上連接 <strong>處理器、微控制器以及其他低速週邊設備</strong>。<br />
 它僅需兩條訊號線（SDA：資料線、SCL：時脈線），因此特別適合板內通訊。</p>
-<section id="id12">
-<h4>特點<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<section id="id14">
+<h4>特點<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>同步架構</strong>：由 SCL 提供時脈，所有裝置同步傳輸資料。</p></li>
 <li><p><strong>主從架構</strong>：由主機發起通訊，從機依位址回應。支援多主機設計。</p></li>
@@ -661,24 +722,24 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <section id="lpc-low-pin-count-bus">
 <h3>LPC (Low Pin Count) bus<a class="headerlink" href="#lpc-low-pin-count-bus" title="Permalink to this heading">#</a></h3>
 <p>LPC (Low Pin Count) 是一種低速匯流排，主要用於 IBM-compatible PC 架構中，連接 CPU 與各種低速設備。它最早由 Intel 提出，用來取代更古老的 ISA（Industry Standard Architecture）匯流排。</p>
-<section id="id13">
-<h4>主要應用<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<section id="id15">
+<h4>主要應用<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>BIOS ROM</strong>：早期透過 LPC 存取 BIOS，現今逐漸被 SPI/eSPI 標準取代。</p></li>
 <li><p><strong>Legacy I/O device</strong>：如序列埠、並列埠、PS/2 等，後來多被整合到 Super I/O、Embedded Controller(CPLD) 或 IPMI 晶片中。</p></li>
 <li><p><strong>Trusted Platform Module (TPM)</strong>：安全模組常透過 LPC 連接。</p></li>
 </ul>
 </section>
-<section id="id14">
-<h4>後繼規格<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
+<section id="id16">
+<h4>後繼規格<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h4>
 <p>隨著系統整合度提升與需求變化，LPC 的角色逐漸被 <strong>SPI</strong> 與 <strong>eSPI（Enhanced Serial Peripheral Interface）</strong> 取代。</p>
 </section>
 </section>
 <section id="ntp-network-time-protocol">
 <h3>NTP (Network Time Protocol)<a class="headerlink" href="#ntp-network-time-protocol" title="Permalink to this heading">#</a></h3>
 <p>NTP 是一個 <strong>透過網路進行時間同步</strong> 的通訊協定，屬於 <strong>應用層</strong>，使用 <strong>UDP 123 Port</strong>。</p>
-<section id="id15">
-<h4>特點<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
+<section id="id17">
+<h4>特點<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>Master-Slave、Strata 架構</strong>：</p>
 <ul>
@@ -695,8 +756,8 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <section id="ipmi-intelligent-platform-management-interface">
 <h3>IPMI (Intelligent Platform Management Interface)<a class="headerlink" href="#ipmi-intelligent-platform-management-interface" title="Permalink to this heading">#</a></h3>
 <p>IPMI 是一組開源的電腦介面的規格， 由 Intel 主導，並由 Dell, HP, NEC 等多家廠商共同制定。用來在伺服器或嵌入式系統中進行硬體層級的管理與監控, 例如 CPU, Firmware (BIOS or UEFI)。 它的特點是獨立於 OS ，不只系統本身，電源管理本身也與 OS 獨立。</p>
-<section id="id16">
-<h4>核心組件<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h4>
+<section id="id18">
+<h4>核心組件<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>BMC (Baseboard Management Controller)</p>
 <ul>
@@ -724,8 +785,8 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 </li>
 </ul>
 </section>
-<section id="id17">
-<h4>主要功能<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
+<section id="id19">
+<h4>主要功能<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h4>
 <ul class="simple">
 <li><p>硬體監控</p>
 <ul>
@@ -773,15 +834,15 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 </div>
 </section>
 </section>
-<section id="id18">
-<h2>資訊安全<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
+<section id="id20">
+<h2>資訊安全<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
 <section id="pdos-permanent-denial-of-service-attacks">
 <h3>PDoS (Permanent Denial-of-Service Attacks)<a class="headerlink" href="#pdos-permanent-denial-of-service-attacks" title="Permalink to this heading">#</a></h3>
 <p>PDoS 也稱作 <code class="docutils literal notranslate"><span class="pre">phlashing</span></code>，是一種 <code class="docutils literal notranslate"><span class="pre">DoS</span></code> 攻擊方式，其核心概念是攻擊目標裝置的硬體。這類攻擊並非透過物理方式，而是利用安全性漏洞覆寫負責控制硬體的韌體，進而破壞硬體功能。最著名的案例發生在 2017 年的 <a class="reference external" href="https://en.wikipedia.org/wiki/BrickerBot">BrickerBot</a> 攻擊事件。</p>
 </section>
 </section>
-<section id="id19">
-<h2>商業術語<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<section id="id21">
+<h2>商業術語<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h2>
 <section id="linux-distribution">
 <h3>Linux distribution<a class="headerlink" href="#linux-distribution" title="Permalink to this heading">#</a></h3>
 <p>簡單來說，Linux distribution（發行版）就是將 Linux 核心（Kernel）搭配一系列預先整合好的套件與工具，打包成一個可以安裝使用的作業系統。
@@ -860,9 +921,18 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#super-i-o-super-input-output">Super I/O (Super Input/Output)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-boot-recovery-abr">Automatic Boot Recovery (ABR)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#abr-abr">硬體 ABR 與 軟體 ABR 的比較</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#abr">硬體 ABR</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">軟體 ABR</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">軟體</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ABR 的開機流程流程</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">軟體</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#openbmc">OpenBMC</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#u-boot-universal-boot-loader">U-boot (Universal Boot Loader)</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bootloader-a-k-a-bootstrap-loader">bootloader (a.k.a. bootstrap loader)</a></li>
@@ -870,42 +940,42 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">系統架構</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">系統架構</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-band-side-band-and-out-of-band">In-band, Side-band and Out-of-band</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">用通訊的方式分類</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">用系統管理的方式分類</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">用通訊的方式分類</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">用系統管理的方式分類</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">技術標準</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">技術標準</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pfr-platform-firmware-resilience">PFR (Platform Firmware Resilience)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i2c-inter-integrated-circuit-bus">I²C (Inter-Integrated Circuit) bus</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">特點</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">特點</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lpc-low-pin-count-bus">LPC (Low Pin Count) bus</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">主要應用</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">後繼規格</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">主要應用</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">後繼規格</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ntp-network-time-protocol">NTP (Network Time Protocol)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">特點</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">特點</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipmi-intelligent-platform-management-interface">IPMI (Intelligent Platform Management Interface)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">核心組件</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">主要功能</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">核心組件</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">主要功能</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-error-reporting-aer">Advanced Error Reporting (AER)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">資訊安全</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">資訊安全</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdos-permanent-denial-of-service-attacks">PDoS (Permanent Denial-of-Service Attacks)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">商業術語</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">商業術語</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux-distribution">Linux distribution</a></li>
 </ul>
 </li>
