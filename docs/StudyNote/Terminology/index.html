@@ -425,6 +425,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ABR 的開機流程流程</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrically-erasable-programmable-read-only-memory-eeprom">Electrically-Erasable Programmable Read-Only Memory (EEPROM)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">軟體</a><ul class="nav section-nav flex-column">
@@ -614,6 +615,11 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <li><p>啟動 second-stage boot loader</p></li>
 </ol>
 </section>
+</section>
+<section id="electrically-erasable-programmable-read-only-memory-eeprom">
+<h3>Electrically-Erasable Programmable Read-Only Memory (EEPROM)<a class="headerlink" href="#electrically-erasable-programmable-read-only-memory-eeprom" title="Permalink to this heading">#</a></h3>
+<p>EEPROM 是一種唯讀記憶體，可以用電子的方式做複寫。</p>
+<p>一般 EEPROM 主要用於儲存主記憶體的開發者資訊、生產時間、主記憶體資訊、通訊協定、既定主記憶體頻率、供電電壓、供電電流、物理訊息以及主記憶體 XMP 等訊息，且電腦會在開機自檢（Power-On Self-Test；POST）時會讀取這些訊息以保持電腦的正常開機。</p>
 </section>
 </section>
 <section id="id9">
@@ -930,6 +936,7 @@ Super I/O 並不直接與 CPU 溝通，而是透過 LPC 或 eSPI 介面連接到
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">ABR 的開機流程流程</a></li>
 </ul>
 </li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#electrically-erasable-programmable-read-only-memory-eeprom">Electrically-Erasable Programmable Read-Only Memory (EEPROM)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">軟體</a><ul class="nav section-nav flex-column">
