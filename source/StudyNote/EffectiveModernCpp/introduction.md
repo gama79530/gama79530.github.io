@@ -13,7 +13,7 @@ int x = 27;             // x is lvalue and 27 is rvalue
 class Widget {
 public:
 Widget(Widget&& rhs);   // rhs is an lvalue, though it has
-…                       // an rvalue reference type
+...                     // an rvalue reference type
 };
 ```
 
