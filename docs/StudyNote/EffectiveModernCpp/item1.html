@@ -370,7 +370,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -386,6 +388,21 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">類型推斷的 3 種分類</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-1">Case 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-2">Case 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-3">Case 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-arguments-and-function-arguments">Array Arguments and Function Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-to-remember">Things to Remember</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -397,6 +414,104 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="item-1-understand-template-type-deduction">
 <h1>Item 1: Understand template type deduction<a class="headerlink" href="#item-1-understand-template-type-deduction" title="Permalink to this heading">#</a></h1>
+<p>一般常見的 <code class="docutils literal notranslate"><span class="pre">templete</span></code> 與<code class="docutils literal notranslate"><span class="pre">調用</span></code></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">ParamType</span><span class="w"> </span><span class="n">param</span><span class="p">);</span>
+
+<span class="n">f</span><span class="p">(</span><span class="n">expr</span><span class="p">);</span><span class="w">                    </span><span class="c1">// deduce T and ParamType from expr</span>
+</pre></div>
+</div>
+<section id="id1">
+<h2>類型推斷的 3 種分類<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ParamType</span></code> 是 <code class="docutils literal notranslate"><span class="pre">pointer</span></code> 或 <code class="docutils literal notranslate"><span class="pre">reference</span></code>, 但不是 <code class="docutils literal notranslate"><span class="pre">universal</span> <span class="pre">reference</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ParamType</span></code> 是 <code class="docutils literal notranslate"><span class="pre">universal</span> <span class="pre">reference</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ParamType</span></code> 不是 <code class="docutils literal notranslate"><span class="pre">pointer</span></code> 也不是 <code class="docutils literal notranslate"><span class="pre">reference</span></code></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">universal</span> <span class="pre">reference</span></code> 不是個正式的術語，正式的術語是 <code class="docutils literal notranslate"><span class="pre">forwarding</span> <span class="pre">reference</span></code> (從 C++17 之後被確認)</p>
+</div>
+<section id="case-1">
+<h3>Case 1<a class="headerlink" href="#case-1" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="o">&amp;</span><span class="w"> </span><span class="n">param</span><span class="p">);</span><span class="w">          </span><span class="c1">// param is a reference</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="o">*</span><span class="w"> </span><span class="n">param</span><span class="p">);</span><span class="w">          </span><span class="c1">// param is now a pointer</span>
+</pre></div>
+</div>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">expr</span></code> 是 <code class="docutils literal notranslate"><span class="pre">reference</span></code>，先忽略 <code class="docutils literal notranslate"><span class="pre">reference</span></code> 的部份。<br />
+接著再依照 <code class="docutils literal notranslate"><span class="pre">expr</span></code> 的類型與 <code class="docutils literal notranslate"><span class="pre">ParamType</span></code> 做比對以確定 <code class="docutils literal notranslate"><span class="pre">T</span></code> 。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>簡而言之，跟著推理的直覺做推理就行。</p>
+</div>
+</section>
+<section id="case-2">
+<h3>Case 2<a class="headerlink" href="#case-2" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">param</span><span class="p">);</span><span class="w">         </span><span class="c1">// param is now a universal reference</span>
+</pre></div>
+</div>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">expr</span></code> 是個 <code class="docutils literal notranslate"><span class="pre">lvalue</span></code> ， <code class="docutils literal notranslate"><span class="pre">T</span></code> 與 <code class="docutils literal notranslate"><span class="pre">ParamType</span></code> 都會是個 <code class="docutils literal notranslate"><span class="pre">lvalue</span> <span class="pre">references</span></code> 。<br />
+否則就是依照 <code class="docutils literal notranslate"><span class="pre">Case</span> <span class="pre">1</span></code> 的方式做推理。</p>
+</section>
+<section id="case-3">
+<h3>Case 3<a class="headerlink" href="#case-3" title="Permalink to this heading">#</a></h3>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">param</span><span class="p">);</span><span class="w">           </span><span class="c1">// param is now passed by value</span>
+</pre></div>
+</div>
+<p>如果 <code class="docutils literal notranslate"><span class="pre">expr</span></code> 的類型是個 <code class="docutils literal notranslate"><span class="pre">reference</span></code> ，那就與 Case 1 一樣先忽略這部份。<br />
+接著在繼續做推論，如果 <code class="docutils literal notranslate"><span class="pre">expr</span></code> 是 <code class="docutils literal notranslate"><span class="pre">const</span></code> 或 <code class="docutils literal notranslate"><span class="pre">volatile</span></code> 的話也要忽略這部份。</p>
+<p><strong>範例</strong></p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
+<span class="kt">void</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="n">param</span><span class="p">);</span><span class="w">           </span><span class="c1">// param is still passed by value</span>
+<span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w">    </span><span class="c1">// ptr is const pointer to const object</span>
+<span class="w">    </span><span class="s">&quot;Fun with pointers&quot;</span><span class="p">;</span>
+<span class="n">f</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span><span class="w">                    </span><span class="c1">// pass arg of type const char * const</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">T</span></code> 會被推論為 <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">char*</span></code> 。</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>用 chatgpt 給的整理，不管是 <code class="docutils literal notranslate"><span class="pre">reference</span></code> 或是 <code class="docutils literal notranslate"><span class="pre">pointer</span></code> ， <code class="docutils literal notranslate"><span class="pre">top-level</span> <span class="pre">const</span> <span class="pre">(也就是綁在變數上的</span> <span class="pre">const)</span></code> 會被忽略，但綁在<code class="docutils literal notranslate"><span class="pre">類型</span></code>上的不會。</p>
+</div>
+</section>
+</section>
+<section id="array-arguments-and-function-arguments">
+<h2>Array Arguments and Function Arguments<a class="headerlink" href="#array-arguments-and-function-arguments" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>若 <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">/</span> <span class="pre">function</span> <span class="pre">parameter</span></code> 是 <code class="docutils literal notranslate"><span class="pre">reference</span></code> ，在做類型推導時不需要做 C 語言的<code class="docutils literal notranslate"><span class="pre">型別退化</span></code>。</p></li>
+<li><p>若 <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">/</span> <span class="pre">function</span> <span class="pre">parameter</span></code> 不是 <code class="docutils literal notranslate"><span class="pre">reference</span></code> ，在做類型推導時就會先做 C 語言的<code class="docutils literal notranslate"><span class="pre">型別退化</span></code>，同時限定符 <code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">/</span> <span class="pre">volatile</span></code> 會被忽略。</p></li>
+</ul>
+<p><strong>特殊範例</strong></p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">references</span> <span class="pre">to</span> <span class="pre">arrays</span></code> 可以做出直接推論 <code class="docutils literal notranslate"><span class="pre">array</span></code> 裡面有多少成員的 template 範例。</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="c1">// return size of an array as a compile-time constant. (The</span>
+<span class="c1">// array parameter has no name, because we care only about</span>
+<span class="c1">// the number of elements it contains.)</span>
+<span class="k">template</span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">T</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">N</span><span class="o">&gt;</span><span class="w">                  </span><span class="c1">// see info</span>
+<span class="k">constexpr</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="kt">size_t</span><span class="w"> </span><span class="n">arraySize</span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="p">(</span><span class="o">&amp;</span><span class="p">)[</span><span class="n">N</span><span class="p">])</span><span class="w"> </span><span class="k">noexcept</span><span class="w">   </span><span class="c1">// below on</span>
+<span class="p">{</span><span class="w">                                                    </span><span class="c1">// constexpr</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w">                                        </span><span class="c1">// and</span>
+<span class="p">}</span><span class="w">                                                    </span><span class="c1">// noexcept</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">constexpr</span></code> 讓<code class="docutils literal notranslate"><span class="pre">編譯器</span></code>可以在<code class="docutils literal notranslate"><span class="pre">編譯期</span></code>就得到 <code class="docutils literal notranslate"><span class="pre">arraySize</span></code> 的回傳值。</p>
+</div>
+</section>
+<section id="things-to-remember">
+<h2>Things to Remember<a class="headerlink" href="#things-to-remember" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>在模板型別推導中，作為參數的參照（reference）會被視為非參照，也就是其「參照性」會被忽略。</p></li>
+<li><p>在為通用參照（universal reference）參數進行型別推導時，lvalue 實參會被特別處理。</p></li>
+<li><p>在為按值（by-value）參數進行型別推導時，const 和/或 volatile 的實參會被視為非 const、非 volatile。</p></li>
+<li><p>在模板型別推導中，作為參數的陣列或函式名稱會退化為指標，除非它們被用來初始化參照。</p></li>
+</ul>
+</section>
 </section>
 
 
@@ -429,6 +544,27 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">類型推斷的 3 種分類</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-1">Case 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-2">Case 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-3">Case 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#array-arguments-and-function-arguments">Array Arguments and Function Arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#things-to-remember">Things to Remember</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

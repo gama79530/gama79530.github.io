@@ -420,13 +420,13 @@ document.write(`
 <h2>lvalue v.s. rvalue<a class="headerlink" href="#lvalue-v-s-rvalue" title="Permalink to this heading">#</a></h2>
 <p>一般來說 <code class="docutils literal notranslate"><span class="pre">lvalue</span></code> 對應的是「物件本體」，而 <code class="docutils literal notranslate"><span class="pre">rvalue</span></code> 則是由<code class="docutils literal notranslate"><span class="pre">程式碼賦值</span></code>或<code class="docutils literal notranslate"><span class="pre">函式回傳</span></code>取得的暫時性物件。<br />
 最粗略的分辨方式是用<code class="docutils literal notranslate"><span class="pre">「是否可以做</span> <span class="pre">&amp;</span> <span class="pre">運算取得</span> <span class="pre">address」</span></code>來判斷是否為 lvalue。</p>
-<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span>int x = 27;             // x is lvalue and 27 is rvalue
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">27</span><span class="p">;</span><span class="w">             </span><span class="c1">// x is lvalue and 27 is rvalue</span>
 
-class Widget {
-public:
-Widget(Widget&amp;&amp; rhs);   // rhs is an lvalue, though it has
-…                       // an rvalue reference type
-};
+<span class="k">class</span><span class="w"> </span><span class="nc">Widget</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="n">Widget</span><span class="p">(</span><span class="n">Widget</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">rhs</span><span class="p">);</span><span class="w">   </span><span class="c1">// rhs is an lvalue, though it has</span>
+<span class="p">...</span><span class="w">                     </span><span class="c1">// an rvalue reference type</span>
+<span class="p">};</span>
 </pre></div>
 </div>
 </section>
