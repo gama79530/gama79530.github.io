@@ -20,6 +20,7 @@
 8. [專業術語筆記](./StudyNote/Terminology/index.md)
 9. [品牌廠商整理](./StudyNote/Brand/index.md)
 10. [Effective Modern C++ 筆記](./StudyNote/EffectiveModernCpp/index.md)
+11. [IPMI 學習筆記](./StudyNote/IPMI/index.md)
 
 ```{toctree}
 :hidden:
