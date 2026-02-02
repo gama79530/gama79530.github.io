@@ -147,7 +147,21 @@ NetFn 大部分是成對的，偶數代表 `request`, 奇數代表 `response`。
 
 ### 8. 什麼是標準 IPMI command？什麼是 OEM command？為什麼需要 OEM command？
 
-<!-- ??? -->
+#### OEM Command
+
+由廠商自定義的 command ，通常會是針對硬體相關的功能擴充。需要另外查閱廠商提供的文件才能了解怎樣使用。這些功能可能是廠商的獨門絕活並不具備通用性，也可以用來把多個標準功能打包成一個客製化命令方便使用。這類的指令通常只能發送 `raw command` 手動指定 `NetFn`, `Command`, `Data`
+
+#### 標準的 IPMI command 
+
+在 IPMI 的規範裡有明確的定義，涵蓋了伺服器管理的通用功能（如電源控制、sensor 存取、event log）。這些 command 只要平台有支援 IPMI 標準就要支援，因此具有跨平台的特性。因為這些指令的標準化，所以在常見的工具可以直接使用高階指令來下命令（如 `ipmitool power status`, `ipmitool sensor`）。
+
+#### OEM Command
+
+由廠商自定義的 command，通常針對硬體相關的功能擴充。需要另外查閱廠商提供的文件才能了解怎樣使用。這些功能可能是廠商的獨門絕活，並不具備通用性。也可以用來把多個標準功能打包成一個客製化命令，方便使用。這類指令通常只能用 `ipmitool raw`，手動指定 `NetFn`, `Command`, `Data` 來發送。
+
+```{note}
+OEM command 通常僅適用於特定品牌或型號，跨平台相容性較差。
+```
 
 ### 9. IPMI 是如何表示與存取 Sensor（溫度、電壓、風扇）的？
 
