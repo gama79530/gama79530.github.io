@@ -228,24 +228,11 @@ Event / Reading Type Code 可以大致分成下面這幾類
 
 SDR 只告訴我們要如何解讀 sensor 回傳的數值讀數，在解讀之前需要通過 IPMI 的指令 (e.g. `Get Sensor Reading`) 來取得讀數。另外因為不同 sensor 的單位, 解讀方式全都不一樣，所以通常也是直接依賴工具幫忙轉換成人類好讀的數據。
 
-<!-- ??? -->
-<!-- 1. Sensor 的資料結構與描述方式
-IPMI 透過 SDR（Sensor Data Record）Repository 來描述系統中所有感測器的屬性與配置。
-每個 Sensor 都有一筆 SDR，裡面記錄了 Sensor 的類型（溫度、電壓、風扇等）、單位、臨界值、對應的事件類型、Sensor Number 等資訊。
-SDR 可以用 ipmitool sdr 指令查詢。
-2. Sensor 資料的存取方式
-存取 Sensor 資料主要透過 IPMI 指令，例如 Get Sensor Reading（NetFn: 0x04, Cmd: 0x2D）。
-指令會帶入 Sensor Number，BMC 回傳當前的感測值與狀態（如正常、超標、失效等）。
-這些指令可以用 ipmitool sensor 查詢所有感測器的即時數值。
-3. Sensor 的分類與事件處理
-Sensor 分為多種類型（溫度、電壓、風扇、電流等），每種型態有對應的事件（如超溫、過壓、風扇失速）。
-當 Sensor 狀態異常時，BMC 會產生 Event，並記錄到 SEL（System Event Log）。 -->
-
 ## 四、實務操作與工具（操作層）
 
 ### 10. ipmitool 是做什麼用的？它在實務上扮演什麼角色？
 
-<!-- ??? -->
+ipmitool 是個通用的 client 端工具，用來把`標準的 IPMI 指令`以及回傳值封裝成人類可讀的格式，可以用它與支援 IPMI 的系統做溝通。在實務上因為它提供了對 `machine` 或 `sensor` 發送命令去設定或取得狀態的功能所以適合使用在`診斷`,`測試`,`維運`,`自動化腳本`等地方(e.g. `電源控制`, `SDR 存取`, etc.)。
 
 ### 11. 透過 IPMI 可以對機器做哪些「危險但必要」的操作？
 
